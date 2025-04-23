@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F2221F94-5FAF-41CB-86B0-825434819247}|Super Market\\Super Market.csproj|d:\\assignments\\intro. to database systems\\super market\\super market\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2221F94-5FAF-41CB-86B0-825434819247}|Super Market\\Super Market.csproj|solutionrelative:super market\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F2221F94-5FAF-41CB-86B0-825434819247}|Super Market\\Super Market.csproj|d:\\assignments\\intro. to database systems\\super market\\super market\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F2221F94-5FAF-41CB-86B0-825434819247}|Super Market\\Super Market.csproj|solutionrelative:super market\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2221F94-5FAF-41CB-86B0-825434819247}|Super Market\\Super Market.csproj|d:\\assignments\\intro. to database systems\\super market\\super market\\super market.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F2221F94-5FAF-41CB-86B0-825434819247}|Super Market\\Super Market.csproj|solutionrelative:super market\\super market.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,33 @@
       "DocumentGroups": [
         {
           "DockedHeight": 273,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Super Market\\MainWindow.xaml",
+              "ToolTip": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\MainWindow.xaml*",
+              "RelativeToolTip": "Super Market\\MainWindow.xaml*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-23T16:37:44.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Super Market",
+              "DocumentMoniker": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\Super Market.csproj",
+              "RelativeDocumentMoniker": "Super Market\\Super Market.csproj",
+              "ToolTip": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\Super Market.csproj",
+              "RelativeToolTip": "Super Market\\Super Market.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-23T16:36:19.128Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -23,19 +52,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "Super Market\\MainWindow.xaml.cs",
-              "ToolTip": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\MainWindow.xaml.cs",
-              "RelativeToolTip": "Super Market\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T16:31:30.951Z",
-              "EditorCaption": ""
             }
           ]
         }

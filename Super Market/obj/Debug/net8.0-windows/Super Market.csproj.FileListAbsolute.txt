@@ -1,0 +1,21 @@
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\bin\Debug\net8.0-windows\Super Market.exe
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\bin\Debug\net8.0-windows\Super Market.deps.json
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\bin\Debug\net8.0-windows\Super Market.runtimeconfig.json
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\bin\Debug\net8.0-windows\Super Market.dll
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\bin\Debug\net8.0-windows\Super Market.pdb
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\MainWindow.g.cs
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\App.g.cs
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\Super Market_MarkupCompile.cache
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\Super Market_MarkupCompile.lref
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\MainWindow.baml
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\Super Market.g.resources
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\Super Market.GeneratedMSBuildEditorConfig.editorconfig
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\Super Market.AssemblyInfoInputs.cache
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\Super Market.AssemblyInfo.cs
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\Super Market.csproj.CoreCompileInputs.cache
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\Super Market.sourcelink.json
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\Super Market.dll
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\refint\Super Market.dll
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\Super Market.pdb
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\Super Market.genruntimeconfig.cache
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\ref\Super Market.dll
