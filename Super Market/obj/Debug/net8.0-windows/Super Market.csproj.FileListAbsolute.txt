@@ -19,3 +19,11 @@ D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\ne
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\Super Market.pdb
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\Super Market.genruntimeconfig.cache
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\ref\Super Market.dll
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\pages\SignUp.g.cs
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\pages\SignUp.baml
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\pages\MenuPage.g.cs
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\pages\MenuPage.baml
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\pages\CustomerManagement.g.cs
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\pages\CustomerManagement.baml
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\pages\ProductManagement.g.cs
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\net8.0-windows\pages\ProductManagement.baml

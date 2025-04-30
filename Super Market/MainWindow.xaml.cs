@@ -9,6 +9,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Super_Market.pages;
+
 namespace Super_Market
 {
     /// <summary>
@@ -19,6 +21,30 @@ namespace Super_Market
         public MainWindow()
         {
             InitializeComponent();
+        }
+        
+        private void usernameInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void passwordInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void logInBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MenuPage menuPage = new MenuPage();
+            menuPage.Show();
+            this.Close();
+        }
+
+        private void signUpBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SignUp signUp = new SignUp();
+            signUp.Show();
+            this.Close();
         }
     }
 }

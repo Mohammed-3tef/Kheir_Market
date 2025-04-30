@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\App.xaml
-11407045341
+51085815500
 
-4-2095672402
-198-211836927
-MainWindow.xaml;
+8374751372
+207-1476244305
+MainWindow.xaml;pages\CustomerManagement.xaml;pages\MenuPage.xaml;pages\ProductManagement.xaml;pages\SignUp.xaml;
 
 False
 

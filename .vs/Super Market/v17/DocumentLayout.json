@@ -1,23 +1,40 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F2221F94-5FAF-41CB-86B0-825434819247}|Super Market\\Super Market.csproj|d:\\assignments\\intro. to database systems\\super market\\super market\\pages\\customermanagement.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F2221F94-5FAF-41CB-86B0-825434819247}|Super Market\\Super Market.csproj|solutionrelative:super market\\pages\\customermanagement.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 1,
+      "Orientation": 0,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 273,
-          "SelectedChildIndex": -1,
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CustomerManagement.xaml",
+              "DocumentMoniker": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\pages\\CustomerManagement.xaml",
+              "RelativeDocumentMoniker": "Super Market\\pages\\CustomerManagement.xaml",
+              "ToolTip": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\pages\\CustomerManagement.xaml",
+              "RelativeToolTip": "Super Market\\pages\\CustomerManagement.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-29T09:35:58.911Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             }
           ]
         }
