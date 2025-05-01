@@ -52,34 +52,34 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\CategoryManagement.cs">
+    <Compile Include="pages\admin\CategoryManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pages\CategoryManagement.Designer.cs">
+    <Compile Include="pages\admin\CategoryManagement.Designer.cs">
       <DependentUpon>CategoryManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\CustomerManagement.cs">
+    <Compile Include="pages\admin\CustomerManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pages\CustomerManagement.Designer.cs">
+    <Compile Include="pages\admin\CustomerManagement.Designer.cs">
       <DependentUpon>CustomerManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\AdminMenuPage.cs">
+    <Compile Include="pages\admin\AdminMenuPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pages\AdminMenuPage.Designer.cs">
+    <Compile Include="pages\admin\AdminMenuPage.Designer.cs">
       <DependentUpon>AdminMenuPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\CustomerMenuPage.cs">
+    <Compile Include="pages\customer\CustomerMenuPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pages\CustomerMenuPage.Designer.cs">
+    <Compile Include="pages\customer\CustomerMenuPage.Designer.cs">
       <DependentUpon>CustomerMenuPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\ProductManagement.cs">
+    <Compile Include="pages\admin\ProductManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pages\ProductManagement.Designer.cs">
+    <Compile Include="pages\admin\ProductManagement.Designer.cs">
       <DependentUpon>ProductManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="pages\SignUp.cs">
@@ -98,19 +98,19 @@
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\CategoryManagement.resx">
+    <EmbeddedResource Include="pages\admin\CategoryManagement.resx">
       <DependentUpon>CategoryManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\CustomerManagement.resx">
+    <EmbeddedResource Include="pages\admin\CustomerManagement.resx">
       <DependentUpon>CustomerManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\AdminMenuPage.resx">
+    <EmbeddedResource Include="pages\admin\AdminMenuPage.resx">
       <DependentUpon>AdminMenuPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\CustomerMenuPage.resx">
+    <EmbeddedResource Include="pages\customer\CustomerMenuPage.resx">
       <DependentUpon>CustomerMenuPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\ProductManagement.resx">
+    <EmbeddedResource Include="pages\admin\ProductManagement.resx">
       <DependentUpon>ProductManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\SignUp.resx">
