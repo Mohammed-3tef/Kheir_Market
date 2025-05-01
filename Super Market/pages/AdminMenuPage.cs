@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Super_Market.pages
 {
-    public partial class MenuPage : Form
+    public partial class AdminMenuPage : Form
     {
         private MainWindow mainWindow;
-        public MenuPage(MainWindow mainWindow = null)
+        public AdminMenuPage(MainWindow mainWindow = null)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
@@ -37,6 +37,13 @@ namespace Super_Market.pages
         {
             if (this.mainWindow == null) this.mainWindow = new MainWindow();
             this.mainWindow.Show();
+            this.Close();
+        }
+
+        private void categoryBtn_Click(object sender, EventArgs e)
+        {
+            CategoryManagement categoryManagement = new CategoryManagement();
+            categoryManagement.Show();
             this.Close();
         }
     }

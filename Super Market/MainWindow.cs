@@ -42,7 +42,7 @@ namespace Super_Market
 
         private void logInBtn_Click(object sender, EventArgs e)
         {
-            MenuPage menuPage = new MenuPage(this);
+            AdminMenuPage menuPage = new AdminMenuPage(this);
             menuPage.Show();
             this.Hide();
         }

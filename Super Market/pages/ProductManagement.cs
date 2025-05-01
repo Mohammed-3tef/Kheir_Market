@@ -19,8 +19,8 @@ namespace Super_Market.pages
 
         private void menuBtn_Click(object sender, EventArgs e)
         {
-            MenuPage menuPage = new MenuPage();
-            menuPage.Show();
+            AdminMenuPage adminMenuPage = new AdminMenuPage();
+            adminMenuPage.Show();
             this.Close();
         }
 

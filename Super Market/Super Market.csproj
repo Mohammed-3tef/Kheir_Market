@@ -52,17 +52,29 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\CategoryManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\CategoryManagement.Designer.cs">
+      <DependentUpon>CategoryManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\CustomerManagement.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="pages\CustomerManagement.Designer.cs">
       <DependentUpon>CustomerManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\MenuPage.cs">
+    <Compile Include="pages\AdminMenuPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pages\MenuPage.Designer.cs">
-      <DependentUpon>MenuPage.cs</DependentUpon>
+    <Compile Include="pages\AdminMenuPage.Designer.cs">
+      <DependentUpon>AdminMenuPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\CustomerMenuPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\CustomerMenuPage.Designer.cs">
+      <DependentUpon>CustomerMenuPage.cs</DependentUpon>
     </Compile>
     <Compile Include="pages\ProductManagement.cs">
       <SubType>Form</SubType>
@@ -86,11 +98,17 @@
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="pages\CategoryManagement.resx">
+      <DependentUpon>CategoryManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="pages\CustomerManagement.resx">
       <DependentUpon>CustomerManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\MenuPage.resx">
-      <DependentUpon>MenuPage.cs</DependentUpon>
+    <EmbeddedResource Include="pages\AdminMenuPage.resx">
+      <DependentUpon>AdminMenuPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\CustomerMenuPage.resx">
+      <DependentUpon>CustomerMenuPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\ProductManagement.resx">
       <DependentUpon>ProductManagement.cs</DependentUpon>

@@ -1,6 +1,6 @@
 ﻿namespace Super_Market.pages
 {
-    partial class MenuPage
+    partial class AdminMenuPage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminMenuPage));
             this.appTitle = new System.Windows.Forms.Label();
             this.welcomeMsg = new System.Windows.Forms.Label();
             this.customerBtn = new System.Windows.Forms.Button();
             this.productBtn = new System.Windows.Forms.Button();
             this.logOutBtn = new System.Windows.Forms.Button();
+            this.categoryBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // appTitle
@@ -62,7 +63,7 @@
             // 
             this.customerBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.customerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerBtn.Location = new System.Drawing.Point(551, 253);
+            this.customerBtn.Location = new System.Drawing.Point(266, 301);
             this.customerBtn.Name = "customerBtn";
             this.customerBtn.Size = new System.Drawing.Size(477, 116);
             this.customerBtn.TabIndex = 14;
@@ -74,7 +75,7 @@
             // 
             this.productBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.productBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productBtn.Location = new System.Drawing.Point(551, 395);
+            this.productBtn.Location = new System.Drawing.Point(749, 301);
             this.productBtn.Name = "productBtn";
             this.productBtn.Size = new System.Drawing.Size(477, 116);
             this.productBtn.TabIndex = 15;
@@ -86,7 +87,7 @@
             // 
             this.logOutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.logOutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logOutBtn.Location = new System.Drawing.Point(551, 540);
+            this.logOutBtn.Location = new System.Drawing.Point(749, 423);
             this.logOutBtn.Name = "logOutBtn";
             this.logOutBtn.Size = new System.Drawing.Size(477, 116);
             this.logOutBtn.TabIndex = 16;
@@ -94,19 +95,32 @@
             this.logOutBtn.UseVisualStyleBackColor = true;
             this.logOutBtn.Click += new System.EventHandler(this.logOutBtn_Click);
             // 
-            // MenuPage
+            // categoryBtn
+            // 
+            this.categoryBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.categoryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoryBtn.Location = new System.Drawing.Point(266, 423);
+            this.categoryBtn.Name = "categoryBtn";
+            this.categoryBtn.Size = new System.Drawing.Size(477, 116);
+            this.categoryBtn.TabIndex = 17;
+            this.categoryBtn.Text = "Category Management";
+            this.categoryBtn.UseVisualStyleBackColor = true;
+            this.categoryBtn.Click += new System.EventHandler(this.categoryBtn_Click);
+            // 
+            // AdminMenuPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 753);
+            this.Controls.Add(this.categoryBtn);
             this.Controls.Add(this.logOutBtn);
             this.Controls.Add(this.productBtn);
             this.Controls.Add(this.customerBtn);
             this.Controls.Add(this.appTitle);
             this.Controls.Add(this.welcomeMsg);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1200, 800);
-            this.Name = "MenuPage";
+            this.MinimumSize = new System.Drawing.Size(1500, 800);
+            this.Name = "AdminMenuPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Super Market Management System";
             this.ResumeLayout(false);
@@ -121,5 +135,6 @@
         private System.Windows.Forms.Button customerBtn;
         private System.Windows.Forms.Button productBtn;
         private System.Windows.Forms.Button logOutBtn;
+        private System.Windows.Forms.Button categoryBtn;
     }
 }

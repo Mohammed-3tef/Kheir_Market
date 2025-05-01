@@ -67,6 +67,7 @@ namespace Super_Market.pages
 
         private void signUpBtn_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Sign Up Successfully...");
             if (this.mainWindow == null) this.mainWindow = new MainWindow();
             this.mainWindow.Show();
             this.Close();

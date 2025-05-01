@@ -9,6 +9,8 @@ D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Su
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super Market.pdb
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.MainWindow.resources
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.CustomerManagement.resources
-D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.MenuPage.resources
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.ProductManagement.resources
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.SignUp.resources
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.AdminMenuPage.resources
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.CategoryManagement.resources
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.CustomerMenuPage.resources

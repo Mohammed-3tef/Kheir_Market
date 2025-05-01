@@ -356,7 +356,7 @@
             this.Controls.Add(this.TabControl);
             this.Controls.Add(this.ProductManagementTitle);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1300, 800);
+            this.MinimumSize = new System.Drawing.Size(1500, 800);
             this.Name = "ProductManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Super Market Management System";
