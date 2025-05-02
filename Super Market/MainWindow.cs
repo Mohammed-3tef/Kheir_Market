@@ -18,6 +18,10 @@ namespace Super_Market
         private string username;
         private string password;
 
+        public string getUsername(){
+            return this.username;
+        }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -42,6 +46,12 @@ namespace Super_Market
 
         private void logInBtn_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(this.username) || string.IsNullOrEmpty(this.password))
+            {
+                System.Windows.Forms.MessageBox.Show("Please fill in all fields.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                return;
+            }
+
             System.Windows.Forms.MessageBox.Show("Log In Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
             AdminMenuPage menuPage = new AdminMenuPage(this);
             menuPage.Show();

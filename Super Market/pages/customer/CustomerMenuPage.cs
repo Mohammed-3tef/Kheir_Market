@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 
+using Super_Market.pages.customer;
+
 namespace Super_Market.pages
 {
     public partial class CustomerMenuPage : Form
@@ -19,11 +21,19 @@ namespace Super_Market.pages
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            this.welcomePersonMsg.Text = "Welcome, " + this.mainWindow.getUsername();
         }
 
         private void logOutBtn_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.MessageBox.Show("Log Out Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+            DialogResult result = System.Windows.Forms.MessageBox.Show(
+                "Are you sure you want to log out?",
+                "Confirm Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No) return;
             if (this.mainWindow == null) this.mainWindow = new MainWindow();
             this.mainWindow.Show();
             this.Close();
@@ -31,7 +41,9 @@ namespace Super_Market.pages
 
         private void orderBtn_Click(object sender, EventArgs e)
         {
-
+            OrderManagement orderManagement = new OrderManagement();
+            orderManagement.Show();
+            this.Close();
         }
     }
 }

@@ -83,7 +83,11 @@ namespace Super_Market.pages
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
-
+            bool isFound = false;
+            if (!isFound){
+                System.Windows.Forms.MessageBox.Show("Category Not Found...", "Warning", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Warning);
+                return;
+            }
         }
 
         private void deleteCategoryIdInput_TextChanged(object sender, EventArgs e)

@@ -35,6 +35,7 @@
             this.productBtn = new System.Windows.Forms.Button();
             this.logOutBtn = new System.Windows.Forms.Button();
             this.categoryBtn = new System.Windows.Forms.Button();
+            this.welcomePersonMsg = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // appTitle
@@ -63,7 +64,7 @@
             // 
             this.customerBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.customerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerBtn.Location = new System.Drawing.Point(266, 301);
+            this.customerBtn.Location = new System.Drawing.Point(266, 342);
             this.customerBtn.Name = "customerBtn";
             this.customerBtn.Size = new System.Drawing.Size(477, 116);
             this.customerBtn.TabIndex = 14;
@@ -75,7 +76,7 @@
             // 
             this.productBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.productBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productBtn.Location = new System.Drawing.Point(749, 301);
+            this.productBtn.Location = new System.Drawing.Point(749, 342);
             this.productBtn.Name = "productBtn";
             this.productBtn.Size = new System.Drawing.Size(477, 116);
             this.productBtn.TabIndex = 15;
@@ -87,7 +88,7 @@
             // 
             this.logOutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.logOutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logOutBtn.Location = new System.Drawing.Point(749, 423);
+            this.logOutBtn.Location = new System.Drawing.Point(749, 464);
             this.logOutBtn.Name = "logOutBtn";
             this.logOutBtn.Size = new System.Drawing.Size(477, 116);
             this.logOutBtn.TabIndex = 16;
@@ -99,7 +100,7 @@
             // 
             this.categoryBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.categoryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoryBtn.Location = new System.Drawing.Point(266, 423);
+            this.categoryBtn.Location = new System.Drawing.Point(266, 464);
             this.categoryBtn.Name = "categoryBtn";
             this.categoryBtn.Size = new System.Drawing.Size(477, 116);
             this.categoryBtn.TabIndex = 17;
@@ -107,11 +108,23 @@
             this.categoryBtn.UseVisualStyleBackColor = true;
             this.categoryBtn.Click += new System.EventHandler(this.categoryBtn_Click);
             // 
+            // welcomePersonMsg
+            // 
+            this.welcomePersonMsg.AutoSize = true;
+            this.welcomePersonMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcomePersonMsg.Location = new System.Drawing.Point(587, 235);
+            this.welcomePersonMsg.Name = "welcomePersonMsg";
+            this.welcomePersonMsg.Size = new System.Drawing.Size(156, 32);
+            this.welcomePersonMsg.TabIndex = 25;
+            this.welcomePersonMsg.Text = "Welcome, ";
+            this.welcomePersonMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // AdminMenuPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 753);
+            this.Controls.Add(this.welcomePersonMsg);
             this.Controls.Add(this.categoryBtn);
             this.Controls.Add(this.logOutBtn);
             this.Controls.Add(this.productBtn);
@@ -136,5 +149,6 @@
         private System.Windows.Forms.Button productBtn;
         private System.Windows.Forms.Button logOutBtn;
         private System.Windows.Forms.Button categoryBtn;
+        private System.Windows.Forms.Label welcomePersonMsg;
     }
 }

@@ -95,7 +95,7 @@
             // 
             this.OrderManagementTitle.AutoSize = true;
             this.OrderManagementTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OrderManagementTitle.Location = new System.Drawing.Point(478, 27);
+            this.OrderManagementTitle.Location = new System.Drawing.Point(509, 27);
             this.OrderManagementTitle.Name = "OrderManagementTitle";
             this.OrderManagementTitle.Size = new System.Drawing.Size(410, 51);
             this.OrderManagementTitle.TabIndex = 20;

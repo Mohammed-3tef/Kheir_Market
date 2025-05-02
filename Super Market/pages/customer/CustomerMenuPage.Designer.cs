@@ -33,13 +33,14 @@
             this.orderBtn = new System.Windows.Forms.Button();
             this.appTitle = new System.Windows.Forms.Label();
             this.welcomeMsg = new System.Windows.Forms.Label();
+            this.welcomePersonMsg = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // logOutBtn
             // 
             this.logOutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.logOutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logOutBtn.Location = new System.Drawing.Point(479, 431);
+            this.logOutBtn.Location = new System.Drawing.Point(479, 489);
             this.logOutBtn.Name = "logOutBtn";
             this.logOutBtn.Size = new System.Drawing.Size(477, 116);
             this.logOutBtn.TabIndex = 21;
@@ -51,7 +52,7 @@
             // 
             this.orderBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.orderBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.orderBtn.Location = new System.Drawing.Point(479, 282);
+            this.orderBtn.Location = new System.Drawing.Point(479, 340);
             this.orderBtn.Name = "orderBtn";
             this.orderBtn.Size = new System.Drawing.Size(477, 116);
             this.orderBtn.TabIndex = 19;
@@ -81,11 +82,23 @@
             this.welcomeMsg.Text = "Welcome to";
             this.welcomeMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // welcomePersonMsg
+            // 
+            this.welcomePersonMsg.AutoSize = true;
+            this.welcomePersonMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcomePersonMsg.Location = new System.Drawing.Point(621, 245);
+            this.welcomePersonMsg.Name = "welcomePersonMsg";
+            this.welcomePersonMsg.Size = new System.Drawing.Size(156, 32);
+            this.welcomePersonMsg.TabIndex = 25;
+            this.welcomePersonMsg.Text = "Welcome, ";
+            this.welcomePersonMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // CustomerMenuPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 753);
+            this.Controls.Add(this.welcomePersonMsg);
             this.Controls.Add(this.logOutBtn);
             this.Controls.Add(this.orderBtn);
             this.Controls.Add(this.appTitle);
@@ -106,5 +119,6 @@
         private System.Windows.Forms.Button orderBtn;
         private System.Windows.Forms.Label appTitle;
         private System.Windows.Forms.Label welcomeMsg;
+        private System.Windows.Forms.Label welcomePersonMsg;
     }
 }

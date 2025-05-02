@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryManagement));
             this.productTableAdapter = new Super_Market.Super_MarketDataSetTableAdapters.ProductTableAdapter();
-            this.categoryIDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.super_MarketDataSet = new Super_Market.Super_MarketDataSet();
@@ -42,8 +40,6 @@
             this.refreshBtn3 = new System.Windows.Forms.Button();
             this.deleteCategoryIdInput = new System.Windows.Forms.TextBox();
             this.deleteCategoryIdLabel = new System.Windows.Forms.Label();
-            this.categoryIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CategoryManagementTitle = new System.Windows.Forms.Label();
             this.updatePage = new System.Windows.Forms.TabPage();
             this.searchBtn = new System.Windows.Forms.Button();
@@ -54,8 +50,6 @@
             this.updateCategoryIdInput = new System.Windows.Forms.TextBox();
             this.updateCategoryIdLabel = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.categoryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.addPage = new System.Windows.Forms.TabPage();
             this.addBtn = new System.Windows.Forms.Button();
@@ -67,6 +61,12 @@
             this.TabControl = new System.Windows.Forms.TabControl();
             this.menuBtn = new System.Windows.Forms.Button();
             this.categoryTableAdapter = new Super_Market.Super_MarketDataSetTableAdapters.CategoryTableAdapter();
+            this.categoryIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryIDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.super_MarketDataSet)).BeginInit();
@@ -83,24 +83,6 @@
             // 
             this.productTableAdapter.ClearBeforeFill = true;
             // 
-            // categoryIDDataGridViewTextBoxColumn2
-            // 
-            this.categoryIDDataGridViewTextBoxColumn2.DataPropertyName = "Category_ID";
-            this.categoryIDDataGridViewTextBoxColumn2.HeaderText = "Category_ID";
-            this.categoryIDDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.categoryIDDataGridViewTextBoxColumn2.Name = "categoryIDDataGridViewTextBoxColumn2";
-            this.categoryIDDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.categoryIDDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // nameDataGridViewTextBoxColumn2
-            // 
-            this.nameDataGridViewTextBoxColumn2.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn2.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn2.Name = "nameDataGridViewTextBoxColumn2";
-            this.nameDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn2.Width = 125;
-            // 
             // dataGridView3
             // 
             this.dataGridView3.AllowUserToAddRows = false;
@@ -108,8 +90,8 @@
             this.dataGridView3.AutoGenerateColumns = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nameDataGridViewTextBoxColumn2,
-            this.categoryIDDataGridViewTextBoxColumn2});
+            this.categoryIDDataGridViewTextBoxColumn2,
+            this.nameDataGridViewTextBoxColumn2});
             this.dataGridView3.DataSource = this.categoryBindingSource;
             this.dataGridView3.Location = new System.Drawing.Point(566, 3);
             this.dataGridView3.Name = "dataGridView3";
@@ -192,24 +174,6 @@
             this.deleteCategoryIdLabel.Size = new System.Drawing.Size(157, 29);
             this.deleteCategoryIdLabel.TabIndex = 4;
             this.deleteCategoryIdLabel.Text = "Category ID:";
-            // 
-            // categoryIDDataGridViewTextBoxColumn1
-            // 
-            this.categoryIDDataGridViewTextBoxColumn1.DataPropertyName = "Category_ID";
-            this.categoryIDDataGridViewTextBoxColumn1.HeaderText = "Category_ID";
-            this.categoryIDDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.categoryIDDataGridViewTextBoxColumn1.Name = "categoryIDDataGridViewTextBoxColumn1";
-            this.categoryIDDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.categoryIDDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // nameDataGridViewTextBoxColumn1
-            // 
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn1.Width = 125;
             // 
             // CategoryManagementTitle
             // 
@@ -324,8 +288,8 @@
             this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nameDataGridViewTextBoxColumn1,
-            this.categoryIDDataGridViewTextBoxColumn1});
+            this.categoryIDDataGridViewTextBoxColumn1,
+            this.nameDataGridViewTextBoxColumn1});
             this.dataGridView2.DataSource = this.categoryBindingSource;
             this.dataGridView2.Location = new System.Drawing.Point(566, 3);
             this.dataGridView2.Name = "dataGridView2";
@@ -335,24 +299,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(876, 549);
             this.dataGridView2.TabIndex = 0;
             // 
-            // categoryIDDataGridViewTextBoxColumn
-            // 
-            this.categoryIDDataGridViewTextBoxColumn.DataPropertyName = "Category_ID";
-            this.categoryIDDataGridViewTextBoxColumn.HeaderText = "Category_ID";
-            this.categoryIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.categoryIDDataGridViewTextBoxColumn.Name = "categoryIDDataGridViewTextBoxColumn";
-            this.categoryIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.categoryIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Width = 125;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -360,8 +306,8 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nameDataGridViewTextBoxColumn,
-            this.categoryIDDataGridViewTextBoxColumn});
+            this.categoryIDDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.categoryBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(566, 3);
             this.dataGridView1.Name = "dataGridView1";
@@ -479,6 +425,60 @@
             // 
             this.categoryTableAdapter.ClearBeforeFill = true;
             // 
+            // categoryIDDataGridViewTextBoxColumn1
+            // 
+            this.categoryIDDataGridViewTextBoxColumn1.DataPropertyName = "Category_ID";
+            this.categoryIDDataGridViewTextBoxColumn1.HeaderText = "Category_ID";
+            this.categoryIDDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.categoryIDDataGridViewTextBoxColumn1.Name = "categoryIDDataGridViewTextBoxColumn1";
+            this.categoryIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.categoryIDDataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // categoryIDDataGridViewTextBoxColumn2
+            // 
+            this.categoryIDDataGridViewTextBoxColumn2.DataPropertyName = "Category_ID";
+            this.categoryIDDataGridViewTextBoxColumn2.HeaderText = "Category_ID";
+            this.categoryIDDataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.categoryIDDataGridViewTextBoxColumn2.Name = "categoryIDDataGridViewTextBoxColumn2";
+            this.categoryIDDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.categoryIDDataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // nameDataGridViewTextBoxColumn2
+            // 
+            this.nameDataGridViewTextBoxColumn2.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn2.Name = "nameDataGridViewTextBoxColumn2";
+            this.nameDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // categoryIDDataGridViewTextBoxColumn
+            // 
+            this.categoryIDDataGridViewTextBoxColumn.DataPropertyName = "Category_ID";
+            this.categoryIDDataGridViewTextBoxColumn.HeaderText = "Category_ID";
+            this.categoryIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.categoryIDDataGridViewTextBoxColumn.Name = "categoryIDDataGridViewTextBoxColumn";
+            this.categoryIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.categoryIDDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Width = 125;
+            // 
             // CategoryManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -514,19 +514,13 @@
         #endregion
 
         private Super_MarketDataSetTableAdapters.ProductTableAdapter productTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryIDDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.BindingSource productBindingSource;
         private Super_MarketDataSet super_MarketDataSet;
         private System.Windows.Forms.TabPage deletePage;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryIDDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label CategoryManagementTitle;
         private System.Windows.Forms.TabPage updatePage;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage addPage;
         private System.Windows.Forms.TabControl TabControl;
@@ -550,5 +544,11 @@
         private System.Windows.Forms.TextBox updateCategoryNameInput;
         private System.Windows.Forms.Label updateCategoryNameLabel;
         private System.Windows.Forms.Button searchBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoryIDDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoryIDDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoryIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
     }
 }

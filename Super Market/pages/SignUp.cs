@@ -19,7 +19,7 @@ namespace Super_Market.pages
         private string email;
         private string password;
         private string confirmPassword;
-        private bool isAdmin;
+        private int isAdmin = -1;
 
         public SignUp(MainWindow mainWindow)
         {
@@ -49,14 +49,12 @@ namespace Super_Market.pages
 
         private void adminBtn_CheckedChanged(object sender, EventArgs e)
         {
-            if (adminBtn.Checked)
-                this.isAdmin = true;
+            this.isAdmin = 1;
         }
 
         private void customerBtn_CheckedChanged(object sender, EventArgs e)
         {
-            if (customerBtn.Checked)
-                this.isAdmin = false;
+            this.isAdmin = 0;
         }
 
         private void logInPageLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -68,6 +66,18 @@ namespace Super_Market.pages
 
         private void signUpBtn_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(this.username) || string.IsNullOrEmpty(this.password) || string.IsNullOrEmpty(this.confirmPassword) || string.IsNullOrEmpty(this.email) || this.isAdmin == -1)
+            {
+                System.Windows.Forms.MessageBox.Show("Please fill in all fields.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                return;
+            }
+
+            if (this.password != this.confirmPassword)
+            {
+                System.Windows.Forms.MessageBox.Show("Password and Confirm Password do not match.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                return;
+            }
+
             System.Windows.Forms.MessageBox.Show("Sign Up Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
             if (this.mainWindow == null) this.mainWindow = new MainWindow();
             this.mainWindow.Show();
