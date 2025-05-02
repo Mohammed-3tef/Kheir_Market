@@ -46,6 +46,7 @@
             this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CategoryManagementTitle = new System.Windows.Forms.Label();
             this.updatePage = new System.Windows.Forms.TabPage();
+            this.searchBtn = new System.Windows.Forms.Button();
             this.updateCategoryNameInput = new System.Windows.Forms.TextBox();
             this.updateCategoryNameLabel = new System.Windows.Forms.Label();
             this.updateBtn = new System.Windows.Forms.Button();
@@ -66,7 +67,6 @@
             this.TabControl = new System.Windows.Forms.TabControl();
             this.menuBtn = new System.Windows.Forms.Button();
             this.categoryTableAdapter = new Super_Market.Super_MarketDataSetTableAdapters.CategoryTableAdapter();
-            this.searchBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.super_MarketDataSet)).BeginInit();
@@ -239,6 +239,18 @@
             this.updatePage.TabIndex = 1;
             this.updatePage.Text = "Update Category";
             this.updatePage.UseVisualStyleBackColor = true;
+            // 
+            // searchBtn
+            // 
+            this.searchBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchBtn.Location = new System.Drawing.Point(369, 92);
+            this.searchBtn.Name = "searchBtn";
+            this.searchBtn.Size = new System.Drawing.Size(131, 39);
+            this.searchBtn.TabIndex = 10;
+            this.searchBtn.Text = "Search";
+            this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // updateCategoryNameInput
             // 
@@ -466,18 +478,6 @@
             // categoryTableAdapter
             // 
             this.categoryTableAdapter.ClearBeforeFill = true;
-            // 
-            // searchBtn
-            // 
-            this.searchBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.searchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBtn.Location = new System.Drawing.Point(369, 92);
-            this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(131, 39);
-            this.searchBtn.TabIndex = 10;
-            this.searchBtn.Text = "Search";
-            this.searchBtn.UseVisualStyleBackColor = true;
-            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // CategoryManagement
             // 

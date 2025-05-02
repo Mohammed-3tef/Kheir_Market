@@ -15,7 +15,7 @@ namespace Super_Market.pages
     {
         private MainWindow mainWindow;
 
-        public CustomerMenuPage(MainWindow mainWindow)
+        public CustomerMenuPage(MainWindow mainWindow = null)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;

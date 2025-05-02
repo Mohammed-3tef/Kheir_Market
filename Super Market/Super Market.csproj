@@ -90,6 +90,12 @@
     <Compile Include="pages\admin\ProductManagement.Designer.cs">
       <DependentUpon>ProductManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\customer\OrderManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\customer\OrderManagement.Designer.cs">
+      <DependentUpon>OrderManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\SignUp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="pages\admin\ProductManagement.resx">
       <DependentUpon>ProductManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\customer\OrderManagement.resx">
+      <DependentUpon>OrderManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\SignUp.resx">
       <DependentUpon>SignUp.cs</DependentUpon>
