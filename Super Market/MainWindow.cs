@@ -42,6 +42,7 @@ namespace Super_Market
 
         private void logInBtn_Click(object sender, EventArgs e)
         {
+            System.Windows.Forms.MessageBox.Show("Log In Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
             AdminMenuPage menuPage = new AdminMenuPage(this);
             menuPage.Show();
             this.Hide();

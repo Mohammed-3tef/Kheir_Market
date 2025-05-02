@@ -2,15 +2,15 @@ D:\Assignments\Intro. to Database Systems\Super Market\Super Market\bin\Debug\Su
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\bin\Debug\Super Market.exe
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\bin\Debug\Super Market.pdb
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super Market.csproj.AssemblyReference.cache
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.MainWindow.resources
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.CategoryManagement.resources
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.CustomerManagement.resources
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.AdminMenuPage.resources
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.CustomerMenuPage.resources
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.ProductManagement.resources
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.SignUp.resources
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.Properties.Resources.resources
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super Market.csproj.GenerateResource.cache
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super Market.csproj.CoreCompileInputs.cache
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super Market.exe
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super Market.pdb
-D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.MainWindow.resources
-D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.CustomerManagement.resources
-D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.ProductManagement.resources
-D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.SignUp.resources
-D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.AdminMenuPage.resources
-D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.CategoryManagement.resources
-D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.CustomerMenuPage.resources

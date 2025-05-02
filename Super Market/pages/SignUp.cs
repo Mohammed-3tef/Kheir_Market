@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -67,7 +68,7 @@ namespace Super_Market.pages
 
         private void signUpBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Sign Up Successfully...");
+            System.Windows.Forms.MessageBox.Show("Sign Up Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
             if (this.mainWindow == null) this.mainWindow = new MainWindow();
             this.mainWindow.Show();
             this.Close();

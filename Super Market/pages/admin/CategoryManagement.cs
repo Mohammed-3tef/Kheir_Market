@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 
 namespace Super_Market.pages
@@ -32,7 +33,7 @@ namespace Super_Market.pages
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-
+            System.Windows.Forms.MessageBox.Show("Add Category Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
         }
 
         private void refreshBtn1_Click(object sender, EventArgs e)
@@ -42,9 +43,9 @@ namespace Super_Market.pages
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
-
+            System.Windows.Forms.MessageBox.Show("Update Category Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
         }
-        
+
         private void refreshBtn2_Click(object sender, EventArgs e)
         {
 
@@ -52,7 +53,7 @@ namespace Super_Market.pages
         
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-
+            System.Windows.Forms.MessageBox.Show("Delete Category Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
         }
 
         private void refreshBtn3_Click(object sender, EventArgs e)
