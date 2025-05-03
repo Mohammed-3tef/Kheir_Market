@@ -12,14 +12,17 @@ namespace Super_Market.pages.customer
 {
     public partial class OrderManagement : Form
     {
-        public OrderManagement()
+        private MainWindow mainWindow;
+
+        public OrderManagement(MainWindow mainWindow)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;
         }
 
         private void menuBtn_Click(object sender, EventArgs e)
         {
-            CustomerMenuPage customerMenuPage = new CustomerMenuPage();
+            CustomerMenuPage customerMenuPage = new CustomerMenuPage(this.mainWindow);
             customerMenuPage.Show();
             this.Close();
         }

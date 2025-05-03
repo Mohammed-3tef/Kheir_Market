@@ -15,11 +15,33 @@ namespace Super_Market
 {
     public partial class MainWindow : Form
     {
+        private int userID;
         private string username;
         private string password;
+        private bool isAdmin = true;
+
+        public int getUserId(){
+            return this.userID;
+        }
 
         public string getUsername(){
             return this.username;
+        }
+
+        public bool isValidInteger(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                System.Windows.Forms.MessageBox.Show("Please fill in all fields.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                return false;
+            }
+            else if (!input.All(char.IsDigit))
+            {
+                System.Windows.Forms.MessageBox.Show("Please enter a valid integer.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                return false;
+            }
+
+            return true;
         }
 
         public MainWindow()
@@ -46,16 +68,32 @@ namespace Super_Market
 
         private void logInBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.username) || string.IsNullOrEmpty(this.password))
-            {
+            if (string.IsNullOrEmpty(this.username) || string.IsNullOrEmpty(this.password)){
                 System.Windows.Forms.MessageBox.Show("Please fill in all fields.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
                 return;
             }
 
+            // WRITE YOUR LOGIN LOGIC HERE
+
+
+
+            //
+
             System.Windows.Forms.MessageBox.Show("Log In Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
-            AdminMenuPage menuPage = new AdminMenuPage(this);
-            menuPage.Show();
-            this.Hide();
+            switch (isAdmin){
+                case true:
+                    AdminMenuPage adminMenuPage = new AdminMenuPage(this);
+                    adminMenuPage.Show();
+                    this.Hide();
+                    break;
+                case false:
+                    CustomerMenuPage customerMenuPage = new CustomerMenuPage(this);
+                    customerMenuPage.Show();
+                    this.Hide();
+                    break;
+                default:
+                    return;
+            }
         }
     }
 }

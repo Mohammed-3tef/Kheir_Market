@@ -14,7 +14,7 @@ namespace Super_Market.pages
     public partial class AdminMenuPage : Form
     {
         private MainWindow mainWindow;
-        public AdminMenuPage(MainWindow mainWindow = null)
+        public AdminMenuPage(MainWindow mainWindow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
@@ -23,14 +23,14 @@ namespace Super_Market.pages
 
         private void productBtn_Click(object sender, EventArgs e)
         {
-            ProductManagement productManagement = new ProductManagement();
+            ProductManagement productManagement = new ProductManagement(this.mainWindow);
             productManagement.Show();
             this.Close();
         }
 
         private void customerBtn_Click(object sender, EventArgs e)
         {
-            CustomerManagement customerManagement = new CustomerManagement();
+            CustomerManagement customerManagement = new CustomerManagement(this.mainWindow);
             customerManagement.Show();
             this.Close();
         }
@@ -46,14 +46,13 @@ namespace Super_Market.pages
 
             if (result == DialogResult.No) return;
 
-            if (this.mainWindow == null) this.mainWindow = new MainWindow();
             this.mainWindow.Show();
             this.Close();
         }
 
         private void categoryBtn_Click(object sender, EventArgs e)
         {
-            CategoryManagement categoryManagement = new CategoryManagement();
+            CategoryManagement categoryManagement = new CategoryManagement(this.mainWindow);
             categoryManagement.Show();
             this.Close();
         }

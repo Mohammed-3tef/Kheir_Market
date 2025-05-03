@@ -66,20 +66,23 @@ namespace Super_Market.pages
 
         private void signUpBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.username) || string.IsNullOrEmpty(this.password) || string.IsNullOrEmpty(this.confirmPassword) || string.IsNullOrEmpty(this.email) || this.isAdmin == -1)
-            {
+            if (string.IsNullOrEmpty(this.username) || string.IsNullOrEmpty(this.password) || string.IsNullOrEmpty(this.confirmPassword) || string.IsNullOrEmpty(this.email) || this.isAdmin == -1){
                 System.Windows.Forms.MessageBox.Show("Please fill in all fields.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
                 return;
             }
 
-            if (this.password != this.confirmPassword)
-            {
+            if (this.password != this.confirmPassword){
                 System.Windows.Forms.MessageBox.Show("Password and Confirm Password do not match.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
                 return;
             }
 
+            // WRITE YOUR SIGN_UP LOGIC HERE
+
+
+
+            //
+
             System.Windows.Forms.MessageBox.Show("Sign Up Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
-            if (this.mainWindow == null) this.mainWindow = new MainWindow();
             this.mainWindow.Show();
             this.Close();
         }

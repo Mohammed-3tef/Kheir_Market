@@ -17,7 +17,7 @@ namespace Super_Market.pages
     {
         private MainWindow mainWindow;
 
-        public CustomerMenuPage(MainWindow mainWindow = null)
+        public CustomerMenuPage(MainWindow mainWindow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
@@ -34,14 +34,13 @@ namespace Super_Market.pages
             );
 
             if (result == DialogResult.No) return;
-            if (this.mainWindow == null) this.mainWindow = new MainWindow();
             this.mainWindow.Show();
             this.Close();
         }
 
         private void orderBtn_Click(object sender, EventArgs e)
         {
-            OrderManagement orderManagement = new OrderManagement();
+            OrderManagement orderManagement = new OrderManagement(this.mainWindow);
             orderManagement.Show();
             this.Close();
         }
