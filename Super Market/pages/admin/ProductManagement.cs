@@ -31,9 +31,28 @@ namespace Super_Market.pages
 
         private void ProductManagement_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'super_MarketDataSet.Category' table. You can move, or remove it, as needed.
+            this.categoryTableAdapter.Fill(this.super_MarketDataSet.Category);
             // TODO: This line of code loads data into the 'super_MarketDataSet.Product' table. You can move, or remove it, as needed.
             this.productTableAdapter.Fill(this.super_MarketDataSet.Product);
+            this.addCategoryComboBox.SelectedIndex = -1;
+            this.addDepartmentComboBox.SelectedIndex = -1;
+            this.addCompanyComboBox.SelectedIndex = -1;
 
+            this.addProductQuantityInput.Minimum = 0;
+            this.addProductQuantityInput.Maximum = 5000;
+            this.updateProductQuantityInput.Minimum = 0;
+            this.updateProductQuantityInput.Maximum = 5000;
+
+            this.addProductPriceInput.DecimalPlaces = 2;
+            this.addProductPriceInput.Increment = 0.01M;
+            this.addProductPriceInput.Minimum = 0;
+            this.addProductPriceInput.Maximum = 999999;
+
+            this.updateProductPriceInput.DecimalPlaces = 2;
+            this.updateProductPriceInput.Increment = 0.01M;
+            this.updateProductPriceInput.Minimum = 0;
+            this.updateProductPriceInput.Maximum = 999999;
         }
 
         // --------------------------------------- ADD PRODUCT
@@ -65,8 +84,6 @@ namespace Super_Market.pages
         }
 
         // --------------------------------------- UPDATE PRODUCT
-
-
 
         private void refreshBtn2_Click(object sender, EventArgs e)
         {
@@ -105,6 +122,12 @@ namespace Super_Market.pages
             //
 
             this.updateBtn.Enabled = true;
+            this.updateProductNameInput.Enabled = true;
+            this.updateProductQuantityInput.Enabled = true;
+            this.updateProductPriceInput.Enabled = true;
+            this.updateCategoryComboBox.Enabled = true;
+            this.updateDepartmentComboBox.Enabled = true;
+            this.updateCompanyComboBox.Enabled = true;
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
