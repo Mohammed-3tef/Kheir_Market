@@ -25,8 +25,8 @@ namespace Super_Market.pages
 
         private void CategoryManagement_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'super_MarketDataSet.Category' table. You can move, or remove it, as needed.
-            this.categoryTableAdapter.Fill(this.super_MarketDataSet.Category);
+            // TODO: This line of code loads data into the 'super_Market_DataSet.CATEGORY' table. You can move, or remove it, as needed.
+            this.cATEGORYTableAdapter.Fill(this.super_Market_DataSet.CATEGORY);
         }
 
         private void menuBtn_Click(object sender, EventArgs e)
@@ -38,19 +38,16 @@ namespace Super_Market.pages
 
         // --------------------------------------- ADD CATEGORY
 
-        private void addCategoryIdInput_TextChanged(object sender, EventArgs e)
-        {
-            if (!this.mainWindow.isValidInteger(deleteCategoryIdInput.Text)) return;
-            this.categoryID = int.Parse(addCategoryIdInput.Text);
-        }
-
-        private void addCategoryNameInput_TextChanged(object sender, EventArgs e)
-        {
-            this.categoryName = addCategoryNameInput.Text;
-        }
-
         private void addBtn_Click(object sender, EventArgs e)
         {
+            if (!this.mainWindow.isValidInteger(addCategoryIdInput.Text)) { 
+                this.addCategoryIdInput.Focus();
+                return;
+            }
+
+            this.categoryID = int.Parse(addCategoryIdInput.Text);
+            this.categoryName = this.addCategoryNameInput.Text;
+
             // WRITE YOUR ADD CATEGORY LOGIC HERE
 
 
@@ -71,26 +68,22 @@ namespace Super_Market.pages
 
         // --------------------------------------- UPDATE CATEGORY
 
-        private void updateCategoryNameInput_TextChanged(object sender, EventArgs e)
-        {
-            this.categoryName = updateCategoryNameInput.Text;
-        }
-
-        private void updateCategoryIdInput_TextChanged(object sender, EventArgs e)
-        {
-            if (!this.mainWindow.isValidInteger(deleteCategoryIdInput.Text)) return;
-            this.categoryID = int.Parse(updateCategoryIdInput.Text);
-        }
-
         private void searchBtn_Click(object sender, EventArgs e)
         {
+            if (!this.mainWindow.isValidInteger(this.updateCategoryIdInput.Text)){
+                this.updateCategoryIdInput.Focus();
+                return;
+            }
+
+            this.categoryID = int.Parse(this.updateCategoryIdInput.Text);
+            bool isFound = false;
+
             // WRITE YOUR SEARCH CATEGORY_ID LOGIC HERE
 
 
 
             //
 
-            bool isFound = false;
             if (!isFound)
             {
                 System.Windows.Forms.MessageBox.Show("Category Not Found...", "Warning", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Warning);
@@ -109,6 +102,15 @@ namespace Super_Market.pages
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
+            if (!this.mainWindow.isValidInteger(updateCategoryIdInput.Text))
+            {
+                this.updateCategoryIdInput.Focus();
+                return;
+            }
+
+            this.categoryID = int.Parse(updateCategoryIdInput.Text);
+            this.categoryName = updateCategoryNameInput.Text;
+
             // WRITE YOUR UPDATE CATEGORY LOGIC HERE
 
 
@@ -129,14 +131,16 @@ namespace Super_Market.pages
 
         // --------------------------------------- DELETE CATEGORY
 
-        private void deleteCategoryIdInput_TextChanged(object sender, EventArgs e)
-        {
-            if (!this.mainWindow.isValidInteger(deleteCategoryIdInput.Text)) return;
-            this.categoryID = int.Parse(deleteCategoryIdInput.Text);
-        }
-
         private void deleteBtn_Click(object sender, EventArgs e)
         {
+            if (!this.mainWindow.isValidInteger(deleteCategoryIdInput.Text))
+            {
+                this.deleteCategoryIdInput.Focus();
+                return;
+            }
+
+            this.categoryID = int.Parse(deleteCategoryIdInput.Text);
+
             // WRITE YOUR DELETE CATEGORY LOGIC HERE
 
 

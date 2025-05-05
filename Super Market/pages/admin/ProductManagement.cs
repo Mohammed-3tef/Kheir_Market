@@ -31,10 +31,7 @@ namespace Super_Market.pages
 
         private void ProductManagement_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'super_MarketDataSet.Category' table. You can move, or remove it, as needed.
-            this.categoryTableAdapter.Fill(this.super_MarketDataSet.Category);
-            // TODO: This line of code loads data into the 'super_MarketDataSet.Product' table. You can move, or remove it, as needed.
-            this.productTableAdapter.Fill(this.super_MarketDataSet.Product);
+            
             this.addCategoryComboBox.SelectedIndex = -1;
             this.addDepartmentComboBox.SelectedIndex = -1;
             this.addCompanyComboBox.SelectedIndex = -1;

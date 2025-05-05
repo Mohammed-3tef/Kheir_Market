@@ -30,10 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderManagement));
-            this.productTableAdapter = new Super_Market.Super_MarketDataSetTableAdapters.ProductTableAdapter();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.super_MarketDataSet = new Super_Market.Super_MarketDataSet();
             this.deletePage = new System.Windows.Forms.TabPage();
             this.OrderManagementTitle = new System.Windows.Forms.Label();
             this.updatePage = new System.Windows.Forms.TabPage();
@@ -55,7 +53,6 @@
             // 
             // productTableAdapter
             // 
-            this.productTableAdapter.ClearBeforeFill = true;
             // 
             // dataGridView3
             // 
@@ -202,10 +199,9 @@
 
         #endregion
 
-        private Super_MarketDataSetTableAdapters.ProductTableAdapter productTableAdapter;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.BindingSource productBindingSource;
-        private Super_MarketDataSet super_MarketDataSet;
+        private Super_Market_DataSet super_MarketDataSet;
         private System.Windows.Forms.TabPage deletePage;
         private System.Windows.Forms.Label OrderManagementTitle;
         private System.Windows.Forms.TabPage updatePage;

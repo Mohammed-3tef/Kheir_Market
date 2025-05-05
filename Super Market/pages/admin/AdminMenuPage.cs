@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using Super_Market.pages.admin;
 
 namespace Super_Market.pages
 {
@@ -54,6 +55,13 @@ namespace Super_Market.pages
         {
             CategoryManagement categoryManagement = new CategoryManagement(this.mainWindow);
             categoryManagement.Show();
+            this.Close();
+        }
+
+        private void departmentBtn_Click(object sender, EventArgs e)
+        {
+            DepartmentManagment departmentManagment = new DepartmentManagment(this.mainWindow);
+            departmentManagment.Show();
             this.Close();
         }
     }

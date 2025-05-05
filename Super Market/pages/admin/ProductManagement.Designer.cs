@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductManagement));
             this.menuBtn = new System.Windows.Forms.Button();
             this.TabControl = new System.Windows.Forms.TabControl();
@@ -50,13 +49,6 @@
             this.addProductIdInput = new System.Windows.Forms.TextBox();
             this.addProductIdLabel = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.productIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.super_MarketDataSet = new Super_Market.Super_MarketDataSet();
             this.updatePage = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.updateCompanyComboBox = new System.Windows.Forms.ComboBox();
@@ -76,40 +68,24 @@
             this.updateProductIdInput = new System.Windows.Forms.TextBox();
             this.updateProductIdLabel = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.productIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockQuantityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deletePage = new System.Windows.Forms.TabPage();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.refreshBtn3 = new System.Windows.Forms.Button();
             this.deleteProductIdInput = new System.Windows.Forms.TextBox();
             this.deleteProductIdLabel = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.productIDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryIDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockQuantityDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ProductManagementTitle = new System.Windows.Forms.Label();
-            this.productTableAdapter = new Super_Market.Super_MarketDataSetTableAdapters.ProductTableAdapter();
-            this.categoryTableAdapter = new Super_Market.Super_MarketDataSetTableAdapters.CategoryTableAdapter();
             this.TabControl.SuspendLayout();
             this.addPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addProductPriceInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addProductQuantityInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.super_MarketDataSet)).BeginInit();
             this.updatePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.updateProductPriceInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.updateProductQuantityInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.deletePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuBtn
@@ -331,15 +307,7 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.productIDDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.categoryIDDataGridViewTextBoxColumn,
-            this.priceDataGridViewTextBoxColumn,
-            this.stockQuantityDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.productBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(566, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -347,61 +315,6 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(876, 650);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // productIDDataGridViewTextBoxColumn
-            // 
-            this.productIDDataGridViewTextBoxColumn.DataPropertyName = "Product_ID";
-            this.productIDDataGridViewTextBoxColumn.HeaderText = "Product_ID";
-            this.productIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.productIDDataGridViewTextBoxColumn.Name = "productIDDataGridViewTextBoxColumn";
-            this.productIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // categoryIDDataGridViewTextBoxColumn
-            // 
-            this.categoryIDDataGridViewTextBoxColumn.DataPropertyName = "Category_ID";
-            this.categoryIDDataGridViewTextBoxColumn.HeaderText = "Category_ID";
-            this.categoryIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.categoryIDDataGridViewTextBoxColumn.Name = "categoryIDDataGridViewTextBoxColumn";
-            this.categoryIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.categoryIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            this.priceDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // stockQuantityDataGridViewTextBoxColumn
-            // 
-            this.stockQuantityDataGridViewTextBoxColumn.DataPropertyName = "Stock_Quantity";
-            this.stockQuantityDataGridViewTextBoxColumn.HeaderText = "Stock_Quantity";
-            this.stockQuantityDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.stockQuantityDataGridViewTextBoxColumn.Name = "stockQuantityDataGridViewTextBoxColumn";
-            this.stockQuantityDataGridViewTextBoxColumn.ReadOnly = true;
-            this.stockQuantityDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // productBindingSource
-            // 
-            this.productBindingSource.DataMember = "Product";
-            this.productBindingSource.DataSource = this.super_MarketDataSet;
-            // 
-            // super_MarketDataSet
-            // 
-            this.super_MarketDataSet.DataSetName = "Super_MarketDataSet";
-            this.super_MarketDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // updatePage
             // 
@@ -619,15 +532,7 @@
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.productIDDataGridViewTextBoxColumn1,
-            this.nameDataGridViewTextBoxColumn1,
-            this.categoryIDDataGridViewTextBoxColumn1,
-            this.priceDataGridViewTextBoxColumn1,
-            this.stockQuantityDataGridViewTextBoxColumn1});
-            this.dataGridView2.DataSource = this.productBindingSource;
             this.dataGridView2.Location = new System.Drawing.Point(566, 3);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
@@ -635,51 +540,6 @@
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(876, 650);
             this.dataGridView2.TabIndex = 0;
-            // 
-            // productIDDataGridViewTextBoxColumn1
-            // 
-            this.productIDDataGridViewTextBoxColumn1.DataPropertyName = "Product_ID";
-            this.productIDDataGridViewTextBoxColumn1.HeaderText = "Product_ID";
-            this.productIDDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.productIDDataGridViewTextBoxColumn1.Name = "productIDDataGridViewTextBoxColumn1";
-            this.productIDDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.productIDDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // nameDataGridViewTextBoxColumn1
-            // 
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // categoryIDDataGridViewTextBoxColumn1
-            // 
-            this.categoryIDDataGridViewTextBoxColumn1.DataPropertyName = "Category_ID";
-            this.categoryIDDataGridViewTextBoxColumn1.HeaderText = "Category_ID";
-            this.categoryIDDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.categoryIDDataGridViewTextBoxColumn1.Name = "categoryIDDataGridViewTextBoxColumn1";
-            this.categoryIDDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.categoryIDDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // priceDataGridViewTextBoxColumn1
-            // 
-            this.priceDataGridViewTextBoxColumn1.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn1.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.priceDataGridViewTextBoxColumn1.Name = "priceDataGridViewTextBoxColumn1";
-            this.priceDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.priceDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // stockQuantityDataGridViewTextBoxColumn1
-            // 
-            this.stockQuantityDataGridViewTextBoxColumn1.DataPropertyName = "Stock_Quantity";
-            this.stockQuantityDataGridViewTextBoxColumn1.HeaderText = "Stock_Quantity";
-            this.stockQuantityDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.stockQuantityDataGridViewTextBoxColumn1.Name = "stockQuantityDataGridViewTextBoxColumn1";
-            this.stockQuantityDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.stockQuantityDataGridViewTextBoxColumn1.Width = 125;
             // 
             // deletePage
             // 
@@ -744,15 +604,7 @@
             // 
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.AutoGenerateColumns = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.productIDDataGridViewTextBoxColumn2,
-            this.nameDataGridViewTextBoxColumn2,
-            this.categoryIDDataGridViewTextBoxColumn2,
-            this.priceDataGridViewTextBoxColumn2,
-            this.stockQuantityDataGridViewTextBoxColumn2});
-            this.dataGridView3.DataSource = this.productBindingSource;
             this.dataGridView3.Location = new System.Drawing.Point(566, 3);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
@@ -760,56 +612,6 @@
             this.dataGridView3.RowTemplate.Height = 24;
             this.dataGridView3.Size = new System.Drawing.Size(876, 650);
             this.dataGridView3.TabIndex = 0;
-            // 
-            // productIDDataGridViewTextBoxColumn2
-            // 
-            this.productIDDataGridViewTextBoxColumn2.DataPropertyName = "Product_ID";
-            this.productIDDataGridViewTextBoxColumn2.HeaderText = "Product_ID";
-            this.productIDDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.productIDDataGridViewTextBoxColumn2.Name = "productIDDataGridViewTextBoxColumn2";
-            this.productIDDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.productIDDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // nameDataGridViewTextBoxColumn2
-            // 
-            this.nameDataGridViewTextBoxColumn2.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn2.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn2.Name = "nameDataGridViewTextBoxColumn2";
-            this.nameDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // categoryIDDataGridViewTextBoxColumn2
-            // 
-            this.categoryIDDataGridViewTextBoxColumn2.DataPropertyName = "Category_ID";
-            this.categoryIDDataGridViewTextBoxColumn2.HeaderText = "Category_ID";
-            this.categoryIDDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.categoryIDDataGridViewTextBoxColumn2.Name = "categoryIDDataGridViewTextBoxColumn2";
-            this.categoryIDDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.categoryIDDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // priceDataGridViewTextBoxColumn2
-            // 
-            this.priceDataGridViewTextBoxColumn2.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn2.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.priceDataGridViewTextBoxColumn2.Name = "priceDataGridViewTextBoxColumn2";
-            this.priceDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.priceDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // stockQuantityDataGridViewTextBoxColumn2
-            // 
-            this.stockQuantityDataGridViewTextBoxColumn2.DataPropertyName = "Stock_Quantity";
-            this.stockQuantityDataGridViewTextBoxColumn2.HeaderText = "Stock_Quantity";
-            this.stockQuantityDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.stockQuantityDataGridViewTextBoxColumn2.Name = "stockQuantityDataGridViewTextBoxColumn2";
-            this.stockQuantityDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.stockQuantityDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // categoryBindingSource
-            // 
-            this.categoryBindingSource.DataMember = "Category";
-            this.categoryBindingSource.DataSource = this.super_MarketDataSet;
             // 
             // ProductManagementTitle
             // 
@@ -821,14 +623,6 @@
             this.ProductManagementTitle.TabIndex = 17;
             this.ProductManagementTitle.Text = "Product Management";
             this.ProductManagementTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // productTableAdapter
-            // 
-            this.productTableAdapter.ClearBeforeFill = true;
-            // 
-            // categoryTableAdapter
-            // 
-            this.categoryTableAdapter.ClearBeforeFill = true;
             // 
             // ProductManagement
             // 
@@ -850,8 +644,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.addProductPriceInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addProductQuantityInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.super_MarketDataSet)).EndInit();
             this.updatePage.ResumeLayout(false);
             this.updatePage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.updateProductPriceInput)).EndInit();
@@ -860,7 +652,6 @@
             this.deletePage.ResumeLayout(false);
             this.deletePage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -875,26 +666,8 @@
         private System.Windows.Forms.Label ProductManagementTitle;
         private System.Windows.Forms.TabPage deletePage;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private Super_MarketDataSet super_MarketDataSet;
-        private System.Windows.Forms.BindingSource productBindingSource;
-        private Super_MarketDataSetTableAdapters.ProductTableAdapter productTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stockQuantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productIDDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryIDDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stockQuantityDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productIDDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryIDDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stockQuantityDataGridViewTextBoxColumn2;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Button refreshBtn3;
         private System.Windows.Forms.TextBox deleteProductIdInput;
@@ -911,8 +684,6 @@
         private System.Windows.Forms.TextBox addProductNameInput;
         private System.Windows.Forms.Label addProductNameLabel;
         private System.Windows.Forms.ComboBox addCategoryComboBox;
-        private System.Windows.Forms.BindingSource categoryBindingSource;
-        private Super_MarketDataSetTableAdapters.CategoryTableAdapter categoryTableAdapter;
         private System.Windows.Forms.Label addProductCategoryLabel;
         private System.Windows.Forms.NumericUpDown addProductQuantityInput;
         private System.Windows.Forms.Label addProductQuantityLabel;

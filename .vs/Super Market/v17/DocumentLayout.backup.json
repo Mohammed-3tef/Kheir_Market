@@ -1,7 +1,20 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|d:\\assignments\\intro. to database systems\\super market\\super market\\pages\\admin\\departmentmanagment.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|solutionrelative:super market\\pages\\admin\\departmentmanagment.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|d:\\assignments\\intro. to database systems\\super market\\super market\\pages\\admin\\departmentmanagment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|solutionrelative:super market\\pages\\admin\\departmentmanagment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|d:\\assignments\\intro. to database systems\\super market\\super market\\pages\\admin\\departmentmanagment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|solutionrelative:super market\\pages\\admin\\departmentmanagment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +22,49 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DepartmentManagment.Designer.cs",
+              "DocumentMoniker": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\pages\\admin\\DepartmentManagment.Designer.cs",
+              "RelativeDocumentMoniker": "Super Market\\pages\\admin\\DepartmentManagment.Designer.cs",
+              "ToolTip": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\pages\\admin\\DepartmentManagment.Designer.cs*",
+              "RelativeToolTip": "Super Market\\pages\\admin\\DepartmentManagment.Designer.cs*",
+              "ViewState": "AgIAAFkBAAAAAAAAAAAIwGoBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T11:28:25.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DepartmentManagment.cs",
+              "DocumentMoniker": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\pages\\admin\\DepartmentManagment.cs",
+              "RelativeDocumentMoniker": "Super Market\\pages\\admin\\DepartmentManagment.cs",
+              "ToolTip": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\pages\\admin\\DepartmentManagment.cs",
+              "RelativeToolTip": "Super Market\\pages\\admin\\DepartmentManagment.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAAwJwAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T11:19:37.197Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DepartmentManagment.cs [Design]",
+              "DocumentMoniker": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\pages\\admin\\DepartmentManagment.cs",
+              "RelativeDocumentMoniker": "Super Market\\pages\\admin\\DepartmentManagment.cs",
+              "ToolTip": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\pages\\admin\\DepartmentManagment.cs [Design]",
+              "RelativeToolTip": "Super Market\\pages\\admin\\DepartmentManagment.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T11:12:22.356Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Bookmark",
