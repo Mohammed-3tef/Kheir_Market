@@ -291,7 +291,6 @@
             this.addProductIdInput.Name = "addProductIdInput";
             this.addProductIdInput.Size = new System.Drawing.Size(440, 30);
             this.addProductIdInput.TabIndex = 18;
-            this.addProductIdInput.TextChanged += new System.EventHandler(this.addProductIdInput_TextChanged);
             // 
             // addProductIdLabel
             // 
@@ -516,7 +515,6 @@
             this.updateProductIdInput.Name = "updateProductIdInput";
             this.updateProductIdInput.Size = new System.Drawing.Size(303, 30);
             this.updateProductIdInput.TabIndex = 13;
-            this.updateProductIdInput.TextChanged += new System.EventHandler(this.updateProductIdInput_TextChanged);
             // 
             // updateProductIdLabel
             // 
@@ -588,7 +586,6 @@
             this.deleteProductIdInput.Name = "deleteProductIdInput";
             this.deleteProductIdInput.Size = new System.Drawing.Size(442, 30);
             this.deleteProductIdInput.TabIndex = 9;
-            this.deleteProductIdInput.TextChanged += new System.EventHandler(this.deleteProductIdInput_TextChanged);
             // 
             // deleteProductIdLabel
             // 

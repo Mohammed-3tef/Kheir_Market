@@ -32,7 +32,7 @@ namespace Super_Market
         {
             if (string.IsNullOrWhiteSpace(input))
             {
-                System.Windows.Forms.MessageBox.Show("Please fill in all fields.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                System.Windows.Forms.MessageBox.Show("Please enter a valid integer.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
                 return false;
             }
             else if (!input.All(char.IsDigit))

@@ -17,7 +17,6 @@ namespace Super_Market.pages.admin
         private MainWindow mainWindow;
         private int departmentID;
         private string departmentName;
-        private string categoryName;
 
         public DepartmentManagment(MainWindow mainWindow)
         {
@@ -54,7 +53,6 @@ namespace Super_Market.pages.admin
 
         private void DepartmentManagment_Load(object sender, EventArgs e)
         {
-            this.cATEGORYTableAdapter.Fill(this.super_Market_DataSet.CATEGORY);
             LoadDepartmentTable();
         }
 
@@ -66,8 +64,6 @@ namespace Super_Market.pages.admin
         }
 
         // --------------------------------------- ADD DEPARTMENT
-
-        
 
         private void refreshBtn1_Click(object sender, EventArgs e)
         {
@@ -84,7 +80,7 @@ namespace Super_Market.pages.admin
 
             if (addCategoryComboBox.SelectedValue == null || string.IsNullOrWhiteSpace(addDepartmentNameInput.Text))
             {
-                System.Windows.Forms.MessageBox.Show("Please select a category and enter a department name.");
+                System.Windows.Forms.MessageBox.Show("Please select a category and enter a department name.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
                 return;
             }
 
@@ -143,7 +139,6 @@ namespace Super_Market.pages.admin
                     (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
             }
         }
-
 
         // --------------------------------------- UPDATE CATEGORY
 
@@ -253,11 +248,7 @@ namespace Super_Market.pages.admin
             LoadDepartmentTable();
         }
 
-
-
         // --------------------------------------- DELETE Department
-
-
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
