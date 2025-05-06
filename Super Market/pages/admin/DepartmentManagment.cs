@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,16 +24,14 @@ namespace Super_Market.pages.admin
             InitializeComponent();
             this.mainWindow = mainWindow;
         }
-        
-        private void DepartmentManagment_Load(object sender, EventArgs e)
+
+        private void LoadDepartmentTable()
         {
-            // TODO: This line of code loads data into the 'super_Market_DataSet.CATEGORY' table. You can move, or remove it, as needed.
-            this.cATEGORYTableAdapter.Fill(this.super_Market_DataSet.CATEGORY);
             string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
             string query = @"
                 SELECT D.DID AS ID, D.NAME AS Name, C.NAME AS Category
-                FROM DEPARTMENT D JOIN CATEGORY C 
-                ON D.CATE_ID = C.CID
+                FROM DEPARTMENT D 
+                JOIN CATEGORY C ON D.CATE_ID = C.CID
             ";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -43,10 +41,21 @@ namespace Super_Market.pages.admin
                 DataTable table = new DataTable();
                 adapter.Fill(table);
 
-                this.dataGridView1.DataSource = table;
-                this.dataGridView2.DataSource = table;
-                this.dataGridView3.DataSource = table;
+                dataGridView1.DataSource = table;
+                dataGridView2.DataSource = table;
+                dataGridView3.DataSource = table;
             }
+
+            // Optionally clear inputs
+            addDepartmentIdInput.Clear();
+            addDepartmentNameInput.Clear();
+            addCategoryComboBox.SelectedIndex = -1;
+        }
+
+        private void DepartmentManagment_Load(object sender, EventArgs e)
+        {
+            this.cATEGORYTableAdapter.Fill(this.super_Market_DataSet.CATEGORY);
+            LoadDepartmentTable();
         }
 
         private void menuBtn_Click(object sender, EventArgs e)
@@ -58,69 +67,135 @@ namespace Super_Market.pages.admin
 
         // --------------------------------------- ADD DEPARTMENT
 
+        
+
         private void refreshBtn1_Click(object sender, EventArgs e)
         {
-
+            LoadDepartmentTable();
         }
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            if (!this.mainWindow.isValidInteger(addDepartmentIdInput.Text)){
+            if (!this.mainWindow.isValidInteger(addDepartmentIdInput.Text))
+            {
                 this.addDepartmentIdInput.Focus();
+                return;
+            }
+
+            if (addCategoryComboBox.SelectedValue == null || string.IsNullOrWhiteSpace(addDepartmentNameInput.Text))
+            {
+                System.Windows.Forms.MessageBox.Show("Please select a category and enter a department name.");
                 return;
             }
 
             this.departmentID = int.Parse(addDepartmentIdInput.Text);
             this.departmentName = addDepartmentNameInput.Text;
-            this.categoryName = addCategoryComboBox.Text;
+            int categoryId = (int)addCategoryComboBox.SelectedValue;
 
-            // WRITE YOUR ADD DEPARTMENT LOGIC HERE
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            string checkDIDQuery = "SELECT COUNT(*) FROM DEPARTMENT WHERE DID = @DID";
+            string checkCategoryQuery = "SELECT COUNT(*) FROM CATEGORY WHERE CID = @CID";
+            string insertQuery = "INSERT INTO DEPARTMENT (DID, CID, NAME, CATE_ID) VALUES (@DID, @CID, @NAME, @CATE_ID)";
 
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
 
+                // Check if DID already exists
+                using (SqlCommand checkDIDCmd = new SqlCommand(checkDIDQuery, conn))
+                {
+                    checkDIDCmd.Parameters.AddWithValue("@DID", this.departmentID);
+                    int didCount = (int)checkDIDCmd.ExecuteScalar();
 
-            //
+                    if (didCount > 0)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Department ID already exists.Take anthoer one", "Error",
+                            (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                        return;
+                    }
+                }
 
-            System.Windows.Forms.MessageBox.Show("Add Department Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                // Check if CID exists in CATEGORY (foreign key validation)
+                using (SqlCommand checkCategoryCmd = new SqlCommand(checkCategoryQuery, conn))
+                {
+                    checkCategoryCmd.Parameters.AddWithValue("@CID", categoryId);
+                    int cidCount = (int)checkCategoryCmd.ExecuteScalar();
+
+                    if (cidCount == 0)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Selected category is invalid.", "Error",
+                            (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                        return;
+                    }
+                }
+
+                // Proceed with insert if validations pass
+                using (SqlCommand insertCmd = new SqlCommand(insertQuery, conn))
+                {
+                    insertCmd.Parameters.AddWithValue("@DID", this.departmentID);
+                    insertCmd.Parameters.AddWithValue("@CID", categoryId);
+                    insertCmd.Parameters.AddWithValue("@NAME", this.departmentName);
+                    insertCmd.Parameters.AddWithValue("@CATE_ID", categoryId);
+                    insertCmd.ExecuteNonQuery();
+                }
+
+                System.Windows.Forms.MessageBox.Show("Add Department Successfully...", "Info",
+                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+            }
         }
+
 
         // --------------------------------------- UPDATE CATEGORY
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
-            if (!this.mainWindow.isValidInteger(updateDepartmentIdInput.Text)){
+            if (!this.mainWindow.isValidInteger(updateDepartmentIdInput.Text))
+            {
                 this.updateDepartmentIdInput.Focus();
                 return;
             }
 
             this.departmentID = int.Parse(updateDepartmentIdInput.Text);
-            bool isFound = false;
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            string query = "SELECT NAME, CATE_ID FROM DEPARTMENT WHERE DID = @DID";
 
-            // WRITE YOUR SEARCH DEPARTMENT_ID LOGIC HERE
-
-
-
-            //
-
-            if (!isFound)
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
             {
-                System.Windows.Forms.MessageBox.Show("Department Not Found...", "Warning", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Warning);
-                return;
+                cmd.Parameters.AddWithValue("@DID", this.departmentID);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    // Department found
+                    string departmentName = reader.GetString(0);
+                    int categoryId = reader.GetInt32(1);
+
+                    updateDepartmentNameInput.Text = departmentName;
+                    updateCategorycomboBox.SelectedValue = categoryId;
+
+                    updateBtn.Enabled = true;
+                    updateDepartmentNameInput.Enabled = true;
+                    updateCategorycomboBox.Enabled = true;
+                }
+                else
+                {
+                    // Department not found
+                    System.Windows.Forms.MessageBox.Show(
+                        "Department Not Found...",
+                        "Warning",
+                        (MessageBoxButtons)MessageBoxButton.OK,
+                        (MessageBoxIcon)MessageBoxImage.Warning
+                    );
+
+                    // Optional: disable update inputs if not found
+                    updateBtn.Enabled = false;
+                    updateDepartmentNameInput.Enabled = false;
+                    updateCategorycomboBox.Enabled = false;
+                }
             }
-
-            // WRITE YOUR SEARCH DEPARTMENT_ID LOGIC HERE
-
-
-
-            //
-
-            this.updateBtn.Enabled = true;
-            this.updateDepartmentNameInput.Enabled = true;
-            this.updateCategorycomboBox.Enabled = true;
-        }
-
-        private void refreshBtn2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
@@ -131,40 +206,104 @@ namespace Super_Market.pages.admin
                 return;
             }
 
+            if (updateCategorycomboBox.SelectedValue == null || string.IsNullOrWhiteSpace(updateDepartmentNameInput.Text))
+            {
+                System.Windows.Forms.MessageBox.Show("Please select a category and enter a department name.");
+                return;
+            }
+
             this.departmentID = int.Parse(updateDepartmentIdInput.Text);
             this.departmentName = updateDepartmentNameInput.Text;
-            this.categoryName = updateCategorycomboBox.Text;
+            int categoryId = (int)updateCategorycomboBox.SelectedValue;
 
-            // WRITE YOUR UPDATE DEPARTMENT LOGIC HERE
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            string updateQuery = "UPDATE DEPARTMENT SET NAME = @NAME, CATE_ID = @CATE_ID WHERE DID = @DID";
 
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
+            {
+                cmd.Parameters.AddWithValue("@NAME", this.departmentName);
+                cmd.Parameters.AddWithValue("@CATE_ID", categoryId);
+                cmd.Parameters.AddWithValue("@DID", this.departmentID);
 
+                conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
 
-            //
-
-            System.Windows.Forms.MessageBox.Show("Update Department Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                if (rowsAffected > 0)
+                {
+                    System.Windows.Forms.MessageBox.Show("Update Department Successfully...", "Info",
+                        (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Update Failed. Department may not exist.", "Error",
+                        (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                }
+            }
+            updateDepartmentNameInput.Clear();
+            updateCategorycomboBox.SelectedIndex = -1;
+            updateBtn.Enabled = false;
+            updateDepartmentNameInput.Enabled = false;
+            updateCategorycomboBox.Enabled = false;
         }
+
+
+        private void refreshBtn2_Click(object sender, EventArgs e)
+        {
+            LoadDepartmentTable();
+        }
+
+
 
         // --------------------------------------- DELETE Department
 
-        private void refreshBtn3_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            if (!this.mainWindow.isValidInteger(deleteDepartmentIdInput.Text)){
+            if (!this.mainWindow.isValidInteger(deleteDepartmentIdInput.Text))
+            {
                 this.deleteDepartmentIdInput.Focus();
                 return;
             }
 
-            // WRITE YOUR DELETE DEPARTMENT LOGIC HERE
+            int departmentId = int.Parse(deleteDepartmentIdInput.Text);
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
 
+            // First, check if the department exists
+            string checkQuery = "SELECT COUNT(*) FROM DEPARTMENT WHERE DID = @DID";
+            string deleteQuery = "DELETE FROM DEPARTMENT WHERE DID = @DID";
 
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
+            {
+                checkCmd.Parameters.AddWithValue("@DID", departmentId);
+                conn.Open();
 
-            //
+                int count = (int)checkCmd.ExecuteScalar();
 
-            System.Windows.Forms.MessageBox.Show("Delete Department Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                if (count == 0)
+                {
+                    System.Windows.Forms.MessageBox.Show("Department Not Found...", "Warning",
+                        (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Warning);
+                    return;
+                }
+
+                // Proceed with delete
+                using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, conn))
+                {
+                    deleteCmd.Parameters.AddWithValue("@DID", departmentId);
+                    deleteCmd.ExecuteNonQuery();
+                }
+
+                System.Windows.Forms.MessageBox.Show("Delete Department Successfully...", "Info",
+                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+            }
+        }
+
+        private void refreshBtn3_Click(object sender, EventArgs e)
+        {
+            LoadDepartmentTable();
         }
     }
 }
