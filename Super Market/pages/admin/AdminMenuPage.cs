@@ -64,5 +64,12 @@ namespace Super_Market.pages
             departmentManagment.Show();
             this.Close();
         }
+
+        private void companyBtn_Click(object sender, EventArgs e)
+        {
+            CompanyManagement companyManagement = new CompanyManagement(this.mainWindow);
+            companyManagement.Show();
+            this.Close();
+        }
     }
 }

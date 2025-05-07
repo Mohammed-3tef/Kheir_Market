@@ -16,3 +16,4 @@ D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Su
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super Market.pdb
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.customer.OrderManagement.resources
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.admin.DepartmentManagment.resources
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.admin.CompanyManagement.resources

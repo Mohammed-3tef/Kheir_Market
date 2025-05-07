@@ -625,7 +625,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1482, 853);
+            this.ClientSize = new System.Drawing.Size(1482, 803);
             this.Controls.Add(this.menuBtn);
             this.Controls.Add(this.TabControl);
             this.Controls.Add(this.ProductManagementTitle);

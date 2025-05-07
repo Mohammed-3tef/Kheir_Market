@@ -157,7 +157,7 @@ namespace Super_Market.pages.admin
                     insertCmd.ExecuteNonQuery();
                 }
                 clear_Inputs();
-                System.Windows.Forms.MessageBox.Show("Add Department Successfully...", "Info",
+                System.Windows.Forms.MessageBox.Show("Add Department Successfully...", "Success",
                     (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
             }
         }

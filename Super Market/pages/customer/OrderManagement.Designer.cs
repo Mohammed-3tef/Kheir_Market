@@ -42,7 +42,6 @@
             this.menuBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.super_MarketDataSet)).BeginInit();
             this.deletePage.SuspendLayout();
             this.updatePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -50,9 +49,6 @@
             this.addPage.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // productTableAdapter
-            // 
             // 
             // dataGridView3
             // 
@@ -64,18 +60,12 @@
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(876, 549);
+            this.dataGridView3.Size = new System.Drawing.Size(876, 612);
             this.dataGridView3.TabIndex = 0;
             // 
             // productBindingSource
             // 
             this.productBindingSource.DataMember = "Product";
-            this.productBindingSource.DataSource = this.super_MarketDataSet;
-            // 
-            // super_MarketDataSet
-            // 
-            this.super_MarketDataSet.DataSetName = "Super_MarketDataSet";
-            this.super_MarketDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // deletePage
             // 
@@ -83,7 +73,7 @@
             this.deletePage.Location = new System.Drawing.Point(4, 25);
             this.deletePage.Name = "deletePage";
             this.deletePage.Padding = new System.Windows.Forms.Padding(3);
-            this.deletePage.Size = new System.Drawing.Size(1448, 555);
+            this.deletePage.Size = new System.Drawing.Size(1448, 621);
             this.deletePage.TabIndex = 2;
             this.deletePage.Text = "Delete Order";
             this.deletePage.UseVisualStyleBackColor = true;
@@ -105,7 +95,7 @@
             this.updatePage.Location = new System.Drawing.Point(4, 25);
             this.updatePage.Name = "updatePage";
             this.updatePage.Padding = new System.Windows.Forms.Padding(3);
-            this.updatePage.Size = new System.Drawing.Size(1448, 555);
+            this.updatePage.Size = new System.Drawing.Size(1448, 621);
             this.updatePage.TabIndex = 1;
             this.updatePage.Text = "Update Order";
             this.updatePage.UseVisualStyleBackColor = true;
@@ -120,7 +110,7 @@
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(876, 549);
+            this.dataGridView2.Size = new System.Drawing.Size(876, 612);
             this.dataGridView2.TabIndex = 0;
             // 
             // dataGridView1
@@ -133,7 +123,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(876, 549);
+            this.dataGridView1.Size = new System.Drawing.Size(876, 612);
             this.dataGridView1.TabIndex = 0;
             // 
             // addPage
@@ -142,7 +132,7 @@
             this.addPage.Location = new System.Drawing.Point(4, 25);
             this.addPage.Name = "addPage";
             this.addPage.Padding = new System.Windows.Forms.Padding(3);
-            this.addPage.Size = new System.Drawing.Size(1448, 555);
+            this.addPage.Size = new System.Drawing.Size(1448, 621);
             this.addPage.TabIndex = 0;
             this.addPage.Text = "Add Order";
             this.addPage.UseVisualStyleBackColor = true;
@@ -155,14 +145,14 @@
             this.TabControl.Location = new System.Drawing.Point(13, 81);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(1456, 584);
+            this.TabControl.Size = new System.Drawing.Size(1456, 650);
             this.TabControl.TabIndex = 21;
             // 
             // menuBtn
             // 
             this.menuBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuBtn.Location = new System.Drawing.Point(13, 671);
+            this.menuBtn.Location = new System.Drawing.Point(17, 737);
             this.menuBtn.Name = "menuBtn";
             this.menuBtn.Size = new System.Drawing.Size(1452, 54);
             this.menuBtn.TabIndex = 22;
@@ -174,18 +164,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1482, 753);
+            this.ClientSize = new System.Drawing.Size(1482, 803);
             this.Controls.Add(this.OrderManagementTitle);
             this.Controls.Add(this.TabControl);
             this.Controls.Add(this.menuBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1500, 800);
+            this.MinimumSize = new System.Drawing.Size(1500, 850);
             this.Name = "OrderManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Super Market Management System";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.super_MarketDataSet)).EndInit();
             this.deletePage.ResumeLayout(false);
             this.updatePage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
@@ -201,7 +190,6 @@
 
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.BindingSource productBindingSource;
-        private Super_Market_DataSet super_MarketDataSet;
         private System.Windows.Forms.TabPage deletePage;
         private System.Windows.Forms.Label OrderManagementTitle;
         private System.Windows.Forms.TabPage updatePage;

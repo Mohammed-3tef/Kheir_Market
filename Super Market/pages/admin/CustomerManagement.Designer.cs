@@ -70,7 +70,7 @@
             this.TabControl.Location = new System.Drawing.Point(12, 98);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(1458, 584);
+            this.TabControl.Size = new System.Drawing.Size(1458, 633);
             this.TabControl.TabIndex = 15;
             // 
             // updatePage
@@ -84,7 +84,7 @@
             this.updatePage.Location = new System.Drawing.Point(4, 25);
             this.updatePage.Name = "updatePage";
             this.updatePage.Padding = new System.Windows.Forms.Padding(3);
-            this.updatePage.Size = new System.Drawing.Size(1450, 555);
+            this.updatePage.Size = new System.Drawing.Size(1450, 604);
             this.updatePage.TabIndex = 0;
             this.updatePage.Text = "Update Customer";
             this.updatePage.UseVisualStyleBackColor = true;
@@ -156,7 +156,7 @@
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(878, 548);
+            this.dataGridView2.Size = new System.Drawing.Size(878, 594);
             this.dataGridView2.TabIndex = 0;
             // 
             // deletePage
@@ -169,7 +169,7 @@
             this.deletePage.Location = new System.Drawing.Point(4, 25);
             this.deletePage.Name = "deletePage";
             this.deletePage.Padding = new System.Windows.Forms.Padding(3);
-            this.deletePage.Size = new System.Drawing.Size(1450, 555);
+            this.deletePage.Size = new System.Drawing.Size(1450, 604);
             this.deletePage.TabIndex = 1;
             this.deletePage.Text = "Delete Customer";
             this.deletePage.UseVisualStyleBackColor = true;
@@ -196,7 +196,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(878, 548);
+            this.dataGridView1.Size = new System.Drawing.Size(878, 595);
             this.dataGridView1.TabIndex = 0;
             // 
             // refreshBtn2
@@ -235,7 +235,7 @@
             // 
             this.menuBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuBtn.Location = new System.Drawing.Point(16, 688);
+            this.menuBtn.Location = new System.Drawing.Point(16, 737);
             this.menuBtn.Name = "menuBtn";
             this.menuBtn.Size = new System.Drawing.Size(1450, 54);
             this.menuBtn.TabIndex = 16;
@@ -247,12 +247,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1482, 753);
+            this.ClientSize = new System.Drawing.Size(1482, 803);
             this.Controls.Add(this.menuBtn);
             this.Controls.Add(this.TabControl);
             this.Controls.Add(this.CustomerManagementTitle);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1500, 800);
+            this.MinimumSize = new System.Drawing.Size(1500, 850);
             this.Name = "CustomerManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Super Market Management System";

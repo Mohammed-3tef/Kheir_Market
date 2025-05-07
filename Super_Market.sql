@@ -1,10 +1,10 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2005                    */
-/* Created on:     5/5/2025 11:49:11 AM                         */
+/* Created on:     5/7/2025 3:14:22 PM                          */
 /*==============================================================*/
 
---CREATE DATABASE Super_Market;
---USE Super_Market;
+CREATE DATABASE Super_Market;
+USE Super_Market;
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
@@ -228,7 +228,6 @@ create table DEPARTMENT (
    DID                  int                  not null,
    CID                  int                  not null,
    NAME                 varchar(100)         not null,
-   CATE_ID              int                  not null,
    constraint PK_DEPARTMENT primary key nonclustered (DID)
 )
 go
@@ -247,7 +246,6 @@ go
 create table "ORDER" (
    OID                  int                  not null,
    UID                  int                  not null,
-   USER_ID              int                  not null,
    TOTAL_PRICE          decimal              not null,
    ORDER_DATE           datetime             not null,
    constraint PK_ORDER primary key nonclustered (OID)
@@ -270,7 +268,6 @@ create table ORDER_DETAILS (
    PID                  int                  not null,
    ORDER_ID             int                  not null,
    QUANTITY             int                  not null,
-   PRODUCT_ID           int                  null,
    constraint AK_ORDER_ID_ORDER_DE unique (ORDER_ID)
 )
 go
@@ -301,8 +298,6 @@ create table PRODUCT (
    COMPID               int                  not null,
    NAME                 varchar(100)         not null,
    PRICE                decimal              not null,
-   DEP_ID               int                  null,
-   COMPANY_ID           int                  null,
    constraint PK_PRODUCT primary key nonclustered (PID)
 )
 go
@@ -336,9 +331,7 @@ go
 /*==============================================================*/
 create table STOCK (
    SID                  int                  not null,
-   PRODUCT_ID           int                  not null,
    PRODUCT_QUANTITY     decimal              not null,
-   ADDRESS              varchar(255)         not null,
    constraint PK_STOCK primary key nonclustered (SID)
 )
 go
@@ -397,4 +390,3 @@ alter table PRODUCT
    add constraint FK_PRODUCT_PRODUCE_COMPANY foreign key (COMPID)
       references COMPANY (COMPID)
 go
-

@@ -66,6 +66,12 @@
     <Compile Include="pages\admin\CategoryManagement.Designer.cs">
       <DependentUpon>CategoryManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\admin\CompanyManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\admin\CompanyManagement.Designer.cs">
+      <DependentUpon>CompanyManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\admin\CustomerManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="pages\admin\CategoryManagement.resx">
       <DependentUpon>CategoryManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\admin\CompanyManagement.resx">
+      <DependentUpon>CompanyManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\admin\CustomerManagement.resx">
       <DependentUpon>CustomerManagement.cs</DependentUpon>
