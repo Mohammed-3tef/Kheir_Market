@@ -30,7 +30,7 @@ namespace Super_Market.pages.admin
             string query = @"
                 SELECT D.DID AS ID, D.NAME AS Name, C.NAME AS Category
                 FROM DEPARTMENT D 
-                JOIN CATEGORY C ON D.CATE_ID = C.CID
+                JOIN CATEGORY C ON D.CID = C.CID
             ";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -44,15 +44,12 @@ namespace Super_Market.pages.admin
                 dataGridView2.DataSource = table;
                 dataGridView3.DataSource = table;
             }
-
-            // Optionally clear inputs
-            addDepartmentIdInput.Clear();
-            addDepartmentNameInput.Clear();
-            addCategoryComboBox.SelectedIndex = -1;
         }
 
         private void DepartmentManagment_Load(object sender, EventArgs e)
         {
+            this.cATEGORYTableAdapter.Fill(this.super_Market_DataSet.CATEGORY);
+            addCategoryComboBox.SelectedIndex = -1;
             LoadDepartmentTable();
         }
 
@@ -63,6 +60,31 @@ namespace Super_Market.pages.admin
             this.Close();
         }
 
+        // --------------------------------------- CLEAR INPUTS
+        private void clear_Inputs()
+        {
+
+            // --------------------------------------- ADD Inputs
+
+            addDepartmentIdInput.Clear();
+            addDepartmentNameInput.Clear();
+            addCategoryComboBox.SelectedIndex = -1;
+
+            // --------------------------------------- UPDATE Inputs
+
+            updateDepartmentIdInput.Clear();
+            updateDepartmentNameInput.Clear();
+            updateCategorycomboBox.SelectedIndex = -1;
+            updateBtn.Enabled = false;
+            updateDepartmentNameInput.Enabled = false;
+            updateCategorycomboBox.Enabled = false;
+
+
+            // --------------------------------------- DELETE Inputs
+
+            deleteDepartmentIdInput.Clear();
+
+        }
         // --------------------------------------- ADD DEPARTMENT
 
         private void refreshBtn1_Click(object sender, EventArgs e)
@@ -84,6 +106,7 @@ namespace Super_Market.pages.admin
                 return;
             }
 
+      
             this.departmentID = int.Parse(addDepartmentIdInput.Text);
             this.departmentName = addDepartmentNameInput.Text;
             int categoryId = (int)addCategoryComboBox.SelectedValue;
@@ -91,7 +114,7 @@ namespace Super_Market.pages.admin
             string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
             string checkDIDQuery = "SELECT COUNT(*) FROM DEPARTMENT WHERE DID = @DID";
             string checkCategoryQuery = "SELECT COUNT(*) FROM CATEGORY WHERE CID = @CID";
-            string insertQuery = "INSERT INTO DEPARTMENT (DID, CID, NAME, CATE_ID) VALUES (@DID, @CID, @NAME, @CATE_ID)";
+            string insertQuery = "INSERT INTO DEPARTMENT (DID, CID, NAME) VALUES (@DID, @CID, @NAME)";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -131,10 +154,9 @@ namespace Super_Market.pages.admin
                     insertCmd.Parameters.AddWithValue("@DID", this.departmentID);
                     insertCmd.Parameters.AddWithValue("@CID", categoryId);
                     insertCmd.Parameters.AddWithValue("@NAME", this.departmentName);
-                    insertCmd.Parameters.AddWithValue("@CATE_ID", categoryId);
                     insertCmd.ExecuteNonQuery();
                 }
-
+                clear_Inputs();
                 System.Windows.Forms.MessageBox.Show("Add Department Successfully...", "Info",
                     (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
             }
@@ -152,7 +174,7 @@ namespace Super_Market.pages.admin
 
             this.departmentID = int.Parse(updateDepartmentIdInput.Text);
             string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
-            string query = "SELECT NAME, CATE_ID FROM DEPARTMENT WHERE DID = @DID";
+            string query = "SELECT NAME, CID FROM DEPARTMENT WHERE DID = @DID";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -212,13 +234,13 @@ namespace Super_Market.pages.admin
             int categoryId = (int)updateCategorycomboBox.SelectedValue;
 
             string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
-            string updateQuery = "UPDATE DEPARTMENT SET NAME = @NAME, CATE_ID = @CATE_ID WHERE DID = @DID";
+            string updateQuery = "UPDATE DEPARTMENT SET NAME = @NAME, CID = @CID WHERE DID = @DID";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
             {
                 cmd.Parameters.AddWithValue("@NAME", this.departmentName);
-                cmd.Parameters.AddWithValue("@CATE_ID", categoryId);
+                cmd.Parameters.AddWithValue("@CID", categoryId);
                 cmd.Parameters.AddWithValue("@DID", this.departmentID);
 
                 conn.Open();
@@ -240,6 +262,7 @@ namespace Super_Market.pages.admin
             updateBtn.Enabled = false;
             updateDepartmentNameInput.Enabled = false;
             updateCategorycomboBox.Enabled = false;
+            clear_Inputs();
         }
 
 
@@ -290,6 +313,7 @@ namespace Super_Market.pages.admin
                 System.Windows.Forms.MessageBox.Show("Delete Department Successfully...", "Info",
                     (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
             }
+            clear_Inputs();
         }
 
         private void refreshBtn3_Click(object sender, EventArgs e)
