@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,13 +38,13 @@ namespace Super_Market.pages
             string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
             string query = @"
                 SELECT 
-                    P.PID AS ID, P.NAME AS Name,
-                    CAT.NAME AS Category, D.NAME AS Department, 
-                    C.NAME AS Company, S.PRODUCT_QUANTITY AS Quantity,
-                    P.PRICE AS Price
+                P.PID AS ID, P.NAME AS Name,
+                CAT.NAME AS Category, D.NAME AS Department, 
+                C.NAME AS Company, S.PRODUCT_QUANTITY AS Quantity,
+                P.PRICE AS Price
                 FROM PRODUCT P
                 JOIN DEPARTMENT D ON P.DID = D.DID
-                JOIN CATEGORY CAT ON D.CATE_ID = CAT.CID
+                JOIN CATEGORY CAT ON D.CID = CAT.CID
                 JOIN COMPANY C ON P.COMPID = C.COMPID
                 JOIN STOCK S ON P.SID = S.SID
             ";
@@ -61,79 +61,176 @@ namespace Super_Market.pages
                 this.dataGridView3.DataSource = table;
             }
 
-            this.addCategoryComboBox.SelectedIndex = -1;
-            this.addDepartmentComboBox.SelectedIndex = -1;
-            this.addCompanyComboBox.SelectedIndex = -1;
+            // Populate ComboBoxes
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
 
-            this.addProductQuantityInput.Minimum = 0;
-            this.addProductQuantityInput.Maximum = 5000;
-            this.updateProductQuantityInput.Minimum = 0;
-            this.updateProductQuantityInput.Maximum = 5000;
+                // Categories
+                using (SqlCommand catCmd = new SqlCommand("SELECT NAME FROM CATEGORY", conn))
+                using (SqlDataReader reader = catCmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        addCategoryComboBox.Items.Add(reader.GetString(0));
+                        updateCategoryComboBox.Items.Add(reader.GetString(0));
+                    }
+                }
 
-            this.addProductPriceInput.DecimalPlaces = 2;
-            this.addProductPriceInput.Increment = 0.01M;
-            this.addProductPriceInput.Minimum = 0;
-            this.addProductPriceInput.Maximum = 999999;
+                // Departments
+                using (SqlCommand deptCmd = new SqlCommand("SELECT NAME FROM DEPARTMENT", conn))
+                using (SqlDataReader reader = deptCmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        addDepartmentComboBox.Items.Add(reader.GetString(0));
+                        updateDepartmentComboBox.Items.Add(reader.GetString(0));
+                    }
+                }
 
-            this.updateProductPriceInput.DecimalPlaces = 2;
-            this.updateProductPriceInput.Increment = 0.01M;
-            this.updateProductPriceInput.Minimum = 0;
-            this.updateProductPriceInput.Maximum = 999999;
+                // Companies
+                using (SqlCommand compCmd = new SqlCommand("SELECT NAME FROM COMPANY", conn))
+                using (SqlDataReader reader = compCmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        addCompanyComboBox.Items.Add(reader.GetString(0));
+                        updateCompanyComboBox.Items.Add(reader.GetString(0));
+                    }
+                }
+            }
+
+            // Set defaults
+            addCategoryComboBox.SelectedIndex = -1;
+            addDepartmentComboBox.SelectedIndex = -1;
+            addCompanyComboBox.SelectedIndex = -1;
+
+            addProductQuantityInput.Minimum = 0;
+            addProductQuantityInput.Maximum = 5000;
+            updateProductQuantityInput.Minimum = 0;
+            updateProductQuantityInput.Maximum = 5000;
+
+            addProductPriceInput.DecimalPlaces = 2;
+            addProductPriceInput.Increment = 0.01M;
+            addProductPriceInput.Minimum = 0;
+            addProductPriceInput.Maximum = 999999;
+
+            updateProductPriceInput.DecimalPlaces = 2;
+            updateProductPriceInput.Increment = 0.01M;
+            updateProductPriceInput.Minimum = 0;
+            updateProductPriceInput.Maximum = 999999;
+        }
+
+
+        // --------------------------------------- Clear inputs
+        private void clear_Inputs()
+        {
+            // ---------- ADD Section
+            addProductIdInput.Clear();
+            addProductNameInput.Clear();
+            addCategoryComboBox.SelectedIndex = -1;
+            addDepartmentComboBox.SelectedIndex = -1;
+            addCompanyComboBox.SelectedIndex = -1;
+            addProductQuantityInput.Value = 0;
+            addProductPriceInput.Value = 0;
+
+            // ---------- UPDATE Section
+            updateProductIdInput.Clear();
+            updateProductNameInput.Clear();
+            updateCategoryComboBox.SelectedIndex = -1;
+            updateDepartmentComboBox.SelectedIndex = -1;
+            updateCompanyComboBox.SelectedIndex = -1;
+            updateProductQuantityInput.Value = 0;
+            updateProductPriceInput.Value = 0;
+
+            updateBtn.Enabled = false;
+            updateProductNameInput.Enabled = false;
+            updateProductQuantityInput.Enabled = false;
+            updateProductPriceInput.Enabled = false;
+            updateCategoryComboBox.Enabled = false;
+            updateDepartmentComboBox.Enabled = false;
+            updateCompanyComboBox.Enabled = false;
+
+            // ---------- DELETE Section
+            deleteProductIdInput.Clear();
+        }
+
+        private void LoadProductData()
+        {
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = @"
+                SELECT 
+                P.PID AS ID, P.NAME AS Name,
+                CAT.NAME AS Category, D.NAME AS Department, 
+                C.NAME AS Company, S.PRODUCT_QUANTITY AS Quantity,
+                P.PRICE AS Price
+                FROM PRODUCT P
+                JOIN DEPARTMENT D ON P.DID = D.DID
+                JOIN CATEGORY CAT ON D.CID = CAT.CID
+                JOIN COMPANY C ON P.COMPID = C.COMPID
+                JOIN STOCK S ON P.SID = S.SID
+                ";
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    // Replace with the correct grids
+                    dataGridView1.DataSource = dt;
+                    dataGridView2.DataSource = dt;
+                    dataGridView3.DataSource = dt;
+                }
+            }
         }
 
         // --------------------------------------- ADD PRODUCT
-
-
         private void addBtn_Click(object sender, EventArgs e)
         {
             if (!this.mainWindow.isValidInteger(this.addProductIdInput.Text)) return;
-            
+
             if (int.Parse(this.addProductIdInput.Text) < 0)
             {
-                System.Windows.Forms.MessageBox.Show("Product ID must be a positive integer.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                System.Windows.Forms.MessageBox.Show("Product ID must be a positive integer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.addProductIdInput.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(this.addProductNameInput.Text))
             {
-                System.Windows.Forms.MessageBox.Show("Please enter a product name.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                System.Windows.Forms.MessageBox.Show("Please enter a product name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.addProductNameInput.Focus();
-                return;
-            }
-            if (this.addProductQuantityInput.Value < 0)
-            {
-                System.Windows.Forms.MessageBox.Show("Product quantity must be a positive integer.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
-                this.addProductQuantityInput.Focus();
-                return;
-            }
-            if (this.addProductPriceInput.Value < 0)
-            {
-                System.Windows.Forms.MessageBox.Show("Product price must be a positive integer.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
-                this.addProductPriceInput.Focus();
                 return;
             }
             if (this.addCategoryComboBox.SelectedIndex == -1)
             {
-                System.Windows.Forms.MessageBox.Show("Please select a category.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                System.Windows.Forms.MessageBox.Show("Please select a category.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.addCategoryComboBox.Focus();
                 return;
             }
             if (this.addDepartmentComboBox.SelectedIndex == -1)
             {
-                System.Windows.Forms.MessageBox.Show("Please select a department.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                System.Windows.Forms.MessageBox.Show("Please select a department.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.addDepartmentComboBox.Focus();
                 return;
             }
             if (this.addCompanyComboBox.SelectedIndex == -1)
             {
-                System.Windows.Forms.MessageBox.Show("Please select a company.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                System.Windows.Forms.MessageBox.Show("Please select a company.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.addCompanyComboBox.Focus();
                 return;
             }
-            if (this.addProductQuantityInput.Value == 0)
+            if (this.addProductQuantityInput.Value <= 0)
             {
-                System.Windows.Forms.MessageBox.Show("Product quantity must be greater than 0.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                System.Windows.Forms.MessageBox.Show("Product quantity must be greater than 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.addProductQuantityInput.Focus();
+                return;
+            }
+            if (this.addProductPriceInput.Value <= 0)
+            {
+                System.Windows.Forms.MessageBox.Show("Product price must be greater than 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.addProductPriceInput.Focus();
                 return;
             }
 
@@ -145,62 +242,140 @@ namespace Super_Market.pages
             this.department = this.addDepartmentComboBox.SelectedItem.ToString();
             this.company = this.addCompanyComboBox.SelectedItem.ToString();
 
-            // WRITE YOUR DELETE PRODUCT LOGIC HERE
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
 
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
 
+                // First check if product ID already exists
+                string checkQuery = "SELECT COUNT(*) FROM PRODUCT WHERE PID = @pid";
+                using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
+                {
+                    checkCmd.Parameters.AddWithValue("@pid", this.productID);
+                    int count = (int)checkCmd.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Product ID already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
 
-            //
+                // Get IDs for foreign keys
+                int departmentId, companyId, stockId;
 
-            System.Windows.Forms.MessageBox.Show("Add Product Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                // Get department ID
+                using (SqlCommand deptCmd = new SqlCommand("SELECT DID FROM DEPARTMENT WHERE NAME = @name", conn))
+                {
+                    deptCmd.Parameters.AddWithValue("@name", this.department);
+                    departmentId = Convert.ToInt32(deptCmd.ExecuteScalar());
+                }
+
+                // Get company ID
+                using (SqlCommand compCmd = new SqlCommand("SELECT COMPID FROM COMPANY WHERE NAME = @name", conn))
+                {
+                    compCmd.Parameters.AddWithValue("@name", this.company);
+                    companyId = Convert.ToInt32(compCmd.ExecuteScalar());
+                }
+
+                // Insert into STOCK table
+                using (SqlCommand stockCmd = new SqlCommand("INSERT INTO STOCK (SID, PRODUCT_QUANTITY) VALUES (@sid, @qty)", conn))
+                {
+                    stockCmd.Parameters.AddWithValue("@sid", this.productID);
+                    stockCmd.Parameters.AddWithValue("@qty", this.productQuantity);
+                    stockCmd.ExecuteNonQuery();
+                }
+                stockId = this.productID;
+
+                // Insert into PRODUCT table
+                using (SqlCommand insertCmd = new SqlCommand(@"
+                    INSERT INTO PRODUCT (PID, DID, SID , COMPID , NAME , PRICE )
+                    VALUES (@pid,@did,@sid,@compid,@name,@price)", conn))
+                {
+                    insertCmd.Parameters.AddWithValue("@pid", this.productID);
+                    insertCmd.Parameters.AddWithValue("@did", departmentId);
+                    insertCmd.Parameters.AddWithValue("@sid", stockId);
+                    insertCmd.Parameters.AddWithValue("@compid", companyId);
+                    insertCmd.Parameters.AddWithValue("@name", this.productName);
+                    insertCmd.Parameters.AddWithValue("@price", this.productPrice);
+
+                    insertCmd.ExecuteNonQuery();
+                }
+
+                
+
+                clear_Inputs();
+
+                System.Windows.Forms.MessageBox.Show("Add Product Successfully...", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void refreshBtn1_Click(object sender, EventArgs e)
         {
-            // WRITE YOUR REFRESH BTN1 LOGIC HERE
-
-
-
-            //
+            LoadProductData();
         }
+
+
+
 
         // --------------------------------------- UPDATE PRODUCT
 
         private void refreshBtn2_Click(object sender, EventArgs e)
         {
-            // WRITE THE SAME YOUR REFRESH BTN1 LOGIC HERE
-
-
-
-            //
+            LoadProductData();
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
-            if (!this.mainWindow.isValidInteger(this.updateProductIdInput.Text)) { 
-                this.updateProductIdInput.Focus();
-                return; 
-            }
-            
-            this.productID = int.Parse(this.updateProductIdInput.Text);
-
-            // WRITE YOUR SEARCH PRODUCT_ID LOGIC HERE
-
-
-
-            //
-
-            bool isFound = false;
-            if (!isFound)
+            if (!this.mainWindow.isValidInteger(this.updateProductIdInput.Text))
             {
-                System.Windows.Forms.MessageBox.Show("Product Not Found...", "Warning", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Warning);
+                this.updateProductIdInput.Focus();
                 return;
             }
 
-            // WRITE YOUR SEARCH PRODUCT_ID LOGIC HERE
+            this.productID = int.Parse(this.updateProductIdInput.Text);
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            bool isFound = false;
 
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = @"
+                SELECT 
+                P.NAME, P.PRICE, S.PRODUCT_QUANTITY, 
+                CAT.NAME AS Category, D.NAME AS Department, C.NAME AS Company
+                FROM PRODUCT P
+                JOIN STOCK S ON P.SID = S.SID
+                JOIN DEPARTMENT D ON P.DID = D.DID
+                JOIN CATEGORY CAT ON D.CID = CAT.CID
+                JOIN COMPANY C ON P.COMPID = C.COMPID
+                WHERE P.PID = @pid";
 
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@pid", this.productID);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            isFound = true;
 
-            //
+                            this.updateProductNameInput.Text = reader["NAME"].ToString();
+                            this.updateProductPriceInput.Value = Convert.ToDecimal(reader["PRICE"]);
+                            this.updateProductQuantityInput.Value = Convert.ToInt32(reader["PRODUCT_QUANTITY"]);
+                            this.updateCategoryComboBox.SelectedItem = reader["Category"].ToString();
+                            this.updateDepartmentComboBox.SelectedItem = reader["Department"].ToString();
+                            this.updateCompanyComboBox.SelectedItem = reader["Company"].ToString();
+                        }
+                    }
+                }
+            }
+
+            if (!isFound)
+            {
+                System.Windows.Forms.MessageBox.Show("Product Not Found...", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             this.updateBtn.Enabled = true;
             this.updateProductNameInput.Enabled = true;
@@ -211,44 +386,124 @@ namespace Super_Market.pages
             this.updateCompanyComboBox.Enabled = true;
         }
 
+
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            // WRITE YOUR UPDATE PRODUCT LOGIC HERE
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            string name = this.updateProductNameInput.Text;
+            decimal price = this.updateProductPriceInput.Value;
+            int quantity = (int)this.updateProductQuantityInput.Value;
+            string category = this.updateCategoryComboBox.SelectedItem?.ToString();
+            string department = this.updateDepartmentComboBox.SelectedItem?.ToString();
+            string company = this.updateCompanyComboBox.SelectedItem?.ToString();
 
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
 
+                // Get foreign key IDs
+                int departmentId, companyId;
 
-            //
+                using (SqlCommand cmd = new SqlCommand("SELECT DID FROM DEPARTMENT WHERE NAME = @name", conn))
+                {
+                    cmd.Parameters.AddWithValue("@name", department);
+                    departmentId = Convert.ToInt32(cmd.ExecuteScalar());
+                }
 
-            System.Windows.Forms.MessageBox.Show("Update Product Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                using (SqlCommand cmd = new SqlCommand("SELECT COMPID FROM COMPANY WHERE NAME = @name", conn))
+                {
+                    cmd.Parameters.AddWithValue("@name", company);
+                    companyId = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+
+                // Update PRODUCT table
+                using (SqlCommand cmd = new SqlCommand(@"
+                    UPDATE PRODUCT
+                    SET NAME = @name, PRICE = @price, DID = @did, COMPID = @compid
+                    WHERE PID = @pid", conn))
+                {
+                    cmd.Parameters.AddWithValue("@pid", this.productID);
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@price", price);
+                    cmd.Parameters.AddWithValue("@did", departmentId);
+                    cmd.Parameters.AddWithValue("@compid", companyId);
+                    cmd.ExecuteNonQuery();
+                }
+
+                // Update STOCK table
+                using (SqlCommand cmd = new SqlCommand(@"
+                    UPDATE STOCK
+                    SET PRODUCT_QUANTITY = @qty
+                    WHERE SID = @sid", conn))
+                {
+                    cmd.Parameters.AddWithValue("@qty", quantity);
+                    cmd.Parameters.AddWithValue("@sid", this.productID);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            System.Windows.Forms.MessageBox.Show("Update Product Successfully...", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            clear_Inputs();
         }
+
 
         // --------------------------------------- DELETE PRODUCT
 
         private void refreshBtn3_Click(object sender, EventArgs e)
         {
-            // WRITE THE SAME YOUR REFRESH BTN1 LOGIC HERE
-
-
-
-            //
+            LoadProductData();
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            if (!this.mainWindow.isValidInteger(this.deleteProductIdInput.Text)) {
+            if (!this.mainWindow.isValidInteger(this.deleteProductIdInput.Text))
+            {
                 this.deleteProductIdInput.Focus();
-                return; 
+                return;
             }
-            
+
             this.productID = int.Parse(this.deleteProductIdInput.Text);
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            int stockId = -1;
 
-            // WRITE YOUR DELETE PRODUCT LOGIC HERE
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
 
+                // Step 1: Check if product exists and get its SID
+                using (SqlCommand cmd = new SqlCommand("SELECT SID FROM PRODUCT WHERE PID = @pid", conn))
+                {
+                    cmd.Parameters.AddWithValue("@pid", this.productID);
+                    object result = cmd.ExecuteScalar();
 
+                    if (result == null)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Product Not Found...", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
 
-            //
+                    stockId = Convert.ToInt32(result);
+                }
 
-            System.Windows.Forms.MessageBox.Show("Delete Product Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                // Step 2: Delete product (must come first due to FK constraint)
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM PRODUCT WHERE PID = @pid", conn))
+                {
+                    cmd.Parameters.AddWithValue("@pid", this.productID);
+                    cmd.ExecuteNonQuery();
+                }
+
+                // Step 3: Delete stock entry
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM STOCK WHERE SID = @sid", conn))
+                {
+                    cmd.Parameters.AddWithValue("@sid", stockId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            System.Windows.Forms.MessageBox.Show("Delete Product Successfully...", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            clear_Inputs();
+      
         }
+
     }
 }
