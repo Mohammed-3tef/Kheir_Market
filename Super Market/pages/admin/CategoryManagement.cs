@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -27,13 +28,75 @@ namespace Super_Market.pages
         {
             // TODO: This line of code loads data into the 'super_Market_DataSet.CATEGORY' table. You can move, or remove it, as needed.
             this.cATEGORYTableAdapter.Fill(this.super_Market_DataSet.CATEGORY);
-        }
+        } // semi done 
 
+        
         private void menuBtn_Click(object sender, EventArgs e)
         {
             AdminMenuPage adminMenuPage = new AdminMenuPage(this.mainWindow);
             adminMenuPage.Show();
             this.Close();
+        } //done 
+
+        private void clear_Inputs()
+        {
+
+            // --------------------------------------- ADD Inputs
+
+            addCategoryIdInput.Clear();
+            addCategoryNameInput.Clear();
+           
+
+            // --------------------------------------- UPDATE Inputs
+
+            updateCategoryIdInput.Clear();
+            updateCategoryNameInput.Clear();
+           
+
+
+            // --------------------------------------- DELETE Inputs
+
+            deleteCategoryIdInput.Clear();
+
+        }
+
+        private void LoadCategoryTable()
+        {
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            string query = @"SELECT CID AS ID, NAME AS Name FROM CATEGORY";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+            {
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+
+                // Clear existing data source
+                dataGridView1.DataSource = null;
+
+                // Manually create columns
+                dataGridView1.AutoGenerateColumns = false;
+                dataGridView1.Columns.Clear();
+
+                dataGridView1.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    DataPropertyName = "ID",
+                    HeaderText = "ID",
+                    Name = "colID"
+                });
+
+                dataGridView1.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    DataPropertyName = "Name",
+                    HeaderText = "Name",
+                    Name = "colName"
+                });
+
+                dataGridView1.DataSource = table;
+
+
+            }
         }
 
         // --------------------------------------- ADD CATEGORY
@@ -49,8 +112,42 @@ namespace Super_Market.pages
             this.categoryName = this.addCategoryNameInput.Text;
 
             // WRITE YOUR ADD CATEGORY LOGIC HERE
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            string checkCIDQuery = "SELECT COUNT(*) FROM CATEGORY WHERE CID = @CID";
+            string insertQuery = "INSERT INTO CATEGORY (CID, NAME) VALUES (@CID, @NAME)";
 
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
 
+                // Check if CID already exists
+                using (SqlCommand checkCIDCmd = new SqlCommand(checkCIDQuery, conn))
+                {
+                    checkCIDCmd.Parameters.AddWithValue("@CID", this.categoryID);
+                    int didCount = (int)checkCIDCmd.ExecuteScalar();
+
+                    if (didCount > 0)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Category ID already exists.Take anthoer one", "Error",
+                            (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                        return;
+                    }
+                }
+
+                
+
+                // Proceed with insert if validations pass
+                using (SqlCommand insertCmd = new SqlCommand(insertQuery, conn))
+                {
+                  
+                    insertCmd.Parameters.AddWithValue("@CID", categoryID);
+                    insertCmd.Parameters.AddWithValue("@NAME", this.categoryName);
+                    insertCmd.ExecuteNonQuery();
+                }
+
+                clear_Inputs();
+               
+            }
 
             //
 
@@ -61,7 +158,7 @@ namespace Super_Market.pages
         {
             // WRITE YOUR REFRESH BTN_1 LOGIC HERE
 
-
+            LoadCategoryTable();
 
             //
         }
@@ -77,27 +174,37 @@ namespace Super_Market.pages
 
             this.categoryID = int.Parse(this.updateCategoryIdInput.Text);
             bool isFound = false;
-
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            string query = "SELECT NAME FROM CATEGORY WHERE CID = @CID";
             // WRITE YOUR SEARCH CATEGORY_ID LOGIC HERE
-
-
-
-            //
-
-            if (!isFound)
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
             {
-                System.Windows.Forms.MessageBox.Show("Category Not Found...", "Warning", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Warning);
-                return;
+                cmd.Parameters.AddWithValue("@CID", this.categoryID);
+                conn.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    updateCategoryNameInput.Text = reader.GetString(0);
+
+                    updateBtn.Enabled = true;
+                    updateCategoryNameInput.Enabled = true;
+                    isFound = true;
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Category Not Found...", "Warning", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Warning);
+                    updateBtn.Enabled = false;
+                  
+                    updateCategoryNameInput.Enabled = false;
+                }
+                
             }
 
-            // WRITE YOUR SEARCH CATEGORY_ID LOGIC HERE
 
 
-
-            //
-
-            this.updateBtn.Enabled = true;
-            this.updateCategoryNameInput.Enabled = true;
+           
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
@@ -112,18 +219,44 @@ namespace Super_Market.pages
             this.categoryName = updateCategoryNameInput.Text;
 
             // WRITE YOUR UPDATE CATEGORY LOGIC HERE
+            if (string.IsNullOrWhiteSpace(this.categoryName))
+            {
+                System.Windows.Forms.MessageBox.Show("Write your updated name", "error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                return;
+            }
+
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            string updateQuery = "UPDATE CATEGORY SET NAME = @NAME WHERE CID = @CID";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
+            {
+                
+                cmd.Parameters.AddWithValue("@NAME", this.categoryName);
+                cmd.Parameters.AddWithValue("@CID", this.categoryID);
+
+                conn.Open();
+
+                int affected = cmd.ExecuteNonQuery();
+                if (affected > 0)
+                {
+                    System.Windows.Forms.MessageBox.Show("Update Category Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Update failed. Category may not exist.", "error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                }
+            }
+           
 
 
-
-            //
-
-            System.Windows.Forms.MessageBox.Show("Update Category Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
         }
 
         private void refreshBtn2_Click(object sender, EventArgs e)
         {
             // WRITE THE SAME REFRESH BTN_1 LOGIC HERE
 
+            LoadCategoryTable() ;
 
 
             //
@@ -140,23 +273,60 @@ namespace Super_Market.pages
             }
 
             this.categoryID = int.Parse(deleteCategoryIdInput.Text);
-
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+           
+            string checkQuery = "SELECT COUNT(*) FROM CATEGORY WHERE CID = @CID";
+            string deleteQuery = "DELETE FROM CATEGORY WHERE CID = @CID";
             // WRITE YOUR DELETE CATEGORY LOGIC HERE
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
+            {
+                checkCmd.Parameters.AddWithValue("@CID", categoryID);
+                conn.Open();
+
+                int count = (int)checkCmd.ExecuteScalar();
+                
+                if (count == 0)
+                {
+                    System.Windows.Forms.MessageBox.Show("Category Not Found...", "Warning",
+                        (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Warning);
+                    return;
+                }
+
+                using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, conn))
+                {
+                    deleteCmd.Parameters.AddWithValue("@CID", categoryID);
+                    deleteCmd.ExecuteNonQuery();
+                    System.Windows.Forms.MessageBox.Show("Delete Category Successfully...", "Info",
+                   (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                }
+
+               
+
+            }
 
 
+                //
 
-            //
-
-            System.Windows.Forms.MessageBox.Show("Delete Category Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
         }
 
         private void refreshBtn3_Click(object sender, EventArgs e)
         {
             // WRITE THE SAME REFRESH BTN_1 LOGIC HERE
-
+            LoadCategoryTable();
 
 
             //
+        }
+
+        private void addCategoryIdInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
