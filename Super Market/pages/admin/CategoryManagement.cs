@@ -63,7 +63,7 @@ namespace Super_Market.pages
         private void LoadCategoryTable()
         {
             string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
-            string query = @"SELECT CID AS ID, NAME AS Name FROM CATEGORY";
+            string query = @"SELECT * FROM CATEGORY";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -244,7 +244,26 @@ namespace Super_Market.pages
             string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
            
             string checkQuery = "SELECT COUNT(*) FROM CATEGORY WHERE CID = @CID";
-            string deleteQuery = "DELETE FROM CATEGORY WHERE CID = @CID";
+            string deleteQuery = @"
+                        DELETE OD
+                        FROM ORDER_DETAILS OD
+                        JOIN PRODUCT P ON OD.PID = P.PID
+                        JOIN DEPARTMENT D ON P.DID = D.DID
+                        WHERE D.CID = @CID;
+                       
+                        DELETE P
+                        FROM PRODUCT P
+                        JOIN DEPARTMENT D ON P.DID = D.DID
+                        WHERE D.CID = @CID;
+                                                            
+                        DELETE FROM DEPARTMENT
+                        WHERE CID = @CID;
+
+                        DELETE FROM COMPANY
+                        WHERE CATE_ID = @CID;
+
+                        DELETE FROM CATEGORY
+                        WHERE CID = @CID;";
             // WRITE YOUR DELETE CATEGORY LOGIC HERE
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
