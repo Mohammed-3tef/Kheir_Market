@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductManagement));
             this.menuBtn = new System.Windows.Forms.Button();
             this.TabControl = new System.Windows.Forms.TabControl();
@@ -75,6 +76,13 @@
             this.deleteProductIdLabel = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.ProductManagementTitle = new System.Windows.Forms.Label();
+            this.super_Market_DataSet = new Super_Market.Super_Market_DataSet();
+            this.cATEGORYBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cATEGORYTableAdapter = new Super_Market.Super_Market_DataSetTableAdapters.CATEGORYTableAdapter();
+            this.dEPARTMENTBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dEPARTMENTTableAdapter = new Super_Market.Super_Market_DataSetTableAdapters.DEPARTMENTTableAdapter();
+            this.cOMPANYBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMPANYTableAdapter = new Super_Market.Super_Market_DataSetTableAdapters.COMPANYTableAdapter();
             this.TabControl.SuspendLayout();
             this.addPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addProductPriceInput)).BeginInit();
@@ -86,6 +94,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.deletePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dEPARTMENTBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMPANYBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuBtn
@@ -151,6 +163,8 @@
             // addCompanyComboBox
             // 
             this.addCompanyComboBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.addCompanyComboBox.DataSource = this.cOMPANYBindingSource;
+            this.addCompanyComboBox.DisplayMember = "NAME";
             this.addCompanyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.addCompanyComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addCompanyComboBox.FormattingEnabled = true;
@@ -159,6 +173,7 @@
             this.addCompanyComboBox.Name = "addCompanyComboBox";
             this.addCompanyComboBox.Size = new System.Drawing.Size(440, 33);
             this.addCompanyComboBox.TabIndex = 31;
+            this.addCompanyComboBox.ValueMember = "COMPID";
             // 
             // addProductDepartmentLabel
             // 
@@ -173,6 +188,8 @@
             // addDepartmentComboBox
             // 
             this.addDepartmentComboBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.addDepartmentComboBox.DataSource = this.dEPARTMENTBindingSource;
+            this.addDepartmentComboBox.DisplayMember = "NAME";
             this.addDepartmentComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.addDepartmentComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addDepartmentComboBox.FormattingEnabled = true;
@@ -181,6 +198,7 @@
             this.addDepartmentComboBox.Name = "addDepartmentComboBox";
             this.addDepartmentComboBox.Size = new System.Drawing.Size(440, 33);
             this.addDepartmentComboBox.TabIndex = 29;
+            this.addDepartmentComboBox.ValueMember = "DID";
             // 
             // addProductPriceInput
             // 
@@ -231,6 +249,8 @@
             // addCategoryComboBox
             // 
             this.addCategoryComboBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.addCategoryComboBox.DataSource = this.cATEGORYBindingSource;
+            this.addCategoryComboBox.DisplayMember = "NAME";
             this.addCategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.addCategoryComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addCategoryComboBox.FormattingEnabled = true;
@@ -239,6 +259,7 @@
             this.addCategoryComboBox.Name = "addCategoryComboBox";
             this.addCategoryComboBox.Size = new System.Drawing.Size(440, 33);
             this.addCategoryComboBox.TabIndex = 23;
+            this.addCategoryComboBox.ValueMember = "CID";
             // 
             // addProductNameInput
             // 
@@ -621,6 +642,38 @@
             this.ProductManagementTitle.Text = "Product Management";
             this.ProductManagementTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // super_Market_DataSet
+            // 
+            this.super_Market_DataSet.DataSetName = "Super_Market_DataSet";
+            this.super_Market_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cATEGORYBindingSource
+            // 
+            this.cATEGORYBindingSource.DataMember = "CATEGORY";
+            this.cATEGORYBindingSource.DataSource = this.super_Market_DataSet;
+            // 
+            // cATEGORYTableAdapter
+            // 
+            this.cATEGORYTableAdapter.ClearBeforeFill = true;
+            // 
+            // dEPARTMENTBindingSource
+            // 
+            this.dEPARTMENTBindingSource.DataMember = "DEPARTMENT";
+            this.dEPARTMENTBindingSource.DataSource = this.super_Market_DataSet;
+            // 
+            // dEPARTMENTTableAdapter
+            // 
+            this.dEPARTMENTTableAdapter.ClearBeforeFill = true;
+            // 
+            // cOMPANYBindingSource
+            // 
+            this.cOMPANYBindingSource.DataMember = "COMPANY";
+            this.cOMPANYBindingSource.DataSource = this.super_Market_DataSet;
+            // 
+            // cOMPANYTableAdapter
+            // 
+            this.cOMPANYTableAdapter.ClearBeforeFill = true;
+            // 
             // ProductManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -649,6 +702,10 @@
             this.deletePage.ResumeLayout(false);
             this.deletePage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dEPARTMENTBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMPANYBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -702,5 +759,12 @@
         private System.Windows.Forms.ComboBox updateCategoryComboBox;
         private System.Windows.Forms.TextBox updateProductNameInput;
         private System.Windows.Forms.Label updateProductNameLabel;
+        private Super_Market_DataSet super_Market_DataSet;
+        private System.Windows.Forms.BindingSource cATEGORYBindingSource;
+        private Super_Market_DataSetTableAdapters.CATEGORYTableAdapter cATEGORYTableAdapter;
+        private System.Windows.Forms.BindingSource dEPARTMENTBindingSource;
+        private Super_Market_DataSetTableAdapters.DEPARTMENTTableAdapter dEPARTMENTTableAdapter;
+        private System.Windows.Forms.BindingSource cOMPANYBindingSource;
+        private Super_Market_DataSetTableAdapters.COMPANYTableAdapter cOMPANYTableAdapter;
     }
 }

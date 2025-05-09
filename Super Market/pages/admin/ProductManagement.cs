@@ -35,6 +35,13 @@ namespace Super_Market.pages
 
         private void ProductManagement_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'super_Market_DataSet.COMPANY' table. You can move, or remove it, as needed.
+            this.cOMPANYTableAdapter.Fill(this.super_Market_DataSet.COMPANY);
+            // TODO: This line of code loads data into the 'super_Market_DataSet.DEPARTMENT' table. You can move, or remove it, as needed.
+            this.dEPARTMENTTableAdapter.Fill(this.super_Market_DataSet.DEPARTMENT);
+            // TODO: This line of code loads data into the 'super_Market_DataSet.CATEGORY' table. You can move, or remove it, as needed.
+            this.cATEGORYTableAdapter.Fill(this.super_Market_DataSet.CATEGORY);
+            
             string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
             string query = @"
                 SELECT 
@@ -46,7 +53,7 @@ namespace Super_Market.pages
                 JOIN DEPARTMENT D ON P.DID = D.DID
                 JOIN CATEGORY CAT ON D.CID = CAT.CID
                 JOIN COMPANY C ON P.COMPID = C.COMPID
-                JOIN STOCK S ON P.SID = S.SID
+                JOIN STOCK S ON P.PID = S.PROD_ID
             ";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -170,8 +177,8 @@ namespace Super_Market.pages
                 JOIN DEPARTMENT D ON P.DID = D.DID
                 JOIN CATEGORY CAT ON D.CID = CAT.CID
                 JOIN COMPANY C ON P.COMPID = C.COMPID
-                JOIN STOCK S ON P.SID = S.SID
-                ";
+                JOIN STOCK S ON P.PID = S.PROD_ID
+            ";
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
                 {
@@ -279,9 +286,9 @@ namespace Super_Market.pages
                 }
 
                 // Insert into STOCK table
-                using (SqlCommand stockCmd = new SqlCommand("INSERT INTO STOCK (SID, PRODUCT_QUANTITY) VALUES (@sid, @qty)", conn))
+                using (SqlCommand stockCmd = new SqlCommand("INSERT INTO STOCK (Prod_ID, PRODUCT_QUANTITY) VALUES (@Prod_ID, @qty)", conn))
                 {
-                    stockCmd.Parameters.AddWithValue("@sid", this.productID);
+                    stockCmd.Parameters.AddWithValue("@Prod_ID", this.productID);
                     stockCmd.Parameters.AddWithValue("@qty", this.productQuantity);
                     stockCmd.ExecuteNonQuery();
                 }
@@ -289,12 +296,12 @@ namespace Super_Market.pages
 
                 // Insert into PRODUCT table
                 using (SqlCommand insertCmd = new SqlCommand(@"
-                    INSERT INTO PRODUCT (PID, DID, SID , COMPID , NAME , PRICE )
-                    VALUES (@pid,@did,@sid,@compid,@name,@price)", conn))
+                    INSERT INTO PRODUCT (PID, DID, Prod_ID , COMPID , NAME , PRICE )
+                    VALUES (@pid,@did,@Prod_ID,@compid,@name,@price)", conn))
                 {
                     insertCmd.Parameters.AddWithValue("@pid", this.productID);
                     insertCmd.Parameters.AddWithValue("@did", departmentId);
-                    insertCmd.Parameters.AddWithValue("@sid", stockId);
+                    insertCmd.Parameters.AddWithValue("@Prod_ID", stockId);
                     insertCmd.Parameters.AddWithValue("@compid", companyId);
                     insertCmd.Parameters.AddWithValue("@name", this.productName);
                     insertCmd.Parameters.AddWithValue("@price", this.productPrice);
@@ -341,15 +348,16 @@ namespace Super_Market.pages
             {
                 conn.Open();
                 string query = @"
-                SELECT 
-                P.NAME, P.PRICE, S.PRODUCT_QUANTITY, 
-                CAT.NAME AS Category, D.NAME AS Department, C.NAME AS Company
-                FROM PRODUCT P
-                JOIN STOCK S ON P.SID = S.SID
-                JOIN DEPARTMENT D ON P.DID = D.DID
-                JOIN CATEGORY CAT ON D.CID = CAT.CID
-                JOIN COMPANY C ON P.COMPID = C.COMPID
-                WHERE P.PID = @pid";
+                    SELECT 
+                    P.NAME, P.PRICE, S.PRODUCT_QUANTITY, 
+                    CAT.NAME AS Category, D.NAME AS Department, C.NAME AS Company
+                    FROM PRODUCT P
+                    JOIN STOCK S ON P.PID = S.PROD_ID
+                    JOIN DEPARTMENT D ON P.DID = D.DID
+                    JOIN CATEGORY CAT ON D.CID = CAT.CID
+                    JOIN COMPANY C ON P.COMPID = C.COMPID
+                    WHERE P.PID = @pid
+                ";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -434,10 +442,10 @@ namespace Super_Market.pages
                 using (SqlCommand cmd = new SqlCommand(@"
                     UPDATE STOCK
                     SET PRODUCT_QUANTITY = @qty
-                    WHERE SID = @sid", conn))
+                    WHERE Prod_ID = @Prod_ID", conn))
                 {
                     cmd.Parameters.AddWithValue("@qty", quantity);
-                    cmd.Parameters.AddWithValue("@sid", this.productID);
+                    cmd.Parameters.AddWithValue("@Prod_ID", this.productID);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -470,8 +478,8 @@ namespace Super_Market.pages
             {
                 conn.Open();
 
-                // Step 1: Check if product exists and get its SID
-                using (SqlCommand cmd = new SqlCommand("SELECT SID FROM PRODUCT WHERE PID = @pid", conn))
+                // Step 1: Check if product exists and get its Prod_ID
+                using (SqlCommand cmd = new SqlCommand("SELECT Prod_ID FROM PRODUCT WHERE PID = @pid", conn))
                 {
                     cmd.Parameters.AddWithValue("@pid", this.productID);
                     object result = cmd.ExecuteScalar();
@@ -493,9 +501,9 @@ namespace Super_Market.pages
                 }
 
                 // Step 3: Delete stock entry
-                using (SqlCommand cmd = new SqlCommand("DELETE FROM STOCK WHERE SID = @sid", conn))
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM STOCK WHERE Prod_ID = @Prod_ID", conn))
                 {
-                    cmd.Parameters.AddWithValue("@sid", stockId);
+                    cmd.Parameters.AddWithValue("@Prod_ID", stockId);
                     cmd.ExecuteNonQuery();
                 }
             }

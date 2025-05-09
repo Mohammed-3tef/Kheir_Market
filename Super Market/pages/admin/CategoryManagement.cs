@@ -72,30 +72,9 @@ namespace Super_Market.pages
                 DataTable table = new DataTable();
                 adapter.Fill(table);
 
-                // Clear existing data source
-                dataGridView1.DataSource = null;
-
-                // Manually create columns
-                dataGridView1.AutoGenerateColumns = false;
-                dataGridView1.Columns.Clear();
-
-                dataGridView1.Columns.Add(new DataGridViewTextBoxColumn()
-                {
-                    DataPropertyName = "ID",
-                    HeaderText = "ID",
-                    Name = "colID"
-                });
-
-                dataGridView1.Columns.Add(new DataGridViewTextBoxColumn()
-                {
-                    DataPropertyName = "Name",
-                    HeaderText = "Name",
-                    Name = "colName"
-                });
-
                 dataGridView1.DataSource = table;
-
-
+                dataGridView2.DataSource = table;
+                dataGridView3.DataSource = table;
             }
         }
 
@@ -134,19 +113,15 @@ namespace Super_Market.pages
                     }
                 }
 
-                
-
                 // Proceed with insert if validations pass
                 using (SqlCommand insertCmd = new SqlCommand(insertQuery, conn))
                 {
-                  
                     insertCmd.Parameters.AddWithValue("@CID", categoryID);
                     insertCmd.Parameters.AddWithValue("@NAME", this.categoryName);
                     insertCmd.ExecuteNonQuery();
                 }
 
-                clear_Inputs();
-               
+                clear_Inputs();  
             }
 
             //
@@ -201,10 +176,6 @@ namespace Super_Market.pages
                 }
                 
             }
-
-
-
-           
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
@@ -247,9 +218,6 @@ namespace Super_Market.pages
                     System.Windows.Forms.MessageBox.Show("Update failed. Category may not exist.", "error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
                 }
             }
-           
-
-
         }
 
         private void refreshBtn2_Click(object sender, EventArgs e)
@@ -317,16 +285,6 @@ namespace Super_Market.pages
 
 
             //
-        }
-
-        private void addCategoryIdInput_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
