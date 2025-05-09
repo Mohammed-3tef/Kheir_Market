@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -27,7 +27,8 @@ namespace Super_Market.pages.admin
         private string country;
         private string category;
         private List<string> countries = new List<string>
-        {
+        {    
+            "Not Chosen" ,
             // Arabic countries
             "Algeria", "Bahrain", "Egypt", "Iraq", "Jordan",
             "Kuwait", "Lebanon", "Libya", "Mauritania", "Morocco", "Oman", "Palestine",
@@ -137,24 +138,51 @@ namespace Super_Market.pages.admin
 
             if (string.IsNullOrWhiteSpace(addCountryComboBox.Text))
             {
-                System.Windows.Forms.MessageBox.Show("Please select a valid country.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
-                this.addCountryComboBox.Focus();
-                return;
+                this.companyId = int.Parse(addCompanyIdInput.Text);
+                this.companyName = addCompanyNameInput.Text;
+                this.category = addCategoryComboBox.Text;
+                this.country = "Not Chosen";
+            }
+            else
+            {
+                this.companyId = int.Parse(addCompanyIdInput.Text);
+                this.companyName = addCompanyNameInput.Text;
+                this.category = addCategoryComboBox.Text;
+                this.country = addCountryComboBox.Text;
             }
 
-            this.companyId = int.Parse(addCompanyIdInput.Text);
-            this.companyName = addCompanyNameInput.Text;
-            this.category = addCategoryComboBox.Text;
-            this.country = addCountryComboBox.Text;
+           
 
 
             // Insert the new company into the database
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            string getCategoryIdQuery = "SELECT CID FROM CATEGORY WHERE NAME = @CatName";
+            string insertQuery = "INSERT INTO COMPANY (COMPID, NAME, COUNTRY, CATE_ID) VALUES (@Id, @Name, @Country, @CateId)";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand getCatCmd = new SqlCommand(getCategoryIdQuery, conn))
+            using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
+            {
+                conn.Open();
 
 
+                int categoryId = -1;
 
-            //
+                getCatCmd.Parameters.AddWithValue("@CatName", this.category);
+                object result = getCatCmd.ExecuteScalar();
+                categoryId = Convert.ToInt32(result);
+                
 
-            System.Windows.Forms.MessageBox.Show("Add Company Successfully...", "Success",
+
+                cmd.Parameters.AddWithValue("@Id", this.companyId);
+                cmd.Parameters.AddWithValue("@Name", this.companyName);
+                cmd.Parameters.AddWithValue("@Country", this.country);
+                cmd.Parameters.AddWithValue("@CateId", categoryId);
+                cmd.ExecuteNonQuery();
+            }
+
+
+                System.Windows.Forms.MessageBox.Show("Add Company Successfully...", "Success",
                     (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
         }
 
@@ -168,17 +196,46 @@ namespace Super_Market.pages.admin
         private void searchBtn_Click(object sender, EventArgs e)
         {
             bool isFound = false;
-            if (!this.mainWindow.isValidInteger(addCompanyIdInput.Text))
+            if (!this.mainWindow.isValidInteger(updateCompanyIdInput.Text))
             {
                 this.addCompanyIdInput.Focus();
                 return;
             }
 
-            // Check if the company ID exists in the database
+           
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            string query = @"
+                    SELECT C.NAME, C.COUNTRY, CAT.NAME AS Category 
+                    FROM COMPANY C
+                    JOIN CATEGORY CAT ON C.CATE_ID = CAT.CID
+                    WHERE C.COMPID = @Id";
 
-            
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@Id", int.Parse(updateCompanyIdInput.Text));
+                conn.Open();
 
-            //
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        updateCompanyNameInput.Text = reader["NAME"].ToString();
+                        updateCountryComboBox.Text = reader["COUNTRY"].ToString();
+                        updateCategorycomboBox.Text = reader["Category"].ToString();
+                        isFound = true;
+                        updateCompanyNameInput.Enabled = true;
+                        updateCategorycomboBox.Enabled = true;
+                        updateCountryComboBox.Enabled = true;   
+                        updateBtn.Enabled = true;
+
+
+                    }
+                }
+
+            }
+
+
 
             if (!isFound)
             {
@@ -216,12 +273,7 @@ namespace Super_Market.pages.admin
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(updateCountryComboBox.Text))
-            {
-                System.Windows.Forms.MessageBox.Show("Please select a valid country.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
-                this.updateCountryComboBox.Focus();
-                return;
-            }
+            
 
             this.companyId = int.Parse(updateCompanyIdInput.Text);
             this.companyName = updateCompanyNameInput.Text;
@@ -229,12 +281,35 @@ namespace Super_Market.pages.admin
             this.country = updateCountryComboBox.Text;
 
             // Update the company details in the database
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            string getCategoryIdQuery = "SELECT CID FROM CATEGORY WHERE NAME = @CatName";
+            string updateQuery = @"
+                    UPDATE COMPANY
+                    SET NAME = @Name, COUNTRY = @Country, CATE_ID = @CateId
+                    WHERE COMPID = @Id";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand getCatCmd = new SqlCommand(getCategoryIdQuery, conn))
+            using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
+            {
+                conn.Open();
+                int categoryId = -1;
 
 
+                getCatCmd.Parameters.AddWithValue("@CatName", this.category);
+                object result = getCatCmd.ExecuteScalar();
+                categoryId = Convert.ToInt32(result);
 
-            //
+                cmd.Parameters.AddWithValue("@Id", this.companyId);
+                cmd.Parameters.AddWithValue("@Name", this.companyName);
+                cmd.Parameters.AddWithValue("@Country", this.country);
+                cmd.Parameters.AddWithValue("@CateId", categoryId);
+                cmd.ExecuteNonQuery();
+            }
 
-            System.Windows.Forms.MessageBox.Show("Update Company Successfully...", "Success",
+                //
+
+                System.Windows.Forms.MessageBox.Show("Update Company Successfully...", "Success",
                     (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
         }
 
@@ -255,10 +330,37 @@ namespace Super_Market.pages.admin
             this.companyId = int.Parse(deleteCompanyIdInput.Text);
 
             // Check if the company ID exists in the database
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            string checkQuery = "SELECT COUNT(*) FROM COMPANY WHERE COMPID = @CompanyId";
+            string deleteQuery = "DELETE FROM COMPANY WHERE COMPID = @CompanyId";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
+                {
+                    checkCmd.Parameters.AddWithValue("@CompanyId", companyId);
+                    int count = (int)checkCmd.ExecuteScalar();
+
+                    if (count == 0)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Company ID not found.", "Error",
+                            (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                        this.deleteCompanyIdInput.Focus();
+                        return;
+                    }
+                }
+
+                using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, conn))
+                {
+                    deleteCmd.Parameters.AddWithValue("@CompanyId", companyId);
+                    deleteCmd.ExecuteNonQuery();
+                }
+            }
 
 
 
-            //
 
             System.Windows.Forms.MessageBox.Show("Delete Company Successfully...", "Success",
                 (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
@@ -267,6 +369,31 @@ namespace Super_Market.pages.admin
         private void refreshBtn3_Click(object sender, EventArgs e)
         {
             loadCompanyTable();
+        }
+
+        private void updateCompanyIdInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateCompanyNameInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateCategorycomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateCountryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            addCountryComboBox.SelectedItem = countries[0];
+        }
+
+        private void addCountryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            addCountryComboBox.SelectedItem = countries[0] ;
         }
     }
 }
