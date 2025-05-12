@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Super_Market.pages;
+using System.Text.RegularExpressions;
 
 namespace Super_Market
 {
@@ -43,20 +44,22 @@ namespace Super_Market
 
             return true;
         }
+        
+        public bool isValidEmail(string input)
+        {
+            string pattern = "^[a-z0-9][a-z0-9._-]*@(gmail|yahoo|outlook|hotmail)\\.(com|org)$";
+            return Regex.IsMatch(input, pattern);
+        }
+        
+        public bool isValidPhone(string input)
+        {
+            string pattern = "^01[0125]\\d{8}$";
+            return Regex.IsMatch(input, pattern);
+        }
 
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void usernameInput_TextChanged(object sender, EventArgs e)
-        {
-            this.username = usernameInput.Text;
-        }
-
-        private void passwordInput_TextChanged(object sender, EventArgs e)
-        {
-            this.password = passwordInput.Text;
         }
 
         private void signUpPageLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

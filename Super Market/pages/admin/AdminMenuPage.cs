@@ -60,7 +60,7 @@ namespace Super_Market.pages
 
         private void departmentBtn_Click(object sender, EventArgs e)
         {
-            DepartmentManagment departmentManagment = new DepartmentManagment(this.mainWindow);
+            DepartmentManagement departmentManagment = new DepartmentManagement(this.mainWindow);
             departmentManagment.Show();
             this.Close();
         }

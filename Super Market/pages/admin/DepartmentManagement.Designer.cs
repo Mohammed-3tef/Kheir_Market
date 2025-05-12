@@ -1,6 +1,6 @@
 ﻿namespace Super_Market.pages.admin
 {
-    partial class DepartmentManagment
+    partial class DepartmentManagement
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DepartmentManagment));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DepartmentManagement));
             this.searchBtn = new System.Windows.Forms.Button();
             this.updateDepartmentNameInput = new System.Windows.Forms.TextBox();
             this.updateDepartmentNameLabel = new System.Windows.Forms.Label();
@@ -461,8 +461,6 @@
         private System.Windows.Forms.Label DepartmentManagementTitle;
         private System.Windows.Forms.Label addProductCategoryLabel;
         private System.Windows.Forms.ComboBox addCategoryComboBox;
-        private Super_Market_DataSet super_Market_DataSet;
-        private Super_Market_DataSetTableAdapters.CATEGORYTableAdapter cATEGORYTableAdapter;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox updateCategorycomboBox;
         private Super_Market_DataSet super_Market_DataSet1;

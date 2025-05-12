@@ -52,7 +52,7 @@
             // 
             this.orderBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.orderBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.orderBtn.Location = new System.Drawing.Point(479, 340);
+            this.orderBtn.Location = new System.Drawing.Point(479, 355);
             this.orderBtn.Name = "orderBtn";
             this.orderBtn.Size = new System.Drawing.Size(477, 116);
             this.orderBtn.TabIndex = 19;

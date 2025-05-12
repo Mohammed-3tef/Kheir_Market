@@ -46,13 +46,15 @@
             this.isAdminLabel = new System.Windows.Forms.Label();
             this.adminBtn = new System.Windows.Forms.RadioButton();
             this.customerBtn = new System.Windows.Forms.RadioButton();
+            this.phoneInput = new System.Windows.Forms.TextBox();
+            this.phoneLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // logInLable
             // 
             this.logInLable.AutoSize = true;
             this.logInLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logInLable.Location = new System.Drawing.Point(586, 630);
+            this.logInLable.Location = new System.Drawing.Point(586, 689);
             this.logInLable.Name = "logInLable";
             this.logInLable.Size = new System.Drawing.Size(266, 32);
             this.logInLable.TabIndex = 19;
@@ -63,7 +65,7 @@
             this.logInPageLink.AutoSize = true;
             this.logInPageLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logInPageLink.LinkColor = System.Drawing.Color.Black;
-            this.logInPageLink.Location = new System.Drawing.Point(858, 630);
+            this.logInPageLink.Location = new System.Drawing.Point(858, 689);
             this.logInPageLink.Name = "logInPageLink";
             this.logInPageLink.Size = new System.Drawing.Size(79, 29);
             this.logInPageLink.TabIndex = 18;
@@ -75,7 +77,7 @@
             // 
             this.signUpBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.signUpBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signUpBtn.Location = new System.Drawing.Point(623, 551);
+            this.signUpBtn.Location = new System.Drawing.Point(623, 610);
             this.signUpBtn.Name = "signUpBtn";
             this.signUpBtn.Size = new System.Drawing.Size(290, 64);
             this.signUpBtn.TabIndex = 17;
@@ -87,11 +89,10 @@
             // 
             this.passwordInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.passwordInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordInput.Location = new System.Drawing.Point(686, 373);
+            this.passwordInput.Location = new System.Drawing.Point(686, 432);
             this.passwordInput.Name = "passwordInput";
             this.passwordInput.Size = new System.Drawing.Size(471, 34);
             this.passwordInput.TabIndex = 16;
-            this.passwordInput.TextChanged += new System.EventHandler(this.passwordInput_TextChanged);
             // 
             // usernameInput
             // 
@@ -101,13 +102,12 @@
             this.usernameInput.Name = "usernameInput";
             this.usernameInput.Size = new System.Drawing.Size(471, 34);
             this.usernameInput.TabIndex = 15;
-            this.usernameInput.TextChanged += new System.EventHandler(this.usernameInput_TextChanged);
             // 
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.Location = new System.Drawing.Point(387, 375);
+            this.passwordLabel.Location = new System.Drawing.Point(387, 434);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(155, 32);
             this.passwordLabel.TabIndex = 14;
@@ -159,17 +159,16 @@
             // 
             this.confirmPasswordInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.confirmPasswordInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmPasswordInput.Location = new System.Drawing.Point(686, 431);
+            this.confirmPasswordInput.Location = new System.Drawing.Point(686, 490);
             this.confirmPasswordInput.Name = "confirmPasswordInput";
             this.confirmPasswordInput.Size = new System.Drawing.Size(471, 34);
             this.confirmPasswordInput.TabIndex = 21;
-            this.confirmPasswordInput.TextChanged += new System.EventHandler(this.confirmPasswordInput_TextChanged);
             // 
             // confirmPasswordLabel
             // 
             this.confirmPasswordLabel.AutoSize = true;
             this.confirmPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmPasswordLabel.Location = new System.Drawing.Point(387, 433);
+            this.confirmPasswordLabel.Location = new System.Drawing.Point(387, 492);
             this.confirmPasswordLabel.Name = "confirmPasswordLabel";
             this.confirmPasswordLabel.Size = new System.Drawing.Size(269, 32);
             this.confirmPasswordLabel.TabIndex = 20;
@@ -183,7 +182,6 @@
             this.emailInput.Name = "emailInput";
             this.emailInput.Size = new System.Drawing.Size(471, 34);
             this.emailInput.TabIndex = 23;
-            this.emailInput.TextChanged += new System.EventHandler(this.emailInput_TextChanged);
             // 
             // emailLabel
             // 
@@ -199,7 +197,7 @@
             // 
             this.isAdminLabel.AutoSize = true;
             this.isAdminLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.isAdminLabel.Location = new System.Drawing.Point(387, 483);
+            this.isAdminLabel.Location = new System.Drawing.Point(387, 542);
             this.isAdminLabel.Name = "isAdminLabel";
             this.isAdminLabel.Size = new System.Drawing.Size(80, 32);
             this.isAdminLabel.TabIndex = 24;
@@ -209,7 +207,7 @@
             // 
             this.adminBtn.AutoSize = true;
             this.adminBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adminBtn.Location = new System.Drawing.Point(687, 482);
+            this.adminBtn.Location = new System.Drawing.Point(687, 541);
             this.adminBtn.Name = "adminBtn";
             this.adminBtn.Size = new System.Drawing.Size(102, 33);
             this.adminBtn.TabIndex = 25;
@@ -223,7 +221,7 @@
             // 
             this.customerBtn.AutoSize = true;
             this.customerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerBtn.Location = new System.Drawing.Point(1019, 484);
+            this.customerBtn.Location = new System.Drawing.Point(1019, 543);
             this.customerBtn.Name = "customerBtn";
             this.customerBtn.Size = new System.Drawing.Size(138, 33);
             this.customerBtn.TabIndex = 26;
@@ -233,11 +231,32 @@
             this.customerBtn.UseVisualStyleBackColor = true;
             this.customerBtn.CheckedChanged += new System.EventHandler(this.customerBtn_CheckedChanged);
             // 
+            // phoneInput
+            // 
+            this.phoneInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.phoneInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phoneInput.Location = new System.Drawing.Point(686, 378);
+            this.phoneInput.Name = "phoneInput";
+            this.phoneInput.Size = new System.Drawing.Size(471, 34);
+            this.phoneInput.TabIndex = 28;
+            // 
+            // phoneLabel
+            // 
+            this.phoneLabel.AutoSize = true;
+            this.phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phoneLabel.Location = new System.Drawing.Point(387, 377);
+            this.phoneLabel.Name = "phoneLabel";
+            this.phoneLabel.Size = new System.Drawing.Size(225, 32);
+            this.phoneLabel.TabIndex = 27;
+            this.phoneLabel.Text = "Phone Number:";
+            // 
             // SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 753);
+            this.Controls.Add(this.phoneInput);
+            this.Controls.Add(this.phoneLabel);
             this.Controls.Add(this.customerBtn);
             this.Controls.Add(this.adminBtn);
             this.Controls.Add(this.isAdminLabel);
@@ -284,5 +303,7 @@
         private System.Windows.Forms.Label isAdminLabel;
         private System.Windows.Forms.RadioButton adminBtn;
         private System.Windows.Forms.RadioButton customerBtn;
+        private System.Windows.Forms.TextBox phoneInput;
+        private System.Windows.Forms.Label phoneLabel;
     }
 }

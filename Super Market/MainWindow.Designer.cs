@@ -101,7 +101,6 @@
             this.usernameInput.Name = "usernameInput";
             this.usernameInput.Size = new System.Drawing.Size(519, 34);
             this.usernameInput.TabIndex = 5;
-            this.usernameInput.TextChanged += new System.EventHandler(this.usernameInput_TextChanged);
             // 
             // passwordInput
             // 
@@ -111,7 +110,6 @@
             this.passwordInput.Name = "passwordInput";
             this.passwordInput.Size = new System.Drawing.Size(519, 34);
             this.passwordInput.TabIndex = 6;
-            this.passwordInput.TextChanged += new System.EventHandler(this.passwordInput_TextChanged);
             // 
             // logInBtn
             // 

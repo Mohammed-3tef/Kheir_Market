@@ -32,9 +32,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderManagement));
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.deletePage = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.deleteOrderIdInput = new System.Windows.Forms.TextBox();
+            this.deleteBtn = new System.Windows.Forms.Button();
             this.OrderManagementTitle = new System.Windows.Forms.Label();
             this.updatePage = new System.Windows.Forms.TabPage();
+            this.updateQuantityInput = new System.Windows.Forms.NumericUpDown();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.updateQuantityLabel = new System.Windows.Forms.Label();
+            this.updateOrderIdLabel = new System.Windows.Forms.Label();
+            this.updateOrderIdInput = new System.Windows.Forms.TextBox();
+            this.updateBtn = new System.Windows.Forms.Button();
+            this.searchBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.addPage = new System.Windows.Forms.TabPage();
             this.toInput = new System.Windows.Forms.NumericUpDown();
@@ -44,6 +53,8 @@
             this.priceLabel = new System.Windows.Forms.Label();
             this.addProductDepartmentLabel = new System.Windows.Forms.Label();
             this.addDepartmentComboBox = new System.Windows.Forms.ComboBox();
+            this.dEPARTMENTBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.super_Market_DataSet1 = new Super_Market.Super_Market_DataSet();
             this.addQuantityInput = new System.Windows.Forms.NumericUpDown();
             this.addProductQuantityLabel = new System.Windows.Forms.Label();
             this.addProductComboBox = new System.Windows.Forms.ComboBox();
@@ -51,21 +62,20 @@
             this.addBtn = new System.Windows.Forms.Button();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.menuBtn = new System.Windows.Forms.Button();
-            this.super_Market_DataSet1 = new Super_Market.Super_Market_DataSet();
-            this.dEPARTMENTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dEPARTMENTTableAdapter1 = new Super_Market.Super_Market_DataSetTableAdapters.DEPARTMENTTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.deletePage.SuspendLayout();
             this.updatePage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.updateQuantityInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.addPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fromInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dEPARTMENTBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addQuantityInput)).BeginInit();
             this.TabControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dEPARTMENTBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView3
@@ -83,6 +93,9 @@
             // 
             // deletePage
             // 
+            this.deletePage.Controls.Add(this.label1);
+            this.deletePage.Controls.Add(this.deleteOrderIdInput);
+            this.deletePage.Controls.Add(this.deleteBtn);
             this.deletePage.Controls.Add(this.dataGridView3);
             this.deletePage.Location = new System.Drawing.Point(4, 25);
             this.deletePage.Name = "deletePage";
@@ -91,6 +104,37 @@
             this.deletePage.TabIndex = 2;
             this.deletePage.Text = "Delete Order";
             this.deletePage.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(76, 190);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(120, 29);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "Order ID:";
+            // 
+            // deleteOrderIdInput
+            // 
+            this.deleteOrderIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.deleteOrderIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteOrderIdInput.Location = new System.Drawing.Point(81, 222);
+            this.deleteOrderIdInput.Name = "deleteOrderIdInput";
+            this.deleteOrderIdInput.Size = new System.Drawing.Size(440, 30);
+            this.deleteOrderIdInput.TabIndex = 43;
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteBtn.Location = new System.Drawing.Point(81, 323);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(440, 61);
+            this.deleteBtn.TabIndex = 44;
+            this.deleteBtn.Text = "Delete Order";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // OrderManagementTitle
             // 
@@ -105,7 +149,13 @@
             // 
             // updatePage
             // 
+            this.updatePage.Controls.Add(this.updateQuantityInput);
             this.updatePage.Controls.Add(this.dataGridView2);
+            this.updatePage.Controls.Add(this.updateQuantityLabel);
+            this.updatePage.Controls.Add(this.updateOrderIdLabel);
+            this.updatePage.Controls.Add(this.updateOrderIdInput);
+            this.updatePage.Controls.Add(this.updateBtn);
+            this.updatePage.Controls.Add(this.searchBtn);
             this.updatePage.Location = new System.Drawing.Point(4, 25);
             this.updatePage.Name = "updatePage";
             this.updatePage.Padding = new System.Windows.Forms.Padding(3);
@@ -113,6 +163,15 @@
             this.updatePage.TabIndex = 1;
             this.updatePage.Text = "Update Order";
             this.updatePage.UseVisualStyleBackColor = true;
+            // 
+            // updateQuantityInput
+            // 
+            this.updateQuantityInput.Enabled = false;
+            this.updateQuantityInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateQuantityInput.Location = new System.Drawing.Point(77, 294);
+            this.updateQuantityInput.Name = "updateQuantityInput";
+            this.updateQuantityInput.Size = new System.Drawing.Size(440, 30);
+            this.updateQuantityInput.TabIndex = 46;
             // 
             // dataGridView2
             // 
@@ -126,6 +185,60 @@
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(825, 612);
             this.dataGridView2.TabIndex = 0;
+            // 
+            // updateQuantityLabel
+            // 
+            this.updateQuantityLabel.AutoSize = true;
+            this.updateQuantityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateQuantityLabel.Location = new System.Drawing.Point(72, 262);
+            this.updateQuantityLabel.Name = "updateQuantityLabel";
+            this.updateQuantityLabel.Size = new System.Drawing.Size(212, 29);
+            this.updateQuantityLabel.TabIndex = 45;
+            this.updateQuantityLabel.Text = "Product Quantity:";
+            // 
+            // updateOrderIdLabel
+            // 
+            this.updateOrderIdLabel.AutoSize = true;
+            this.updateOrderIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateOrderIdLabel.Location = new System.Drawing.Point(72, 182);
+            this.updateOrderIdLabel.Name = "updateOrderIdLabel";
+            this.updateOrderIdLabel.Size = new System.Drawing.Size(120, 29);
+            this.updateOrderIdLabel.TabIndex = 39;
+            this.updateOrderIdLabel.Text = "Order ID:";
+            // 
+            // updateOrderIdInput
+            // 
+            this.updateOrderIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.updateOrderIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateOrderIdInput.Location = new System.Drawing.Point(77, 214);
+            this.updateOrderIdInput.Name = "updateOrderIdInput";
+            this.updateOrderIdInput.Size = new System.Drawing.Size(303, 30);
+            this.updateOrderIdInput.TabIndex = 40;
+            // 
+            // updateBtn
+            // 
+            this.updateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.updateBtn.Enabled = false;
+            this.updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateBtn.Location = new System.Drawing.Point(77, 370);
+            this.updateBtn.Name = "updateBtn";
+            this.updateBtn.Size = new System.Drawing.Size(440, 61);
+            this.updateBtn.TabIndex = 41;
+            this.updateBtn.Text = "Update Order";
+            this.updateBtn.UseVisualStyleBackColor = true;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
+            // 
+            // searchBtn
+            // 
+            this.searchBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchBtn.Location = new System.Drawing.Point(386, 209);
+            this.searchBtn.Name = "searchBtn";
+            this.searchBtn.Size = new System.Drawing.Size(131, 39);
+            this.searchBtn.TabIndex = 42;
+            this.searchBtn.Text = "Search";
+            this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // dataGridView1
             // 
@@ -166,7 +279,7 @@
             // toInput
             // 
             this.toInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toInput.Location = new System.Drawing.Point(359, 205);
+            this.toInput.Location = new System.Drawing.Point(359, 216);
             this.toInput.Name = "toInput";
             this.toInput.Size = new System.Drawing.Size(158, 30);
             this.toInput.TabIndex = 47;
@@ -175,7 +288,7 @@
             // fromInput
             // 
             this.fromInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fromInput.Location = new System.Drawing.Point(137, 203);
+            this.fromInput.Location = new System.Drawing.Point(137, 214);
             this.fromInput.Name = "fromInput";
             this.fromInput.Size = new System.Drawing.Size(158, 30);
             this.fromInput.TabIndex = 46;
@@ -185,7 +298,7 @@
             // 
             this.fromLabel.AutoSize = true;
             this.fromLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fromLabel.Location = new System.Drawing.Point(50, 200);
+            this.fromLabel.Location = new System.Drawing.Point(50, 211);
             this.fromLabel.Name = "fromLabel";
             this.fromLabel.Size = new System.Drawing.Size(81, 29);
             this.fromLabel.TabIndex = 45;
@@ -195,7 +308,7 @@
             // 
             this.toLabel.AutoSize = true;
             this.toLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toLabel.Location = new System.Drawing.Point(301, 204);
+            this.toLabel.Location = new System.Drawing.Point(301, 215);
             this.toLabel.Name = "toLabel";
             this.toLabel.Size = new System.Drawing.Size(52, 29);
             this.toLabel.TabIndex = 44;
@@ -205,7 +318,7 @@
             // 
             this.priceLabel.AutoSize = true;
             this.priceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priceLabel.Location = new System.Drawing.Point(50, 171);
+            this.priceLabel.Location = new System.Drawing.Point(50, 182);
             this.priceLabel.Name = "priceLabel";
             this.priceLabel.Size = new System.Drawing.Size(245, 29);
             this.priceLabel.TabIndex = 43;
@@ -239,6 +352,16 @@
             this.addDepartmentComboBox.ValueMember = "DID";
             this.addDepartmentComboBox.SelectedIndexChanged += new System.EventHandler(this.addDepartmentComboBox_SelectedIndexChanged);
             // 
+            // dEPARTMENTBindingSource
+            // 
+            this.dEPARTMENTBindingSource.DataMember = "DEPARTMENT";
+            this.dEPARTMENTBindingSource.DataSource = this.super_Market_DataSet1;
+            // 
+            // super_Market_DataSet1
+            // 
+            this.super_Market_DataSet1.DataSetName = "Super_Market_DataSet";
+            this.super_Market_DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // addQuantityInput
             // 
             this.addQuantityInput.Enabled = false;
@@ -266,7 +389,7 @@
             this.addProductComboBox.Enabled = false;
             this.addProductComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addProductComboBox.FormattingEnabled = true;
-            this.addProductComboBox.Location = new System.Drawing.Point(55, 299);
+            this.addProductComboBox.Location = new System.Drawing.Point(55, 302);
             this.addProductComboBox.MaxDropDownItems = 5;
             this.addProductComboBox.Name = "addProductComboBox";
             this.addProductComboBox.Size = new System.Drawing.Size(462, 33);
@@ -277,7 +400,7 @@
             // 
             this.addProductNameLabel.AutoSize = true;
             this.addProductNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addProductNameLabel.Location = new System.Drawing.Point(50, 267);
+            this.addProductNameLabel.Location = new System.Drawing.Point(50, 270);
             this.addProductNameLabel.Name = "addProductNameLabel";
             this.addProductNameLabel.Size = new System.Drawing.Size(186, 29);
             this.addProductNameLabel.TabIndex = 35;
@@ -317,16 +440,6 @@
             this.menuBtn.UseVisualStyleBackColor = true;
             this.menuBtn.Click += new System.EventHandler(this.menuBtn_Click);
             // 
-            // super_Market_DataSet1
-            // 
-            this.super_Market_DataSet1.DataSetName = "Super_Market_DataSet";
-            this.super_Market_DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dEPARTMENTBindingSource
-            // 
-            this.dEPARTMENTBindingSource.DataMember = "DEPARTMENT";
-            this.dEPARTMENTBindingSource.DataSource = this.super_Market_DataSet1;
-            // 
             // dEPARTMENTTableAdapter1
             // 
             this.dEPARTMENTTableAdapter1.ClearBeforeFill = true;
@@ -347,17 +460,20 @@
             this.Load += new System.EventHandler(this.OrderManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.deletePage.ResumeLayout(false);
+            this.deletePage.PerformLayout();
             this.updatePage.ResumeLayout(false);
+            this.updatePage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.updateQuantityInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.addPage.ResumeLayout(false);
             this.addPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fromInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dEPARTMENTBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addQuantityInput)).EndInit();
             this.TabControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dEPARTMENTBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,10 +502,17 @@
         private System.Windows.Forms.NumericUpDown fromInput;
         private System.Windows.Forms.Label fromLabel;
         private System.Windows.Forms.Label toLabel;
-        private Super_Market_DataSet super_Market_DataSet;
-        private Super_Market_DataSetTableAdapters.DEPARTMENTTableAdapter dEPARTMENTTableAdapter;
         private Super_Market_DataSet super_Market_DataSet1;
         private System.Windows.Forms.BindingSource dEPARTMENTBindingSource;
         private Super_Market_DataSetTableAdapters.DEPARTMENTTableAdapter dEPARTMENTTableAdapter1;
+        private System.Windows.Forms.NumericUpDown updateQuantityInput;
+        private System.Windows.Forms.Label updateQuantityLabel;
+        private System.Windows.Forms.Label updateOrderIdLabel;
+        private System.Windows.Forms.TextBox updateOrderIdInput;
+        private System.Windows.Forms.Button updateBtn;
+        private System.Windows.Forms.Button searchBtn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox deleteOrderIdInput;
+        private System.Windows.Forms.Button deleteBtn;
     }
 }

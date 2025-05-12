@@ -99,6 +99,8 @@ namespace Super_Market.pages.customer
                 adapter.Fill(productTable);
 
                 dataGridView1.DataSource = productTable;
+                dataGridView2.DataSource = productTable;
+                dataGridView3.DataSource = productTable;
             }
         }
 
@@ -202,10 +204,62 @@ namespace Super_Market.pages.customer
 
         // -------------------------------------------- UPDATE ORDER
 
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+            if (this.addQuantityInput.Value <= 0)
+            {
+                System.Windows.Forms.MessageBox.Show("Please enter a valid quantity.", "Error",
+                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                this.addQuantityInput.Focus();
+                return;
+            }
 
+            // Update in database
+
+
+
+            //
+
+            System.Windows.Forms.MessageBox.Show("Update Order Successfully...", "Success",
+                (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+            loadTable(this.mainWindow.getUserId());
+            clearInputs();
+        }
+
+        private void searchBtn_Click(object sender, EventArgs e)
+        {
+            if(this.mainWindow.isValidInteger(this.updateOrderIdInput.Text)) { 
+                this.updateOrderIdInput.Focus();
+                return;
+            }
+
+            // Search in database
+
+
+
+            //
+        }
 
         // -------------------------------------------- DELETE ORDER
 
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            if (this.mainWindow.isValidInteger(this.deleteOrderIdInput.Text))
+            {
+                this.deleteOrderIdInput.Focus();
+                return;
+            }
 
+            // Delete in database
+
+
+
+            //
+
+            System.Windows.Forms.MessageBox.Show("Delete Order Successfully...", "Success",
+                (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+            loadTable(this.mainWindow.getUserId());
+            clearInputs();
+        }
     }
 }

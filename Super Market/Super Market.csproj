@@ -84,11 +84,11 @@
     <Compile Include="pages\admin\AdminMenuPage.Designer.cs">
       <DependentUpon>AdminMenuPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\admin\DepartmentManagment.cs">
+    <Compile Include="pages\admin\DepartmentManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pages\admin\DepartmentManagment.Designer.cs">
-      <DependentUpon>DepartmentManagment.cs</DependentUpon>
+    <Compile Include="pages\admin\DepartmentManagement.Designer.cs">
+      <DependentUpon>DepartmentManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="pages\customer\CustomerMenuPage.cs">
       <SubType>Form</SubType>
@@ -136,8 +136,8 @@
     <EmbeddedResource Include="pages\admin\AdminMenuPage.resx">
       <DependentUpon>AdminMenuPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\admin\DepartmentManagment.resx">
-      <DependentUpon>DepartmentManagment.cs</DependentUpon>
+    <EmbeddedResource Include="pages\admin\DepartmentManagement.resx">
+      <DependentUpon>DepartmentManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\customer\CustomerMenuPage.resx">
       <DependentUpon>CustomerMenuPage.cs</DependentUpon>

@@ -498,7 +498,6 @@
 
         #endregion
 
-        private Super_Market_DataSetTableAdapters.CATEGORYTableAdapter cATEGORYTableAdapter;
         private System.Windows.Forms.Button menuBtn;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.TextBox deleteCompanyIdInput;
@@ -507,7 +506,6 @@
         private System.Windows.Forms.TabPage deletePage;
         private System.Windows.Forms.Label updateCompanyCategoryLabel;
         private System.Windows.Forms.ComboBox updateCategorycomboBox;
-        private Super_Market_DataSet super_Market_DataSet;
         private System.Windows.Forms.TextBox updateCompanyIdInput;
         private System.Windows.Forms.Label updateCompanyIdLabel;
         private System.Windows.Forms.DataGridView dataGridView2;

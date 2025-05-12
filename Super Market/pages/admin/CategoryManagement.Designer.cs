@@ -476,14 +476,6 @@
         private System.Windows.Forms.TextBox updateCategoryNameInput;
         private System.Windows.Forms.Label updateCategoryNameLabel;
         private System.Windows.Forms.Button searchBtn;
-        private Super_Market_DataSet super_Market_DataSet;
-        private Super_Market_DataSetTableAdapters.CATEGORYTableAdapter cATEGORYTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nAMEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cIDDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nAMEDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cIDDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nAMEDataGridViewTextBoxColumn1;
         private Super_Market_DataSet super_Market_DataSet1;
         private System.Windows.Forms.BindingSource cATEGORYBindingSource;
         private Super_Market_DataSetTableAdapters.CATEGORYTableAdapter cATEGORYTableAdapter1;

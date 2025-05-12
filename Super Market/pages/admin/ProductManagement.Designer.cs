@@ -642,9 +642,6 @@
         private System.Windows.Forms.ComboBox updateCategoryComboBox;
         private System.Windows.Forms.TextBox updateProductNameInput;
         private System.Windows.Forms.Label updateProductNameLabel;
-        private Super_Market_DataSet super_Market_DataSet;
-        private Super_Market_DataSetTableAdapters.DEPARTMENTTableAdapter dEPARTMENTTableAdapter;
-        private Super_Market_DataSetTableAdapters.COMPANYTableAdapter cOMPANYTableAdapter;
         private System.Windows.Forms.Label addProductCompanyLabel;
         private System.Windows.Forms.ComboBox addCompanyComboBox;
         private System.Windows.Forms.Label addProductDepartmentLabel;
@@ -660,6 +657,5 @@
         private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.TextBox addProductIdInput;
         private System.Windows.Forms.Label addProductIdLabel;
-        private Super_Market_DataSetTableAdapters.CATEGORYTableAdapter cATEGORYTableAdapter;
     }
 }

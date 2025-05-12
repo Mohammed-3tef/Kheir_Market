@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace Super_Market.pages.admin
 {
-    public partial class DepartmentManagment : Form
+    public partial class DepartmentManagement : Form
     {
         private MainWindow mainWindow;
         private int departmentID;
         private string departmentName;
 
-        public DepartmentManagment(MainWindow mainWindow)
+        public DepartmentManagement(MainWindow mainWindow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;

@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Super_Market.pages
 {
@@ -27,33 +26,11 @@ namespace Super_Market.pages
             this.mainWindow = mainWindow;
         }
 
-        private void usernameInput_TextChanged(object sender, EventArgs e)
-        {
-            this.username = usernameInput.Text;
-        }
-
-        private void passwordInput_TextChanged(object sender, EventArgs e)
-        {
-            this.password = passwordInput.Text;
-        }
-
-        private void emailInput_TextChanged(object sender, EventArgs e)
-        {
-            this.email = emailInput.Text;
-        }
-
-        private void confirmPasswordInput_TextChanged(object sender, EventArgs e)
-        {
-            this.confirmPassword = confirmPasswordInput.Text;
-        }
-
-        private void adminBtn_CheckedChanged(object sender, EventArgs e)
-        {
+        private void adminBtn_CheckedChanged(object sender, EventArgs e){
             this.isAdmin = 1;
         }
 
-        private void customerBtn_CheckedChanged(object sender, EventArgs e)
-        {
+        private void customerBtn_CheckedChanged(object sender, EventArgs e){
             this.isAdmin = 0;
         }
 
@@ -66,13 +43,30 @@ namespace Super_Market.pages
 
         private void signUpBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.username) || string.IsNullOrEmpty(this.password) || string.IsNullOrEmpty(this.confirmPassword) || string.IsNullOrEmpty(this.email) || this.isAdmin == -1){
+            if (string.IsNullOrEmpty(this.usernameInput.Text) || string.IsNullOrEmpty(this.passwordInput.Text) || string.IsNullOrEmpty(this.confirmPasswordInput.Text) || string.IsNullOrEmpty(this.emailInput.Text) || string.IsNullOrEmpty(this.phoneInput.Text) || this.isAdmin == -1){
                 System.Windows.Forms.MessageBox.Show("Please fill in all fields.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
                 return;
             }
 
+            if (!this.mainWindow.isValidEmail(this.emailInput.Text)){
+                System.Windows.Forms.MessageBox.Show("Please enter a valid email.", "Error", 
+                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                this.emailInput.Focus();
+                return;
+            }
+
+            if (!this.mainWindow.isValidPhone(this.phoneInput.Text))
+            {
+                System.Windows.Forms.MessageBox.Show("Please enter a valid phone number.", "Error",
+                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                this.phoneInput.Focus();
+                return;
+            }
+
             if (this.password != this.confirmPassword){
-                System.Windows.Forms.MessageBox.Show("Password and Confirm Password do not match.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                System.Windows.Forms.MessageBox.Show("Password and Confirm Password do not match.", "Error", 
+                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                this.confirmPasswordInput.Focus();
                 return;
             }
 
@@ -82,8 +76,20 @@ namespace Super_Market.pages
 
             //
 
-            System.Windows.Forms.MessageBox.Show("Sign Up Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
-            this.mainWindow.Show();
+            System.Windows.Forms.MessageBox.Show("Sign Up Successfully...", "Info", 
+                (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+            
+            if (isAdmin == 1)
+            {
+                AdminMenuPage adminMenuPage = new AdminMenuPage(this.mainWindow);
+                adminMenuPage.Show();
+                this.Close();
+            } else {
+                CustomerMenuPage customerMenuPage = new CustomerMenuPage(this.mainWindow);
+                customerMenuPage.Show();
+                this.Close();
+            }
+
             this.Close();
         }
     }
