@@ -48,7 +48,8 @@ namespace Super_Market.pages.admin
 
         private void DepartmentManagment_Load(object sender, EventArgs e)
         {
-            this.cATEGORYTableAdapter.Fill(this.super_Market_DataSet.CATEGORY);
+            // TODO: This line of code loads data into the 'super_Market_DataSet1.CATEGORY' table. You can move, or remove it, as needed.
+            this.cATEGORYTableAdapter1.Fill(this.super_Market_DataSet1.CATEGORY);
             addCategoryComboBox.SelectedIndex = -1;
             LoadDepartmentTable();
         }
@@ -86,11 +87,6 @@ namespace Super_Market.pages.admin
 
         }
         // --------------------------------------- ADD DEPARTMENT
-
-        private void refreshBtn1_Click(object sender, EventArgs e)
-        {
-            LoadDepartmentTable();
-        }
 
         private void addBtn_Click(object sender, EventArgs e)
         {
@@ -159,6 +155,7 @@ namespace Super_Market.pages.admin
                 clear_Inputs();
                 System.Windows.Forms.MessageBox.Show("Add Department Successfully...", "Success",
                     (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                LoadDepartmentTable();
             }
         }
 
@@ -263,11 +260,6 @@ namespace Super_Market.pages.admin
             updateDepartmentNameInput.Enabled = false;
             updateCategorycomboBox.Enabled = false;
             clear_Inputs();
-        }
-
-
-        private void refreshBtn2_Click(object sender, EventArgs e)
-        {
             LoadDepartmentTable();
         }
 
@@ -314,10 +306,6 @@ namespace Super_Market.pages.admin
                     (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
             }
             clear_Inputs();
-        }
-
-        private void refreshBtn3_Click(object sender, EventArgs e)
-        {
             LoadDepartmentTable();
         }
     }

@@ -26,8 +26,8 @@ namespace Super_Market.pages
 
         private void CategoryManagement_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'super_Market_DataSet.CATEGORY' table. You can move, or remove it, as needed.
-            this.cATEGORYTableAdapter.Fill(this.super_Market_DataSet.CATEGORY);
+            // TODO: This line of code loads data into the 'super_Market_DataSet1.CATEGORY' table. You can move, or remove it, as needed.
+            this.cATEGORYTableAdapter1.Fill(this.super_Market_DataSet1.CATEGORY);
         } // semi done 
 
         
@@ -40,24 +40,19 @@ namespace Super_Market.pages
 
         private void clear_Inputs()
         {
-
             // --------------------------------------- ADD Inputs
 
             addCategoryIdInput.Clear();
             addCategoryNameInput.Clear();
            
-
             // --------------------------------------- UPDATE Inputs
 
             updateCategoryIdInput.Clear();
             updateCategoryNameInput.Clear();
            
-
-
             // --------------------------------------- DELETE Inputs
 
             deleteCategoryIdInput.Clear();
-
         }
 
         private void LoadCategoryTable()
@@ -127,15 +122,7 @@ namespace Super_Market.pages
             //
 
             System.Windows.Forms.MessageBox.Show("Add Category Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
-        }
-
-        private void refreshBtn1_Click(object sender, EventArgs e)
-        {
-            // WRITE YOUR REFRESH BTN_1 LOGIC HERE
-
             LoadCategoryTable();
-
-            //
         }
 
         // --------------------------------------- UPDATE CATEGORY
@@ -218,16 +205,8 @@ namespace Super_Market.pages
                     System.Windows.Forms.MessageBox.Show("Update failed. Category may not exist.", "error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
                 }
             }
-        }
 
-        private void refreshBtn2_Click(object sender, EventArgs e)
-        {
-            // WRITE THE SAME REFRESH BTN_1 LOGIC HERE
-
-            LoadCategoryTable() ;
-
-
-            //
+            LoadCategoryTable();
         }
 
         // --------------------------------------- DELETE CATEGORY
@@ -287,23 +266,9 @@ namespace Super_Market.pages
                     System.Windows.Forms.MessageBox.Show("Delete Category Successfully...", "Info",
                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
                 }
-
-               
-
             }
 
-
-                //
-
-        }
-
-        private void refreshBtn3_Click(object sender, EventArgs e)
-        {
-            // WRITE THE SAME REFRESH BTN_1 LOGIC HERE
             LoadCategoryTable();
-
-
-            //
         }
     }
 }

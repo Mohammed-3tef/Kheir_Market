@@ -70,6 +70,19 @@ namespace Super_Market.pages.admin
             this.updateCountryComboBox.SelectedIndex = -1;
         }
 
+        private void cleanInputs()
+        {
+            this.addCompanyIdInput.Clear();
+            this.addCompanyNameInput.Clear();
+            this.addCountryComboBox.SelectedIndex = -1;
+            this.addCategoryComboBox.SelectedIndex = -1;
+            this.updateCompanyIdInput.Clear();
+            this.updateCompanyNameInput.Clear();
+            this.updateCountryComboBox.SelectedIndex = -1;
+            this.updateCategorycomboBox.SelectedIndex = -1;
+            this.deleteCompanyIdInput.Clear();
+        }
+
         private void loadCompanyTable()
         {
             string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
@@ -93,8 +106,8 @@ namespace Super_Market.pages.admin
 
         private void CompanyManagement_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'super_Market_DataSet.CATEGORY' table. You can move, or remove it, as needed.
-            this.cATEGORYTableAdapter.Fill(this.super_Market_DataSet.CATEGORY);
+            // TODO: This line of code loads data into the 'super_Market_DataSet1.CATEGORY' table. You can move, or remove it, as needed.
+            this.cATEGORYTableAdapter1.Fill(this.super_Market_DataSet1.CATEGORY);
 
             loadCompanyTable();
 
@@ -136,22 +149,10 @@ namespace Super_Market.pages.admin
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(addCountryComboBox.Text))
-            {
-                this.companyId = int.Parse(addCompanyIdInput.Text);
-                this.companyName = addCompanyNameInput.Text;
-                this.category = addCategoryComboBox.Text;
-                this.country = "Not Chosen";
-            }
-            else
-            {
-                this.companyId = int.Parse(addCompanyIdInput.Text);
-                this.companyName = addCompanyNameInput.Text;
-                this.category = addCategoryComboBox.Text;
-                this.country = addCountryComboBox.Text;
-            }
-
-           
+            this.companyId = int.Parse(addCompanyIdInput.Text);
+            this.companyName = addCompanyNameInput.Text;
+            this.category = addCategoryComboBox.Text;
+            this.country = string.IsNullOrWhiteSpace(addCountryComboBox.Text) ? "Not Chosen" : addCountryComboBox.Text;
 
 
             // Insert the new company into the database
@@ -165,14 +166,11 @@ namespace Super_Market.pages.admin
             {
                 conn.Open();
 
-
                 int categoryId = -1;
 
                 getCatCmd.Parameters.AddWithValue("@CatName", this.category);
                 object result = getCatCmd.ExecuteScalar();
                 categoryId = Convert.ToInt32(result);
-                
-
 
                 cmd.Parameters.AddWithValue("@Id", this.companyId);
                 cmd.Parameters.AddWithValue("@Name", this.companyName);
@@ -181,13 +179,9 @@ namespace Super_Market.pages.admin
                 cmd.ExecuteNonQuery();
             }
 
-
-                System.Windows.Forms.MessageBox.Show("Add Company Successfully...", "Success",
-                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
-        }
-
-        private void refreshBtn1_Click(object sender, EventArgs e)
-        {
+            System.Windows.Forms.MessageBox.Show("Add Company Successfully...", "Success",
+                (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+            cleanInputs();
             loadCompanyTable();
         }
 
@@ -228,14 +222,9 @@ namespace Super_Market.pages.admin
                         updateCategorycomboBox.Enabled = true;
                         updateCountryComboBox.Enabled = true;   
                         updateBtn.Enabled = true;
-
-
                     }
                 }
-
             }
-
-
 
             if (!isFound)
             {
@@ -243,13 +232,6 @@ namespace Super_Market.pages.admin
                 this.updateCompanyIdInput.Focus();
                 return;
             }
-
-
-            // Load the company details into the update fields
-
-
-
-            //
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
@@ -272,8 +254,6 @@ namespace Super_Market.pages.admin
                 this.updateCategorycomboBox.Focus();
                 return;
             }
-
-            
 
             this.companyId = int.Parse(updateCompanyIdInput.Text);
             this.companyName = updateCompanyNameInput.Text;
@@ -307,14 +287,11 @@ namespace Super_Market.pages.admin
                 cmd.ExecuteNonQuery();
             }
 
-                //
+            //
 
-                System.Windows.Forms.MessageBox.Show("Update Company Successfully...", "Success",
-                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
-        }
-
-        private void refreshBtn2_Click(object sender, EventArgs e)
-        {
+            System.Windows.Forms.MessageBox.Show("Update Company Successfully...", "Success",
+                (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+            cleanInputs();
             loadCompanyTable();
         }
 
@@ -359,41 +336,10 @@ namespace Super_Market.pages.admin
                 }
             }
 
-
-
-
             System.Windows.Forms.MessageBox.Show("Delete Company Successfully...", "Success",
                 (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
-        }
-
-        private void refreshBtn3_Click(object sender, EventArgs e)
-        {
+            cleanInputs();
             loadCompanyTable();
-        }
-
-        private void updateCompanyIdInput_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void updateCompanyNameInput_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void updateCategorycomboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void updateCountryComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            addCountryComboBox.SelectedItem = countries[0];
-        }
-
-        private void addCountryComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            addCountryComboBox.SelectedItem = countries[0] ;
         }
     }
 }

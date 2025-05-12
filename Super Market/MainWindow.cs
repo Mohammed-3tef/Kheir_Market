@@ -80,7 +80,7 @@ namespace Super_Market
             //
 
             System.Windows.Forms.MessageBox.Show("Log In Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
-            switch (isAdmin){
+            switch (!isAdmin){
                 case true:
                     AdminMenuPage adminMenuPage = new AdminMenuPage(this);
                     adminMenuPage.Show();

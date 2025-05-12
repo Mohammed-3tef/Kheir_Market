@@ -34,14 +34,12 @@
             this.updatePage = new System.Windows.Forms.TabPage();
             this.searchBtn = new System.Windows.Forms.Button();
             this.updateBtn = new System.Windows.Forms.Button();
-            this.refreshBtn1 = new System.Windows.Forms.Button();
             this.updateCustomerIdLabel = new System.Windows.Forms.Label();
             this.updateCustomerIdInput = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.deletePage = new System.Windows.Forms.TabPage();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.refreshBtn2 = new System.Windows.Forms.Button();
             this.deleteCustomerIdLabel = new System.Windows.Forms.Label();
             this.deleteCustomerIdInput = new System.Windows.Forms.TextBox();
             this.menuBtn = new System.Windows.Forms.Button();
@@ -77,7 +75,6 @@
             // 
             this.updatePage.Controls.Add(this.searchBtn);
             this.updatePage.Controls.Add(this.updateBtn);
-            this.updatePage.Controls.Add(this.refreshBtn1);
             this.updatePage.Controls.Add(this.updateCustomerIdLabel);
             this.updatePage.Controls.Add(this.updateCustomerIdInput);
             this.updatePage.Controls.Add(this.dataGridView2);
@@ -106,25 +103,13 @@
             this.updateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.updateBtn.Enabled = false;
             this.updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateBtn.Location = new System.Drawing.Point(281, 416);
+            this.updateBtn.Location = new System.Drawing.Point(56, 416);
             this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(217, 61);
+            this.updateBtn.Size = new System.Drawing.Size(442, 61);
             this.updateBtn.TabIndex = 24;
             this.updateBtn.Text = "Update Customer";
             this.updateBtn.UseVisualStyleBackColor = true;
             this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
-            // 
-            // refreshBtn1
-            // 
-            this.refreshBtn1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.refreshBtn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshBtn1.Location = new System.Drawing.Point(56, 416);
-            this.refreshBtn1.Name = "refreshBtn1";
-            this.refreshBtn1.Size = new System.Drawing.Size(217, 61);
-            this.refreshBtn1.TabIndex = 23;
-            this.refreshBtn1.Text = "Refresh Table";
-            this.refreshBtn1.UseVisualStyleBackColor = true;
-            this.refreshBtn1.Click += new System.EventHandler(this.refreshBtn1_Click);
             // 
             // updateCustomerIdLabel
             // 
@@ -163,7 +148,6 @@
             // 
             this.deletePage.Controls.Add(this.deleteBtn);
             this.deletePage.Controls.Add(this.dataGridView1);
-            this.deletePage.Controls.Add(this.refreshBtn2);
             this.deletePage.Controls.Add(this.deleteCustomerIdLabel);
             this.deletePage.Controls.Add(this.deleteCustomerIdInput);
             this.deletePage.Location = new System.Drawing.Point(4, 25);
@@ -178,9 +162,9 @@
             // 
             this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteBtn.Location = new System.Drawing.Point(291, 296);
+            this.deleteBtn.Location = new System.Drawing.Point(68, 296);
             this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(217, 61);
+            this.deleteBtn.Size = new System.Drawing.Size(440, 61);
             this.deleteBtn.TabIndex = 20;
             this.deleteBtn.Text = "Delete Customer";
             this.deleteBtn.UseVisualStyleBackColor = true;
@@ -199,23 +183,11 @@
             this.dataGridView1.Size = new System.Drawing.Size(878, 595);
             this.dataGridView1.TabIndex = 0;
             // 
-            // refreshBtn2
-            // 
-            this.refreshBtn2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.refreshBtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshBtn2.Location = new System.Drawing.Point(68, 296);
-            this.refreshBtn2.Name = "refreshBtn2";
-            this.refreshBtn2.Size = new System.Drawing.Size(217, 61);
-            this.refreshBtn2.TabIndex = 19;
-            this.refreshBtn2.Text = "Refresh Table";
-            this.refreshBtn2.UseVisualStyleBackColor = true;
-            this.refreshBtn2.Click += new System.EventHandler(this.refreshBtn2_Click);
-            // 
             // deleteCustomerIdLabel
             // 
             this.deleteCustomerIdLabel.AutoSize = true;
             this.deleteCustomerIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteCustomerIdLabel.Location = new System.Drawing.Point(63, 71);
+            this.deleteCustomerIdLabel.Location = new System.Drawing.Point(63, 153);
             this.deleteCustomerIdLabel.Name = "deleteCustomerIdLabel";
             this.deleteCustomerIdLabel.Size = new System.Drawing.Size(164, 29);
             this.deleteCustomerIdLabel.TabIndex = 17;
@@ -225,7 +197,7 @@
             // 
             this.deleteCustomerIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.deleteCustomerIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteCustomerIdInput.Location = new System.Drawing.Point(68, 103);
+            this.deleteCustomerIdInput.Location = new System.Drawing.Point(68, 185);
             this.deleteCustomerIdInput.Name = "deleteCustomerIdInput";
             this.deleteCustomerIdInput.Size = new System.Drawing.Size(442, 30);
             this.deleteCustomerIdInput.TabIndex = 18;
@@ -278,11 +250,9 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button deleteBtn;
-        private System.Windows.Forms.Button refreshBtn2;
         private System.Windows.Forms.Label deleteCustomerIdLabel;
         private System.Windows.Forms.TextBox deleteCustomerIdInput;
         private System.Windows.Forms.Button updateBtn;
-        private System.Windows.Forms.Button refreshBtn1;
         private System.Windows.Forms.Label updateCustomerIdLabel;
         private System.Windows.Forms.TextBox updateCustomerIdInput;
         private System.Windows.Forms.Button searchBtn;

@@ -59,15 +59,6 @@ namespace Super_Market.pages
             this.updateBtn.Enabled = true;
         }
 
-        private void refreshBtn1_Click(object sender, EventArgs e)
-        {
-            // WRITE YOUR REFRESH BTN1 LOGIC HERE
-
-
-
-            //
-        }
-
         private void updateBtn_Click(object sender, EventArgs e)
         {
             // WRITE YOUR UPDATE LOGIC HERE
@@ -94,15 +85,6 @@ namespace Super_Market.pages
             //
 
             System.Windows.Forms.MessageBox.Show("Delete Customer Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
-        }
-
-        private void refreshBtn2_Click(object sender, EventArgs e)
-        {
-            // WRITE THE SAME YOUR REFRESH BTN1 LOGIC HERE
-
-
-
-            //
         }
     }
 }

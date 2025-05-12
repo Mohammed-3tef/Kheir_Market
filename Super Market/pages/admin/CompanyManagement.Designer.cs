@@ -30,18 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CompanyManagement));
-            this.cATEGORYTableAdapter = new Super_Market.Super_Market_DataSetTableAdapters.CATEGORYTableAdapter();
             this.menuBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
-            this.refreshBtn3 = new System.Windows.Forms.Button();
             this.deleteCompanyIdInput = new System.Windows.Forms.TextBox();
             this.deleteCompanyIdLabel = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.deletePage = new System.Windows.Forms.TabPage();
             this.updateCompanyCategoryLabel = new System.Windows.Forms.Label();
             this.updateCategorycomboBox = new System.Windows.Forms.ComboBox();
-            this.cATEGORYBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.super_Market_DataSet = new Super_Market.Super_Market_DataSet();
             this.updateCompanyIdInput = new System.Windows.Forms.TextBox();
             this.updateCompanyIdLabel = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -52,7 +48,6 @@
             this.updateCompanyNameInput = new System.Windows.Forms.TextBox();
             this.updateCompanyNameLabel = new System.Windows.Forms.Label();
             this.updateBtn = new System.Windows.Forms.Button();
-            this.refreshBtn2 = new System.Windows.Forms.Button();
             this.CompanyManagementTitle = new System.Windows.Forms.Label();
             this.addCompanyCategoryLabel = new System.Windows.Forms.Label();
             this.addPage = new System.Windows.Forms.TabPage();
@@ -60,27 +55,25 @@
             this.addCountryComboBox = new System.Windows.Forms.ComboBox();
             this.addCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.addBtn = new System.Windows.Forms.Button();
-            this.refreshBtn1 = new System.Windows.Forms.Button();
             this.addCompanyNameInput = new System.Windows.Forms.TextBox();
             this.addCompanyIdInput = new System.Windows.Forms.TextBox();
             this.addCompanyNameLabel = new System.Windows.Forms.Label();
             this.addCompanyIdLabel = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.TabControl = new System.Windows.Forms.TabControl();
+            this.super_Market_DataSet1 = new Super_Market.Super_Market_DataSet();
+            this.cATEGORYBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cATEGORYTableAdapter1 = new Super_Market.Super_Market_DataSetTableAdapters.CATEGORYTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.deletePage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.updatePage.SuspendLayout();
             this.addPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.TabControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cATEGORYTableAdapter
-            // 
-            this.cATEGORYTableAdapter.ClearBeforeFill = true;
             // 
             // menuBtn
             // 
@@ -98,31 +91,19 @@
             // 
             this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteBtn.Location = new System.Drawing.Point(276, 370);
+            this.deleteBtn.Location = new System.Drawing.Point(53, 336);
             this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(217, 61);
+            this.deleteBtn.Size = new System.Drawing.Size(442, 61);
             this.deleteBtn.TabIndex = 7;
             this.deleteBtn.Text = "Delete Company";
             this.deleteBtn.UseVisualStyleBackColor = true;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
-            // refreshBtn3
-            // 
-            this.refreshBtn3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.refreshBtn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshBtn3.Location = new System.Drawing.Point(53, 370);
-            this.refreshBtn3.Name = "refreshBtn3";
-            this.refreshBtn3.Size = new System.Drawing.Size(217, 61);
-            this.refreshBtn3.TabIndex = 6;
-            this.refreshBtn3.Text = "Refresh Table";
-            this.refreshBtn3.UseVisualStyleBackColor = true;
-            this.refreshBtn3.Click += new System.EventHandler(this.refreshBtn3_Click);
-            // 
             // deleteCompanyIdInput
             // 
             this.deleteCompanyIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.deleteCompanyIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteCompanyIdInput.Location = new System.Drawing.Point(53, 177);
+            this.deleteCompanyIdInput.Location = new System.Drawing.Point(53, 229);
             this.deleteCompanyIdInput.Name = "deleteCompanyIdInput";
             this.deleteCompanyIdInput.Size = new System.Drawing.Size(442, 30);
             this.deleteCompanyIdInput.TabIndex = 5;
@@ -131,7 +112,7 @@
             // 
             this.deleteCompanyIdLabel.AutoSize = true;
             this.deleteCompanyIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteCompanyIdLabel.Location = new System.Drawing.Point(48, 145);
+            this.deleteCompanyIdLabel.Location = new System.Drawing.Point(48, 197);
             this.deleteCompanyIdLabel.Name = "deleteCompanyIdLabel";
             this.deleteCompanyIdLabel.Size = new System.Drawing.Size(161, 29);
             this.deleteCompanyIdLabel.TabIndex = 4;
@@ -153,7 +134,6 @@
             // deletePage
             // 
             this.deletePage.Controls.Add(this.deleteBtn);
-            this.deletePage.Controls.Add(this.refreshBtn3);
             this.deletePage.Controls.Add(this.deleteCompanyIdInput);
             this.deletePage.Controls.Add(this.deleteCompanyIdLabel);
             this.deletePage.Controls.Add(this.dataGridView3);
@@ -178,8 +158,6 @@
             // updateCategorycomboBox
             // 
             this.updateCategorycomboBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.updateCategorycomboBox.DataSource = this.cATEGORYBindingSource;
-            this.updateCategorycomboBox.DisplayMember = "NAME";
             this.updateCategorycomboBox.DropDownHeight = 200;
             this.updateCategorycomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.updateCategorycomboBox.Enabled = false;
@@ -192,16 +170,6 @@
             this.updateCategorycomboBox.Size = new System.Drawing.Size(440, 33);
             this.updateCategorycomboBox.TabIndex = 27;
             this.updateCategorycomboBox.ValueMember = "CID";
-            // 
-            // cATEGORYBindingSource
-            // 
-            this.cATEGORYBindingSource.DataMember = "CATEGORY";
-            this.cATEGORYBindingSource.DataSource = this.super_Market_DataSet;
-            // 
-            // super_Market_DataSet
-            // 
-            this.super_Market_DataSet.DataSetName = "Super_Market_DataSet";
-            this.super_Market_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // updateCompanyIdInput
             // 
@@ -245,7 +213,6 @@
             this.updatePage.Controls.Add(this.updateCompanyNameInput);
             this.updatePage.Controls.Add(this.updateCompanyNameLabel);
             this.updatePage.Controls.Add(this.updateBtn);
-            this.updatePage.Controls.Add(this.refreshBtn2);
             this.updatePage.Controls.Add(this.updateCompanyIdInput);
             this.updatePage.Controls.Add(this.updateCompanyIdLabel);
             this.updatePage.Controls.Add(this.dataGridView2);
@@ -319,25 +286,13 @@
             this.updateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.updateBtn.Enabled = false;
             this.updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateBtn.Location = new System.Drawing.Point(283, 482);
+            this.updateBtn.Location = new System.Drawing.Point(58, 482);
             this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(217, 61);
+            this.updateBtn.Size = new System.Drawing.Size(442, 61);
             this.updateBtn.TabIndex = 7;
             this.updateBtn.Text = "Update Company";
             this.updateBtn.UseVisualStyleBackColor = true;
             this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
-            // 
-            // refreshBtn2
-            // 
-            this.refreshBtn2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.refreshBtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshBtn2.Location = new System.Drawing.Point(58, 482);
-            this.refreshBtn2.Name = "refreshBtn2";
-            this.refreshBtn2.Size = new System.Drawing.Size(217, 61);
-            this.refreshBtn2.TabIndex = 6;
-            this.refreshBtn2.Text = "Refresh Table";
-            this.refreshBtn2.UseVisualStyleBackColor = true;
-            this.refreshBtn2.Click += new System.EventHandler(this.refreshBtn2_Click);
             // 
             // CompanyManagementTitle
             // 
@@ -367,7 +322,6 @@
             this.addPage.Controls.Add(this.addCompanyCategoryLabel);
             this.addPage.Controls.Add(this.addCategoryComboBox);
             this.addPage.Controls.Add(this.addBtn);
-            this.addPage.Controls.Add(this.refreshBtn1);
             this.addPage.Controls.Add(this.addCompanyNameInput);
             this.addPage.Controls.Add(this.addCompanyIdInput);
             this.addPage.Controls.Add(this.addCompanyNameLabel);
@@ -427,25 +381,13 @@
             // 
             this.addBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addBtn.Location = new System.Drawing.Point(282, 475);
+            this.addBtn.Location = new System.Drawing.Point(57, 475);
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(217, 61);
+            this.addBtn.Size = new System.Drawing.Size(442, 61);
             this.addBtn.TabIndex = 6;
             this.addBtn.Text = "Add Company";
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
-            // 
-            // refreshBtn1
-            // 
-            this.refreshBtn1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.refreshBtn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshBtn1.Location = new System.Drawing.Point(57, 475);
-            this.refreshBtn1.Name = "refreshBtn1";
-            this.refreshBtn1.Size = new System.Drawing.Size(219, 61);
-            this.refreshBtn1.TabIndex = 5;
-            this.refreshBtn1.Text = "Refresh Table";
-            this.refreshBtn1.UseVisualStyleBackColor = true;
-            this.refreshBtn1.Click += new System.EventHandler(this.refreshBtn1_Click);
             // 
             // addCompanyNameInput
             // 
@@ -509,6 +451,20 @@
             this.TabControl.Size = new System.Drawing.Size(1456, 650);
             this.TabControl.TabIndex = 27;
             // 
+            // super_Market_DataSet1
+            // 
+            this.super_Market_DataSet1.DataSetName = "Super_Market_DataSet";
+            this.super_Market_DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cATEGORYBindingSource
+            // 
+            this.cATEGORYBindingSource.DataMember = "CATEGORY";
+            this.cATEGORYBindingSource.DataSource = this.super_Market_DataSet1;
+            // 
+            // cATEGORYTableAdapter1
+            // 
+            this.cATEGORYTableAdapter1.ClearBeforeFill = true;
+            // 
             // CompanyManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -526,8 +482,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.deletePage.ResumeLayout(false);
             this.deletePage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.updatePage.ResumeLayout(false);
             this.updatePage.PerformLayout();
@@ -535,6 +489,8 @@
             this.addPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.TabControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -545,14 +501,12 @@
         private Super_Market_DataSetTableAdapters.CATEGORYTableAdapter cATEGORYTableAdapter;
         private System.Windows.Forms.Button menuBtn;
         private System.Windows.Forms.Button deleteBtn;
-        private System.Windows.Forms.Button refreshBtn3;
         private System.Windows.Forms.TextBox deleteCompanyIdInput;
         private System.Windows.Forms.Label deleteCompanyIdLabel;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.TabPage deletePage;
         private System.Windows.Forms.Label updateCompanyCategoryLabel;
         private System.Windows.Forms.ComboBox updateCategorycomboBox;
-        private System.Windows.Forms.BindingSource cATEGORYBindingSource;
         private Super_Market_DataSet super_Market_DataSet;
         private System.Windows.Forms.TextBox updateCompanyIdInput;
         private System.Windows.Forms.Label updateCompanyIdLabel;
@@ -562,13 +516,11 @@
         private System.Windows.Forms.TextBox updateCompanyNameInput;
         private System.Windows.Forms.Label updateCompanyNameLabel;
         private System.Windows.Forms.Button updateBtn;
-        private System.Windows.Forms.Button refreshBtn2;
         private System.Windows.Forms.Label CompanyManagementTitle;
         private System.Windows.Forms.Label addCompanyCategoryLabel;
         private System.Windows.Forms.TabPage addPage;
         private System.Windows.Forms.ComboBox addCategoryComboBox;
         private System.Windows.Forms.Button addBtn;
-        private System.Windows.Forms.Button refreshBtn1;
         private System.Windows.Forms.TextBox addCompanyNameInput;
         private System.Windows.Forms.TextBox addCompanyIdInput;
         private System.Windows.Forms.Label addCompanyNameLabel;
@@ -579,5 +531,8 @@
         private System.Windows.Forms.ComboBox addCountryComboBox;
         private System.Windows.Forms.Label updateCountryLabel;
         private System.Windows.Forms.ComboBox updateCountryComboBox;
+        private Super_Market_DataSet super_Market_DataSet1;
+        private System.Windows.Forms.BindingSource cATEGORYBindingSource;
+        private Super_Market_DataSetTableAdapters.CATEGORYTableAdapter cATEGORYTableAdapter1;
     }
 }

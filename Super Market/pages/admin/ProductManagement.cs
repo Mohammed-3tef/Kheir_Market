@@ -35,13 +35,6 @@ namespace Super_Market.pages
 
         private void ProductManagement_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'super_Market_DataSet.COMPANY' table. You can move, or remove it, as needed.
-            this.cOMPANYTableAdapter.Fill(this.super_Market_DataSet.COMPANY);
-            // TODO: This line of code loads data into the 'super_Market_DataSet.DEPARTMENT' table. You can move, or remove it, as needed.
-            this.dEPARTMENTTableAdapter.Fill(this.super_Market_DataSet.DEPARTMENT);
-            // TODO: This line of code loads data into the 'super_Market_DataSet.CATEGORY' table. You can move, or remove it, as needed.
-            this.cATEGORYTableAdapter.Fill(this.super_Market_DataSet.CATEGORY);
-            
             string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
             string query = @"
                 SELECT 
@@ -309,28 +302,13 @@ namespace Super_Market.pages
                     insertCmd.ExecuteNonQuery();
                 }
 
-                
-
                 clear_Inputs();
-
                 System.Windows.Forms.MessageBox.Show("Add Product Successfully...", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadProductData();
             }
         }
 
-        private void refreshBtn1_Click(object sender, EventArgs e)
-        {
-            LoadProductData();
-        }
-
-
-
-
         // --------------------------------------- UPDATE PRODUCT
-
-        private void refreshBtn2_Click(object sender, EventArgs e)
-        {
-            LoadProductData();
-        }
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
@@ -452,15 +430,11 @@ namespace Super_Market.pages
 
             System.Windows.Forms.MessageBox.Show("Update Product Successfully...", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             clear_Inputs();
+            LoadProductData();
         }
 
 
         // --------------------------------------- DELETE PRODUCT
-
-        private void refreshBtn3_Click(object sender, EventArgs e)
-        {
-            LoadProductData();
-        }
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
@@ -510,7 +484,7 @@ namespace Super_Market.pages
 
             System.Windows.Forms.MessageBox.Show("Delete Product Successfully...", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             clear_Inputs();
-      
+            LoadProductData();
         }
 
     }
