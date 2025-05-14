@@ -110,6 +110,7 @@
             this.passwordInput.Name = "passwordInput";
             this.passwordInput.Size = new System.Drawing.Size(519, 34);
             this.passwordInput.TabIndex = 6;
+            this.passwordInput.TextChanged += new System.EventHandler(this.passwordInput_TextChanged);
             // 
             // logInBtn
             // 

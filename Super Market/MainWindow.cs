@@ -71,7 +71,7 @@ namespace Super_Market
 
         private void logInBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.username) || string.IsNullOrEmpty(this.password)){
+            if (string.IsNullOrEmpty(this.usernameInput.Text) || string.IsNullOrEmpty(this.passwordInput.Text)){
                 System.Windows.Forms.MessageBox.Show("Please fill in all fields.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
                 return;
             }
@@ -97,6 +97,11 @@ namespace Super_Market
                 default:
                     return;
             }
+        }
+
+        private void passwordInput_TextChanged(object sender, EventArgs e)
+        {
+            this.passwordInput.PasswordChar = '*';
         }
     }
 }

@@ -92,5 +92,15 @@ namespace Super_Market.pages
 
             this.Close();
         }
+
+        private void passwordInput_TextChanged(object sender, EventArgs e)
+        {
+            this.passwordInput.PasswordChar = '*';
+        }
+
+        private void confirmPasswordInput_TextChanged(object sender, EventArgs e)
+        {
+            this.confirmPasswordInput.PasswordChar = '*';
+        }
     }
 }
