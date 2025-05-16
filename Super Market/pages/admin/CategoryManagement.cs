@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using Super_Market.packages.display;
 
 namespace Super_Market.pages
 {
@@ -77,8 +78,16 @@ namespace Super_Market.pages
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            if (!this.mainWindow.isValidInteger(addCategoryIdInput.Text)) { 
+            if (!Validator.IsValidInteger(addCategoryIdInput.Text)) { 
+                MessageDisplay.ShowError("Please enter a valid integer for Category ID.");
                 this.addCategoryIdInput.Focus();
+                return;
+            }
+
+            if (!Validator.IsValidName(this.addCategoryNameInput.Text))
+            {
+                MessageDisplay.ShowError("Please enter a valid name.");
+                this.addCategoryNameInput.Focus();
                 return;
             }
 
@@ -102,8 +111,7 @@ namespace Super_Market.pages
 
                     if (didCount > 0)
                     {
-                        System.Windows.Forms.MessageBox.Show("Category ID already exists.Take anthoer one", "Error",
-                            (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                        MessageDisplay.ShowWarning("Category ID already exists. Please choose another one.");
                         return;
                     }
                 }
@@ -121,7 +129,7 @@ namespace Super_Market.pages
 
             //
 
-            System.Windows.Forms.MessageBox.Show("Add Category Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+            MessageDisplay.ShowSuccess("Category added successfully.");
             LoadCategoryTable();
         }
 
@@ -129,13 +137,15 @@ namespace Super_Market.pages
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
-            if (!this.mainWindow.isValidInteger(this.updateCategoryIdInput.Text)){
+            if (!Validator.IsValidInteger(this.updateCategoryIdInput.Text)){
+                MessageDisplay.ShowError("Please enter a valid integer for Category ID.");
                 this.updateCategoryIdInput.Focus();
                 return;
             }
 
             this.categoryID = int.Parse(this.updateCategoryIdInput.Text);
             bool isFound = false;
+
             string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
             string query = "SELECT NAME FROM CATEGORY WHERE CID = @CID";
             // WRITE YOUR SEARCH CATEGORY_ID LOGIC HERE
@@ -156,7 +166,7 @@ namespace Super_Market.pages
                 }
                 else
                 {
-                    System.Windows.Forms.MessageBox.Show("Category Not Found...", "Warning", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Warning);
+                    MessageDisplay.ShowWarning("Category Not Found...");
                     updateBtn.Enabled = false;
                   
                     updateCategoryNameInput.Enabled = false;
@@ -167,8 +177,9 @@ namespace Super_Market.pages
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            if (!this.mainWindow.isValidInteger(updateCategoryIdInput.Text))
+            if (!Validator.IsValidInteger(updateCategoryIdInput.Text))
             {
+                MessageDisplay.ShowError("Please enter a valid integer for Category ID.");
                 this.updateCategoryIdInput.Focus();
                 return;
             }
@@ -177,9 +188,10 @@ namespace Super_Market.pages
             this.categoryName = updateCategoryNameInput.Text;
 
             // WRITE YOUR UPDATE CATEGORY LOGIC HERE
-            if (string.IsNullOrWhiteSpace(this.categoryName))
+            if (!Validator.IsValidName(this.categoryName))
             {
-                System.Windows.Forms.MessageBox.Show("Write your updated name", "error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                MessageDisplay.ShowError("Please enter a valid name.");
+                this.updateCategoryNameInput.Focus();
                 return;
             }
 
@@ -198,11 +210,11 @@ namespace Super_Market.pages
                 int affected = cmd.ExecuteNonQuery();
                 if (affected > 0)
                 {
-                    System.Windows.Forms.MessageBox.Show("Update Category Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                    MessageDisplay.ShowSuccess("Category updated successfully...");
                 }
                 else
                 {
-                    System.Windows.Forms.MessageBox.Show("Update failed. Category may not exist.", "error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                    MessageDisplay.ShowWarning("Update failed. Category may not exist.");
                 }
             }
 
@@ -254,8 +266,7 @@ namespace Super_Market.pages
                 
                 if (count == 0)
                 {
-                    System.Windows.Forms.MessageBox.Show("Category Not Found...", "Warning",
-                        (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Warning);
+                    MessageDisplay.ShowWarning("Category Not Found...");
                     return;
                 }
 
@@ -263,8 +274,7 @@ namespace Super_Market.pages
                 {
                     deleteCmd.Parameters.AddWithValue("@CID", categoryID);
                     deleteCmd.ExecuteNonQuery();
-                    System.Windows.Forms.MessageBox.Show("Delete Category Successfully...", "Info",
-                   (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                    MessageDisplay.ShowSuccess("Delete Category Successfully...");
                 }
             }
 

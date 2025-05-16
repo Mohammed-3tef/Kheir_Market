@@ -16,6 +16,7 @@ using System.Windows.Data;
 using System.Windows.Shapes;
 using System.Windows.Media;
 using System.Runtime.CompilerServices;
+using Super_Market.packages.display;
 
 namespace Super_Market.pages.admin
 {
@@ -129,22 +130,23 @@ namespace Super_Market.pages.admin
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            if (!this.mainWindow.isValidInteger(addCompanyIdInput.Text))
+            if (!Validator.IsValidInteger(addCompanyIdInput.Text))
             {
+                MessageDisplay.ShowError("Please enter a valid company ID.");
                 this.addCompanyIdInput.Focus();
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(addCompanyNameInput.Text))
+            if (!Validator.IsValidName(this.addCompanyNameInput.Text))
             {
-                System.Windows.Forms.MessageBox.Show("Please enter a valid company name.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                MessageDisplay.ShowError("Please enter a valid company name.");
                 this.addCompanyNameInput.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(addCategoryComboBox.Text))
             {
-                System.Windows.Forms.MessageBox.Show("Please select a valid category.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                MessageDisplay.ShowError("Please select a valid category.");
                 this.addCategoryComboBox.Focus();
                 return;
             }
@@ -179,8 +181,7 @@ namespace Super_Market.pages.admin
                 cmd.ExecuteNonQuery();
             }
 
-            System.Windows.Forms.MessageBox.Show("Add Company Successfully...", "Success",
-                (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+            MessageDisplay.ShowSuccess("Company added successfully.");
             cleanInputs();
             loadCompanyTable();
         }
@@ -190,8 +191,9 @@ namespace Super_Market.pages.admin
         private void searchBtn_Click(object sender, EventArgs e)
         {
             bool isFound = false;
-            if (!this.mainWindow.isValidInteger(updateCompanyIdInput.Text))
+            if (!Validator.IsValidInteger(updateCompanyIdInput.Text))
             {
+                MessageDisplay.ShowError("Please enter a valid company ID.");
                 this.addCompanyIdInput.Focus();
                 return;
             }
@@ -228,7 +230,7 @@ namespace Super_Market.pages.admin
 
             if (!isFound)
             {
-                System.Windows.Forms.MessageBox.Show("Company not found.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                MessageDisplay.ShowWarning("Company not found.");
                 this.updateCompanyIdInput.Focus();
                 return;
             }
@@ -236,21 +238,22 @@ namespace Super_Market.pages.admin
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            if(!this.mainWindow.isValidInteger(updateCompanyIdInput.Text)){
+            if(!Validator.IsValidInteger(updateCompanyIdInput.Text)){
+                MessageDisplay.ShowError("Please enter a valid company ID.");
                 this.updateCompanyIdInput.Focus();
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(updateCompanyNameInput.Text))
+            if (Validator.IsValidName(updateCompanyNameInput.Text))
             {
-                System.Windows.Forms.MessageBox.Show("Please enter a valid company name.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                MessageDisplay.ShowError("Please enter a valid company name.");
                 this.updateCompanyNameInput.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(updateCategorycomboBox.Text))
             {
-                System.Windows.Forms.MessageBox.Show("Please select a valid category.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                MessageDisplay.ShowError("Please select a valid category.");
                 this.updateCategorycomboBox.Focus();
                 return;
             }
@@ -289,8 +292,7 @@ namespace Super_Market.pages.admin
 
             //
 
-            System.Windows.Forms.MessageBox.Show("Update Company Successfully...", "Success",
-                (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+            MessageDisplay.ShowSuccess("Company updated successfully.");
             cleanInputs();
             loadCompanyTable();
         }
@@ -299,7 +301,8 @@ namespace Super_Market.pages.admin
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            if (!this.mainWindow.isValidInteger(deleteCompanyIdInput.Text)){
+            if (!Validator.IsValidInteger(deleteCompanyIdInput.Text)){
+                MessageDisplay.ShowError("Please enter a valid company ID.");
                 this.deleteCompanyIdInput.Focus();
                 return;
             }
@@ -322,8 +325,7 @@ namespace Super_Market.pages.admin
 
                     if (count == 0)
                     {
-                        System.Windows.Forms.MessageBox.Show("Company ID not found.", "Error",
-                            (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                        MessageDisplay.ShowWarning("Company ID not found.");
                         this.deleteCompanyIdInput.Focus();
                         return;
                     }
@@ -336,8 +338,7 @@ namespace Super_Market.pages.admin
                 }
             }
 
-            System.Windows.Forms.MessageBox.Show("Delete Company Successfully...", "Success",
-                (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+            MessageDisplay.ShowSuccess("Company deleted successfully.");
             cleanInputs();
             loadCompanyTable();
         }

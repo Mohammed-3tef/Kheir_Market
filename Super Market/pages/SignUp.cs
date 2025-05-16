@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using Super_Market.packages.display;
 
 namespace Super_Market.pages
 {
@@ -36,37 +37,42 @@ namespace Super_Market.pages
 
         private void logInPageLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (this.mainWindow == null) this.mainWindow = new MainWindow();
             this.mainWindow.Show();
             this.Close();
         }
 
         private void signUpBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.usernameInput.Text) || string.IsNullOrEmpty(this.passwordInput.Text) || string.IsNullOrEmpty(this.confirmPasswordInput.Text) || string.IsNullOrEmpty(this.emailInput.Text) || string.IsNullOrEmpty(this.phoneInput.Text) || this.isAdmin == -1){
-                System.Windows.Forms.MessageBox.Show("Please fill in all fields.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+            if(!Validator.IsValidName(this.usernameInput.Text))
+            {
+                MessageDisplay.ShowError("Please enter a valid name.");
+                this.usernameInput.Focus();
                 return;
             }
 
-            if (!this.mainWindow.isValidEmail(this.emailInput.Text)){
-                System.Windows.Forms.MessageBox.Show("Please enter a valid email.", "Error", 
-                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+            if (!Validator.IsValidEmail(this.emailInput.Text)){
+                MessageDisplay.ShowError("Please enter a valid email.");
                 this.emailInput.Focus();
                 return;
             }
 
-            if (!this.mainWindow.isValidPhone(this.phoneInput.Text))
+            if (!Validator.IsValidPhone(this.phoneInput.Text))
             {
-                System.Windows.Forms.MessageBox.Show("Please enter a valid phone number.", "Error",
-                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                MessageDisplay.ShowError("Please enter a valid phone number.");
                 this.phoneInput.Focus();
                 return;
             }
 
-            if (this.password != this.confirmPassword){
-                System.Windows.Forms.MessageBox.Show("Password and Confirm Password do not match.", "Error", 
-                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+            if (this.password != this.confirmPassword)
+            {
+                MessageDisplay.ShowError("Password and Confirm Password do not match.");
                 this.confirmPasswordInput.Focus();
+                return;
+            }
+
+            if (this.isAdmin == -1)
+            {
+                MessageDisplay.ShowError("Please select a user type.");
                 return;
             }
 
@@ -76,20 +82,10 @@ namespace Super_Market.pages
 
             //
 
-            System.Windows.Forms.MessageBox.Show("Sign Up Successfully...", "Info", 
-                (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
-            
-            if (isAdmin == 1)
-            {
-                AdminMenuPage adminMenuPage = new AdminMenuPage(this.mainWindow);
-                adminMenuPage.Show();
-                this.Close();
-            } else {
-                CustomerMenuPage customerMenuPage = new CustomerMenuPage(this.mainWindow);
-                customerMenuPage.Show();
-                this.Close();
-            }
+            MessageDisplay.ShowSuccess("OTP Send Successfully...");
 
+            OTPVerifyPage oTPVerifyPage = new OTPVerifyPage(this.mainWindow);
+            oTPVerifyPage.Show();
             this.Close();
         }
 

@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 using Super_Market.pages;
 using System.Text.RegularExpressions;
+using Super_Market.packages.display;
 
 namespace Super_Market
 {
@@ -44,18 +45,6 @@ namespace Super_Market
 
             return true;
         }
-        
-        public bool isValidEmail(string input)
-        {
-            string pattern = "^[a-z0-9][a-z0-9._-]*@(gmail|yahoo|outlook|hotmail)\\.(com|org)$";
-            return Regex.IsMatch(input, pattern);
-        }
-        
-        public bool isValidPhone(string input)
-        {
-            string pattern = "^01[0125]\\d{8}$";
-            return Regex.IsMatch(input, pattern);
-        }
 
         public MainWindow()
         {
@@ -71,8 +60,17 @@ namespace Super_Market
 
         private void logInBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.usernameInput.Text) || string.IsNullOrEmpty(this.passwordInput.Text)){
-                System.Windows.Forms.MessageBox.Show("Please fill in all fields.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+            if (!Validator.IsValidName(this.usernameInput.Text))
+            {
+                System.Windows.Forms.MessageBox.Show("Please enter a valid username.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                this.usernameInput.Focus();
+                return;
+            }
+
+            if(!Validator.IsValidPassword(this.passwordInput.Text))
+            {
+                System.Windows.Forms.MessageBox.Show("Please enter a valid password.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                this.passwordInput.Focus();
                 return;
             }
 
@@ -82,7 +80,7 @@ namespace Super_Market
 
             //
 
-            System.Windows.Forms.MessageBox.Show("Log In Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+            MessageDisplay.ShowSuccess("Log In Successfully...");
             switch (!isAdmin){
                 case true:
                     AdminMenuPage adminMenuPage = new AdminMenuPage(this);
