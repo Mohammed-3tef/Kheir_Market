@@ -22,6 +22,8 @@ namespace Super_Market.pages
             // Attach event handlers for cascading combo boxes
             addCategoryComboBox.SelectedIndexChanged += AddCategoryComboBox_SelectedIndexChanged;
             addCompanyComboBox.SelectedIndexChanged += AddCompanyComboBox_SelectedIndexChanged;
+            this.updateCategoryComboBox.SelectedIndexChanged += updateCategoryComboBox_SelectedIndexChanged;
+
 
             // Initially disable Add button
             addBtn.Enabled = false;
@@ -37,6 +39,7 @@ namespace Super_Market.pages
         private void ProductManagement_Load(object sender, EventArgs e)
         {
             string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            LoadProductData();
 
             // Load Categories (top level)
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -216,12 +219,15 @@ namespace Super_Market.pages
             }
         }
 
+
+
         // --------------------------------------- ADD PRODUCT
         private void addBtn_Click(object sender, EventArgs e)
         {
+            
             // Validate Product ID is an integer
-            //if (!this.mainWindow.isValidInteger(this.addProductIdInput.Text))
-            //    return;
+            if (!this.mainWindow.isValidInteger(this.addProductIdInput.Text))
+                return;
 
             int productId = int.Parse(this.addProductIdInput.Text);
 
@@ -366,31 +372,49 @@ namespace Super_Market.pages
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
-            if (!Validator.IsValidInteger(this.updateProductIdInput.Text))
+            if (string.IsNullOrWhiteSpace(this.updateProductIdInput.Text) ||
+                 !Validator.IsValidInteger(this.updateProductIdInput.Text))
             {
                 MessageDisplay.ShowError("Please enter a valid product ID.");
                 this.updateProductIdInput.Focus();
                 return;
             }
+            else
+            {
+                this.productID = int.Parse(this.updateProductIdInput.Text);
+            }
 
-            this.productID = int.Parse(this.updateProductIdInput.Text);
             string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
             bool isFound = false;
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
+
+                // Fill Category ComboBox
+                string cateQuery = "SELECT CID, NAME FROM CATEGORY";
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cateQuery, conn))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    updateCategoryComboBox.DataSource = dt;
+                    updateCategoryComboBox.DisplayMember = "NAME";
+                    updateCategoryComboBox.ValueMember = "CID";
+                }
+
+                // Load product details
                 string query = @"
-                    SELECT 
-                    P.NAME, P.PRICE, S.PRODUCT_QUANTITY, 
-                    CAT.NAME AS Category, D.NAME AS Department, C.NAME AS Company
-                    FROM PRODUCT P
-                    JOIN STOCK S ON P.PID = S.PROD_ID
-                    JOIN DEPARTMENT D ON P.DID = D.DID
-                    JOIN CATEGORY CAT ON D.CID = CAT.CID
-                    JOIN COMPANY C ON P.COMPID = C.COMPID
-                    WHERE P.PID = @pid
-                ";
+                SELECT 
+                    P.PID AS ID, P.NAME AS Name,
+                    CAT.NAME AS Category, D.NAME AS Department, 
+                    C.NAME AS Company, S.PRODUCT_QUANTITY AS Quantity,
+                    P.PRICE AS Price
+                FROM PRODUCT P
+                JOIN DEPARTMENT D ON P.DID = D.DID
+                JOIN CATEGORY CAT ON D.CID = CAT.CID
+                JOIN COMPANY C ON P.COMPID = C.COMPID
+                JOIN STOCK S ON P.PID = S.PROD_ID
+                WHERE P.PID = @pid";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -401,31 +425,85 @@ namespace Super_Market.pages
                         {
                             isFound = true;
 
-                            this.updateProductNameInput.Text = reader["NAME"].ToString();
-                            this.updateProductPriceInput.Value = Convert.ToDecimal(reader["PRICE"]);
-                            this.updateProductQuantityInput.Value = Convert.ToInt32(reader["PRODUCT_QUANTITY"]);
-                            this.updateCategoryComboBox.SelectedItem = reader["Category"].ToString();
-                            this.updateDepartmentComboBox.SelectedItem = reader["Department"].ToString();
-                            this.updateCompanyComboBox.SelectedItem = reader["Company"].ToString();
+                            this.updateProductNameInput.Text = reader["Name"].ToString();
+                            this.updateProductPriceInput.Value = Convert.ToInt32(reader["Price"]);
+                            this.updateProductQuantityInput.Value = Convert.ToDecimal(reader["Quantity"]);
+                            this.updateCategoryComboBox.SelectedIndex = updateCategoryComboBox.FindStringExact(reader["Category"].ToString());
                         }
                     }
                 }
-            }
 
-            if (!isFound)
-            {
-                MessageDisplay.ShowWarning("Product Not Found...");
-                this.updateProductIdInput.Focus();
+                if (!isFound)
+                {
+                    MessageDisplay.ShowWarning("Product Not Found...");
+                    this.updateProductIdInput.Focus();
+                    return;
+                }
+
+                this.updateProductNameInput.Enabled = true;
+                this.updateProductQuantityInput.Enabled = true;
+                this.updateProductPriceInput.Enabled = true;
+                this.updateCategoryComboBox.Enabled = true;
+                this.updateDepartmentComboBox.Enabled = true;
+                this.updateCompanyComboBox.Enabled = true;
+                updateBtn.Enabled = true;
+
+                string selectedCategory = updateCategoryComboBox.Text;
+
+  
+            }
+        }
+        private void updateCategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (updateCategoryComboBox.SelectedValue == null)
                 return;
+
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            string selectedCategoryName = updateCategoryComboBox.Text; 
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                // Load departments for selected category
+                string deptQuery = @"
+                    SELECT D.NAME 
+                    FROM DEPARTMENT D
+                    JOIN CATEGORY C ON D.CID = C.CID
+                    WHERE C.NAME = @categoryName
+                ";
+
+                using (SqlCommand cmd = new SqlCommand(deptQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@categoryName", selectedCategoryName);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    updateDepartmentComboBox.DataSource = dt;
+                    updateDepartmentComboBox.DisplayMember = "NAME"; 
+                }
+
+                // Companies based on category
+                string compQuery = @"
+                    SELECT DISTINCT C.NAME
+                    FROM COMPANY C
+                    JOIN CATEGORY CAT ON C.CATE_ID = CAT.CID
+                    WHERE CAT.NAME = @categoryName
+                ";
+
+                using (SqlCommand cmd = new SqlCommand(compQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@categoryName", selectedCategoryName);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    updateCompanyComboBox.DataSource = dt;
+                    updateCompanyComboBox.DisplayMember = "NAME"; 
+                }
             }
 
-            this.updateBtn.Enabled = true;
-            this.updateProductNameInput.Enabled = true;
-            this.updateProductQuantityInput.Enabled = true;
-            this.updateProductPriceInput.Enabled = true;
-            this.updateCategoryComboBox.Enabled = true;
-            this.updateDepartmentComboBox.Enabled = true;
-            this.updateCompanyComboBox.Enabled = true;
         }
 
 
@@ -433,17 +511,25 @@ namespace Super_Market.pages
         {
             string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
             string name = this.updateProductNameInput.Text;
-            decimal price = this.updateProductPriceInput.Value;
+            decimal price = decimal.Parse(this.updateProductIdInput.Text);
             int quantity = (int)this.updateProductQuantityInput.Value;
-            string category = this.updateCategoryComboBox.SelectedItem?.ToString();
-            string department = this.updateDepartmentComboBox.SelectedItem?.ToString();
-            string company = this.updateCompanyComboBox.SelectedItem?.ToString();
+            string selectedCategory = updateCategoryComboBox.Text;
+            this.productID = int.Parse(this.updateProductIdInput.Text);
+            if (string.IsNullOrEmpty(selectedCategory))
+                return;
 
+            string department = updateDepartmentComboBox.Text;
+            string company = updateCompanyComboBox.Text;
+
+            if (string.IsNullOrEmpty(department) || string.IsNullOrEmpty(company))
+            {
+                MessageDisplay.ShowWarning("Please select Category, Department, and Company.");
+                return;
+            }
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
 
-                // Get foreign key IDs
                 int departmentId, companyId;
 
                 using (SqlCommand cmd = new SqlCommand("SELECT DID FROM DEPARTMENT WHERE NAME = @name", conn))
@@ -458,30 +544,28 @@ namespace Super_Market.pages
                     companyId = Convert.ToInt32(cmd.ExecuteScalar());
                 }
 
-                // Update PRODUCT table
-                using (SqlCommand cmd = new SqlCommand(@"
-                    UPDATE PRODUCT
-                    SET NAME = @name, PRICE = @price, DID = @did, COMPID = @compid
-                    WHERE PID = @pid", conn))
-                {
-                    cmd.Parameters.AddWithValue("@pid", this.productID);
-                    cmd.Parameters.AddWithValue("@name", name);
-                    cmd.Parameters.AddWithValue("@price", price);
-                    cmd.Parameters.AddWithValue("@did", departmentId);
-                    cmd.Parameters.AddWithValue("@compid", companyId);
-                    cmd.ExecuteNonQuery();
-                }
-
-                // Update STOCK table
                 using (SqlCommand cmd = new SqlCommand(@"
                     UPDATE STOCK
-                    SET PRODUCT_QUANTITY = @qty
-                    WHERE Prod_ID = @Prod_ID", conn))
+                    SET PRODUCT_QUANTITY = @qty , PROD_ID = @Prod_ID
+                    WHERE PROD_ID = @Prod_ID", conn))
                 {
                     cmd.Parameters.AddWithValue("@qty", quantity);
                     cmd.Parameters.AddWithValue("@Prod_ID", this.productID);
                     cmd.ExecuteNonQuery();
                 }
+                using (SqlCommand cmd = new SqlCommand(@"
+                    UPDATE PRODUCT
+                    SET NAME = @name, PRICE = @price, DID = @did, COMPID = @compid, PID = @pid
+                    WHERE PID = @pid", conn))
+                {
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@price", price);
+                    cmd.Parameters.AddWithValue("@did", departmentId);
+                    cmd.Parameters.AddWithValue("@compid", companyId);
+                    cmd.Parameters.AddWithValue("@pid", this.productID);
+                    cmd.ExecuteNonQuery();
+                }
+                
             }
 
             MessageDisplay.ShowSuccess("Product updated successfully.");
@@ -510,7 +594,7 @@ namespace Super_Market.pages
                 conn.Open();
 
                 // Step 1: Check if product exists and get its Prod_ID
-                using (SqlCommand cmd = new SqlCommand("SELECT Prod_ID FROM PRODUCT WHERE PID = @pid", conn))
+                using (SqlCommand cmd = new SqlCommand("SELECT PID FROM PRODUCT WHERE PID = @pid", conn))
                 {
                     cmd.Parameters.AddWithValue("@pid", this.productID);
                     object result = cmd.ExecuteScalar();
