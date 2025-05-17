@@ -65,6 +65,12 @@
     <Compile Include="packages\User\User.cs" />
     <Compile Include="packages\validation\Validator.cs" />
     <Compile Include="packages\otp\OTPService.cs" />
+    <Compile Include="pages\admin\AnalysisDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\admin\AnalysisDashboard.Designer.cs">
+      <DependentUpon>AnalysisDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\admin\CategoryManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="pages\admin\AnalysisDashboard.resx">
+      <DependentUpon>AnalysisDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="pages\admin\CategoryManagement.resx">
       <DependentUpon>CategoryManagement.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,6 +207,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\hide.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\show.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

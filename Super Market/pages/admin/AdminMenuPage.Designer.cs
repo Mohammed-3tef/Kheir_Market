@@ -38,13 +38,14 @@
             this.welcomePersonMsg = new System.Windows.Forms.Label();
             this.departmentBtn = new System.Windows.Forms.Button();
             this.companyBtn = new System.Windows.Forms.Button();
+            this.dashboardBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // appTitle
             // 
             this.appTitle.AutoSize = true;
             this.appTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appTitle.Location = new System.Drawing.Point(397, 125);
+            this.appTitle.Location = new System.Drawing.Point(397, 104);
             this.appTitle.Name = "appTitle";
             this.appTitle.Size = new System.Drawing.Size(729, 51);
             this.appTitle.TabIndex = 13;
@@ -55,7 +56,7 @@
             // 
             this.welcomeMsg.AutoSize = true;
             this.welcomeMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomeMsg.Location = new System.Drawing.Point(693, 96);
+            this.welcomeMsg.Location = new System.Drawing.Point(693, 75);
             this.welcomeMsg.Name = "welcomeMsg";
             this.welcomeMsg.Size = new System.Drawing.Size(163, 32);
             this.welcomeMsg.TabIndex = 12;
@@ -66,9 +67,9 @@
             // 
             this.customerBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.customerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerBtn.Location = new System.Drawing.Point(266, 342);
+            this.customerBtn.Location = new System.Drawing.Point(266, 298);
             this.customerBtn.Name = "customerBtn";
-            this.customerBtn.Size = new System.Drawing.Size(477, 116);
+            this.customerBtn.Size = new System.Drawing.Size(477, 102);
             this.customerBtn.TabIndex = 14;
             this.customerBtn.Text = "Customer Management";
             this.customerBtn.UseVisualStyleBackColor = true;
@@ -78,9 +79,9 @@
             // 
             this.productBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.productBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productBtn.Location = new System.Drawing.Point(749, 342);
+            this.productBtn.Location = new System.Drawing.Point(749, 298);
             this.productBtn.Name = "productBtn";
-            this.productBtn.Size = new System.Drawing.Size(477, 116);
+            this.productBtn.Size = new System.Drawing.Size(477, 102);
             this.productBtn.TabIndex = 15;
             this.productBtn.Text = "Product Management";
             this.productBtn.UseVisualStyleBackColor = true;
@@ -90,9 +91,9 @@
             // 
             this.logOutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.logOutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logOutBtn.Location = new System.Drawing.Point(749, 586);
+            this.logOutBtn.Location = new System.Drawing.Point(266, 622);
             this.logOutBtn.Name = "logOutBtn";
-            this.logOutBtn.Size = new System.Drawing.Size(477, 116);
+            this.logOutBtn.Size = new System.Drawing.Size(960, 102);
             this.logOutBtn.TabIndex = 16;
             this.logOutBtn.Text = "Log Out";
             this.logOutBtn.UseVisualStyleBackColor = true;
@@ -102,9 +103,9 @@
             // 
             this.categoryBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.categoryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoryBtn.Location = new System.Drawing.Point(266, 464);
+            this.categoryBtn.Location = new System.Drawing.Point(266, 406);
             this.categoryBtn.Name = "categoryBtn";
-            this.categoryBtn.Size = new System.Drawing.Size(477, 116);
+            this.categoryBtn.Size = new System.Drawing.Size(477, 102);
             this.categoryBtn.TabIndex = 17;
             this.categoryBtn.Text = "Category Management";
             this.categoryBtn.UseVisualStyleBackColor = true;
@@ -114,7 +115,7 @@
             // 
             this.welcomePersonMsg.AutoSize = true;
             this.welcomePersonMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomePersonMsg.Location = new System.Drawing.Point(587, 235);
+            this.welcomePersonMsg.Location = new System.Drawing.Point(587, 217);
             this.welcomePersonMsg.Name = "welcomePersonMsg";
             this.welcomePersonMsg.Size = new System.Drawing.Size(156, 32);
             this.welcomePersonMsg.TabIndex = 25;
@@ -125,9 +126,9 @@
             // 
             this.departmentBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.departmentBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.departmentBtn.Location = new System.Drawing.Point(749, 464);
+            this.departmentBtn.Location = new System.Drawing.Point(749, 406);
             this.departmentBtn.Name = "departmentBtn";
-            this.departmentBtn.Size = new System.Drawing.Size(477, 116);
+            this.departmentBtn.Size = new System.Drawing.Size(477, 102);
             this.departmentBtn.TabIndex = 26;
             this.departmentBtn.Text = "Department Management";
             this.departmentBtn.UseVisualStyleBackColor = true;
@@ -137,19 +138,32 @@
             // 
             this.companyBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.companyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.companyBtn.Location = new System.Drawing.Point(266, 586);
+            this.companyBtn.Location = new System.Drawing.Point(266, 514);
             this.companyBtn.Name = "companyBtn";
-            this.companyBtn.Size = new System.Drawing.Size(477, 116);
+            this.companyBtn.Size = new System.Drawing.Size(477, 102);
             this.companyBtn.TabIndex = 27;
             this.companyBtn.Text = "Company Management";
             this.companyBtn.UseVisualStyleBackColor = true;
             this.companyBtn.Click += new System.EventHandler(this.companyBtn_Click);
             // 
+            // dashboardBtn
+            // 
+            this.dashboardBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dashboardBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dashboardBtn.Location = new System.Drawing.Point(749, 514);
+            this.dashboardBtn.Name = "dashboardBtn";
+            this.dashboardBtn.Size = new System.Drawing.Size(477, 102);
+            this.dashboardBtn.TabIndex = 28;
+            this.dashboardBtn.Text = "Sales Analysis Dashboard";
+            this.dashboardBtn.UseVisualStyleBackColor = true;
+            this.dashboardBtn.Click += new System.EventHandler(this.dashboardBtn_Click);
+            // 
             // AdminMenuPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1482, 753);
+            this.ClientSize = new System.Drawing.Size(1482, 803);
+            this.Controls.Add(this.dashboardBtn);
             this.Controls.Add(this.companyBtn);
             this.Controls.Add(this.departmentBtn);
             this.Controls.Add(this.welcomePersonMsg);
@@ -160,7 +174,7 @@
             this.Controls.Add(this.appTitle);
             this.Controls.Add(this.welcomeMsg);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1500, 800);
+            this.MinimumSize = new System.Drawing.Size(1500, 850);
             this.Name = "AdminMenuPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Super Market Management System";
@@ -180,5 +194,6 @@
         private System.Windows.Forms.Label welcomePersonMsg;
         private System.Windows.Forms.Button departmentBtn;
         private System.Windows.Forms.Button companyBtn;
+        private System.Windows.Forms.Button dashboardBtn;
     }
 }

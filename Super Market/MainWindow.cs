@@ -12,6 +12,7 @@ using Super_Market.pages;
 using System.Text.RegularExpressions;
 using Super_Market.packages.display;
 using Super_Market.packages.User;
+using System.Security.Policy;
 
 
 namespace Super_Market
@@ -41,6 +42,7 @@ namespace Super_Market
         public MainWindow()
         {
             InitializeComponent();
+            this.passwordInput.PasswordChar = '*';
         }
 
         private void signUpPageLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -89,9 +91,18 @@ namespace Super_Market
             }
         }
 
-        private void passwordInput_TextChanged(object sender, EventArgs e)
+        private void showPassword_Click(object sender, EventArgs e)
         {
-            this.passwordInput.PasswordChar = '*';
+            if (this.passwordInput.PasswordChar == '*')
+            {
+                this.passwordInput.PasswordChar = '\0';
+                this.showPassword.BackgroundImage = Properties.Resources.hide;
+            }
+            else
+            {
+                this.passwordInput.PasswordChar = '*';
+                this.showPassword.BackgroundImage = Properties.Resources.show;
+            }
         }
     }
 }

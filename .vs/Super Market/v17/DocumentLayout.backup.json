@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|d:\\assignments\\intro. to database systems\\super market\\super market\\pages\\admin\\customermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|solutionrelative:super market\\pages\\admin\\customermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +14,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CustomerManagement.cs [Design]",
+              "DocumentMoniker": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\pages\\admin\\CustomerManagement.cs",
+              "RelativeDocumentMoniker": "Super Market\\pages\\admin\\CustomerManagement.cs",
+              "ToolTip": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\pages\\admin\\CustomerManagement.cs [Design]",
+              "RelativeToolTip": "Super Market\\pages\\admin\\CustomerManagement.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T14:53:07.827Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Bookmark",

@@ -39,6 +39,7 @@
             this.logInBtn = new System.Windows.Forms.Button();
             this.signUpPageLink = new System.Windows.Forms.LinkLabel();
             this.signUpLable = new System.Windows.Forms.Label();
+            this.showPassword = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // welcomeMsg
@@ -108,9 +109,8 @@
             this.passwordInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordInput.Location = new System.Drawing.Point(613, 405);
             this.passwordInput.Name = "passwordInput";
-            this.passwordInput.Size = new System.Drawing.Size(519, 34);
+            this.passwordInput.Size = new System.Drawing.Size(471, 34);
             this.passwordInput.TabIndex = 6;
-            this.passwordInput.TextChanged += new System.EventHandler(this.passwordInput_TextChanged);
             // 
             // logInBtn
             // 
@@ -148,11 +148,25 @@
             this.signUpLable.TabIndex = 9;
             this.signUpLable.Text = "Don\'t have an account? ";
             // 
+            // showPassword
+            // 
+            this.showPassword.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("showPassword.BackgroundImage")));
+            this.showPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.showPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.showPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showPassword.Location = new System.Drawing.Point(1090, 405);
+            this.showPassword.Name = "showPassword";
+            this.showPassword.Size = new System.Drawing.Size(42, 34);
+            this.showPassword.TabIndex = 10;
+            this.showPassword.UseVisualStyleBackColor = true;
+            this.showPassword.Click += new System.EventHandler(this.showPassword_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 753);
+            this.Controls.Add(this.showPassword);
             this.Controls.Add(this.signUpLable);
             this.Controls.Add(this.signUpPageLink);
             this.Controls.Add(this.logInBtn);
@@ -185,6 +199,7 @@
         private System.Windows.Forms.Button logInBtn;
         private System.Windows.Forms.LinkLabel signUpPageLink;
         private System.Windows.Forms.Label signUpLable;
+        private System.Windows.Forms.Button showPassword;
     }
 }
 

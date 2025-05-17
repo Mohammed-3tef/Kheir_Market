@@ -27,6 +27,9 @@ namespace Super_Market.pages
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+
+            this.passwordInput.PasswordChar = '*';
+            this.confirmPasswordInput.PasswordChar = '*';
         }
         private void logInPageLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -65,6 +68,13 @@ namespace Super_Market.pages
                 return;
             }
 
+            if (!Validator.IsValidPassword(this.passwordInput.Text))
+            {
+                MessageDisplay.ShowError("Password must be at least 8 characters long and contain: \nat least one uppercase letter, one lowercase letter, one digit, and one special character.");
+                this.passwordInput.Focus();
+                return;
+            }
+
             if (this.passwordInput.Text != this.confirmPasswordInput.Text)
             {
                 MessageDisplay.ShowError("Password and Confirm Password do not match.");
@@ -94,14 +104,32 @@ namespace Super_Market.pages
             this.Close();
         }
 
-        private void passwordInput_TextChanged(object sender, EventArgs e)
+        private void showPassword_Click(object sender, EventArgs e)
         {
-            this.passwordInput.PasswordChar = '*';
+            if (this.passwordInput.PasswordChar == '*')
+            {
+                this.passwordInput.PasswordChar = '\0';
+                this.showPassword.BackgroundImage = Properties.Resources.hide;
+            }
+            else
+            {
+                this.passwordInput.PasswordChar = '*';
+                this.showPassword.BackgroundImage = Properties.Resources.show;
+            }
         }
-        
-        private void confirmPasswordInput_TextChanged(object sender, EventArgs e)
+
+        private void showConfirmPassword_Click(object sender, EventArgs e)
         {
-            this.confirmPasswordInput.PasswordChar = '*';
+            if (this.confirmPasswordInput.PasswordChar == '*')
+            {
+                this.confirmPasswordInput.PasswordChar = '\0';
+                this.showConfirmPassword.BackgroundImage = Properties.Resources.hide;
+            }
+            else
+            {
+                this.confirmPasswordInput.PasswordChar = '*';
+                this.showConfirmPassword.BackgroundImage = Properties.Resources.show;
+            }
         }
     }
 }

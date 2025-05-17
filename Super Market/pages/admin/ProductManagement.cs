@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using Super_Market.packages.display;
 
 namespace Super_Market.pages
 {
@@ -226,49 +227,49 @@ namespace Super_Market.pages
 
             if (productId < 0)
             {
-                System.Windows.Forms.MessageBox.Show("Product ID must be a positive integer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageDisplay.ShowError("Product ID must be a positive integer.");
                 this.addProductIdInput.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(this.addProductNameInput.Text))
             {
-                System.Windows.Forms.MessageBox.Show("Please enter a product name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageDisplay.ShowError("Please enter a product name.");
                 this.addProductNameInput.Focus();
                 return;
             }
 
             if (this.addCategoryComboBox.SelectedIndex == -1)
             {
-                System.Windows.Forms.MessageBox.Show("Please select a category.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageDisplay.ShowError("Please select a category.");
                 this.addCategoryComboBox.Focus();
                 return;
             }
 
             if (this.addDepartmentComboBox.SelectedIndex == -1)
             {
-                System.Windows.Forms.MessageBox.Show("Please select a department.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageDisplay.ShowError("Please select a department.");
                 this.addDepartmentComboBox.Focus();
                 return;
             }
 
             if (this.addCompanyComboBox.SelectedIndex == -1)
             {
-                System.Windows.Forms.MessageBox.Show("Please select a company.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageDisplay.ShowError("Please select a company.");
                 this.addCompanyComboBox.Focus();
                 return;
             }
 
             if (this.addProductQuantityInput.Value <= 0)
             {
-                System.Windows.Forms.MessageBox.Show("Product quantity must be greater than 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageDisplay.ShowError("Product quantity must be greater than 0.");
                 this.addProductQuantityInput.Focus();
                 return;
             }
 
             if (this.addProductPriceInput.Value <= 0)
             {
-                System.Windows.Forms.MessageBox.Show("Product price must be greater than 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageDisplay.ShowError("Product price must be greater than 0.");
                 this.addProductPriceInput.Focus();
                 return;
             }
@@ -296,7 +297,7 @@ namespace Super_Market.pages
                     int count = (int)checkCmd.ExecuteScalar();
                     if (count > 0)
                     {
-                        System.Windows.Forms.MessageBox.Show("Product ID already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageDisplay.ShowError("Product ID already exists.");
                         return;
                     }
                 }
@@ -309,7 +310,7 @@ namespace Super_Market.pages
                     object deptObj = deptCmd.ExecuteScalar();
                     if (deptObj == null)
                     {
-                        System.Windows.Forms.MessageBox.Show("Selected department does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageDisplay.ShowError("Selected department does not exist.");
                         return;
                     }
                     departmentId = Convert.ToInt32(deptObj);
@@ -323,7 +324,7 @@ namespace Super_Market.pages
                     object compObj = compCmd.ExecuteScalar();
                     if (compObj == null)
                     {
-                        System.Windows.Forms.MessageBox.Show("Selected company does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageDisplay.ShowError("Selected company does not exist.");
                         return;
                     }
                     companyId = Convert.ToInt32(compObj);
@@ -356,7 +357,7 @@ namespace Super_Market.pages
 
                 clear_Inputs();
 
-                System.Windows.Forms.MessageBox.Show("Add Product Successfully...", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageDisplay.ShowSuccess("Product added successfully.");
                 LoadProductData();
             }
         }
@@ -365,8 +366,9 @@ namespace Super_Market.pages
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
-            if (!this.mainWindow.isValidInteger(this.updateProductIdInput.Text))
+            if (!Validator.IsValidInteger(this.updateProductIdInput.Text))
             {
+                MessageDisplay.ShowError("Please enter a valid product ID.");
                 this.updateProductIdInput.Focus();
                 return;
             }
@@ -412,7 +414,8 @@ namespace Super_Market.pages
 
             if (!isFound)
             {
-                System.Windows.Forms.MessageBox.Show("Product Not Found...", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageDisplay.ShowWarning("Product Not Found...");
+                this.updateProductIdInput.Focus();
                 return;
             }
 
@@ -481,7 +484,7 @@ namespace Super_Market.pages
                 }
             }
 
-            System.Windows.Forms.MessageBox.Show("Update Product Successfully...", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageDisplay.ShowSuccess("Product updated successfully.");
             clear_Inputs();
             LoadProductData();
         }
@@ -491,8 +494,9 @@ namespace Super_Market.pages
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            if (!this.mainWindow.isValidInteger(this.deleteProductIdInput.Text))
+            if (!Validator.IsValidInteger(this.deleteProductIdInput.Text))
             {
+                MessageDisplay.ShowError("Please enter a valid product ID.");
                 this.deleteProductIdInput.Focus();
                 return;
             }
@@ -513,7 +517,8 @@ namespace Super_Market.pages
 
                     if (result == null)
                     {
-                        System.Windows.Forms.MessageBox.Show("Product Not Found...", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageDisplay.ShowWarning("Product Not Found...");
+                        this.deleteProductIdInput.Focus();
                         return;
                     }
 
@@ -535,7 +540,7 @@ namespace Super_Market.pages
                 }
             }
 
-            System.Windows.Forms.MessageBox.Show("Delete Product Successfully...", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageDisplay.ShowSuccess("Product deleted successfully.");
             clear_Inputs();
             LoadProductData();
         }

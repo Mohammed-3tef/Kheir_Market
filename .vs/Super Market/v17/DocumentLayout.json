@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|d:\\assignments\\intro. to database systems\\super market\\super market\\pages\\admin\\customermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|solutionrelative:super market\\pages\\admin\\customermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|d:\\assignments\\intro. to database systems\\super market\\super market\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|solutionrelative:super market\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|d:\\assignments\\intro. to database systems\\super market\\super market\\pages\\customer\\ordermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|solutionrelative:super market\\pages\\customer\\ordermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|d:\\assignments\\intro. to database systems\\super market\\super market\\pages\\admin\\customermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|solutionrelative:super market\\pages\\admin\\customermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,41 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CustomerManagement.cs",
+              "Title": "CustomerManagement.cs [Design]",
               "DocumentMoniker": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\pages\\admin\\CustomerManagement.cs",
               "RelativeDocumentMoniker": "Super Market\\pages\\admin\\CustomerManagement.cs",
-              "ToolTip": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\pages\\admin\\CustomerManagement.cs",
-              "RelativeToolTip": "Super Market\\pages\\admin\\CustomerManagement.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAYwCQAAAAhAAAAAAAAAA==",
+              "ToolTip": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\pages\\admin\\CustomerManagement.cs [Design]",
+              "RelativeToolTip": "Super Market\\pages\\admin\\CustomerManagement.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T12:17:42.43Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "OrderManagement.cs",
-              "DocumentMoniker": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\pages\\customer\\OrderManagement.cs",
-              "RelativeDocumentMoniker": "Super Market\\pages\\customer\\OrderManagement.cs",
-              "ToolTip": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\pages\\customer\\OrderManagement.cs",
-              "RelativeToolTip": "Super Market\\pages\\customer\\OrderManagement.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHUAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T12:14:57.009Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainWindow.cs",
-              "DocumentMoniker": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\MainWindow.cs",
-              "RelativeDocumentMoniker": "Super Market\\MainWindow.cs",
-              "ToolTip": "D:\\Assignments\\Intro. to Database Systems\\Super Market\\Super Market\\MainWindow.cs",
-              "RelativeToolTip": "Super Market\\MainWindow.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABgAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T12:14:32.502Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T14:53:07.827Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Bookmark",

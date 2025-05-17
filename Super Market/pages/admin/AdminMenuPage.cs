@@ -71,5 +71,12 @@ namespace Super_Market.pages
             companyManagement.Show();
             this.Close();
         }
+
+        private void dashboardBtn_Click(object sender, EventArgs e)
+        {
+            AnalysisDashboard analysisDashboard = new AnalysisDashboard(this.mainWindow);
+            analysisDashboard.Show();
+            this.Close();
+        }
     }
 }

@@ -32,14 +32,17 @@ namespace Super_Market.pages
         }
 
         // -------------------------------------- UPDATE CUSTOMER
-        private void updateCustomerIdInput_TextChanged(object sender, EventArgs e)
-        {
-            if (!this.mainWindow.isValidInteger(this.updateCustomerIdInput.Text)) return;
-            this.customerID = int.Parse(this.updateCustomerIdInput.Text);
-        }
-        
         private void updateBtn_Click(object sender, EventArgs e)
         {
+            if (!Validator.IsValidInteger(this.updateIdInput.Text))
+            {
+                MessageDisplay.ShowError("Please enter a valid ID !!");
+                this.updateIdInput.Focus();
+                return;
+            }
+
+            this.customerID = int.Parse(this.updateIdInput.Text);
+
             // WRITE YOUR UPDATE LOGIC HERE
 
 
@@ -47,37 +50,49 @@ namespace Super_Market.pages
             //
         }
         
-        // -------------------------------------- SEARCH CUSTOMER
         private void searchBtn_Click(object sender, EventArgs e)
         {
-            // WRITE YOUR SEARCH CUSTOMER_ID LOGIC HERE
-            this.customerID = int.Parse(this.deleteCustomerIdInput.Text);
-            User user = this.mainWindow.users.getUserByID(this.customerID);
-            if (user == null)
+            if (!Validator.IsValidInteger(this.updateIdInput.Text))
             {
-                MessageDisplay.ShowError("User doesn't Exist !!");
+                MessageDisplay.ShowError("Please enter a valid ID !!");
+                this.updateIdInput.Focus();
                 return;
             }
+
+            this.customerID = int.Parse(this.deleteCustomerIdInput.Text);
+            User user = this.mainWindow.users.getUserByID(this.customerID);
+
+            if (user == null){
+                MessageDisplay.ShowError("User doesn't Exist !!");
+                this.updateIdInput.Focus();
+                return;
+            }
+
             // Print For User Data Ya Atef
 
             this.updateBtn.Enabled = true;
         }
+
         // -------------------------------------- DELETE CUSTOMER
+        
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-
             if (!Validator.IsValidInteger(this.deleteCustomerIdInput.Text))
             {
-                 MessageDisplay.ShowError("Please enter a valid ID !!");
+                MessageDisplay.ShowError("Please enter a valid ID !!");
+                this.deleteCustomerIdInput.Focus();
                 return;
             }
+
             this.customerID = int.Parse(this.deleteCustomerIdInput.Text);
             User user = this.mainWindow.users.getUserByID(this.customerID);
-            if (user == null)
-            {
+
+            if (user == null){
                 MessageDisplay.ShowError("User doesn't Exist !!");
+                this.deleteCustomerIdInput.Focus();
                 return;
             }
+
             this.mainWindow.users.deleteUser(user);
             MessageDisplay.ShowSuccess("Delete Customer Successfully...");
         }

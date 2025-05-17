@@ -262,11 +262,13 @@ namespace Super_Market.pages.admin
                     MessageDisplay.ShowError("Update Failed. Department may not exist.");
                 }
             }
+
             updateDepartmentNameInput.Clear();
             updateCategorycomboBox.SelectedIndex = -1;
             updateBtn.Enabled = false;
             updateDepartmentNameInput.Enabled = false;
             updateCategorycomboBox.Enabled = false;
+
             clear_Inputs();
             LoadDepartmentTable();
         }
@@ -349,6 +351,5 @@ namespace Super_Market.pages.admin
             clear_Inputs();
             LoadDepartmentTable();
         }
-
     }
 }
