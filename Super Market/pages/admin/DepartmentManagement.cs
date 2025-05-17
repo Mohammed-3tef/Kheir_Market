@@ -96,7 +96,7 @@ namespace Super_Market.pages.admin
                 return;
             }
 
-            if (!Validator.IsValidName(addDepartmentNameInput.Text) == false)
+            if (!Validator.IsValidName(addDepartmentNameInput.Text))
             {
                 MessageDisplay.ShowError("Please enter a valid department name.");
                 this.addDepartmentNameInput.Focus();
@@ -307,17 +307,6 @@ namespace Super_Market.pages.admin
                 {
                     try
                     {
-                        // 1. Delete STOCK entries related to PRODUCTS in this department
-                        string deleteStockQuery = @"
-                            DELETE S
-                            FROM STOCK S
-                            INNER JOIN PRODUCT P ON S.Prod_ID = P.PID
-                            WHERE P.DID = @DID";
-                        using (SqlCommand deleteStockCmd = new SqlCommand(deleteStockQuery, conn, transaction))
-                        {
-                            deleteStockCmd.Parameters.AddWithValue("@DID", departmentId);
-                            deleteStockCmd.ExecuteNonQuery();
-                        }
 
                         // 2. Delete PRODUCTS related to this department
                         string deleteProductQuery = "DELETE FROM PRODUCT WHERE DID = @DID";
@@ -326,7 +315,17 @@ namespace Super_Market.pages.admin
                             deleteProductCmd.Parameters.AddWithValue("@DID", departmentId);
                             deleteProductCmd.ExecuteNonQuery();
                         }
-
+                        // 1. Delete STOCK entries related to PRODUCTS in this department
+                        string deleteStockQuery = @"
+                            DELETE S
+                            FROM STOCK S
+                            INNER JOIN PRODUCT P ON S.PROD_ID = P.PID
+                            WHERE P.DID = @DID";
+                        using (SqlCommand deleteStockCmd = new SqlCommand(deleteStockQuery, conn, transaction))
+                        {
+                            deleteStockCmd.Parameters.AddWithValue("@DID", departmentId);
+                            deleteStockCmd.ExecuteNonQuery();
+                        }
                         // 3. Finally, delete the DEPARTMENT
                         string deleteDepartmentQuery = "DELETE FROM DEPARTMENT WHERE DID = @DID";
                         using (SqlCommand deleteDepartmentCmd = new SqlCommand(deleteDepartmentQuery, conn, transaction))
