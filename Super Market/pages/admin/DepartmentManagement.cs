@@ -266,47 +266,84 @@ namespace Super_Market.pages.admin
         // --------------------------------------- DELETE Department
 
         private void deleteBtn_Click(object sender, EventArgs e)
+{
+    if (!this.mainWindow.isValidInteger(deleteDepartmentIdInput.Text))
+    {
+        this.deleteDepartmentIdInput.Focus();
+        return;
+    }
+
+    int departmentId = int.Parse(deleteDepartmentIdInput.Text);
+    string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+
+    using (SqlConnection conn = new SqlConnection(connectionString))
+    {
+        conn.Open();
+
+        // Check if department exists
+        string checkQuery = "SELECT COUNT(*) FROM DEPARTMENT WHERE DID = @DID";
+        using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
         {
-            if (!this.mainWindow.isValidInteger(deleteDepartmentIdInput.Text))
+            checkCmd.Parameters.AddWithValue("@DID", departmentId);
+            int count = (int)checkCmd.ExecuteScalar();
+            if (count == 0)
             {
-                this.deleteDepartmentIdInput.Focus();
+                System.Windows.Forms.MessageBox.Show("Department Not Found...", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            int departmentId = int.Parse(deleteDepartmentIdInput.Text);
-            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
-
-            // First, check if the department exists
-            string checkQuery = "SELECT COUNT(*) FROM DEPARTMENT WHERE DID = @DID";
-            string deleteQuery = "DELETE FROM DEPARTMENT WHERE DID = @DID";
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
-            {
-                checkCmd.Parameters.AddWithValue("@DID", departmentId);
-                conn.Open();
-
-                int count = (int)checkCmd.ExecuteScalar();
-
-                if (count == 0)
-                {
-                    System.Windows.Forms.MessageBox.Show("Department Not Found...", "Warning",
-                        (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Warning);
-                    return;
-                }
-
-                // Proceed with delete
-                using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, conn))
-                {
-                    deleteCmd.Parameters.AddWithValue("@DID", departmentId);
-                    deleteCmd.ExecuteNonQuery();
-                }
-
-                System.Windows.Forms.MessageBox.Show("Delete Department Successfully...", "Info",
-                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
-            }
-            clear_Inputs();
-            LoadDepartmentTable();
         }
+
+        // Start a transaction to ensure all deletes happen atomically
+        using (SqlTransaction transaction = conn.BeginTransaction())
+        {
+            try
+            {
+                // 1. Delete STOCK entries related to PRODUCTS in this department
+                string deleteStockQuery = @"
+                    DELETE S
+                    FROM STOCK S
+                    INNER JOIN PRODUCT P ON S.Prod_ID = P.PID
+                    WHERE P.DID = @DID";
+                using (SqlCommand deleteStockCmd = new SqlCommand(deleteStockQuery, conn, transaction))
+                {
+                    deleteStockCmd.Parameters.AddWithValue("@DID", departmentId);
+                    deleteStockCmd.ExecuteNonQuery();
+                }
+
+                // 2. Delete PRODUCTS related to this department
+                string deleteProductQuery = "DELETE FROM PRODUCT WHERE DID = @DID";
+                using (SqlCommand deleteProductCmd = new SqlCommand(deleteProductQuery, conn, transaction))
+                {
+                    deleteProductCmd.Parameters.AddWithValue("@DID", departmentId);
+                    deleteProductCmd.ExecuteNonQuery();
+                }
+
+                // 3. Finally, delete the DEPARTMENT
+                string deleteDepartmentQuery = "DELETE FROM DEPARTMENT WHERE DID = @DID";
+                using (SqlCommand deleteDepartmentCmd = new SqlCommand(deleteDepartmentQuery, conn, transaction))
+                {
+                    deleteDepartmentCmd.Parameters.AddWithValue("@DID", departmentId);
+                    deleteDepartmentCmd.ExecuteNonQuery();
+                }
+
+                transaction.Commit();
+
+                System.Windows.Forms.MessageBox.Show("Department and related data deleted successfully.", "Info",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                System.Windows.Forms.MessageBox.Show("Delete failed: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    }
+
+    clear_Inputs();
+    LoadDepartmentTable();
+}
+
     }
 }
