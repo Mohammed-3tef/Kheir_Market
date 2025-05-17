@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using Super_Market.packages.display;
 
 namespace Super_Market.pages.customer
 {
@@ -114,23 +115,20 @@ namespace Super_Market.pages.customer
         private void addBtn_Click(object sender, EventArgs e)
         {
             if (this.addDepartmentComboBox.SelectedValue == null) {
-                System.Windows.Forms.MessageBox.Show("Please enter a valid department.", "Error",
-                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                MessageDisplay.ShowError("Please enter a valid department.");
                 this.addDepartmentComboBox.Focus();
                 return;
             }
 
             if (this.addProductComboBox.SelectedValue == null) {
-                System.Windows.Forms.MessageBox.Show("Please enter a valid Product.", "Error",
-                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                MessageDisplay.ShowError("Please enter a valid Product.");
                 this.addProductComboBox.Focus();
                 return;
             }
 
             if (this.addQuantityInput.Value <= 0)
             {
-                System.Windows.Forms.MessageBox.Show("Please enter a valid quantity.", "Error",
-                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                MessageDisplay.ShowError("Please enter a valid quantity.");
                 this.addQuantityInput.Focus();
                 return;
             }
@@ -141,8 +139,7 @@ namespace Super_Market.pages.customer
 
             //
 
-            System.Windows.Forms.MessageBox.Show("Add Order Successfully...", "Success",
-                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+            MessageDisplay.ShowSuccess("Add Order Successfully...");
             loadTable(this.mainWindow.user.GetID());
             clearInputs();
         }
@@ -208,8 +205,7 @@ namespace Super_Market.pages.customer
         {
             if (this.addQuantityInput.Value <= 0)
             {
-                System.Windows.Forms.MessageBox.Show("Please enter a valid quantity.", "Error",
-                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                MessageDisplay.ShowError("Please enter a valid quantity.");
                 this.addQuantityInput.Focus();
                 return;
             }
@@ -220,15 +216,15 @@ namespace Super_Market.pages.customer
 
             //
 
-            System.Windows.Forms.MessageBox.Show("Update Order Successfully...", "Success",
-                (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+            MessageDisplay.ShowSuccess("Update Order Successfully...");
             loadTable(this.mainWindow.user.GetID());
             clearInputs();
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
-            if(this.mainWindow.isValidInteger(this.updateOrderIdInput.Text)) { 
+            if(Validator.IsValidInteger(this.updateOrderIdInput.Text)) {
+                MessageDisplay.ShowError("Please enter a valid Order ID.");
                 this.updateOrderIdInput.Focus();
                 return;
             }
@@ -244,8 +240,9 @@ namespace Super_Market.pages.customer
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            if (this.mainWindow.isValidInteger(this.deleteOrderIdInput.Text))
+            if (!Validator.IsValidInteger(this.deleteOrderIdInput.Text))
             {
+                MessageDisplay.ShowError("Please enter a valid Order ID.");
                 this.deleteOrderIdInput.Focus();
                 return;
             }
@@ -256,8 +253,7 @@ namespace Super_Market.pages.customer
 
             //
 
-            System.Windows.Forms.MessageBox.Show("Delete Order Successfully...", "Success",
-                (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+            MessageDisplay.ShowSuccess("Delete Order Successfully...");
             loadTable(this.mainWindow.user.GetID());
             clearInputs();
         }

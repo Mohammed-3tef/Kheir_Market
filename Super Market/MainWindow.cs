@@ -26,12 +26,12 @@ namespace Super_Market
         {
             if (string.IsNullOrWhiteSpace(input))
             {
-                System.Windows.Forms.MessageBox.Show("Please enter a valid integer.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                MessageDisplay.ShowError("Please enter a valid integer.");
                 return false;
             }
             else if (!input.All(char.IsDigit))
             {
-                System.Windows.Forms.MessageBox.Show("Please enter a valid integer.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                MessageDisplay.ShowError("Please enter a valid integer.");
                 return false;
             }
 
@@ -52,29 +52,28 @@ namespace Super_Market
 
         private void logInBtn_Click(object sender, EventArgs e)
         {
-            MessageDisplay.ShowInfo(this.usernameInput.Text);
-            MessageDisplay.ShowInfo(this.passwordInput.Text);
-
             if (!Validator.IsValidName(this.usernameInput.Text))
             {
-                System.Windows.Forms.MessageBox.Show("Please enter a valid username.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                MessageDisplay.ShowError("Please enter a valid username.");
                 this.usernameInput.Focus();
                 return;
             }
             
             if(!Validator.IsValidPassword(this.passwordInput.Text))
             {
-                System.Windows.Forms.MessageBox.Show("Please enter a valid password.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                MessageDisplay.ShowError("Password must be at least 8 characters long and contain: \nat least one uppercase letter, one lowercase letter, one digit, and one special character.");
                 this.passwordInput.Focus();
                 return;
             }
             
             tempName = this.usernameInput.Text;
             tempPassword = this.passwordInput.Text;
+
             // load user data from repository
-            user = users.getUser(this.tempName, this.tempPassword);
+            this.user = this.users.getUser(this.tempName, this.tempPassword);
             MessageDisplay.ShowSuccess("Log In Successfully...");
-            switch (user.IsAdmin()){
+
+            switch (this.user.IsAdmin()){
                 case true:
                     AdminMenuPage adminMenuPage = new AdminMenuPage(this);
                     adminMenuPage.Show();

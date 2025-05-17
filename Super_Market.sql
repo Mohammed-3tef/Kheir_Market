@@ -363,4 +363,4 @@ alter table PRODUCT
       references COMPANY (COMPID)
 go
 
-insert into [USER] Values(0,'Admin' , 'fcaicu.assignments@gmail.com' , '012457896542' , '13st Tahrir, Dokki, Giza' , 1 , '!Admin12345');
+insert into [USER] Values(0, 'Admin', 'fcaicu.assignments@gmail.com', '01234567890', '13st Tahrir, Dokki, Giza', 1, '!Admin12345');

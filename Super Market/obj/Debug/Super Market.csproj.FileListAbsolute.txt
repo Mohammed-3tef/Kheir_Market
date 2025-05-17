@@ -37,3 +37,4 @@ C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super M
 C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super Market.csproj.CoreCompileInputs.cache
 C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super Market.exe
 C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super Market.pdb
+D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.OTPVerifyPage.resources

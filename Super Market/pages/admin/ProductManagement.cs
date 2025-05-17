@@ -188,149 +188,149 @@ namespace Super_Market.pages
 
         // --------------------------------------- ADD PRODUCT
         private void addBtn_Click(object sender, EventArgs e)
-{
-    // Validate Product ID is an integer
-    if (!this.mainWindow.isValidInteger(this.addProductIdInput.Text))
-        return;
-
-    int productId = int.Parse(this.addProductIdInput.Text);
-
-    if (productId < 0)
-    {
-        System.Windows.Forms.MessageBox.Show("Product ID must be a positive integer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        this.addProductIdInput.Focus();
-        return;
-    }
-
-    if (string.IsNullOrWhiteSpace(this.addProductNameInput.Text))
-    {
-        System.Windows.Forms.MessageBox.Show("Please enter a product name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        this.addProductNameInput.Focus();
-        return;
-    }
-
-    if (this.addCategoryComboBox.SelectedIndex == -1)
-    {
-        System.Windows.Forms.MessageBox.Show("Please select a category.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        this.addCategoryComboBox.Focus();
-        return;
-    }
-
-    if (this.addDepartmentComboBox.SelectedIndex == -1)
-    {
-        System.Windows.Forms.MessageBox.Show("Please select a department.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        this.addDepartmentComboBox.Focus();
-        return;
-    }
-
-    if (this.addCompanyComboBox.SelectedIndex == -1)
-    {
-        System.Windows.Forms.MessageBox.Show("Please select a company.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        this.addCompanyComboBox.Focus();
-        return;
-    }
-
-    if (this.addProductQuantityInput.Value <= 0)
-    {
-        System.Windows.Forms.MessageBox.Show("Product quantity must be greater than 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        this.addProductQuantityInput.Focus();
-        return;
-    }
-
-    if (this.addProductPriceInput.Value <= 0)
-    {
-        System.Windows.Forms.MessageBox.Show("Product price must be greater than 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        this.addProductPriceInput.Focus();
-        return;
-    }
-
-    // Assign variables from UI inputs
-    this.productID = productId;
-    this.productName = this.addProductNameInput.Text;
-    this.productQuantity = (int)this.addProductQuantityInput.Value;
-    this.productPrice = this.addProductPriceInput.Value;
-    this.category = this.addCategoryComboBox.SelectedItem.ToString();
-    this.department = this.addDepartmentComboBox.SelectedItem.ToString();
-    this.company = this.addCompanyComboBox.SelectedItem.ToString();
-
-    string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
-
-    using (SqlConnection conn = new SqlConnection(connectionString))
-    {
-        conn.Open();
-
-        // Check if product ID already exists
-        string checkQuery = "SELECT COUNT(*) FROM PRODUCT WHERE PID = @pid";
-        using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
         {
-            checkCmd.Parameters.AddWithValue("@pid", this.productID);
-            int count = (int)checkCmd.ExecuteScalar();
-            if (count > 0)
+            // Validate Product ID is an integer
+            if (!this.mainWindow.isValidInteger(this.addProductIdInput.Text))
+                return;
+
+            int productId = int.Parse(this.addProductIdInput.Text);
+
+            if (productId < 0)
             {
-                System.Windows.Forms.MessageBox.Show("Product ID already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Windows.Forms.MessageBox.Show("Product ID must be a positive integer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.addProductIdInput.Focus();
                 return;
             }
-        }
 
-        // Get department ID
-        int departmentId;
-        using (SqlCommand deptCmd = new SqlCommand("SELECT DID FROM DEPARTMENT WHERE NAME = @name", conn))
-        {
-            deptCmd.Parameters.AddWithValue("@name", this.department);
-            object deptObj = deptCmd.ExecuteScalar();
-            if (deptObj == null)
+            if (string.IsNullOrWhiteSpace(this.addProductNameInput.Text))
             {
-                System.Windows.Forms.MessageBox.Show("Selected department does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Windows.Forms.MessageBox.Show("Please enter a product name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.addProductNameInput.Focus();
                 return;
             }
-            departmentId = Convert.ToInt32(deptObj);
-        }
 
-        // Get company ID
-        int companyId;
-        using (SqlCommand compCmd = new SqlCommand("SELECT COMPID FROM COMPANY WHERE NAME = @name", conn))
-        {
-            compCmd.Parameters.AddWithValue("@name", this.company);
-            object compObj = compCmd.ExecuteScalar();
-            if (compObj == null)
+            if (this.addCategoryComboBox.SelectedIndex == -1)
             {
-                System.Windows.Forms.MessageBox.Show("Selected company does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Windows.Forms.MessageBox.Show("Please select a category.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.addCategoryComboBox.Focus();
                 return;
             }
-            companyId = Convert.ToInt32(compObj);
-        }
 
-        // Insert into STOCK table
-        using (SqlCommand stockCmd = new SqlCommand("INSERT INTO STOCK (Prod_ID, PRODUCT_QUANTITY) VALUES (@Prod_ID, @qty)", conn))
-        {
-            stockCmd.Parameters.AddWithValue("@Prod_ID", this.productID);
-            stockCmd.Parameters.AddWithValue("@qty", this.productQuantity);
-            stockCmd.ExecuteNonQuery();
-        }
-
-        int stockId = this.productID;  
-
-        // Insert into PRODUCT table
-            using (SqlCommand insertCmd = new SqlCommand(@"
-             INSERT INTO PRODUCT (PID, DID, Prod_ID, COMPID, NAME, PRICE)
-             VALUES (@pid, @did, @Prod_ID, @compid, @name, @price)", conn))
-            { 
-                insertCmd.Parameters.AddWithValue("@pid", this.productID);
-                insertCmd.Parameters.AddWithValue("@did", departmentId);
-                insertCmd.Parameters.AddWithValue("@Prod_ID", stockId);
-                insertCmd.Parameters.AddWithValue("@compid", companyId);
-                insertCmd.Parameters.AddWithValue("@name", this.productName);
-                insertCmd.Parameters.AddWithValue("@price", this.productPrice);
-
-                insertCmd.ExecuteNonQuery();
+            if (this.addDepartmentComboBox.SelectedIndex == -1)
+            {
+                System.Windows.Forms.MessageBox.Show("Please select a department.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.addDepartmentComboBox.Focus();
+                return;
             }
 
-        clear_Inputs();
+            if (this.addCompanyComboBox.SelectedIndex == -1)
+            {
+                System.Windows.Forms.MessageBox.Show("Please select a company.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.addCompanyComboBox.Focus();
+                return;
+            }
 
-        System.Windows.Forms.MessageBox.Show("Add Product Successfully...", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        LoadProductData();
+            if (this.addProductQuantityInput.Value <= 0)
+            {
+                System.Windows.Forms.MessageBox.Show("Product quantity must be greater than 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.addProductQuantityInput.Focus();
+                return;
+            }
+
+            if (this.addProductPriceInput.Value <= 0)
+            {
+                System.Windows.Forms.MessageBox.Show("Product price must be greater than 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.addProductPriceInput.Focus();
+                return;
+            }
+
+            // Assign variables from UI inputs
+            this.productID = productId;
+            this.productName = this.addProductNameInput.Text;
+            this.productQuantity = (int)this.addProductQuantityInput.Value;
+            this.productPrice = this.addProductPriceInput.Value;
+            this.category = this.addCategoryComboBox.SelectedItem.ToString();
+            this.department = this.addDepartmentComboBox.SelectedItem.ToString();
+            this.company = this.addCompanyComboBox.SelectedItem.ToString();
+
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                // Check if product ID already exists
+                string checkQuery = "SELECT COUNT(*) FROM PRODUCT WHERE PID = @pid";
+                using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
+                {
+                    checkCmd.Parameters.AddWithValue("@pid", this.productID);
+                    int count = (int)checkCmd.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Product ID already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                // Get department ID
+                int departmentId;
+                using (SqlCommand deptCmd = new SqlCommand("SELECT DID FROM DEPARTMENT WHERE NAME = @name", conn))
+                {
+                    deptCmd.Parameters.AddWithValue("@name", this.department);
+                    object deptObj = deptCmd.ExecuteScalar();
+                    if (deptObj == null)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Selected department does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    departmentId = Convert.ToInt32(deptObj);
+                }
+
+                // Get company ID
+                int companyId;
+                using (SqlCommand compCmd = new SqlCommand("SELECT COMPID FROM COMPANY WHERE NAME = @name", conn))
+                {
+                    compCmd.Parameters.AddWithValue("@name", this.company);
+                    object compObj = compCmd.ExecuteScalar();
+                    if (compObj == null)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Selected company does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    companyId = Convert.ToInt32(compObj);
+                }
+
+                // Insert into STOCK table
+                using (SqlCommand stockCmd = new SqlCommand("INSERT INTO STOCK (Prod_ID, PRODUCT_QUANTITY) VALUES (@Prod_ID, @qty)", conn))
+                {
+                    stockCmd.Parameters.AddWithValue("@Prod_ID", this.productID);
+                    stockCmd.Parameters.AddWithValue("@qty", this.productQuantity);
+                    stockCmd.ExecuteNonQuery();
+                }
+
+                int stockId = this.productID;  
+
+                // Insert into PRODUCT table
+                using (SqlCommand insertCmd = new SqlCommand(@"
+                    INSERT INTO PRODUCT (PID, DID, Prod_ID, COMPID, NAME, PRICE)
+                    VALUES (@pid, @did, @Prod_ID, @compid, @name, @price)", conn))
+                { 
+                    insertCmd.Parameters.AddWithValue("@pid", this.productID);
+                    insertCmd.Parameters.AddWithValue("@did", departmentId);
+                    insertCmd.Parameters.AddWithValue("@Prod_ID", stockId);
+                    insertCmd.Parameters.AddWithValue("@compid", companyId);
+                    insertCmd.Parameters.AddWithValue("@name", this.productName);
+                    insertCmd.Parameters.AddWithValue("@price", this.productPrice);
+
+                    insertCmd.ExecuteNonQuery();
+                }
+
+                clear_Inputs();
+
+                System.Windows.Forms.MessageBox.Show("Add Product Successfully...", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadProductData();
+            }
         }
-    }
 
         // --------------------------------------- UPDATE PRODUCT
 

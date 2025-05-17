@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using Super_Market.packages.display;
 
 namespace Super_Market.pages.admin
 {
@@ -64,7 +65,6 @@ namespace Super_Market.pages.admin
         // --------------------------------------- CLEAR INPUTS
         private void clear_Inputs()
         {
-
             // --------------------------------------- ADD Inputs
 
             addDepartmentIdInput.Clear();
@@ -80,29 +80,36 @@ namespace Super_Market.pages.admin
             updateDepartmentNameInput.Enabled = false;
             updateCategorycomboBox.Enabled = false;
 
-
             // --------------------------------------- DELETE Inputs
 
             deleteDepartmentIdInput.Clear();
-
         }
+
         // --------------------------------------- ADD DEPARTMENT
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            if (!this.mainWindow.isValidInteger(addDepartmentIdInput.Text))
+            if (!Validator.IsValidInteger(addDepartmentIdInput.Text))
             {
+                MessageDisplay.ShowError("Please enter a valid department ID.");
                 this.addDepartmentIdInput.Focus();
                 return;
             }
 
-            if (addCategoryComboBox.SelectedValue == null || string.IsNullOrWhiteSpace(addDepartmentNameInput.Text))
+            if (!Validator.IsValidName(addDepartmentNameInput.Text) == false)
             {
-                System.Windows.Forms.MessageBox.Show("Please select a category and enter a department name.", "Error", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                MessageDisplay.ShowError("Please enter a valid department name.");
+                this.addDepartmentNameInput.Focus();
                 return;
             }
 
-      
+            if (addCategoryComboBox.SelectedValue == null)
+            {
+                MessageDisplay.ShowError("Please select a category.");
+                this.addCategoryComboBox.Focus();
+                return;
+            }
+
             this.departmentID = int.Parse(addDepartmentIdInput.Text);
             this.departmentName = addDepartmentNameInput.Text;
             int categoryId = (int)addCategoryComboBox.SelectedValue;
@@ -124,8 +131,7 @@ namespace Super_Market.pages.admin
 
                     if (didCount > 0)
                     {
-                        System.Windows.Forms.MessageBox.Show("Department ID already exists.Take anthoer one", "Error",
-                            (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                        MessageDisplay.ShowError("Department ID already exists. Please choose another one.");
                         return;
                     }
                 }
@@ -138,8 +144,7 @@ namespace Super_Market.pages.admin
 
                     if (cidCount == 0)
                     {
-                        System.Windows.Forms.MessageBox.Show("Selected category is invalid.", "Error",
-                            (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                        MessageDisplay.ShowError("Selected category is invalid.");
                         return;
                     }
                 }
@@ -152,9 +157,9 @@ namespace Super_Market.pages.admin
                     insertCmd.Parameters.AddWithValue("@NAME", this.departmentName);
                     insertCmd.ExecuteNonQuery();
                 }
+
                 clear_Inputs();
-                System.Windows.Forms.MessageBox.Show("Add Department Successfully...", "Success",
-                    (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                MessageDisplay.ShowSuccess("Department added successfully.");
                 LoadDepartmentTable();
             }
         }
@@ -163,8 +168,9 @@ namespace Super_Market.pages.admin
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
-            if (!this.mainWindow.isValidInteger(updateDepartmentIdInput.Text))
+            if (!Validator.IsValidInteger(updateDepartmentIdInput.Text))
             {
+                MessageDisplay.ShowError("Please enter a valid department ID.");
                 this.updateDepartmentIdInput.Focus();
                 return;
             }
@@ -197,12 +203,7 @@ namespace Super_Market.pages.admin
                 else
                 {
                     // Department not found
-                    System.Windows.Forms.MessageBox.Show(
-                        "Department Not Found...",
-                        "Warning",
-                        (MessageBoxButtons)MessageBoxButton.OK,
-                        (MessageBoxIcon)MessageBoxImage.Warning
-                    );
+                    MessageDisplay.ShowError("Department Not Found...");
 
                     // Optional: disable update inputs if not found
                     updateBtn.Enabled = false;
@@ -214,15 +215,24 @@ namespace Super_Market.pages.admin
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            if (!this.mainWindow.isValidInteger(updateDepartmentIdInput.Text))
+            if (!Validator.IsValidInteger(updateDepartmentIdInput.Text))
             {
+                MessageDisplay.ShowError("Please enter a valid department ID.");
                 this.updateDepartmentIdInput.Focus();
                 return;
             }
 
-            if (updateCategorycomboBox.SelectedValue == null || string.IsNullOrWhiteSpace(updateDepartmentNameInput.Text))
+            if (!Validator.IsValidName(addDepartmentNameInput.Text) == false)
             {
-                System.Windows.Forms.MessageBox.Show("Please select a category and enter a department name.");
+                MessageDisplay.ShowError("Please enter a valid department name.");
+                this.addDepartmentNameInput.Focus();
+                return;
+            }
+
+            if (addCategoryComboBox.SelectedValue == null)
+            {
+                MessageDisplay.ShowError("Please select a category.");
+                this.addCategoryComboBox.Focus();
                 return;
             }
 
@@ -245,13 +255,11 @@ namespace Super_Market.pages.admin
 
                 if (rowsAffected > 0)
                 {
-                    System.Windows.Forms.MessageBox.Show("Update Department Successfully...", "Info",
-                        (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+                    MessageDisplay.ShowSuccess("Department updated successfully.");
                 }
                 else
                 {
-                    System.Windows.Forms.MessageBox.Show("Update Failed. Department may not exist.", "Error",
-                        (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                    MessageDisplay.ShowError("Update Failed. Department may not exist.");
                 }
             }
             updateDepartmentNameInput.Clear();
@@ -266,84 +274,82 @@ namespace Super_Market.pages.admin
         // --------------------------------------- DELETE Department
 
         private void deleteBtn_Click(object sender, EventArgs e)
-{
-    if (!this.mainWindow.isValidInteger(deleteDepartmentIdInput.Text))
-    {
-        this.deleteDepartmentIdInput.Focus();
-        return;
-    }
-
-    int departmentId = int.Parse(deleteDepartmentIdInput.Text);
-    string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
-
-    using (SqlConnection conn = new SqlConnection(connectionString))
-    {
-        conn.Open();
-
-        // Check if department exists
-        string checkQuery = "SELECT COUNT(*) FROM DEPARTMENT WHERE DID = @DID";
-        using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
         {
-            checkCmd.Parameters.AddWithValue("@DID", departmentId);
-            int count = (int)checkCmd.ExecuteScalar();
-            if (count == 0)
+            if (!Validator.IsValidInteger(deleteDepartmentIdInput.Text))
             {
-                System.Windows.Forms.MessageBox.Show("Department Not Found...", "Warning",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageDisplay.ShowError("Please enter a valid department ID.");
+                this.updateDepartmentIdInput.Focus();
                 return;
             }
-        }
 
-        // Start a transaction to ensure all deletes happen atomically
-        using (SqlTransaction transaction = conn.BeginTransaction())
-        {
-            try
+            int departmentId = int.Parse(deleteDepartmentIdInput.Text);
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                // 1. Delete STOCK entries related to PRODUCTS in this department
-                string deleteStockQuery = @"
-                    DELETE S
-                    FROM STOCK S
-                    INNER JOIN PRODUCT P ON S.Prod_ID = P.PID
-                    WHERE P.DID = @DID";
-                using (SqlCommand deleteStockCmd = new SqlCommand(deleteStockQuery, conn, transaction))
+                conn.Open();
+
+                // Check if department exists
+                string checkQuery = "SELECT COUNT(*) FROM DEPARTMENT WHERE DID = @DID";
+                using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
                 {
-                    deleteStockCmd.Parameters.AddWithValue("@DID", departmentId);
-                    deleteStockCmd.ExecuteNonQuery();
+                    checkCmd.Parameters.AddWithValue("@DID", departmentId);
+                    int count = (int)checkCmd.ExecuteScalar();
+                    if (count == 0)
+                    {
+                        MessageDisplay.ShowError("Department Not Found...");
+                        return;
+                    }
                 }
 
-                // 2. Delete PRODUCTS related to this department
-                string deleteProductQuery = "DELETE FROM PRODUCT WHERE DID = @DID";
-                using (SqlCommand deleteProductCmd = new SqlCommand(deleteProductQuery, conn, transaction))
+                // Start a transaction to ensure all deletes happen atomically
+                using (SqlTransaction transaction = conn.BeginTransaction())
                 {
-                    deleteProductCmd.Parameters.AddWithValue("@DID", departmentId);
-                    deleteProductCmd.ExecuteNonQuery();
+                    try
+                    {
+                        // 1. Delete STOCK entries related to PRODUCTS in this department
+                        string deleteStockQuery = @"
+                            DELETE S
+                            FROM STOCK S
+                            INNER JOIN PRODUCT P ON S.Prod_ID = P.PID
+                            WHERE P.DID = @DID";
+                        using (SqlCommand deleteStockCmd = new SqlCommand(deleteStockQuery, conn, transaction))
+                        {
+                            deleteStockCmd.Parameters.AddWithValue("@DID", departmentId);
+                            deleteStockCmd.ExecuteNonQuery();
+                        }
+
+                        // 2. Delete PRODUCTS related to this department
+                        string deleteProductQuery = "DELETE FROM PRODUCT WHERE DID = @DID";
+                        using (SqlCommand deleteProductCmd = new SqlCommand(deleteProductQuery, conn, transaction))
+                        {
+                            deleteProductCmd.Parameters.AddWithValue("@DID", departmentId);
+                            deleteProductCmd.ExecuteNonQuery();
+                        }
+
+                        // 3. Finally, delete the DEPARTMENT
+                        string deleteDepartmentQuery = "DELETE FROM DEPARTMENT WHERE DID = @DID";
+                        using (SqlCommand deleteDepartmentCmd = new SqlCommand(deleteDepartmentQuery, conn, transaction))
+                        {
+                            deleteDepartmentCmd.Parameters.AddWithValue("@DID", departmentId);
+                            deleteDepartmentCmd.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+
+                        MessageDisplay.ShowSuccess("Department deleted successfully.");
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageDisplay.ShowError("Delete failed: " + ex.Message);
+                    }
                 }
-
-                // 3. Finally, delete the DEPARTMENT
-                string deleteDepartmentQuery = "DELETE FROM DEPARTMENT WHERE DID = @DID";
-                using (SqlCommand deleteDepartmentCmd = new SqlCommand(deleteDepartmentQuery, conn, transaction))
-                {
-                    deleteDepartmentCmd.Parameters.AddWithValue("@DID", departmentId);
-                    deleteDepartmentCmd.ExecuteNonQuery();
-                }
-
-                transaction.Commit();
-
-                System.Windows.Forms.MessageBox.Show("Department and related data deleted successfully.", "Info",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception ex)
-            {
-                transaction.Rollback();
-                System.Windows.Forms.MessageBox.Show("Delete failed: " + ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
+            clear_Inputs();
+            LoadDepartmentTable();
         }
-    }
-
-    clear_Inputs();
-    LoadDepartmentTable();
-}
 
     }
 }
