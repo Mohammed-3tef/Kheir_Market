@@ -94,7 +94,6 @@ namespace Super_Market.pages
             }
 
             User user = new User(userID, this.username, this.email, this.phone, this.address, false , this.password);
-            this.mainWindow.users.addUser(user);
             this.mainWindow.user = user;
 
             MessageDisplay.ShowSuccess("OTP Send Successfully...");

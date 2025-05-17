@@ -73,6 +73,12 @@ namespace Super_Market
 
             // load user data from repository
             this.user = this.users.getUser(this.tempName, this.tempPassword);
+            if (this.user == null)
+            {
+                MessageDisplay.ShowError("Invalid username or password.");
+                this.usernameInput.Focus();
+                return;
+            }
             MessageDisplay.ShowSuccess("Log In Successfully...");
 
             switch (this.user.IsAdmin()){

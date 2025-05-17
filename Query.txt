@@ -1,0 +1,9 @@
+SELECT Top 10 
+[Product].NAME AS Product_Name , COUNT(DISTINCT [ORDER_DETAILS].UID) AS Times_Bought
+FROM 
+    ORDER_DETAILS INNER JOIN 
+    PRODUCT  ON [ORDER_DETAILS].PID = [Product].PID
+GROUP BY 
+    [Product].NAME
+ORDER BY 
+    Times_Bought DESC;

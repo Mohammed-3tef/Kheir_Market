@@ -54,13 +54,18 @@ namespace Super_Market.pages
         {
             if (this.otpInput.Text == this.otpService.GetOTP() && Validator.IsValidInteger(this.otpInput.Text))
             {
+                this.mainWindow.users.addUser(this.mainWindow.user);
                 CustomerMenuPage customerMenuPage = new CustomerMenuPage(this.mainWindow);
                 customerMenuPage.Show();
                 this.Close();
             }
+            else
+            {
+                MessageDisplay.ShowError("Invalid OTP code. Please try again.");
+                this.otpInput.Focus();
 
-            MessageDisplay.ShowError("Invalid OTP code. Please try again.");
-            this.otpInput.Focus();
+            }
+
         }
 
         private void resendBtn_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

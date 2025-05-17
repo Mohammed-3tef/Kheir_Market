@@ -55,7 +55,6 @@ namespace Super_Market.packages.User
         // public List<User> getUsers() { 
         //     return this.users;
         // }
-
        public void deleteUser(User user) {
            string query = "DELETE FROM [USER] WHERE [UID] = @UserID";
            using (SqlConnection connection = new SqlConnection(this.connectionString))
