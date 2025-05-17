@@ -1,4 +1,4 @@
-By: AI 
+
 
 USE Super_Market;
 GO
