@@ -36,7 +36,14 @@ namespace Super_Market.packages.display
 
         public static bool IsValidPassword(string input)
         {
-            string pattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+            string pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+            return Regex.IsMatch(input, pattern);
+        }
+        
+        public static bool IsValidAddress(string input)
+        {
+            // 13st Tahrir, Dokki, Giza
+            string pattern = @"(?i)^\d+(st\.?|Street)\s+[A-Za-z\s]+,\s+[A-Za-z\s]+,\s+[A-Za-z\s]+$";
             return Regex.IsMatch(input, pattern);
         }
     }

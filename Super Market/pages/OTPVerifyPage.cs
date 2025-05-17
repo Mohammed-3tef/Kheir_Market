@@ -11,6 +11,7 @@ using Super_Market.packages.otp;
 using System.Windows.Threading;
 using Super_Market.packages.display;
 using System.Windows.Controls.Primitives;
+using Super_Market.packages.User;
 
 namespace Super_Market.pages
 {
@@ -19,12 +20,11 @@ namespace Super_Market.pages
         private MainWindow mainWindow;
         private OTPService otpService = new OTPService();
         private DispatcherTimer timer;
-
         public OTPVerifyPage(MainWindow mainWindow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
-            //this.otpService.SendOTP(mainWindow.getUsername(), mainWindow.getEmail());
+            this.otpService.SendOTP(this.mainWindow.user.GetUsername(),this.mainWindow.user.GetEmail());
             StartEnableTimer();
         }
 
@@ -45,8 +45,8 @@ namespace Super_Market.pages
 
         private void CancelBtn_Click(object sender, EventArgs e)
         {
-            SignUp signUp = new SignUp(this.mainWindow);
-            signUp.Show();
+            this.mainWindow = new MainWindow();
+            this.mainWindow.Show();
             this.Close();
         }
 
@@ -54,9 +54,9 @@ namespace Super_Market.pages
         {
             if (this.otpInput.Text == this.otpService.GetOTP() && Validator.IsValidInteger(this.otpInput.Text))
             {
-                
-
-                return;
+                CustomerMenuPage customerMenuPage = new CustomerMenuPage(this.mainWindow);
+                customerMenuPage.Show();
+                this.Close();
             }
 
             MessageDisplay.ShowError("Invalid OTP code. Please try again.");
@@ -65,7 +65,7 @@ namespace Super_Market.pages
 
         private void resendBtn_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //this.otpService.SendOTP(mainWindow.getUsername(), mainWindow.getEmail());
+            this.otpService.SendOTP(this.mainWindow.user.GetUsername(),this.mainWindow.user.GetEmail());
             StartEnableTimer();
         }
 

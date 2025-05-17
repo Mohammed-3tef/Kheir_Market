@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using Super_Market.packages.display;
+using Super_Market.packages.User;
 
 namespace Super_Market.pages
 {
@@ -17,28 +18,21 @@ namespace Super_Market.pages
         private MainWindow mainWindow;
         private string username;
         private string email;
+        private string phone;
+        private string address;
         private string password;
-        private string confirmPassword;
-        private int isAdmin = -1;
+        
 
         public SignUp(MainWindow mainWindow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
         }
-
-        private void adminBtn_CheckedChanged(object sender, EventArgs e){
-            this.isAdmin = 1;
-        }
-
-        private void customerBtn_CheckedChanged(object sender, EventArgs e){
-            this.isAdmin = 0;
-        }
-
         private void logInPageLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.mainWindow.Show();
+            if (mainWindow == null) this.mainWindow = new MainWindow();
             this.Close();
+            mainWindow.Show();
         }
 
         private void signUpBtn_Click(object sender, EventArgs e)
@@ -62,25 +56,36 @@ namespace Super_Market.pages
                 this.phoneInput.Focus();
                 return;
             }
+            
+            if (!Validator.IsValidAddress(this.addressInput.Text))
+            {
+                MessageDisplay.ShowError("Please enter a valid address.\n" +
+                                         "Example: 13st Tahrir, Dokki, Giza");
+                this.addressInput.Focus();
+                return;
+            }
 
-            if (this.password != this.confirmPassword)
+            if (this.passwordInput.Text != this.confirmPasswordInput.Text)
             {
                 MessageDisplay.ShowError("Password and Confirm Password do not match.");
                 this.confirmPasswordInput.Focus();
                 return;
             }
 
-            if (this.isAdmin == -1)
-            {
-                MessageDisplay.ShowError("Please select a user type.");
-                return;
+            this.username = this.usernameInput.Text;
+            this.password = this.passwordInput.Text;
+            this.phone = this.phoneInput.Text;
+            this.address = this.addressInput.Text;
+            this.email = this.emailInput.Text;
+
+            int userID = 1;
+            while (this.mainWindow.users.getUserByID(userID) != null){
+                userID++;
             }
 
-            // WRITE YOUR SIGN_UP LOGIC HERE
-
-
-
-            //
+            User user = new User(userID, this.username, this.email, this.phone, this.address, false , this.password);
+            this.mainWindow.users.addUser(user);
+            this.mainWindow.user = user;
 
             MessageDisplay.ShowSuccess("OTP Send Successfully...");
 
@@ -93,7 +98,7 @@ namespace Super_Market.pages
         {
             this.passwordInput.PasswordChar = '*';
         }
-
+        
         private void confirmPasswordInput_TextChanged(object sender, EventArgs e)
         {
             this.confirmPasswordInput.PasswordChar = '*';

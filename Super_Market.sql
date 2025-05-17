@@ -326,6 +326,8 @@ create table "USER" (
 )
 go
 
+-- Add Forign keys
+
 alter table DEPARTMENT
    add constraint FK_DEPARTME_PART_OF_CATEGORY foreign key (CID)
       references CATEGORY (CID)
@@ -360,3 +362,5 @@ alter table PRODUCT
    add constraint FK_PRODUCT_PRODUCE_COMPANY foreign key (COMPID)
       references COMPANY (COMPID)
 go
+
+insert into [USER] Values(0,'Admin' , 'fcaicu.assignments@gmail.com' , '012457896542' , '13st Tahrir, Dokki, Giza' , 1 , '!Admin12345');

@@ -17,3 +17,23 @@ D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Su
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.customer.OrderManagement.resources
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.admin.CompanyManagement.resources
 D:\Assignments\Intro. to Database Systems\Super Market\Super Market\obj\Debug\Super_Market.pages.admin.DepartmentManagement.resources
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\bin\Debug\Super Market.exe.config
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\bin\Debug\Super Market.exe
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\bin\Debug\Super Market.pdb
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super Market.csproj.AssemblyReference.cache
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.MainWindow.resources
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.CategoryManagement.resources
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.admin.CompanyManagement.resources
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.CustomerManagement.resources
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.AdminMenuPage.resources
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.admin.DepartmentManagement.resources
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.CustomerMenuPage.resources
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.ProductManagement.resources
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.customer.OrderManagement.resources
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.OTPVerifyPage.resources
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.SignUp.resources
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.Properties.Resources.resources
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super Market.csproj.GenerateResource.cache
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super Market.csproj.CoreCompileInputs.cache
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super Market.exe
+C:\Users\georg\OneDrive\Desktop\DBase\ASS\Super_Market_Management_System\Super Market\obj\Debug\Super Market.pdb

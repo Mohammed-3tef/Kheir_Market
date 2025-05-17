@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using Super_Market.packages.display;
+using Super_Market.packages.User;
 
 namespace Super_Market.pages
 {
@@ -35,30 +37,7 @@ namespace Super_Market.pages
             if (!this.mainWindow.isValidInteger(this.updateCustomerIdInput.Text)) return;
             this.customerID = int.Parse(this.updateCustomerIdInput.Text);
         }
-
-        private void searchBtn_Click(object sender, EventArgs e)
-        {
-            // WRITE YOUR SEARCH CUSTOMER_ID LOGIC HERE
-
-
-
-            //
-
-            bool isFound = false;
-            if (!isFound){
-                System.Windows.Forms.MessageBox.Show("Customer Not Found...", "Warning", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Warning);
-                return;
-            }
-
-            // WRITE YOUR SEARCH CUSTOMER_ID LOGIC HERE
-
-
-
-            //
-
-            this.updateBtn.Enabled = true;
-        }
-
+        
         private void updateBtn_Click(object sender, EventArgs e)
         {
             // WRITE YOUR UPDATE LOGIC HERE
@@ -67,24 +46,40 @@ namespace Super_Market.pages
 
             //
         }
-
-        // -------------------------------------- DELETE CUSTOMER
-
-        private void deleteCustomerIdInput_TextChanged(object sender, EventArgs e)
+        
+        // -------------------------------------- SEARCH CUSTOMER
+        private void searchBtn_Click(object sender, EventArgs e)
         {
-            if (!this.mainWindow.isValidInteger(this.deleteCustomerIdInput.Text)) return;
+            // WRITE YOUR SEARCH CUSTOMER_ID LOGIC HERE
             this.customerID = int.Parse(this.deleteCustomerIdInput.Text);
-        }
+            User user = this.mainWindow.users.getUserByID(this.customerID);
+            if (user == null)
+            {
+                MessageDisplay.ShowError("User doesn't Exist !!");
+                return;
+            }
+            // Print For User Data Ya Atef
 
+            this.updateBtn.Enabled = true;
+        }
+        // -------------------------------------- DELETE CUSTOMER
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            // WRITE YOUR DELETE LOGIC HERE
 
-
-
-            //
-
-            System.Windows.Forms.MessageBox.Show("Delete Customer Successfully...", "Info", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
+            if (!Validator.IsValidInteger(this.deleteCustomerIdInput.Text))
+            {
+                 MessageDisplay.ShowError("Please enter a valid ID !!");
+                return;
+            }
+            this.customerID = int.Parse(this.deleteCustomerIdInput.Text);
+            User user = this.mainWindow.users.getUserByID(this.customerID);
+            if (user == null)
+            {
+                MessageDisplay.ShowError("User doesn't Exist !!");
+                return;
+            }
+            this.mainWindow.users.deleteUser(user);
+            MessageDisplay.ShowSuccess("Delete Customer Successfully...");
         }
     }
 }

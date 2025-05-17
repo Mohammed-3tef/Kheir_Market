@@ -61,6 +61,8 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="packages\display\MessageDisplay.cs" />
+    <Compile Include="packages\User\RepositoryOfUsers.cs" />
+    <Compile Include="packages\User\User.cs" />
     <Compile Include="packages\validation\Validator.cs" />
     <Compile Include="packages\otp\OTPService.cs" />
     <Compile Include="pages\admin\CategoryManagement.cs">

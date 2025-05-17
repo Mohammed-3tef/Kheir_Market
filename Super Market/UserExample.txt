@@ -1,0 +1,8 @@
+insert into [USER] Values(0,'Admin' , 'fcaicu.assignments@gmail.com' , '012457896542' , '13st Tahrir, Dokki, Giza' , 1 , '!Admin12345');
+
+ID: 0
+Name : Admin
+Email : fcaicu.assignments@gmail.com
+Phone : 012457896542
+Address : 13st Tahrir, Dokki, Giza
+Pass : !Admin12345

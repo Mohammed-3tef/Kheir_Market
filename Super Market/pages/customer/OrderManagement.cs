@@ -143,7 +143,7 @@ namespace Super_Market.pages.customer
 
             System.Windows.Forms.MessageBox.Show("Add Order Successfully...", "Success",
                     (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
-            loadTable(this.mainWindow.getUserId());
+            loadTable(this.mainWindow.user.GetID());
             clearInputs();
         }
 
@@ -152,7 +152,7 @@ namespace Super_Market.pages.customer
             // TODO: This line of code loads data into the 'super_Market_DataSet.DEPARTMENT' table. You can move, or remove it, as needed.
             this.dEPARTMENTTableAdapter1.Fill(this.super_Market_DataSet1.DEPARTMENT);
 
-            loadTable(this.mainWindow.getUserId());
+            loadTable(this.mainWindow.user.GetID());
 
             this.addDepartmentComboBox.SelectedIndex = -1;
             this.addProductComboBox.SelectedIndex = -1;
@@ -222,7 +222,7 @@ namespace Super_Market.pages.customer
 
             System.Windows.Forms.MessageBox.Show("Update Order Successfully...", "Success",
                 (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
-            loadTable(this.mainWindow.getUserId());
+            loadTable(this.mainWindow.user.GetID());
             clearInputs();
         }
 
@@ -258,7 +258,7 @@ namespace Super_Market.pages.customer
 
             System.Windows.Forms.MessageBox.Show("Delete Order Successfully...", "Success",
                 (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Information);
-            loadTable(this.mainWindow.getUserId());
+            loadTable(this.mainWindow.user.GetID());
             clearInputs();
         }
     }

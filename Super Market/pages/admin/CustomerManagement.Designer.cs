@@ -201,7 +201,6 @@
             this.deleteCustomerIdInput.Name = "deleteCustomerIdInput";
             this.deleteCustomerIdInput.Size = new System.Drawing.Size(442, 30);
             this.deleteCustomerIdInput.TabIndex = 18;
-            this.deleteCustomerIdInput.TextChanged += new System.EventHandler(this.deleteCustomerIdInput_TextChanged);
             // 
             // menuBtn
             // 

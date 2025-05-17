@@ -21,7 +21,7 @@ namespace Super_Market.pages
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
-            this.welcomePersonMsg.Text = "Welcome, " + this.mainWindow.getUsername();
+            this.welcomePersonMsg.Text = "Welcome, " + this.mainWindow.user.GetUsername();
         }
 
         private void logOutBtn_Click(object sender, EventArgs e)
