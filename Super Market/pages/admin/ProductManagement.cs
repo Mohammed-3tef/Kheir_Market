@@ -1,13 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Forms;
 
 namespace Super_Market.pages
@@ -24,6 +17,13 @@ namespace Super_Market.pages
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+
+            // Attach event handlers for cascading combo boxes
+            addCategoryComboBox.SelectedIndexChanged += AddCategoryComboBox_SelectedIndexChanged;
+            addCompanyComboBox.SelectedIndexChanged += AddCompanyComboBox_SelectedIndexChanged;
+
+            // Initially disable Add button
+            addBtn.Enabled = false;
         }
 
         private void menuBtn_Click(object sender, EventArgs e)
@@ -36,91 +36,120 @@ namespace Super_Market.pages
         private void ProductManagement_Load(object sender, EventArgs e)
         {
             string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
-            string query = @"
-                SELECT 
-                P.PID AS ID, P.NAME AS Name,
-                CAT.NAME AS Category, D.NAME AS Department, 
-                C.NAME AS Company, S.PRODUCT_QUANTITY AS Quantity,
-                P.PRICE AS Price
-                FROM PRODUCT P
-                JOIN DEPARTMENT D ON P.DID = D.DID
-                JOIN CATEGORY CAT ON D.CID = CAT.CID
-                JOIN COMPANY C ON P.COMPID = C.COMPID
-                JOIN STOCK S ON P.PID = S.PROD_ID
-            ";
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand(query, conn))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-            {
-                DataTable table = new DataTable();
-                adapter.Fill(table);
-
-                this.dataGridView1.DataSource = table;
-                this.dataGridView2.DataSource = table;
-                this.dataGridView3.DataSource = table;
-            }
-
-            // Populate ComboBoxes
+            // Load Categories (top level)
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
+                addCategoryComboBox.Items.Clear();
+                addDepartmentComboBox.Items.Clear();
+                addCompanyComboBox.Items.Clear();
 
-                // Categories
                 using (SqlCommand catCmd = new SqlCommand("SELECT NAME FROM CATEGORY", conn))
                 using (SqlDataReader reader = catCmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         addCategoryComboBox.Items.Add(reader.GetString(0));
-                        updateCategoryComboBox.Items.Add(reader.GetString(0));
-                    }
-                }
-
-                // Departments
-                using (SqlCommand deptCmd = new SqlCommand("SELECT NAME FROM DEPARTMENT", conn))
-                using (SqlDataReader reader = deptCmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        addDepartmentComboBox.Items.Add(reader.GetString(0));
-                        updateDepartmentComboBox.Items.Add(reader.GetString(0));
-                    }
-                }
-
-                // Companies
-                using (SqlCommand compCmd = new SqlCommand("SELECT NAME FROM COMPANY", conn))
-                using (SqlDataReader reader = compCmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        addCompanyComboBox.Items.Add(reader.GetString(0));
-                        updateCompanyComboBox.Items.Add(reader.GetString(0));
                     }
                 }
             }
 
-            // Set defaults
+            // Reset Department and Company comboBoxes
+            addDepartmentComboBox.Enabled = false;
+            addCompanyComboBox.Enabled = false;
+
             addCategoryComboBox.SelectedIndex = -1;
             addDepartmentComboBox.SelectedIndex = -1;
             addCompanyComboBox.SelectedIndex = -1;
 
+            addBtn.Enabled = false;
+
+            // Other initialization (price, quantity limits) remain unchanged
             addProductQuantityInput.Minimum = 0;
             addProductQuantityInput.Maximum = 5000;
-            updateProductQuantityInput.Minimum = 0;
-            updateProductQuantityInput.Maximum = 5000;
-
             addProductPriceInput.DecimalPlaces = 2;
             addProductPriceInput.Increment = 0.01M;
             addProductPriceInput.Minimum = 0;
             addProductPriceInput.Maximum = 999999;
-
-            updateProductPriceInput.DecimalPlaces = 2;
-            updateProductPriceInput.Increment = 0.01M;
-            updateProductPriceInput.Minimum = 0;
-            updateProductPriceInput.Maximum = 999999;
         }
 
+        private void AddCategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            addDepartmentComboBox.Items.Clear();
+            addCompanyComboBox.Items.Clear();
+            addDepartmentComboBox.Enabled = false;
+
+            addDepartmentComboBox.SelectedIndex = -1;
+            addCompanyComboBox.SelectedIndex = -1;
+            addBtn.Enabled = false;
+
+            if (addCategoryComboBox.SelectedIndex == -1)
+                return;
+
+            string selectedCategory = addCategoryComboBox.SelectedItem.ToString();
+
+            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                // Load Departments filtered by Category
+                string deptQuery = @"
+                    SELECT D.NAME 
+                    FROM DEPARTMENT D
+                    JOIN CATEGORY C ON D.CID = C.CID
+                    WHERE C.NAME = @categoryName
+                ";
+
+                using (SqlCommand cmd = new SqlCommand(deptQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@categoryName", selectedCategory);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            addDepartmentComboBox.Items.Add(reader.GetString(0));
+                        }
+                    }
+                }
+
+                addDepartmentComboBox.Enabled = addDepartmentComboBox.Items.Count > 0;
+
+                // Load Companies filtered by Category only
+                string compQuery = @"
+                        SELECT DISTINCT C.NAME
+                        FROM COMPANY C
+                        JOIN CATEGORY CAT ON C.CATE_ID = CAT.CID
+                        WHERE CAT.NAME = @categoryName
+                        ";
+
+                using (SqlCommand cmd = new SqlCommand(compQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@categoryName", selectedCategory);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            addCompanyComboBox.Items.Add(reader.GetString(0));
+                        }
+                    }
+                }
+
+                addCompanyComboBox.Enabled = addCompanyComboBox.Items.Count > 0;
+                addCompanyComboBox.Refresh();
+            }
+        }
+
+    
+        // When a company is selected, enable Add button if all 3 selections are made
+        private void AddCompanyComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+                addBtn.Enabled =
+                addCategoryComboBox.SelectedIndex != -1 &&
+                addDepartmentComboBox.SelectedIndex != -1 &&
+                addCompanyComboBox.SelectedIndex != -1;
+        }
 
         // --------------------------------------- Clear inputs
         private void clear_Inputs()
@@ -190,8 +219,8 @@ namespace Super_Market.pages
         private void addBtn_Click(object sender, EventArgs e)
         {
             // Validate Product ID is an integer
-            if (!this.mainWindow.isValidInteger(this.addProductIdInput.Text))
-                return;
+            //if (!this.mainWindow.isValidInteger(this.addProductIdInput.Text))
+            //    return;
 
             int productId = int.Parse(this.addProductIdInput.Text);
 
@@ -312,12 +341,12 @@ namespace Super_Market.pages
 
                 // Insert into PRODUCT table
                 using (SqlCommand insertCmd = new SqlCommand(@"
-                    INSERT INTO PRODUCT (PID, DID, Prod_ID, COMPID, NAME, PRICE)
-                    VALUES (@pid, @did, @Prod_ID, @compid, @name, @price)", conn))
+                    INSERT INTO PRODUCT (PID, DID,SID,COMPID, NAME, PRICE)
+                    VALUES (@pid, @did, @sid,@compid, @name, @price)", conn))
                 { 
                     insertCmd.Parameters.AddWithValue("@pid", this.productID);
                     insertCmd.Parameters.AddWithValue("@did", departmentId);
-                    insertCmd.Parameters.AddWithValue("@Prod_ID", stockId);
+                    insertCmd.Parameters.AddWithValue("@sid", stockId);
                     insertCmd.Parameters.AddWithValue("@compid", companyId);
                     insertCmd.Parameters.AddWithValue("@name", this.productName);
                     insertCmd.Parameters.AddWithValue("@price", this.productPrice);
