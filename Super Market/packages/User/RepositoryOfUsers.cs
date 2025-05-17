@@ -75,7 +75,8 @@ namespace Super_Market.packages.User
 
         public User getUser(string username, string password){
             foreach (User user in users){
-                if (user.GetUsername() == username && user.GetPassword() == password)
+                if (user.GetUsername().Trim().Equals(username.Trim(), StringComparison.OrdinalIgnoreCase)
+                    && user.GetPassword() == password)
                     return user;
             }
             return null;
