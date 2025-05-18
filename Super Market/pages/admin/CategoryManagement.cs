@@ -171,7 +171,8 @@ namespace Super_Market.pages
                   
                     updateCategoryNameInput.Enabled = false;
                 }
-                
+                // Put this Line to prevent Warnigs
+                if(isFound){}
             }
         }
 

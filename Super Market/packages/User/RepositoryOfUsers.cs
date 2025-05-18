@@ -51,19 +51,45 @@ namespace Super_Market.packages.User
                 command.ExecuteNonQuery();
             }
         }
-
-        // public List<User> getUsers() { 
-        //     return this.users;
-        // }
+        
+        public void updateUser(User user) {
+            string query = "UPDATE [USER] SET NAME = @Username, EMAIL = @Email, PHONE = @Phone, ADDRESS = @Address, IS_ADMIN = @IsAdmin, PASSWORD = @Password WHERE UID = @UserID";
+            using (SqlConnection connection = new SqlConnection(this.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@UserID", user.GetID());
+                command.Parameters.AddWithValue("@Username", user.GetUsername());
+                command.Parameters.AddWithValue("@Email", user.GetEmail());
+                command.Parameters.AddWithValue("@Phone", user.GetPhone());
+                command.Parameters.AddWithValue("@Address", user.GetAddress());
+                command.Parameters.AddWithValue("@IsAdmin", user.IsAdmin());
+                command.Parameters.AddWithValue("@Password", user.GetPassword());
+        
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+        
        public void deleteUser(User user) {
-           string query = "DELETE FROM [USER] WHERE [UID] = @UserID";
+           string deleteOrderDetailsQuery = "DELETE FROM ORDER_DETAILS WHERE UID = @UserID";
+           string deleteOrdersQuery = "DELETE FROM [ORDER] WHERE OID IN (SELECT OID FROM ORDER_DETAILS WHERE UID = @UserID)";
+           string deleteUserQuery = "DELETE FROM [USER] WHERE UID = @UserID";
            using (SqlConnection connection = new SqlConnection(this.connectionString))
-           using (SqlCommand command = new SqlCommand(query, connection))
-           {
-               command.Parameters.AddWithValue("@UserID", user.GetID());
                
+           using (SqlCommand cmd1 = new SqlCommand(deleteOrderDetailsQuery, connection))
+           using (SqlCommand cmd2 = new SqlCommand(deleteOrdersQuery, connection))
+           using (SqlCommand cmd3 = new SqlCommand(deleteUserQuery, connection))
+           {
                connection.Open();
-               command.ExecuteNonQuery();
+               
+               cmd1.Parameters.AddWithValue("@UserID", user.GetID());
+               cmd1.ExecuteNonQuery();
+
+               cmd2.Parameters.AddWithValue("@UserID", user.GetID());
+               cmd2.ExecuteNonQuery();
+
+               cmd3.Parameters.AddWithValue("@UserID", user.GetID());
+               cmd3.ExecuteNonQuery();
            }
 
            this.users.Remove(user);
@@ -72,7 +98,7 @@ namespace Super_Market.packages.User
         public void clearUsers(){
             this.users.Clear();
         }
-
+        
         public User getUser(string username, string password){
             foreach (User user in users){
                 if (user.GetUsername().Trim().Equals(username.Trim(), StringComparison.OrdinalIgnoreCase)
@@ -81,13 +107,18 @@ namespace Super_Market.packages.User
             }
             return null;
         }
-
+        
+        
         public User getUserByID(int ID){
             foreach (User user in users){
                 if (user.GetID() == ID)
                     return user;
             }
             return null;
+        }
+        public int IsEmpty()
+        {
+            return this.users.Count;
         }
     }
 }
