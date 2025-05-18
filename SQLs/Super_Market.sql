@@ -3,8 +3,16 @@
 /* Created on:     5/9/2025 9:37:04 AM                          */
 /*==============================================================*/
 
-create database Super_Market;
-use Super_Market;
+IF EXISTS (SELECT name FROM sys.databases WHERE name = 'Super_Market')
+BEGIN
+    ALTER DATABASE Super_Market SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE Super_Market;
+END
+GO
+CREATE DATABASE Super_Market;
+GO
+USE Super_Market;
+GO
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
@@ -219,7 +227,7 @@ go
 /* Table: "ORDER"                                               */
 /*==============================================================*/
 create table "ORDER" (
-   OID                  int                  not null,
+   OID                  int        identity(1,1)          not null,
    TOTAL_PRICE          decimal(10,2)        not null,
    ORDER_DATE           datetime             not null,
    constraint PK_ORDER primary key nonclustered (OID)
@@ -230,7 +238,7 @@ go
 /* Table: ORDER_DETAILS                                         */
 /*==============================================================*/
 create table ORDER_DETAILS (
-   OID                  int                  not null,
+   OID                  int                not null,
    PID                  int                  not null,
    UID                  int                  not null,
    ORDER_ID             int                  not null,
@@ -363,4 +371,4 @@ alter table PRODUCT
       references COMPANY (COMPID)
 go
 
-insert into [USER] Values(0, 'Admin', 'fcaicu.assignments@gmail.com', '01234567890', '13st Tahrir, Dokki, Giza', 1, '!Admin12345');
+

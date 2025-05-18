@@ -416,6 +416,7 @@
             this.addBtn.TabIndex = 34;
             this.addBtn.Text = "Add Order";
             this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
             // TabControl
             // 

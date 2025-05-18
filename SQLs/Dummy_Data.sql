@@ -16,9 +16,10 @@ GO
 
 -- USERS
 INSERT INTO [USER] (UID, NAME, EMAIL, PHONE, ADDRESS, IS_ADMIN, PASSWORD) VALUES
-(1, 'Ahmed Ali', 'ahmed123445@gmail.com', '01111111111', '25st Kaser El Nile, Sadat , Cairo', 0, '!pass12345'),
-(2, 'Sara Youssef', 'sara2355@yahoo.com', '01222222222', '165st Tahrir, Dokki , Giza ', 0, '!pass21345'),
-(3, 'Omar Hassan', 'omar2025@gmail.com', '01033333333', '144st Abaza, Semoha , Alexandria', 0, '!pass31245');
+(1, 'Ahmed Ali', 'ahmed123445@gmail.com', '01111111111', '25st Kaser El Nile, Sadat , Cairo', 0, '!Pass12345'),
+(2, 'Sara Youssef', 'sara2355@yahoo.com', '01222222222', '165st Tahrir, Dokki , Giza ', 0, '!Pass21345'),
+(3, 'Omar Hassan', 'omar2025@gmail.com', '01033333333', '144st Abaza, Semoha , Alexandria', 0, '!Pass31245'),
+(0, 'Admin', 'fcaicu.assignments@gmail.com', '01234567890', '13st Tahrir, Dokki, Giza', 1, '!Admin12345');
 GO
 
 -- CATEGORIES

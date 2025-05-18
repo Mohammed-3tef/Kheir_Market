@@ -167,7 +167,7 @@ namespace Super_Market.pages
                 return;
             }
 
-            if (!Validator.IsValidName(this.categoryName))
+            if (!Validator.IsValidName(this.updateCategoryNameInput.Text))
             {
                 MessageDisplay.ShowError("Please enter a valid name.");
                 this.updateCategoryNameInput.Focus();
