@@ -220,7 +220,7 @@ go
 /*==============================================================*/
 create table "ORDER" (
    OID                  int                  not null,
-   TOTAL_PRICE          decimal              not null,
+   TOTAL_PRICE          decimal(10,2)        not null,
    ORDER_DATE           datetime             not null,
    constraint PK_ORDER primary key nonclustered (OID)
 )
@@ -272,7 +272,7 @@ create table PRODUCT (
    SID                  int                  not null,
    COMPID               int                  not null,
    NAME                 varchar(100)         not null,
-   PRICE                decimal              not null,
+   PRICE                decimal(10,2)		 not null,
    constraint PK_PRODUCT primary key nonclustered (PID)
 )
 go

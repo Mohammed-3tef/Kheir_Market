@@ -16,10 +16,16 @@ namespace Super_Market.packages.display
             string pattern = @"^[a-zA-Z ]{3,}$";
             return Regex.IsMatch(input, pattern);
         }
+        
+        public static bool IsValidProductName(string input)
+        {
+            string pattern = @"^[a-zA-Z0-9 ]{3,}$";
+            return Regex.IsMatch(input, pattern);
+        }
 
         public static bool IsValidInteger(string input)
         {
-            return input.All(char.IsDigit);
+            return input.All(char.IsDigit) && !string.IsNullOrWhiteSpace(input);
         }
 
         public static bool IsValidEmail(string input)

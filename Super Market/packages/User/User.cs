@@ -30,12 +30,13 @@
         public string GetPassword() { return this.password; }
         
         // Setters
-        public void setData(string newName, string newEmail, string newPhone, string newAddress)
+        public void setData(string newName, string newEmail, string newPhone, string newAddress, bool newAdmin)
         {
             this.username = newName; 
             this.email = newEmail;
             this.phone = newPhone;
             this.address = newAddress;
+            this.isAdmin = newAdmin;
         }
         public void SetPassword(string password) {  this.password = password; }
     }

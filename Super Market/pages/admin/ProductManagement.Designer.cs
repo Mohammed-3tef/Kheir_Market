@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductManagement));
             this.menuBtn = new System.Windows.Forms.Button();
             this.TabControl = new System.Windows.Forms.TabControl();
@@ -42,6 +43,8 @@
             this.addProductQuantityLabel = new System.Windows.Forms.Label();
             this.addProductCategoryLabel = new System.Windows.Forms.Label();
             this.addCategoryComboBox = new System.Windows.Forms.ComboBox();
+            this.cATEGORYBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.super_Market_DataSet = new Super_Market.Super_Market_DataSet();
             this.addProductNameInput = new System.Windows.Forms.TextBox();
             this.addProductNameLabel = new System.Windows.Forms.Label();
             this.addBtn = new System.Windows.Forms.Button();
@@ -72,10 +75,13 @@
             this.deleteProductIdLabel = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.ProductManagementTitle = new System.Windows.Forms.Label();
+            this.cATEGORYTableAdapter = new Super_Market.Super_Market_DataSetTableAdapters.CATEGORYTableAdapter();
             this.TabControl.SuspendLayout();
             this.addPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addProductPriceInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addProductQuantityInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.updatePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.updateProductPriceInput)).BeginInit();
@@ -148,6 +154,7 @@
             // 
             this.addCompanyComboBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.addCompanyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.addCompanyComboBox.Enabled = false;
             this.addCompanyComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addCompanyComboBox.FormattingEnabled = true;
             this.addCompanyComboBox.Location = new System.Drawing.Point(52, 388);
@@ -170,6 +177,7 @@
             // 
             this.addDepartmentComboBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.addDepartmentComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.addDepartmentComboBox.Enabled = false;
             this.addDepartmentComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addDepartmentComboBox.FormattingEnabled = true;
             this.addDepartmentComboBox.Location = new System.Drawing.Point(52, 311);
@@ -180,6 +188,7 @@
             // 
             // addProductPriceInput
             // 
+            this.addProductPriceInput.Enabled = false;
             this.addProductPriceInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addProductPriceInput.Location = new System.Drawing.Point(280, 466);
             this.addProductPriceInput.Name = "addProductPriceInput";
@@ -198,6 +207,7 @@
             // 
             // addProductQuantityInput
             // 
+            this.addProductQuantityInput.Enabled = false;
             this.addProductQuantityInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addProductQuantityInput.Location = new System.Drawing.Point(52, 466);
             this.addProductQuantityInput.Name = "addProductQuantityInput";
@@ -227,6 +237,8 @@
             // addCategoryComboBox
             // 
             this.addCategoryComboBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.addCategoryComboBox.DataSource = this.cATEGORYBindingSource;
+            this.addCategoryComboBox.DisplayMember = "NAME";
             this.addCategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.addCategoryComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addCategoryComboBox.FormattingEnabled = true;
@@ -235,6 +247,18 @@
             this.addCategoryComboBox.Name = "addCategoryComboBox";
             this.addCategoryComboBox.Size = new System.Drawing.Size(440, 33);
             this.addCategoryComboBox.TabIndex = 23;
+            this.addCategoryComboBox.ValueMember = "CID";
+            this.addCategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.AddCategoryComboBox_SelectedIndexChanged);
+            // 
+            // cATEGORYBindingSource
+            // 
+            this.cATEGORYBindingSource.DataMember = "CATEGORY";
+            this.cATEGORYBindingSource.DataSource = this.super_Market_DataSet;
+            // 
+            // super_Market_DataSet
+            // 
+            this.super_Market_DataSet.DataSetName = "Super_Market_DataSet";
+            this.super_Market_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // addProductNameInput
             // 
@@ -423,6 +447,8 @@
             // updateCategoryComboBox
             // 
             this.updateCategoryComboBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.updateCategoryComboBox.DataSource = this.cATEGORYBindingSource;
+            this.updateCategoryComboBox.DisplayMember = "NAME";
             this.updateCategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.updateCategoryComboBox.Enabled = false;
             this.updateCategoryComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -432,6 +458,8 @@
             this.updateCategoryComboBox.Name = "updateCategoryComboBox";
             this.updateCategoryComboBox.Size = new System.Drawing.Size(440, 33);
             this.updateCategoryComboBox.TabIndex = 35;
+            this.updateCategoryComboBox.ValueMember = "CID";
+            this.updateCategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.updateCategoryComboBox_SelectedIndexChanged);
             // 
             // updateProductNameInput
             // 
@@ -579,6 +607,10 @@
             this.ProductManagementTitle.Text = "Product Management";
             this.ProductManagementTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // cATEGORYTableAdapter
+            // 
+            this.cATEGORYTableAdapter.ClearBeforeFill = true;
+            // 
             // ProductManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -598,6 +630,8 @@
             this.addPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addProductPriceInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addProductQuantityInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.updatePage.ResumeLayout(false);
             this.updatePage.PerformLayout();
@@ -657,5 +691,8 @@
         private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.TextBox addProductIdInput;
         private System.Windows.Forms.Label addProductIdLabel;
+        private Super_Market_DataSet super_Market_DataSet;
+        private System.Windows.Forms.BindingSource cATEGORYBindingSource;
+        private Super_Market_DataSetTableAdapters.CATEGORYTableAdapter cATEGORYTableAdapter;
     }
 }

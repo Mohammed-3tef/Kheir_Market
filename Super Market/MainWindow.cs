@@ -23,22 +23,6 @@ namespace Super_Market
         public User user;
         string tempName , tempPassword;
 
-        public bool isValidInteger(string input)
-        {
-            if (string.IsNullOrWhiteSpace(input))
-            {
-                MessageDisplay.ShowError("Please enter a valid integer.");
-                return false;
-            }
-            else if (!input.All(char.IsDigit))
-            {
-                MessageDisplay.ShowError("Please enter a valid integer.");
-                return false;
-            }
-
-            return true;
-        }
-
         public MainWindow()
         {
             InitializeComponent();
@@ -79,6 +63,7 @@ namespace Super_Market
                 this.usernameInput.Focus();
                 return;
             }
+
             MessageDisplay.ShowSuccess("Log In Successfully...");
 
             switch (this.user.IsAdmin()){

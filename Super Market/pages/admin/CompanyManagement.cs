@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using System.Windows.Media;
 using System.Runtime.CompilerServices;
 using Super_Market.packages.display;
+using Super_Market.packages.validation;
 
 namespace Super_Market.pages.admin
 {
@@ -59,6 +60,7 @@ namespace Super_Market.pages.admin
             "Jamaica", "Mexico", "Panama",
             "United States",
         };
+        private const string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
 
         public CompanyManagement(MainWindow mainWindow)
         {
@@ -75,18 +77,23 @@ namespace Super_Market.pages.admin
         {
             this.addCompanyIdInput.Clear();
             this.addCompanyNameInput.Clear();
-            this.addCountryComboBox.SelectedIndex = -1;
-            this.addCategoryComboBox.SelectedIndex = -1;
             this.updateCompanyIdInput.Clear();
             this.updateCompanyNameInput.Clear();
+            this.deleteCompanyIdInput.Clear();
+
+            this.addCountryComboBox.SelectedIndex = -1;
+            this.addCategoryComboBox.SelectedIndex = -1;
             this.updateCountryComboBox.SelectedIndex = -1;
             this.updateCategorycomboBox.SelectedIndex = -1;
-            this.deleteCompanyIdInput.Clear();
+
+            this.updateCompanyNameInput.Enabled = false;
+            this.updateCategorycomboBox.Enabled = false;
+            this.updateCountryComboBox.Enabled = false;
+            this.updateBtn.Enabled = false;
         }
 
         private void loadCompanyTable()
         {
-            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
             string query = @"
                 SELECT C.COMPID AS ID, C.NAME AS Company, C.COUNTRY AS Country, CAT.NAME AS Category
                 FROM COMPANY AS C JOIN CATEGORY AS CAT ON C.CATE_ID = CAT.CID;
@@ -130,9 +137,16 @@ namespace Super_Market.pages.admin
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            if (!Validator.IsValidInteger(addCompanyIdInput.Text))
+            if (!Validator.IsValidInteger(this.addCompanyIdInput.Text))
             {
                 MessageDisplay.ShowError("Please enter a valid company ID.");
+                this.addCompanyIdInput.Focus();
+                return;
+            }
+
+            if (UniquenessValidator.DoesCompanyIDExist(int.Parse(this.addCompanyIdInput.Text)))
+            {
+                MessageDisplay.ShowError("This company ID already exists.");
                 this.addCompanyIdInput.Focus();
                 return;
             }
@@ -144,7 +158,7 @@ namespace Super_Market.pages.admin
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(addCategoryComboBox.Text))
+            if (string.IsNullOrWhiteSpace(this.addCategoryComboBox.Text))
             {
                 MessageDisplay.ShowError("Please select a valid category.");
                 this.addCategoryComboBox.Focus();
@@ -158,7 +172,6 @@ namespace Super_Market.pages.admin
 
 
             // Insert the new company into the database
-            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
             string getCategoryIdQuery = "SELECT CID FROM CATEGORY WHERE NAME = @CatName";
             string insertQuery = "INSERT INTO COMPANY (COMPID, NAME, COUNTRY, CATE_ID) VALUES (@Id, @Name, @Country, @CateId)";
 
@@ -190,21 +203,25 @@ namespace Super_Market.pages.admin
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
-            bool isFound = false;
             if (!Validator.IsValidInteger(updateCompanyIdInput.Text))
             {
                 MessageDisplay.ShowError("Please enter a valid company ID.");
-                this.addCompanyIdInput.Focus();
+                this.updateCompanyIdInput.Focus();
                 return;
             }
 
-           
-            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+            if (!UniquenessValidator.DoesCompanyIDExist(int.Parse(updateCompanyIdInput.Text)))
+            {
+                MessageDisplay.ShowError("This company ID does not exist.");
+                this.updateCompanyIdInput.Focus();
+                return;
+            }
+
             string query = @"
-                    SELECT C.NAME, C.COUNTRY, CAT.NAME AS Category 
-                    FROM COMPANY C
-                    JOIN CATEGORY CAT ON C.CATE_ID = CAT.CID
-                    WHERE C.COMPID = @Id";
+                SELECT C.NAME, C.COUNTRY, CAT.NAME AS Category 
+                FROM COMPANY C
+                JOIN CATEGORY CAT ON C.CATE_ID = CAT.CID
+                WHERE C.COMPID = @Id";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -218,21 +235,14 @@ namespace Super_Market.pages.admin
                     {
                         updateCompanyNameInput.Text = reader["NAME"].ToString();
                         updateCountryComboBox.Text = reader["COUNTRY"].ToString();
-                        updateCategorycomboBox.Text = reader["Category"].ToString();
-                        isFound = true;
+                        updateCategorycomboBox.Text = reader["CATEGORY"].ToString();
+
                         updateCompanyNameInput.Enabled = true;
                         updateCategorycomboBox.Enabled = true;
                         updateCountryComboBox.Enabled = true;   
                         updateBtn.Enabled = true;
                     }
                 }
-            }
-
-            if (!isFound)
-            {
-                MessageDisplay.ShowWarning("Company not found.");
-                this.updateCompanyIdInput.Focus();
-                return;
             }
         }
 
@@ -244,7 +254,7 @@ namespace Super_Market.pages.admin
                 return;
             }
 
-            if (Validator.IsValidName(updateCompanyNameInput.Text))
+            if (!Validator.IsValidName(updateCompanyNameInput.Text))
             {
                 MessageDisplay.ShowError("Please enter a valid company name.");
                 this.updateCompanyNameInput.Focus();
@@ -264,7 +274,6 @@ namespace Super_Market.pages.admin
             this.country = updateCountryComboBox.Text;
 
             // Update the company details in the database
-            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
             string getCategoryIdQuery = "SELECT CID FROM CATEGORY WHERE NAME = @CatName";
             string updateQuery = @"
                     UPDATE COMPANY
@@ -307,29 +316,19 @@ namespace Super_Market.pages.admin
                 return;
             }
 
+            if (!UniquenessValidator.DoesCompanyIDExist(int.Parse(deleteCompanyIdInput.Text)))
+            {
+                MessageDisplay.ShowError("This company ID does not exist.");
+                this.deleteCompanyIdInput.Focus();
+                return;
+            }
+
             this.companyId = int.Parse(deleteCompanyIdInput.Text);
 
-            // Check if the company ID exists in the database
-            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
-            string checkQuery = "SELECT COUNT(*) FROM COMPANY WHERE COMPID = @CompanyId";
             string deleteQuery = "DELETE FROM COMPANY WHERE COMPID = @CompanyId";
-
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-
-                using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
-                {
-                    checkCmd.Parameters.AddWithValue("@CompanyId", companyId);
-                    int count = (int)checkCmd.ExecuteScalar();
-
-                    if (count == 0)
-                    {
-                        MessageDisplay.ShowWarning("Company ID not found.");
-                        this.deleteCompanyIdInput.Focus();
-                        return;
-                    }
-                }
 
                 using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, conn))
                 {

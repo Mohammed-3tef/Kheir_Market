@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using Super_Market.packages.display;
+using Super_Market.packages.validation;
 
 namespace Super_Market.pages.admin
 {
@@ -18,6 +19,7 @@ namespace Super_Market.pages.admin
         private MainWindow mainWindow;
         private int departmentID;
         private string departmentName;
+        private const string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
 
         public DepartmentManagement(MainWindow mainWindow)
         {
@@ -27,7 +29,6 @@ namespace Super_Market.pages.admin
 
         private void LoadDepartmentTable()
         {
-            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
             string query = @"
                 SELECT D.DID AS ID, D.NAME AS Name, C.NAME AS Category
                 FROM DEPARTMENT D 
@@ -52,6 +53,7 @@ namespace Super_Market.pages.admin
             // TODO: This line of code loads data into the 'super_Market_DataSet1.CATEGORY' table. You can move, or remove it, as needed.
             this.cATEGORYTableAdapter1.Fill(this.super_Market_DataSet1.CATEGORY);
             addCategoryComboBox.SelectedIndex = -1;
+            updateCategorycomboBox.SelectedIndex = -1;
             LoadDepartmentTable();
         }
 
@@ -96,6 +98,13 @@ namespace Super_Market.pages.admin
                 return;
             }
 
+            if (UniquenessValidator.DoesDepartmentIDExist(int.Parse(addDepartmentIdInput.Text)))
+            {
+                MessageDisplay.ShowError("Department ID already exists.");
+                this.addDepartmentIdInput.Focus();
+                return;
+            }
+
             if (!Validator.IsValidName(addDepartmentNameInput.Text))
             {
                 MessageDisplay.ShowError("Please enter a valid department name.");
@@ -114,40 +123,11 @@ namespace Super_Market.pages.admin
             this.departmentName = addDepartmentNameInput.Text;
             int categoryId = (int)addCategoryComboBox.SelectedValue;
 
-            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
-            string checkDIDQuery = "SELECT COUNT(*) FROM DEPARTMENT WHERE DID = @DID";
-            string checkCategoryQuery = "SELECT COUNT(*) FROM CATEGORY WHERE CID = @CID";
             string insertQuery = "INSERT INTO DEPARTMENT (DID, CID, NAME) VALUES (@DID, @CID, @NAME)";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-
-                // Check if DID already exists
-                using (SqlCommand checkDIDCmd = new SqlCommand(checkDIDQuery, conn))
-                {
-                    checkDIDCmd.Parameters.AddWithValue("@DID", this.departmentID);
-                    int didCount = (int)checkDIDCmd.ExecuteScalar();
-
-                    if (didCount > 0)
-                    {
-                        MessageDisplay.ShowError("Department ID already exists. Please choose another one.");
-                        return;
-                    }
-                }
-
-                // Check if CID exists in CATEGORY (foreign key validation)
-                using (SqlCommand checkCategoryCmd = new SqlCommand(checkCategoryQuery, conn))
-                {
-                    checkCategoryCmd.Parameters.AddWithValue("@CID", categoryId);
-                    int cidCount = (int)checkCategoryCmd.ExecuteScalar();
-
-                    if (cidCount == 0)
-                    {
-                        MessageDisplay.ShowError("Selected category is invalid.");
-                        return;
-                    }
-                }
 
                 // Proceed with insert if validations pass
                 using (SqlCommand insertCmd = new SqlCommand(insertQuery, conn))
@@ -176,7 +156,6 @@ namespace Super_Market.pages.admin
             }
 
             this.departmentID = int.Parse(updateDepartmentIdInput.Text);
-            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
             string query = "SELECT NAME, CID FROM DEPARTMENT WHERE DID = @DID";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -204,11 +183,6 @@ namespace Super_Market.pages.admin
                 {
                     // Department not found
                     MessageDisplay.ShowError("Department Not Found...");
-
-                    // Optional: disable update inputs if not found
-                    updateBtn.Enabled = false;
-                    updateDepartmentNameInput.Enabled = false;
-                    updateCategorycomboBox.Enabled = false;
                 }
             }
         }
@@ -222,14 +196,14 @@ namespace Super_Market.pages.admin
                 return;
             }
 
-            if (!Validator.IsValidName(addDepartmentNameInput.Text) == false)
+            if (!Validator.IsValidName(updateDepartmentNameInput.Text))
             {
                 MessageDisplay.ShowError("Please enter a valid department name.");
                 this.addDepartmentNameInput.Focus();
                 return;
             }
 
-            if (addCategoryComboBox.SelectedValue == null)
+            if (updateCategorycomboBox.SelectedValue == null)
             {
                 MessageDisplay.ShowError("Please select a category.");
                 this.addCategoryComboBox.Focus();
@@ -240,7 +214,6 @@ namespace Super_Market.pages.admin
             this.departmentName = updateDepartmentNameInput.Text;
             int categoryId = (int)updateCategorycomboBox.SelectedValue;
 
-            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
             string updateQuery = "UPDATE DEPARTMENT SET NAME = @NAME, CID = @CID WHERE DID = @DID";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -263,12 +236,6 @@ namespace Super_Market.pages.admin
                 }
             }
 
-            updateDepartmentNameInput.Clear();
-            updateCategorycomboBox.SelectedIndex = -1;
-            updateBtn.Enabled = false;
-            updateDepartmentNameInput.Enabled = false;
-            updateCategorycomboBox.Enabled = false;
-
             clear_Inputs();
             LoadDepartmentTable();
         }
@@ -280,36 +247,28 @@ namespace Super_Market.pages.admin
             if (!Validator.IsValidInteger(deleteDepartmentIdInput.Text))
             {
                 MessageDisplay.ShowError("Please enter a valid department ID.");
-                this.updateDepartmentIdInput.Focus();
+                this.deleteDepartmentIdInput.Focus();
+                return;
+            }
+
+            if (!UniquenessValidator.DoesDepartmentIDExist(int.Parse(deleteDepartmentIdInput.Text)))
+            {
+                MessageDisplay.ShowError("Department Not Found...");
+                this.deleteDepartmentIdInput.Focus();
                 return;
             }
 
             int departmentId = int.Parse(deleteDepartmentIdInput.Text);
-            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-
-                // Check if department exists
-                string checkQuery = "SELECT COUNT(*) FROM DEPARTMENT WHERE DID = @DID";
-                using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
-                {
-                    checkCmd.Parameters.AddWithValue("@DID", departmentId);
-                    int count = (int)checkCmd.ExecuteScalar();
-                    if (count == 0)
-                    {
-                        MessageDisplay.ShowError("Department Not Found...");
-                        return;
-                    }
-                }
 
                 // Start a transaction to ensure all deletes happen atomically
                 using (SqlTransaction transaction = conn.BeginTransaction())
                 {
                     try
                     {
-
                         // 2. Delete PRODUCTS related to this department
                         string deleteProductQuery = "DELETE FROM PRODUCT WHERE DID = @DID";
                         using (SqlCommand deleteProductCmd = new SqlCommand(deleteProductQuery, conn, transaction))

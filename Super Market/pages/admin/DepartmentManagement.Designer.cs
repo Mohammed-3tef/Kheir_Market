@@ -44,6 +44,8 @@
             this.addPage = new System.Windows.Forms.TabPage();
             this.addProductCategoryLabel = new System.Windows.Forms.Label();
             this.addCategoryComboBox = new System.Windows.Forms.ComboBox();
+            this.cATEGORYBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.super_Market_DataSet1 = new Super_Market.Super_Market_DataSet();
             this.updatePage = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.updateCategorycomboBox = new System.Windows.Forms.ComboBox();
@@ -57,18 +59,16 @@
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.menuBtn = new System.Windows.Forms.Button();
             this.DepartmentManagementTitle = new System.Windows.Forms.Label();
-            this.super_Market_DataSet1 = new Super_Market.Super_Market_DataSet();
-            this.cATEGORYBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cATEGORYTableAdapter1 = new Super_Market.Super_Market_DataSetTableAdapters.CATEGORYTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.TabControl.SuspendLayout();
             this.addPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).BeginInit();
             this.updatePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.deletePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // searchBtn
@@ -233,6 +233,16 @@
             this.addCategoryComboBox.TabIndex = 25;
             this.addCategoryComboBox.ValueMember = "CID";
             // 
+            // cATEGORYBindingSource
+            // 
+            this.cATEGORYBindingSource.DataMember = "CATEGORY";
+            this.cATEGORYBindingSource.DataSource = this.super_Market_DataSet1;
+            // 
+            // super_Market_DataSet1
+            // 
+            this.super_Market_DataSet1.DataSetName = "Super_Market_DataSet";
+            this.super_Market_DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // updatePage
             // 
             this.updatePage.Controls.Add(this.label1);
@@ -265,6 +275,8 @@
             // updateCategorycomboBox
             // 
             this.updateCategorycomboBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.updateCategorycomboBox.DataSource = this.cATEGORYBindingSource;
+            this.updateCategorycomboBox.DisplayMember = "NAME";
             this.updateCategorycomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.updateCategorycomboBox.Enabled = false;
             this.updateCategorycomboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -389,21 +401,11 @@
             this.DepartmentManagementTitle.Text = "Department Management";
             this.DepartmentManagementTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // super_Market_DataSet1
-            // 
-            this.super_Market_DataSet1.DataSetName = "Super_Market_DataSet";
-            this.super_Market_DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // cATEGORYBindingSource
-            // 
-            this.cATEGORYBindingSource.DataMember = "CATEGORY";
-            this.cATEGORYBindingSource.DataSource = this.super_Market_DataSet1;
-            // 
             // cATEGORYTableAdapter1
             // 
             this.cATEGORYTableAdapter1.ClearBeforeFill = true;
             // 
-            // DepartmentManagment
+            // DepartmentManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -413,7 +415,7 @@
             this.Controls.Add(this.DepartmentManagementTitle);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1500, 850);
-            this.Name = "DepartmentManagment";
+            this.Name = "DepartmentManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Super Market Management System";
             this.Load += new System.EventHandler(this.DepartmentManagment_Load);
@@ -421,14 +423,14 @@
             this.TabControl.ResumeLayout(false);
             this.addPage.ResumeLayout(false);
             this.addPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).EndInit();
             this.updatePage.ResumeLayout(false);
             this.updatePage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.deletePage.ResumeLayout(false);
             this.deletePage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
