@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using Super_Market.packages.display;
+using Super_Market.packages.validation;
 
 namespace Super_Market.pages
 {
@@ -18,6 +19,7 @@ namespace Super_Market.pages
         private MainWindow mainWindow;
         private int categoryID;
         private string categoryName;
+        private const string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
 
         public CategoryManagement(MainWindow mainWindow)
         {
@@ -29,7 +31,7 @@ namespace Super_Market.pages
         {
             // TODO: This line of code loads data into the 'super_Market_DataSet1.CATEGORY' table. You can move, or remove it, as needed.
             this.cATEGORYTableAdapter1.Fill(this.super_Market_DataSet1.CATEGORY);
-        } // semi done 
+        }
 
         
         private void menuBtn_Click(object sender, EventArgs e)
@@ -37,7 +39,7 @@ namespace Super_Market.pages
             AdminMenuPage adminMenuPage = new AdminMenuPage(this.mainWindow);
             adminMenuPage.Show();
             this.Close();
-        } //done 
+        }
 
         private void clear_Inputs()
         {
@@ -50,7 +52,9 @@ namespace Super_Market.pages
 
             updateCategoryIdInput.Clear();
             updateCategoryNameInput.Clear();
-           
+            updateCategoryNameInput.Enabled = false;
+            updateBtn.Enabled = false;
+
             // --------------------------------------- DELETE Inputs
 
             deleteCategoryIdInput.Clear();
@@ -58,7 +62,6 @@ namespace Super_Market.pages
 
         private void LoadCategoryTable()
         {
-            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
             string query = @"SELECT * FROM CATEGORY";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -79,7 +82,14 @@ namespace Super_Market.pages
         private void addBtn_Click(object sender, EventArgs e)
         {
             if (!Validator.IsValidInteger(addCategoryIdInput.Text)) { 
-                MessageDisplay.ShowError("Please enter a valid integer for Category ID.");
+                MessageDisplay.ShowError("Please enter a valid Category ID.");
+                this.addCategoryIdInput.Focus();
+                return;
+            }
+
+            if (UniquenessValidator.DoesCategoryIDExist(int.Parse(addCategoryIdInput.Text)))
+            {
+                MessageDisplay.ShowWarning("Category ID already exists. Please choose another one.");
                 this.addCategoryIdInput.Focus();
                 return;
             }
@@ -94,43 +104,21 @@ namespace Super_Market.pages
             this.categoryID = int.Parse(addCategoryIdInput.Text);
             this.categoryName = this.addCategoryNameInput.Text;
 
-            // WRITE YOUR ADD CATEGORY LOGIC HERE
-            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
-            string checkCIDQuery = "SELECT COUNT(*) FROM CATEGORY WHERE CID = @CID";
             string insertQuery = "INSERT INTO CATEGORY (CID, NAME) VALUES (@CID, @NAME)";
-
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-
-                // Check if CID already exists
-                using (SqlCommand checkCIDCmd = new SqlCommand(checkCIDQuery, conn))
-                {
-                    checkCIDCmd.Parameters.AddWithValue("@CID", this.categoryID);
-                    int didCount = (int)checkCIDCmd.ExecuteScalar();
-
-                    if (didCount > 0)
-                    {
-                        MessageDisplay.ShowWarning("Category ID already exists. Please choose another one.");
-                        return;
-                    }
-                }
-
-                // Proceed with insert if validations pass
                 using (SqlCommand insertCmd = new SqlCommand(insertQuery, conn))
                 {
-                    insertCmd.Parameters.AddWithValue("@CID", categoryID);
+                    insertCmd.Parameters.AddWithValue("@CID", this.categoryID);
                     insertCmd.Parameters.AddWithValue("@NAME", this.categoryName);
                     insertCmd.ExecuteNonQuery();
                 }
-
-                clear_Inputs();  
             }
-
-            //
 
             MessageDisplay.ShowSuccess("Category added successfully.");
             LoadCategoryTable();
+            clear_Inputs();
         }
 
         // --------------------------------------- UPDATE CATEGORY
@@ -138,17 +126,21 @@ namespace Super_Market.pages
         private void searchBtn_Click(object sender, EventArgs e)
         {
             if (!Validator.IsValidInteger(this.updateCategoryIdInput.Text)){
-                MessageDisplay.ShowError("Please enter a valid integer for Category ID.");
+                MessageDisplay.ShowError("Please enter a valid Category ID.");
+                this.updateCategoryIdInput.Focus();
+                return;
+            }
+
+            if (!UniquenessValidator.DoesCategoryIDExist(int.Parse(this.updateCategoryIdInput.Text)))
+            {
+                MessageDisplay.ShowWarning("Category ID does not exist. Please enter a valid one.");
                 this.updateCategoryIdInput.Focus();
                 return;
             }
 
             this.categoryID = int.Parse(this.updateCategoryIdInput.Text);
-            bool isFound = false;
 
-            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
             string query = "SELECT NAME FROM CATEGORY WHERE CID = @CID";
-            // WRITE YOUR SEARCH CATEGORY_ID LOGIC HERE
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -162,17 +154,7 @@ namespace Super_Market.pages
 
                     updateBtn.Enabled = true;
                     updateCategoryNameInput.Enabled = true;
-                    isFound = true;
                 }
-                else
-                {
-                    MessageDisplay.ShowWarning("Category Not Found...");
-                    updateBtn.Enabled = false;
-                  
-                    updateCategoryNameInput.Enabled = false;
-                }
-                // Put this Line to prevent Warnigs
-                if(isFound){}
             }
         }
 
@@ -180,15 +162,11 @@ namespace Super_Market.pages
         {
             if (!Validator.IsValidInteger(updateCategoryIdInput.Text))
             {
-                MessageDisplay.ShowError("Please enter a valid integer for Category ID.");
+                MessageDisplay.ShowError("Please enter a valid Category ID.");
                 this.updateCategoryIdInput.Focus();
                 return;
             }
 
-            this.categoryID = int.Parse(updateCategoryIdInput.Text);
-            this.categoryName = updateCategoryNameInput.Text;
-
-            // WRITE YOUR UPDATE CATEGORY LOGIC HERE
             if (!Validator.IsValidName(this.categoryName))
             {
                 MessageDisplay.ShowError("Please enter a valid name.");
@@ -196,13 +174,13 @@ namespace Super_Market.pages
                 return;
             }
 
-            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
-            string updateQuery = "UPDATE CATEGORY SET NAME = @NAME WHERE CID = @CID";
+            this.categoryID = int.Parse(updateCategoryIdInput.Text);
+            this.categoryName = updateCategoryNameInput.Text;
 
+            string updateQuery = "UPDATE CATEGORY SET NAME = @NAME WHERE CID = @CID";
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
             {
-                
                 cmd.Parameters.AddWithValue("@NAME", this.categoryName);
                 cmd.Parameters.AddWithValue("@CID", this.categoryID);
 
@@ -220,66 +198,61 @@ namespace Super_Market.pages
             }
 
             LoadCategoryTable();
+            clear_Inputs();
         }
 
         // --------------------------------------- DELETE CATEGORY
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            if (!this.mainWindow.isValidInteger(deleteCategoryIdInput.Text))
+            if (!Validator.IsValidInteger(deleteCategoryIdInput.Text))
             {
+                MessageDisplay.ShowError("Please enter a valid Category ID.");
+                this.deleteCategoryIdInput.Focus();
+                return;
+            }
+
+            if (!UniquenessValidator.DoesCategoryIDExist(int.Parse(deleteCategoryIdInput.Text)))
+            {
+                MessageDisplay.ShowWarning("Category ID does not exist. Please enter a valid one.");
                 this.deleteCategoryIdInput.Focus();
                 return;
             }
 
             this.categoryID = int.Parse(deleteCategoryIdInput.Text);
-            string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
            
-            string checkQuery = "SELECT COUNT(*) FROM CATEGORY WHERE CID = @CID";
             string deleteQuery = @"
-                        DELETE OD
-                        FROM ORDER_DETAILS OD
-                        JOIN PRODUCT P ON OD.PID = P.PID
-                        JOIN DEPARTMENT D ON P.DID = D.DID
-                        WHERE D.CID = @CID;
+                DELETE OD
+                FROM ORDER_DETAILS OD
+                JOIN PRODUCT P ON OD.PID = P.PID
+                JOIN DEPARTMENT D ON P.DID = D.DID
+                WHERE D.CID = @CID;
                        
-                        DELETE P
-                        FROM PRODUCT P
-                        JOIN DEPARTMENT D ON P.DID = D.DID
-                        WHERE D.CID = @CID;
+                DELETE P
+                FROM PRODUCT P
+                JOIN DEPARTMENT D ON P.DID = D.DID
+                WHERE D.CID = @CID;
                                                             
-                        DELETE FROM DEPARTMENT
-                        WHERE CID = @CID;
+                DELETE FROM DEPARTMENT
+                WHERE CID = @CID;
 
-                        DELETE FROM COMPANY
-                        WHERE CATE_ID = @CID;
+                DELETE FROM COMPANY
+                WHERE CATE_ID = @CID;
 
-                        DELETE FROM CATEGORY
-                        WHERE CID = @CID;";
-            // WRITE YOUR DELETE CATEGORY LOGIC HERE
+                DELETE FROM CATEGORY
+                WHERE CID = @CID;";
+
             using (SqlConnection conn = new SqlConnection(connectionString))
-            using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
+            using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, conn))
             {
-                checkCmd.Parameters.AddWithValue("@CID", categoryID);
                 conn.Open();
-
-                int count = (int)checkCmd.ExecuteScalar();
-                
-                if (count == 0)
-                {
-                    MessageDisplay.ShowWarning("Category Not Found...");
-                    return;
-                }
-
-                using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, conn))
-                {
-                    deleteCmd.Parameters.AddWithValue("@CID", categoryID);
-                    deleteCmd.ExecuteNonQuery();
-                    MessageDisplay.ShowSuccess("Delete Category Successfully...");
-                }
+                deleteCmd.Parameters.AddWithValue("@CID", categoryID);
+                deleteCmd.ExecuteNonQuery();
             }
 
+            MessageDisplay.ShowSuccess("Delete Category Successfully...");
             LoadCategoryTable();
+            clear_Inputs();
         }
     }
 }

@@ -22,7 +22,6 @@ namespace Super_Market.pages
         private string address;
         private string password;
         
-
         public SignUp(MainWindow mainWindow)
         {
             InitializeComponent();
@@ -31,6 +30,7 @@ namespace Super_Market.pages
             this.passwordInput.PasswordChar = '*';
             this.confirmPasswordInput.PasswordChar = '*';
         }
+
         private void logInPageLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (mainWindow == null) this.mainWindow = new MainWindow();

@@ -54,6 +54,8 @@
             this.addCountryLabel = new System.Windows.Forms.Label();
             this.addCountryComboBox = new System.Windows.Forms.ComboBox();
             this.addCategoryComboBox = new System.Windows.Forms.ComboBox();
+            this.cATEGORYBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.super_Market_DataSet1 = new Super_Market.Super_Market_DataSet();
             this.addBtn = new System.Windows.Forms.Button();
             this.addCompanyNameInput = new System.Windows.Forms.TextBox();
             this.addCompanyIdInput = new System.Windows.Forms.TextBox();
@@ -61,18 +63,16 @@
             this.addCompanyIdLabel = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.TabControl = new System.Windows.Forms.TabControl();
-            this.super_Market_DataSet1 = new Super_Market.Super_Market_DataSet();
-            this.cATEGORYBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cATEGORYTableAdapter1 = new Super_Market.Super_Market_DataSetTableAdapters.CATEGORYTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.deletePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.updatePage.SuspendLayout();
             this.addPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.TabControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuBtn
@@ -158,6 +158,8 @@
             // updateCategorycomboBox
             // 
             this.updateCategorycomboBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.updateCategorycomboBox.DataSource = this.cATEGORYBindingSource;
+            this.updateCategorycomboBox.DisplayMember = "NAME";
             this.updateCategorycomboBox.DropDownHeight = 200;
             this.updateCategorycomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.updateCategorycomboBox.Enabled = false;
@@ -377,6 +379,16 @@
             this.addCategoryComboBox.TabIndex = 25;
             this.addCategoryComboBox.ValueMember = "CID";
             // 
+            // cATEGORYBindingSource
+            // 
+            this.cATEGORYBindingSource.DataMember = "CATEGORY";
+            this.cATEGORYBindingSource.DataSource = this.super_Market_DataSet1;
+            // 
+            // super_Market_DataSet1
+            // 
+            this.super_Market_DataSet1.DataSetName = "Super_Market_DataSet";
+            this.super_Market_DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // addBtn
             // 
             this.addBtn.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -451,16 +463,6 @@
             this.TabControl.Size = new System.Drawing.Size(1456, 650);
             this.TabControl.TabIndex = 27;
             // 
-            // super_Market_DataSet1
-            // 
-            this.super_Market_DataSet1.DataSetName = "Super_Market_DataSet";
-            this.super_Market_DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // cATEGORYBindingSource
-            // 
-            this.cATEGORYBindingSource.DataMember = "CATEGORY";
-            this.cATEGORYBindingSource.DataSource = this.super_Market_DataSet1;
-            // 
             // cATEGORYTableAdapter1
             // 
             this.cATEGORYTableAdapter1.ClearBeforeFill = true;
@@ -487,10 +489,10 @@
             this.updatePage.PerformLayout();
             this.addPage.ResumeLayout(false);
             this.addPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.TabControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

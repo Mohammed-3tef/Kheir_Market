@@ -45,7 +45,7 @@
             // 
             this.appTitle.AutoSize = true;
             this.appTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appTitle.Location = new System.Drawing.Point(397, 104);
+            this.appTitle.Location = new System.Drawing.Point(374, 104);
             this.appTitle.Name = "appTitle";
             this.appTitle.Size = new System.Drawing.Size(729, 51);
             this.appTitle.TabIndex = 13;
@@ -56,7 +56,7 @@
             // 
             this.welcomeMsg.AutoSize = true;
             this.welcomeMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomeMsg.Location = new System.Drawing.Point(693, 75);
+            this.welcomeMsg.Location = new System.Drawing.Point(670, 75);
             this.welcomeMsg.Name = "welcomeMsg";
             this.welcomeMsg.Size = new System.Drawing.Size(163, 32);
             this.welcomeMsg.TabIndex = 12;

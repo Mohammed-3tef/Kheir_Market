@@ -51,6 +51,9 @@
             this.deleteCustomerIdLabel = new System.Windows.Forms.Label();
             this.deleteCustomerIdInput = new System.Windows.Forms.TextBox();
             this.menuBtn = new System.Windows.Forms.Button();
+            this.updateAdminLabel = new System.Windows.Forms.Label();
+            this.updateAdminBtn = new System.Windows.Forms.RadioButton();
+            this.updateCustomerBtn = new System.Windows.Forms.RadioButton();
             this.TabControl.SuspendLayout();
             this.updatePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -81,6 +84,9 @@
             // 
             // updatePage
             // 
+            this.updatePage.Controls.Add(this.updateCustomerBtn);
+            this.updatePage.Controls.Add(this.updateAdminBtn);
+            this.updatePage.Controls.Add(this.updateAdminLabel);
             this.updatePage.Controls.Add(this.updatePhoneLabel);
             this.updatePage.Controls.Add(this.updatePhoneInput);
             this.updatePage.Controls.Add(this.updateAddressLabel);
@@ -199,7 +205,7 @@
             this.updateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.updateBtn.Enabled = false;
             this.updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateBtn.Location = new System.Drawing.Point(56, 444);
+            this.updateBtn.Location = new System.Drawing.Point(56, 459);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(496, 61);
             this.updateBtn.TabIndex = 24;
@@ -309,6 +315,42 @@
             this.menuBtn.UseVisualStyleBackColor = true;
             this.menuBtn.Click += new System.EventHandler(this.menuBtn_Click);
             // 
+            // updateAdminLabel
+            // 
+            this.updateAdminLabel.AutoSize = true;
+            this.updateAdminLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateAdminLabel.Location = new System.Drawing.Point(51, 409);
+            this.updateAdminLabel.Name = "updateAdminLabel";
+            this.updateAdminLabel.Size = new System.Drawing.Size(121, 29);
+            this.updateAdminLabel.TabIndex = 34;
+            this.updateAdminLabel.Text = "He / She:";
+            // 
+            // updateAdminBtn
+            // 
+            this.updateAdminBtn.AutoSize = true;
+            this.updateAdminBtn.Enabled = false;
+            this.updateAdminBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateAdminBtn.Location = new System.Drawing.Point(178, 409);
+            this.updateAdminBtn.Name = "updateAdminBtn";
+            this.updateAdminBtn.Size = new System.Drawing.Size(94, 29);
+            this.updateAdminBtn.TabIndex = 35;
+            this.updateAdminBtn.TabStop = true;
+            this.updateAdminBtn.Text = "Admin";
+            this.updateAdminBtn.UseVisualStyleBackColor = true;
+            // 
+            // updateCustomerBtn
+            // 
+            this.updateCustomerBtn.AutoSize = true;
+            this.updateCustomerBtn.Enabled = false;
+            this.updateCustomerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateCustomerBtn.Location = new System.Drawing.Point(426, 409);
+            this.updateCustomerBtn.Name = "updateCustomerBtn";
+            this.updateCustomerBtn.Size = new System.Drawing.Size(126, 29);
+            this.updateCustomerBtn.TabIndex = 36;
+            this.updateCustomerBtn.TabStop = true;
+            this.updateCustomerBtn.Text = "Customer";
+            this.updateCustomerBtn.UseVisualStyleBackColor = true;
+            // 
             // CustomerManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -322,6 +364,7 @@
             this.Name = "CustomerManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Super Market Management System";
+            this.Load += new System.EventHandler(this.CustomerManagement_Load);
             this.TabControl.ResumeLayout(false);
             this.updatePage.ResumeLayout(false);
             this.updatePage.PerformLayout();
@@ -358,5 +401,8 @@
         private System.Windows.Forms.TextBox updateNameInput;
         private System.Windows.Forms.Label updatePhoneLabel;
         private System.Windows.Forms.TextBox updatePhoneInput;
+        private System.Windows.Forms.Label updateAdminLabel;
+        private System.Windows.Forms.RadioButton updateCustomerBtn;
+        private System.Windows.Forms.RadioButton updateAdminBtn;
     }
 }
