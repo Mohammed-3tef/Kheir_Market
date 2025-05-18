@@ -1,4 +1,37 @@
 
+-- Requirment A (the best seller product)
+SELECT Top 10 
+[Product].NAME AS Product_Name , COUNT(DISTINCT [ORDER_DETAILS].UID) AS Times_Bought 
+FROM 
+    ORDER_DETAILS INNER JOIN 
+    PRODUCT  ON [ORDER_DETAILS].PID = [Product].PID
+GROUP BY 
+    [Product].NAME
+ORDER BY 
+    Times_Bought DESC;
+go
+
+-- VAR will be Used in the C#
+DECLARE @Mnth INT = 2;
+DECLARE @Year INT = 2025;
+
+-- Requirment B (product with no customer in specific month)
+SELECT [PRODUCT].NAME AS ProductName , DATENAME(MONTH, DATEFROMPARTS(@Year, @Mnth, 1)) AS [Month], @Year AS [Year]
+FROM 
+    PRODUCT 
+WHERE 
+    [PRODUCT].PID NOT IN (
+        SELECT 
+            OD.PID
+        FROM 
+            ORDER_DETAILS OD
+        JOIN 
+            "ORDER" O ON OD.OID = O.OID
+        WHERE 
+            MONTH(O.ORDER_DATE) = @Mnth AND YEAR(O.ORDER_DATE) = @Year
+    );
+go
+
 -- req 14
 
 WITH MonthlyCustomerTotals AS (

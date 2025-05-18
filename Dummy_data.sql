@@ -76,36 +76,3 @@ INSERT INTO ORDER_DETAILS (OID, PID, UID, ORDER_ID, QUANTITY) VALUES
 (105, 1, 3, 105, 4),   -- Omar buys 4 Rice
 (106, 5, 3, 106, 2);   -- Omar buys 2 TVs
 GO
-
--- Requirment 1 (the best seller product)
-SELECT Top 10 
-[Product].NAME AS Product_Name , COUNT(DISTINCT [ORDER_DETAILS].UID) AS Times_Bought 
-FROM 
-    ORDER_DETAILS INNER JOIN 
-    PRODUCT  ON [ORDER_DETAILS].PID = [Product].PID
-GROUP BY 
-    [Product].NAME
-ORDER BY 
-    Times_Bought DESC;
-go
-
--- VAR will be Used in the C#
-DECLARE @Mnth INT = 2;
-DECLARE @Year INT = 2025;
-
--- Requirment 2 (product with no customer in specific month)
-SELECT [PRODUCT].NAME AS ProductName , DATENAME(MONTH, DATEFROMPARTS(@Year, @Mnth, 1)) AS [Month], @Year AS [Year]
-FROM 
-    PRODUCT 
-WHERE 
-    [PRODUCT].PID NOT IN (
-        SELECT 
-            OD.PID
-        FROM 
-            ORDER_DETAILS OD
-        JOIN 
-            "ORDER" O ON OD.OID = O.OID
-        WHERE 
-            MONTH(O.ORDER_DATE) = @Mnth AND YEAR(O.ORDER_DATE) = @Year
-    );
-go
