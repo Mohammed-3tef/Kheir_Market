@@ -11,6 +11,25 @@ namespace Super_Market.packages.validation
     {
         private const string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
 
+        public static bool DoesUserIDExist(int userId)
+        {
+            string query = @"SELECT * FROM [USER]";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["UID"]);
+                        if (id == userId) return true;
+                    }
+                }
+            }
+            return false;
+        }
+
         public static bool DoesCompanyIDExist(int companyId)
         {
             string query = @"SELECT * FROM COMPANY";

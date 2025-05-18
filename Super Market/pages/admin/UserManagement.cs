@@ -12,19 +12,21 @@ using System.Windows;
 using System.Windows.Forms;
 using Super_Market.packages.display;
 using Super_Market.packages.User;
+using Super_Market.packages.validation;
 
 namespace Super_Market.pages
 {
-    public partial class CustomerManagement : Form
+    public partial class UserManagement : Form
     {
         private MainWindow _mainWindow;
         private int _customerId;
         private const string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
 
-        public CustomerManagement(MainWindow mainWindow)
+        public UserManagement(MainWindow mainWindow)
         {
             InitializeComponent();
             this._mainWindow = mainWindow;
+            this.addPasswordInput.PasswordChar = '*';
         }
 
         private void CustomerManagement_Load(object sender, EventArgs e)
@@ -34,6 +36,7 @@ namespace Super_Market.pages
 
         private void menuBtn_Click(object sender, EventArgs e)
         {
+            this._mainWindow.users.refreshUsers();
             AdminMenuPage adminMenuPage= new AdminMenuPage(this._mainWindow);
             adminMenuPage.Show();
             this.Close();
@@ -41,7 +44,7 @@ namespace Super_Market.pages
 
         private void loadUserList()
         {
-            string query = "SELECT * FROM [USER]";
+            string query = "SELECT * FROM [USER] ORDER BY UID;";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -52,11 +55,21 @@ namespace Super_Market.pages
 
                 this.dataGridView1.DataSource = table;
                 this.dataGridView2.DataSource = table;
+                this.dataGridView3.DataSource = table;
             }
         }
 
         private void clearInputs()
         {
+            this.addIdInput.Clear();
+            this.addNameInput.Clear();
+            this.addEmailInput.Clear();
+            this.addPhoneInput.Clear();
+            this.addAddressInput.Clear();
+            this.addPasswordInput.Clear();
+            this.addAdminBtn.Checked = false;
+            this.addCustomerBtn.Checked = false;
+
             this.updateNameInput.Clear();
             this.updateEmailInput.Clear();
             this.updatePhoneInput.Clear();
@@ -68,26 +81,111 @@ namespace Super_Market.pages
             this.updateEmailInput.Enabled = false;
             this.updatePhoneInput.Enabled = false;
             this.updateAddressInput.Enabled = false;
-            this.updateAdminBtn.Enabled = false;
-            this.updateCustomerBtn.Enabled = false;
             this.updateBtn.Enabled = false;
 
-            this.deleteCustomerIdInput.Clear();
+            this.deleteIdInput.Clear();
+        }
+
+        private void showPassword_Click(object sender, EventArgs e)
+        {
+            if (this.addPasswordInput.PasswordChar == '*')
+            {
+                this.addPasswordInput.PasswordChar = '\0';
+                this.showPassword.BackgroundImage = Properties.Resources.hide;
+            }
+            else
+            {
+                this.addPasswordInput.PasswordChar = '*';
+                this.showPassword.BackgroundImage = Properties.Resources.show;
+            }
         }
 
         // -------------------------------------- ADD CUSTOMER
+
+        private void addBtn_Click(object sender, EventArgs e)
+        {
+            this._mainWindow.users.refreshUsers();
+
+            if (!Validator.IsValidInteger(this.addIdInput.Text))
+            {
+                MessageDisplay.ShowError("Please enter a valid ID !!");
+                this.addIdInput.Focus();
+                return;
+            }
+
+            if (UniquenessValidator.DoesUserIDExist(int.Parse(this.addIdInput.Text)))
+            {
+                MessageDisplay.ShowError("The specified ID already exists !!");
+                this.addIdInput.Focus();
+                return;
+            }
+
+            if (!Validator.IsValidName(this.addNameInput.Text))
+            {
+                MessageDisplay.ShowError("Please enter a valid name !!");
+                this.addNameInput.Focus();
+                return;
+            }
+
+            if (!Validator.IsValidPhone(this.addPhoneInput.Text))
+            {
+                MessageDisplay.ShowError("Please enter a valid phone !!");
+                this.addPhoneInput.Focus();
+                return;
+            }
+
+            if (!Validator.IsValidEmail(this.addEmailInput.Text))
+            {
+                MessageDisplay.ShowError("Please enter a valid email !!");
+                this.addEmailInput.Focus();
+                return;
+            }
+
+            if (!Validator.IsValidAddress(this.addAddressInput.Text))
+            {
+                MessageDisplay.ShowError("Please enter a valid address.\n" +
+                                     "Example: 13st Tahrir, Dokki, Giza");
+                this.addAddressInput.Focus();
+                return;
+            }
+
+            if (!Validator.IsValidPassword(this.addPasswordInput.Text))
+            {
+                MessageDisplay.ShowError("Password must be at least 8 characters long and contain: \nat least one uppercase letter, one lowercase letter, one digit, and one special character.");
+                this.addPasswordInput.Focus();
+                return;
+            }
+
+            bool isAdmin;
+
+            if (this.addAdminBtn.Checked) isAdmin = true;
+            else if (this.addCustomerBtn.Checked) isAdmin = false;
+            else
+            {
+                MessageDisplay.ShowError("Please select a user type !!");
+                return;
+            }
+
+            User user = new User(
+                int.Parse(this.addIdInput.Text),
+                this.addNameInput.Text,
+                this.addEmailInput.Text,
+                this.addPhoneInput.Text,
+                this.addAddressInput.Text,
+                isAdmin,
+                this.addPasswordInput.Text
+            );
+
+            this._mainWindow.users.addUser(user);
+            MessageDisplay.ShowSuccess("Add Customer Successfully...");
+            loadUserList();
+            clearInputs();
+        }
 
         // -------------------------------------- UPDATE CUSTOMER
         private void searchBtn_Click(object sender, EventArgs e)
         {
             this._mainWindow.users.refreshUsers();
-
-            if (this._mainWindow.users.IsEmpty() == 0)
-            {
-                MessageDisplay.ShowError("There are currently no registered users !!");
-                this.deleteCustomerIdInput.Focus();
-                return;
-            }
 
             if (!Validator.IsValidInteger(this.updateIdInput.Text))
             {
@@ -106,29 +204,22 @@ namespace Super_Market.pages
             }
 
             this._mainWindow.user  = this._mainWindow.users.getUserByID(this._customerId);
-            
-            if (this._mainWindow.user.IsAdmin())
-            {
-                MessageDisplay.ShowError("Sorry you can't Edit Admin !!");
-                this.updateIdInput.Focus();
-                return;
-            }
-            
-            this.updateNameInput.Text = this._mainWindow.user.GetUsername();
-            this.updateEmailInput.Text = this._mainWindow.user.GetEmail();
-            this.updatePhoneInput.Text = this._mainWindow.user.GetPhone();
-            this.updateAddressInput.Text = this._mainWindow.user.GetAddress();
 
-            if (this._mainWindow.user.IsAdmin()) this.updateAdminBtn.Checked = true;
-            else this.updateCustomerBtn.Checked = true;
+            this.updateNameInput.Text = this._mainWindow.user.GetUsername().Trim();
+            this.updateEmailInput.Text = this._mainWindow.user.GetEmail().Trim();
+            this.updatePhoneInput.Text = this._mainWindow.user.GetPhone().Trim();
+            this.updateAddressInput.Text = this._mainWindow.user.GetAddress().Trim();
+
+            if (this._mainWindow.user.IsAdmin()) this.addAdminBtn.Checked = true;
+            else this.addCustomerBtn.Checked = true;
             
             this.updateBtn.Enabled = true;
             this.updateNameInput.Enabled = true;
             this.updateEmailInput.Enabled = true;
             this.updatePhoneInput.Enabled = true;
             this.updateAddressInput.Enabled = true;
-            this.updateAdminBtn.Enabled = true;
-            this.updateCustomerBtn.Enabled = true;
+            this.addAdminBtn.Enabled = true;
+            this.addCustomerBtn.Enabled = true;
         }
         
         private void updateBtn_Click(object sender, EventArgs e)
@@ -137,7 +228,6 @@ namespace Super_Market.pages
             string userEmail = this.updateEmailInput.Text;
             string userPhone = this.updatePhoneInput.Text;
             string userAddress = this.updateAddressInput.Text;
-            bool isAdmin;
 
             if (!Validator.IsValidInteger(this.updateIdInput.Text))
             {
@@ -169,19 +259,13 @@ namespace Super_Market.pages
 
             if (!Validator.IsValidAddress(userAddress))
             {
-                MessageDisplay.ShowError("Please enter a valid address !!");
+                MessageDisplay.ShowError("Please enter a valid address.\n" +
+                                     "Example: 13st Tahrir, Dokki, Giza");
                 this.updateAddressInput.Focus();
                 return;
             }
-            
-            if (this.updateAdminBtn.Checked) isAdmin = true;
-            else if (this.updateCustomerBtn.Checked) isAdmin = false;
-            else{
-                MessageDisplay.ShowError("Please select a user type !!");
-                return;
-            }
 
-            this._mainWindow.user.setData(userName, userEmail, userPhone, userAddress, isAdmin);
+            this._mainWindow.user.setData(userName, userEmail, userPhone, userAddress, this._mainWindow.user.IsAdmin());
             this._mainWindow.users.updateUser(this._mainWindow.user);
             MessageDisplay.ShowSuccess("Update Customer Successfully...");
             loadUserList();
@@ -194,33 +278,19 @@ namespace Super_Market.pages
         {
             this._mainWindow.users.refreshUsers();
 
-            if (this._mainWindow.users.IsEmpty() == 0)
-            {
-                MessageDisplay.ShowError("There are currently no registered users !!");
-                this.deleteCustomerIdInput.Focus();
-                return;
-            }
-
-            if (!Validator.IsValidInteger(this.deleteCustomerIdInput.Text))
+            if (!Validator.IsValidInteger(this.deleteIdInput.Text))
             {
                 MessageDisplay.ShowError("Please enter a valid ID !!");
-                this.deleteCustomerIdInput.Focus();
+                this.deleteIdInput.Focus();
                 return;
             }
 
-            this._customerId = int.Parse(this.deleteCustomerIdInput.Text);
+            this._customerId = int.Parse(this.deleteIdInput.Text);
             User user = this._mainWindow.users.getUserByID(this._customerId);
             
             if (user == null){
                 MessageDisplay.ShowError("The specified user does not exist !!");
-                this.deleteCustomerIdInput.Focus();
-                return;
-            }
-            
-            if (user.IsAdmin())
-            {
-                MessageDisplay.ShowError("Sorry you can't Edit Admin !!");
-                this.deleteCustomerIdInput.Focus();
+                this.deleteIdInput.Focus();
                 return;
             }
 

@@ -20,6 +20,8 @@ namespace Super_Market.pages.admin
             "January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
         };
+
+        private List<string> years = new List<string> { };
         private string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
 
         public AnalysisDashboard(MainWindow mainWindow)
@@ -27,6 +29,10 @@ namespace Super_Market.pages.admin
             InitializeComponent();
             this.mainWindow = mainWindow;
             this.monthsComboBox.Items.AddRange(months.ToArray());
+            for (int i = 2000; i <= DateTime.Now.Year; i++)
+            {
+                this.years.Add(i.ToString());
+            }
         }
 
         private void menuBtn_Click(object sender, EventArgs e)
@@ -43,6 +49,7 @@ namespace Super_Market.pages.admin
             TopPurchasingCustomer();
             SalesComparison();
             ProductPurchaseSummary();
+            this.yearsComboBox.Items.AddRange(this.years.ToArray());
         }
 
         // ---------------------------------------------- MOST PURCHASED PRODUCT 
@@ -88,6 +95,13 @@ namespace Super_Market.pages.admin
                 return;
             }
 
+            if (this.yearsComboBox.SelectedItem == null)
+            {
+                MessageDisplay.ShowError("Please select a year.");
+                this.yearsComboBox.Focus();
+                return;
+            }
+
             string query = @"
                 SELECT P.PID AS ID, P.NAME AS Name,
                 CAT.NAME AS Category, D.NAME AS Department, 
@@ -111,7 +125,7 @@ namespace Super_Market.pages.admin
             using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
             {
                 cmd.Parameters.AddWithValue("@Mnth", this.monthsComboBox.SelectedIndex + 1);
-                cmd.Parameters.AddWithValue("@Year", "2025");
+                cmd.Parameters.AddWithValue("@Year", this.yearsComboBox.Text);
                 DataTable table = new DataTable();
                 adapter.Fill(table);
 
@@ -124,7 +138,24 @@ namespace Super_Market.pages.admin
         private void InteractiveCustomers()
         {
             string query = @"
-                
+                SELECT 
+	                U.UID AS [User ID], 
+	                U.NAME AS [Name], 
+	                U.EMAIL AS [Email], 
+	                U.PHONE AS [Phone Number],
+                    MAX(O.ORDER_DATE) AS [Last Purchase Date]
+                FROM [USER] U
+                LEFT JOIN [ORDER_DETAILS] OD ON U.UID = OD.UID
+                LEFT JOIN [ORDER] O ON O.OID = OD.OID
+                WHERE NOT EXISTS (
+                    SELECT *
+                    FROM [ORDER] O2
+                    JOIN [ORDER_DETAILS] OD2 ON O2.OID = OD2.OID
+                    WHERE OD2.UID = U.UID
+                      AND YEAR(O2.ORDER_DATE) = 2024
+                )
+                GROUP BY U.UID, U.NAME, U.EMAIL, U.PHONE , O.ORDER_DATE
+                ORDER BY U.UID;
             ";
 
             using (SqlConnection conn = new SqlConnection(this.connectionString))
@@ -148,6 +179,7 @@ namespace Super_Market.pages.admin
                         U.NAME AS [Customer Name],
                         YEAR(O.ORDER_DATE) AS [Order Year],
                         MONTH(O.ORDER_DATE) AS [Order Month],
+                        SUM(OD.QUANTITY) AS [Total Quantity],
                         SUM(O.TOTAL_PRICE) AS [Total Spent]
                     FROM [ORDER] O
                     JOIN ORDER_DETAILS OD ON O.OID = OD.OID
@@ -160,11 +192,15 @@ namespace Super_Market.pages.admin
                     FROM MonthlyCustomerTotals
                 )
                 SELECT 
-                    [Customer ID], [Customer Name],
-                    [Total Spent], [Order Month],
+                    [Customer ID], 
+                    [Customer Name],
+                    [Total Quantity],
+                    [Total Spent], 
+                    [Order Month], 
                     [Order Year]
                 FROM RankedCustomers
-                WHERE Rank = 1;
+                WHERE Rank = 1
+                ORDER BY [Order Year], [Order Month];
             ";
 
             using (SqlConnection conn = new SqlConnection(this.connectionString))
@@ -183,15 +219,18 @@ namespace Super_Market.pages.admin
         private void SalesComparison()
         {
             string query = @"
-                SELECT c.NAME AS Category,
-                    SUM(p.PRICE * od.QUANTITY) AS [Total Sales]
-                FROM CATEGORY c
-                JOIN DEPARTMENT d ON c.CID = d.CID
-                JOIN PRODUCT p ON d.DID = p.DID
-                JOIN ORDER_DETAILS od ON p.PID = od.PID
-                JOIN [ORDER] o ON od.ORDER_ID = o.OID
-                WHERE c.NAME IN ('Food', 'Electronic')
-                GROUP BY c.NAME;
+                    SELECT 
+                        c.NAME AS [Category],
+                        SUM(p.PRICE * od.QUANTITY) AS [Total Sales]
+                    FROM CATEGORY c
+                    JOIN DEPARTMENT d ON c.CID = d.CID
+                    JOIN PRODUCT p ON d.DID = p.DID
+                    JOIN ORDER_DETAILS od ON p.PID = od.PID
+                    JOIN [ORDER] o ON od.ORDER_ID = o.OID
+                    -- WHERE c.NAME IN ('Food', 'Electronic') if you want to comparison between two categories
+                    -- ORDER BY [Total Sales] DESC;        
+                    GROUP BY c.NAME
+                    ORDER BY [Total Sales] DESC;
             ";
 
             using (SqlConnection conn = new SqlConnection(this.connectionString))
@@ -216,13 +255,14 @@ namespace Super_Market.pages.admin
                     d.NAME AS Department,
                     c.NAME AS Category,
                     co.NAME AS Company,
-                    COUNT(od.UID) AS [Total Customer Purchases]
+                    p.PRICE AS Price,
+                    COUNT(DISTINCT(od.UID)) AS [Total Customer Purchases]
                 FROM PRODUCT p
                 JOIN DEPARTMENT d ON p.DID = d.DID
                 JOIN CATEGORY c ON d.CID = c.CID
                 JOIN COMPANY co ON p.COMPID = co.COMPID
                 LEFT JOIN ORDER_DETAILS od ON p.PID = od.PID
-                GROUP BY p.PID, p.NAME, d.NAME, c.NAME, co.NAME
+                GROUP BY p.PID, p.NAME, d.NAME, c.NAME, co.NAME , p.PRICE
             ";
 
             using (SqlConnection conn = new SqlConnection(this.connectionString))

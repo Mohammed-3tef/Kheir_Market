@@ -1,4 +1,7 @@
--- Requirment A (the best seller product)
+Use Super_Market;
+
+-------- I. Most Purchased Product: Retrieve the product with the highest customer count. 
+
 SELECT Top 10 
 [Product].NAME AS Product_Name , COUNT(DISTINCT [ORDER_DETAILS].UID) AS Times_Bought 
 FROM ORDER_DETAILS INNER JOIN PRODUCT  ON [ORDER_DETAILS].PID = [Product].PID
@@ -6,11 +9,11 @@ GROUP BY [Product].NAME
 ORDER BY Times_Bought DESC;
 go
 
--- VAR will be Used in the C#
+-------- II. Unsold Products by Month: Identify products with no sales in a specified month. 
+
 DECLARE @Mnth INT = 2;
 DECLARE @Year INT = 2025;
 
--- Requirment B (product with no customer in specific month)
 SELECT [PRODUCT].NAME AS ProductName , DATENAME(MONTH, DATEFROMPARTS(@Year, @Mnth, 1)) AS [Month], @Year AS [Year]
 FROM PRODUCT 
 WHERE [PRODUCT].PID NOT IN (
@@ -21,7 +24,22 @@ WHERE [PRODUCT].PID NOT IN (
 );
 go
 
--- req 14
+-------- III. Inactive Customers: Identify customers inactive for the past year. 
+
+SELECT 
+	U.UID AS [User ID], U.NAME AS [Name], U.EMAIL AS [Email], U.PHONE AS [Phone Number]
+FROM [USER] U
+JOIN [ORDER_DETAILS] OD ON OD.UID = U.UID
+JOIN [ORDER] O ON O.OID = OD.OID
+WHERE NOT EXISTS (
+    SELECT *
+    FROM [ORDER] O2
+    JOIN [ORDER_DETAILS] OD2 ON O2.OID = OD2.OID
+    WHERE OD2.UID = U.UID
+      AND YEAR(O2.ORDER_DATE) = 2024
+);
+
+-------- IV. Top Purchasing Customer: Identify the customer with the highest monthly purchase. 
 
 WITH MonthlyCustomerTotals AS (
     SELECT U.UID AS [Customer ID], U.NAME AS [Customer Name],
@@ -45,9 +63,7 @@ SELECT
 FROM RankedCustomers
 WHERE Rank = 1;
 
-
-
--- req 15
+-------- V. Sales Comparison: Compare sales between food and electronic products.
 
 SELECT c.NAME AS Category,
     SUM(p.PRICE * od.QUANTITY) AS [Total Sales]
@@ -59,7 +75,7 @@ JOIN [ORDER] o ON od.ORDER_ID = o.OID
 WHERE c.NAME IN ('Food', 'Electronic')
 GROUP BY c.NAME;
 
--- req 16
+-------- VI. Product Purchase Summary: Retrieve product details with customer purchase counts.
 
 SELECT 
     p.PID AS [ID],

@@ -29,9 +29,9 @@ namespace Super_Market.pages
             this.Close();
         }
 
-        private void customerBtn_Click(object sender, EventArgs e)
+        private void userBtn_Click(object sender, EventArgs e)
         {
-            CustomerManagement customerManagement = new CustomerManagement(this.mainWindow);
+            UserManagement customerManagement = new UserManagement(this.mainWindow);
             customerManagement.Show();
             this.Close();
         }

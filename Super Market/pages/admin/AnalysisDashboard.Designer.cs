@@ -35,6 +35,8 @@
             this.TabControl = new System.Windows.Forms.TabControl();
             this.mostPurchasedProductPage = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.yearsComboBox = new System.Windows.Forms.ComboBox();
             this.addProductCategoryLabel = new System.Windows.Forms.Label();
             this.monthsComboBox = new System.Windows.Forms.ComboBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -124,6 +126,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.yearsComboBox);
             this.tabPage1.Controls.Add(this.addProductCategoryLabel);
             this.tabPage1.Controls.Add(this.monthsComboBox);
             this.tabPage1.Controls.Add(this.dataGridView2);
@@ -135,11 +139,35 @@
             this.tabPage1.Text = "Unsold Products by Month";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(783, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 29);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Year:";
+            // 
+            // yearsComboBox
+            // 
+            this.yearsComboBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.yearsComboBox.DropDownHeight = 200;
+            this.yearsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.yearsComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yearsComboBox.FormattingEnabled = true;
+            this.yearsComboBox.IntegralHeight = false;
+            this.yearsComboBox.Location = new System.Drawing.Point(880, 27);
+            this.yearsComboBox.MaxDropDownItems = 5;
+            this.yearsComboBox.Name = "yearsComboBox";
+            this.yearsComboBox.Size = new System.Drawing.Size(358, 33);
+            this.yearsComboBox.TabIndex = 27;
+            // 
             // addProductCategoryLabel
             // 
             this.addProductCategoryLabel.AutoSize = true;
             this.addProductCategoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addProductCategoryLabel.Location = new System.Drawing.Point(478, 28);
+            this.addProductCategoryLabel.Location = new System.Drawing.Point(281, 27);
             this.addProductCategoryLabel.Name = "addProductCategoryLabel";
             this.addProductCategoryLabel.Size = new System.Drawing.Size(91, 29);
             this.addProductCategoryLabel.TabIndex = 26;
@@ -151,7 +179,7 @@
             this.monthsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.monthsComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.monthsComboBox.FormattingEnabled = true;
-            this.monthsComboBox.Location = new System.Drawing.Point(639, 28);
+            this.monthsComboBox.Location = new System.Drawing.Point(378, 27);
             this.monthsComboBox.MaxDropDownItems = 5;
             this.monthsComboBox.Name = "monthsComboBox";
             this.monthsComboBox.Size = new System.Drawing.Size(358, 33);
@@ -319,5 +347,7 @@
         private System.Windows.Forms.DataGridView dataGridView6;
         private System.Windows.Forms.Label addProductCategoryLabel;
         private System.Windows.Forms.ComboBox monthsComboBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox yearsComboBox;
     }
 }

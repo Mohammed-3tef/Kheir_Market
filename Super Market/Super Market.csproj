@@ -84,11 +84,11 @@
     <Compile Include="pages\admin\CompanyManagement.Designer.cs">
       <DependentUpon>CompanyManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\admin\CustomerManagement.cs">
+    <Compile Include="pages\admin\UserManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pages\admin\CustomerManagement.Designer.cs">
-      <DependentUpon>CustomerManagement.cs</DependentUpon>
+    <Compile Include="pages\admin\UserManagement.Designer.cs">
+      <DependentUpon>UserManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="pages\admin\AdminMenuPage.cs">
       <SubType>Form</SubType>
@@ -151,8 +151,8 @@
     <EmbeddedResource Include="pages\admin\CompanyManagement.resx">
       <DependentUpon>CompanyManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\admin\CustomerManagement.resx">
-      <DependentUpon>CustomerManagement.cs</DependentUpon>
+    <EmbeddedResource Include="pages\admin\UserManagement.resx">
+      <DependentUpon>UserManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\admin\AdminMenuPage.resx">
       <DependentUpon>AdminMenuPage.cs</DependentUpon>

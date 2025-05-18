@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminMenuPage));
             this.appTitle = new System.Windows.Forms.Label();
             this.welcomeMsg = new System.Windows.Forms.Label();
-            this.customerBtn = new System.Windows.Forms.Button();
+            this.userBtn = new System.Windows.Forms.Button();
             this.productBtn = new System.Windows.Forms.Button();
             this.logOutBtn = new System.Windows.Forms.Button();
             this.categoryBtn = new System.Windows.Forms.Button();
@@ -63,17 +63,17 @@
             this.welcomeMsg.Text = "Welcome to";
             this.welcomeMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // customerBtn
+            // userBtn
             // 
-            this.customerBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.customerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerBtn.Location = new System.Drawing.Point(266, 298);
-            this.customerBtn.Name = "customerBtn";
-            this.customerBtn.Size = new System.Drawing.Size(477, 102);
-            this.customerBtn.TabIndex = 14;
-            this.customerBtn.Text = "Customer Management";
-            this.customerBtn.UseVisualStyleBackColor = true;
-            this.customerBtn.Click += new System.EventHandler(this.customerBtn_Click);
+            this.userBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.userBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userBtn.Location = new System.Drawing.Point(266, 298);
+            this.userBtn.Name = "userBtn";
+            this.userBtn.Size = new System.Drawing.Size(477, 102);
+            this.userBtn.TabIndex = 14;
+            this.userBtn.Text = "User Management";
+            this.userBtn.UseVisualStyleBackColor = true;
+            this.userBtn.Click += new System.EventHandler(this.userBtn_Click);
             // 
             // productBtn
             // 
@@ -170,7 +170,7 @@
             this.Controls.Add(this.categoryBtn);
             this.Controls.Add(this.logOutBtn);
             this.Controls.Add(this.productBtn);
-            this.Controls.Add(this.customerBtn);
+            this.Controls.Add(this.userBtn);
             this.Controls.Add(this.appTitle);
             this.Controls.Add(this.welcomeMsg);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -187,7 +187,7 @@
 
         private System.Windows.Forms.Label appTitle;
         private System.Windows.Forms.Label welcomeMsg;
-        private System.Windows.Forms.Button customerBtn;
+        private System.Windows.Forms.Button userBtn;
         private System.Windows.Forms.Button productBtn;
         private System.Windows.Forms.Button logOutBtn;
         private System.Windows.Forms.Button categoryBtn;
