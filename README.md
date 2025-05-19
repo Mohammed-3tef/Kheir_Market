@@ -4,6 +4,8 @@
 
 This project presents the design and implementation of a relational database system for an online supermarket platform, modeled after real-world systems such as [Carrefour Egypt](https://www.carrefouregypt.com). The system is intended to manage product inventories, handle customer data, and support online purchasing processes.
 
+![Log In Page](./Super%20Market/assets/preview.png)
+
 ## Objectives
 
 The primary objectives of this project are to:
