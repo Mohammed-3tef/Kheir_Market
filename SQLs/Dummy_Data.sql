@@ -6,8 +6,8 @@ GO
 -- Clean existing data
 DELETE FROM ORDER_DETAILS;
 DELETE FROM [ORDER];
-DELETE FROM STOCK;
 DELETE FROM PRODUCT;
+DELETE FROM STOCK;
 DELETE FROM DEPARTMENT;
 DELETE FROM COMPANY;
 DELETE FROM CATEGORY;
@@ -60,20 +60,29 @@ INSERT INTO PRODUCT (PID, DID, SID, COMPID, NAME, PRICE) VALUES
 GO
 
 -- ORDERS
-INSERT INTO [ORDER] (OID, TOTAL_PRICE, ORDER_DATE) VALUES
-(101, 150.0, '2025-01-15'),
-(102, 60.0,  '2025-01-20'),
-(103, 90.0,  '2025-02-05'),
-(104, 120.0, '2025-02-10'),
-(105, 200.0, '2025-02-18'),
-(106, 8000.0, '2025-03-01');
+INSERT INTO [ORDER] (TOTAL_PRICE, ORDER_DATE) VALUES
+(150.0, '2025-01-15'),
+(60.0,  '2025-01-20'),
+(90.0,  '2025-02-05'),
+(120.0, '2025-02-10'),
+(200.0, '2025-02-18'),
+(8000.0, '2025-03-01');
 GO
 
+DECLARE @Order1 int, @Order2 int, @Order3 int, @Order4 int, @Order5 int, @Order6 int;
+
+SELECT @Order1 = OID FROM [ORDER] WHERE TOTAL_PRICE = 150.0 AND ORDER_DATE = '2025-01-15';
+SELECT @Order2 = OID FROM [ORDER] WHERE TOTAL_PRICE = 60.0 AND ORDER_DATE = '2025-01-20';
+SELECT @Order3 = OID FROM [ORDER] WHERE TOTAL_PRICE = 90.0 AND ORDER_DATE = '2025-02-05';
+SELECT @Order4 = OID FROM [ORDER] WHERE TOTAL_PRICE = 120.0 AND ORDER_DATE = '2025-02-10';
+SELECT @Order5 = OID FROM [ORDER] WHERE TOTAL_PRICE = 200.0 AND ORDER_DATE = '2025-02-18';
+SELECT @Order6 = OID FROM [ORDER] WHERE TOTAL_PRICE = 8000.0 AND ORDER_DATE = '2025-03-01';
+
 INSERT INTO ORDER_DETAILS (OID, PID, UID, ORDER_ID, QUANTITY) VALUES
-(101, 1, 1, 101, 2),   -- Ahmed buys 2 Rice
-(102, 2, 2, 102, 2),   -- Sara buys 2 Sugar
-(103, 3, 1, 103, 3),   -- Ahmed buys 3 Milk
-(104, 4, 2, 104, 1),   -- Sara buys 1 Microwave
-(105, 1, 3, 105, 4),   -- Omar buys 4 Rice
-(106, 5, 3, 106, 2);   -- Omar buys 2 TVs
+(@Order1, 1, 1, @Order1, 2),   -- Ahmed buys 2 Rice
+(@Order2, 2, 2, @Order2, 2),   -- Sara buys 2 Sugar
+(@Order3, 3, 1, @Order3, 3),   -- Ahmed buys 3 Milk
+(@Order4, 4, 2, @Order4, 1),   -- Sara buys 1 Microwave
+(@Order5, 1, 3, @Order5, 4),   -- Omar buys 4 Rice
+(@Order6, 5, 3, @Order6, 2);   -- Omar buys 2 TVs
 GO
