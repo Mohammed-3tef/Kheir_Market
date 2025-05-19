@@ -82,3 +82,24 @@ C:\Users\DELL\OneDrive\Documents\College\Data Base\Super_Market_Management_Syste
 C:\Users\DELL\OneDrive\Documents\College\Data Base\Super_Market_Management_System\Super Market\obj\Debug\Super Market.csproj.CoreCompileInputs.cache
 C:\Users\DELL\OneDrive\Documents\College\Data Base\Super_Market_Management_System\Super Market\obj\Debug\Super Market.exe
 C:\Users\DELL\OneDrive\Documents\College\Data Base\Super_Market_Management_System\Super Market\obj\Debug\Super Market.pdb
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\bin\Debug\Super Market.exe.config
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\bin\Debug\Super Market.exe
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\bin\Debug\Super Market.pdb
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super Market.csproj.AssemblyReference.cache
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.MainWindow.resources
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.admin.AnalysisDashboard.resources
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.CategoryManagement.resources
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.admin.CompanyManagement.resources
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.UserManagement.resources
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.AdminMenuPage.resources
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.admin.DepartmentManagement.resources
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.CustomerMenuPage.resources
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.ProductManagement.resources
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.customer.OrderManagement.resources
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.OTPVerifyPage.resources
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.pages.SignUp.resources
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super_Market.Properties.Resources.resources
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super Market.csproj.GenerateResource.cache
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super Market.csproj.CoreCompileInputs.cache
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super Market.exe
+C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super Market.pdb

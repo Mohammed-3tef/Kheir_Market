@@ -2,8 +2,10 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 using Super_Market.packages.display;
+using Super_Market.packages.User;
 
 namespace Super_Market.pages.customer
 {
@@ -219,6 +221,18 @@ namespace Super_Market.pages.customer
 
                     try
                     {
+                        string checkStockQuery = @"SELECT S.PRODUCT_QUANTITY FROM STOCK S 
+                                         JOIN PRODUCT P ON S.PROD_ID = P.PID 
+                                         WHERE P.PID = @ProductId";
+                        SqlCommand checkStockCmd = new SqlCommand(checkStockQuery, conn, transaction);
+                        checkStockCmd.Parameters.AddWithValue("@ProductId", productId);
+                        int availableQuantity = Convert.ToInt32(checkStockCmd.ExecuteScalar());
+
+                        if (availableQuantity < quantity)
+                        {
+                            throw new Exception($"Not enough stock available. Only {availableQuantity} items in stock.");
+                        }
+
                         string getPriceQuery = "SELECT PRICE FROM PRODUCT WHERE PID = @ProductId";
                         SqlCommand getPriceCmd = new SqlCommand(getPriceQuery, conn, transaction);
                         getPriceCmd.Parameters.AddWithValue("@ProductId", productId);
@@ -226,7 +240,7 @@ namespace Super_Market.pages.customer
                         decimal total = price * quantity;
 
                         string insertOrderQuery = @"INSERT INTO [ORDER] (TOTAL_PRICE, ORDER_DATE) VALUES (@Total, GETDATE());
-                                                SELECT SCOPE_IDENTITY();";
+                                        SELECT SCOPE_IDENTITY();";
                         SqlCommand insertOrderCmd = new SqlCommand(insertOrderQuery, conn, transaction);
                         insertOrderCmd.Parameters.AddWithValue("@Total", total);
                         int newOrderId = Convert.ToInt32(insertOrderCmd.ExecuteScalar());
@@ -236,7 +250,7 @@ namespace Super_Market.pages.customer
                         int nextOrderDetailId = Convert.ToInt32(getNextOrderIdCmd.ExecuteScalar());
 
                         string insertDetailsQuery = @"INSERT INTO ORDER_DETAILS (OID, PID, UID, ORDER_ID, QUANTITY) 
-                                                  VALUES (@OrderId, @ProductId, @UserId, @OrderDetailId, @Quantity);";
+                                          VALUES (@OrderId, @ProductId, @UserId, @OrderDetailId, @Quantity);";
                         SqlCommand insertDetailsCmd = new SqlCommand(insertDetailsQuery, conn, transaction);
                         insertDetailsCmd.Parameters.AddWithValue("@OrderId", newOrderId);
                         insertDetailsCmd.Parameters.AddWithValue("@ProductId", productId);
@@ -244,6 +258,12 @@ namespace Super_Market.pages.customer
                         insertDetailsCmd.Parameters.AddWithValue("@OrderDetailId", nextOrderDetailId);
                         insertDetailsCmd.Parameters.AddWithValue("@Quantity", quantity);
                         insertDetailsCmd.ExecuteNonQuery();
+
+                        string updateStockQuery = "UPDATE STOCK SET PRODUCT_QUANTITY = PRODUCT_QUANTITY - @Quantity WHERE PROD_ID = @ProductId";
+                        SqlCommand updateStockCmd = new SqlCommand(updateStockQuery, conn, transaction);
+                        updateStockCmd.Parameters.AddWithValue("@Quantity", quantity);
+                        updateStockCmd.Parameters.AddWithValue("@ProductId", productId);
+                        updateStockCmd.ExecuteNonQuery();
 
                         transaction.Commit();
                         MessageDisplay.ShowSuccess("Order added successfully!");
@@ -263,94 +283,121 @@ namespace Super_Market.pages.customer
             }
         }
 
-        // ================================ Update Btn ===========================  
+       // ================================ Update Btn ===========================  
+          
         private void updateBtn_Click(object sender, EventArgs e)
-        {
-            try
             {
-                if (!int.TryParse(this.updateOrderIdInput.Text, out int orderId) || orderId <= 0)
+                try
                 {
-                    MessageDisplay.ShowError("Please enter a valid positive Order ID.");
-                    this.updateOrderIdInput.Focus();
-                    return;
-                }
 
-                if (this.updateQuantityInput.Value <= 0)
-                {
-                    MessageDisplay.ShowError("Quantity must be greater than 0.");
-                    this.updateQuantityInput.Focus();
-                    return;
-                }
-
-                int quantity = Convert.ToInt32(this.updateQuantityInput.Value);
-                int userId = this.mainWindow.user.GetID();
-                string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
-
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    using (SqlTransaction transaction = conn.BeginTransaction())
+                    if (!int.TryParse(this.updateOrderIdInput.Text, out int orderId) || orderId <= 0)
                     {
-                        try
+                        MessageDisplay.ShowError("Please enter a valid positive Order ID.");
+                        this.updateOrderIdInput.Focus();
+                        return;
+                    }
+
+                    if (this.updateQuantityInput.Value <= 0)
+                    {
+                        MessageDisplay.ShowError("Quantity must be greater than 0.");
+                        this.updateQuantityInput.Focus();
+                        return;
+                    }
+
+                    int quantity = Convert.ToInt32(this.updateQuantityInput.Value);
+                    int userId = this.mainWindow.user.GetID();
+                    string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
+
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        conn.Open();
+                        using (SqlTransaction transaction = conn.BeginTransaction())
                         {
-                            string verifyQuery = @"SELECT COUNT(1), OD.PID, P.PRICE, OD.OID FROM ORDER_DETAILS OD
-                                               JOIN PRODUCT P ON OD.PID = P.PID JOIN [USER] U ON OD.UID = U.UID
-                                               WHERE OD.ORDER_ID = @OrderID AND U.UID = @UserID GROUP BY OD.PID, P.PRICE, OD.OID";
-
-                            SqlCommand verifyCmd = new SqlCommand(verifyQuery, conn, transaction);
-                            verifyCmd.Parameters.AddWithValue("@OrderID", orderId);
-                            verifyCmd.Parameters.AddWithValue("@UserID", userId);
-
-                            using (SqlDataReader reader = verifyCmd.ExecuteReader())
+                            try
                             {
-                                if (!reader.HasRows)
+                                string verifyQuery = @"SELECT COUNT(1), OD.PID, P.PRICE, OD.OID, OD.QUANTITY 
+                                       FROM ORDER_DETAILS OD
+                                       JOIN PRODUCT P ON OD.PID = P.PID 
+                                       JOIN [USER] U ON OD.UID = U.UID
+                                       WHERE OD.ORDER_ID = @OrderID AND U.UID = @UserID 
+                                       GROUP BY OD.PID, P.PRICE, OD.OID, OD.QUANTITY";
+
+                                SqlCommand verifyCmd = new SqlCommand(verifyQuery, conn, transaction);
+                                verifyCmd.Parameters.AddWithValue("@OrderID", orderId);
+                                verifyCmd.Parameters.AddWithValue("@UserID", userId);
+
+                                using (SqlDataReader reader = verifyCmd.ExecuteReader())
                                 {
-                                    throw new Exception("Order not found or doesn't belong to current user.");
+                                    if (!reader.HasRows)
+                                    {
+                                        throw new Exception("Order not found or doesn't belong to current user.");
+                                    }
+
+                                    reader.Read();
+                                    int pid = reader.GetInt32(1);
+                                    decimal price = reader.GetDecimal(2);
+                                    int oid = reader.GetInt32(3);
+                                    int oldQuantity = reader.GetInt32(4);
+                                    reader.Close();
+
+                                    int quantityDifference = quantity - oldQuantity;
+
+                                    if (quantityDifference > 0)
+                                    {
+                                        string checkStockQuery = "SELECT PRODUCT_QUANTITY FROM STOCK WHERE PROD_ID = @ProductId";
+                                        SqlCommand checkStockCmd = new SqlCommand(checkStockQuery, conn, transaction);
+                                        checkStockCmd.Parameters.AddWithValue("@ProductId", pid);
+                                        int availableQuantity = Convert.ToInt32(checkStockCmd.ExecuteScalar());
+
+                                        if (availableQuantity < quantityDifference)
+                                        {
+                                            throw new Exception($"Not enough stock available. Only {availableQuantity} items in stock.");
+                                        }
+                                    }
+
+                                    string updateDetailsQuery = @"UPDATE ORDER_DETAILS SET QUANTITY = @Quantity WHERE ORDER_ID = @OrderID";
+                                    SqlCommand updateDetailsCmd = new SqlCommand(updateDetailsQuery, conn, transaction);
+                                    updateDetailsCmd.Parameters.AddWithValue("@Quantity", quantity);
+                                    updateDetailsCmd.Parameters.AddWithValue("@OrderID", orderId);
+                                    int rowsAffected = updateDetailsCmd.ExecuteNonQuery();
+
+                                    if (rowsAffected == 0)
+                                    {
+                                        throw new Exception("Failed to update order details.");
+                                    }
+
+                                    decimal totalPrice = price * quantity;
+                                    string updateTotalQuery = @"UPDATE [ORDER] SET TOTAL_PRICE = @TotalPrice WHERE OID = @OID";
+                                    SqlCommand updateTotalCmd = new SqlCommand(updateTotalQuery, conn, transaction);
+                                    updateTotalCmd.Parameters.AddWithValue("@TotalPrice", totalPrice);
+                                    updateTotalCmd.Parameters.AddWithValue("@OID", oid);
+                                    updateTotalCmd.ExecuteNonQuery();
+
+                                    string updateStockQuery = "UPDATE STOCK SET PRODUCT_QUANTITY = PRODUCT_QUANTITY - @Difference WHERE PROD_ID = @ProductId";
+                                    SqlCommand updateStockCmd = new SqlCommand(updateStockQuery, conn, transaction);
+                                    updateStockCmd.Parameters.AddWithValue("@Difference", quantityDifference);
+                                    updateStockCmd.Parameters.AddWithValue("@ProductId", pid);
+                                    updateStockCmd.ExecuteNonQuery();
                                 }
 
-                                reader.Read();
-                                int pid = reader.GetInt32(1);
-                                decimal price = reader.GetDecimal(2);
-                                int oid = reader.GetInt32(3);
-                                reader.Close();
-
-                                string updateDetailsQuery = @"UPDATE ORDER_DETAILS SET QUANTITY = @Quantity WHERE ORDER_ID = @OrderID";
-                                SqlCommand updateDetailsCmd = new SqlCommand(updateDetailsQuery, conn, transaction);
-                                updateDetailsCmd.Parameters.AddWithValue("@Quantity", quantity);
-                                updateDetailsCmd.Parameters.AddWithValue("@OrderID", orderId);
-                                int rowsAffected = updateDetailsCmd.ExecuteNonQuery();
-
-                                if (rowsAffected == 0)
-                                {
-                                    throw new Exception("Failed to update order details.");
-                                }
-
-                                decimal totalPrice = price * quantity;
-                                string updateTotalQuery = @"UPDATE [ORDER] SET TOTAL_PRICE = @TotalPrice WHERE OID = @OID";
-                                SqlCommand updateTotalCmd = new SqlCommand(updateTotalQuery, conn, transaction);
-                                updateTotalCmd.Parameters.AddWithValue("@TotalPrice", totalPrice);
-                                updateTotalCmd.Parameters.AddWithValue("@OID", oid);
-                                updateTotalCmd.ExecuteNonQuery();
+                                transaction.Commit();
+                                MessageDisplay.ShowSuccess("Order updated successfully.");
+                                loadTable(userId);
+                                clearInputs();
                             }
-
-                            transaction.Commit();
-                            MessageDisplay.ShowSuccess("Order updated successfully.");
-                            loadTable(userId);
-                            clearInputs();
-                        }
-                        catch (Exception ex)
-                        {
-                            transaction.Rollback();
-                            MessageDisplay.ShowError($"Failed to update order: {ex.Message}");
+                            catch (Exception ex)
+                            {
+                                transaction.Rollback();
+                                MessageDisplay.ShowError($"Failed to update order: {ex.Message}");
+                            }
                         }
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageDisplay.ShowError($"Error: {ex.Message}");
+                }
             }
-            catch (Exception ex)
-            {
-                MessageDisplay.ShowError($"Error: {ex.Message}");
-            }
-        }
 
         // ================================ Search Btn ===========================  
         private void searchBtn_Click(object sender, EventArgs e)
@@ -412,10 +459,6 @@ namespace Super_Market.pages.customer
             }
 
             string connectionString = "Data Source=.;Initial Catalog=Super_Market;Integrated Security=True;";
-            string checkQuery = "SELECT COUNT(*) FROM ORDER_DETAILS WHERE ORDER_ID = @OrderID";
-            string getOidQuery = "SELECT OID FROM ORDER_DETAILS WHERE ORDER_ID = @OrderID";
-            string deleteDetailsQuery = "DELETE FROM ORDER_DETAILS WHERE ORDER_ID = @OrderID";
-            string deleteOrderQuery = "DELETE FROM [ORDER] WHERE OID = @OID";
 
             try
             {
@@ -424,34 +467,57 @@ namespace Super_Market.pages.customer
                     conn.Open();
                     SqlTransaction transaction = conn.BeginTransaction();
 
-                    SqlCommand checkCmd = new SqlCommand(checkQuery, conn, transaction);
-                    checkCmd.Parameters.AddWithValue("@OrderID", orderId);
-                    int count = (int)checkCmd.ExecuteScalar();
-                    if (count == 0)
-                        throw new Exception("Order not found.");
+                    try
+                    {
+                        string getDetailsQuery = @"SELECT OD.OID, OD.PID, OD.QUANTITY 
+                                       FROM ORDER_DETAILS OD
+                                       JOIN [USER] U ON OD.UID = U.UID
+                                       WHERE OD.ORDER_ID = @OrderID AND U.UID = @UserID";
 
-                    SqlCommand getOidCmd = new SqlCommand(getOidQuery, conn, transaction);
-                    getOidCmd.Parameters.AddWithValue("@OrderID", orderId);
-                    object oidResult = getOidCmd.ExecuteScalar();
-                    if (oidResult == null)
-                        throw new Exception("OID retrieval failed.");
+                        SqlCommand getDetailsCmd = new SqlCommand(getDetailsQuery, conn, transaction);
+                        getDetailsCmd.Parameters.AddWithValue("@OrderID", orderId);
+                        getDetailsCmd.Parameters.AddWithValue("@UserID", this.mainWindow.user.GetID());
 
-                    int oid = Convert.ToInt32(oidResult);
+                        SqlDataReader reader = getDetailsCmd.ExecuteReader();
+                        if (!reader.HasRows)
+                        {
+                            reader.Close();
+                            throw new Exception("Order not found or doesn't belong to you.");
+                        }
 
-                    SqlCommand deleteDetailsCmd = new SqlCommand(deleteDetailsQuery, conn, transaction);
-                    deleteDetailsCmd.Parameters.AddWithValue("@OrderID", orderId);
-                    deleteDetailsCmd.ExecuteNonQuery();
+                        reader.Read();
+                        int oid = reader.GetInt32(0);
+                        int pid = reader.GetInt32(1);
+                        int quantity = reader.GetInt32(2);
+                        reader.Close();
 
-                    SqlCommand deleteOrderCmd = new SqlCommand(deleteOrderQuery, conn, transaction);
-                    deleteOrderCmd.Parameters.AddWithValue("@OID", oid);
-                    deleteOrderCmd.ExecuteNonQuery();
+                        string deleteDetailsQuery = "DELETE FROM ORDER_DETAILS WHERE ORDER_ID = @OrderID";
+                        SqlCommand deleteDetailsCmd = new SqlCommand(deleteDetailsQuery, conn, transaction);
+                        deleteDetailsCmd.Parameters.AddWithValue("@OrderID", orderId);
+                        deleteDetailsCmd.ExecuteNonQuery();
 
-                    transaction.Commit();
+                        string deleteOrderQuery = "DELETE FROM [ORDER] WHERE OID = @OID";
+                        SqlCommand deleteOrderCmd = new SqlCommand(deleteOrderQuery, conn, transaction);
+                        deleteOrderCmd.Parameters.AddWithValue("@OID", oid);
+                        deleteOrderCmd.ExecuteNonQuery();
+
+                        string restoreStockQuery = "UPDATE STOCK SET PRODUCT_QUANTITY = PRODUCT_QUANTITY + @Quantity WHERE PROD_ID = @ProductId";
+                        SqlCommand restoreStockCmd = new SqlCommand(restoreStockQuery, conn, transaction);
+                        restoreStockCmd.Parameters.AddWithValue("@Quantity", quantity);
+                        restoreStockCmd.Parameters.AddWithValue("@ProductId", pid);
+                        restoreStockCmd.ExecuteNonQuery();
+
+                        transaction.Commit();
+                        MessageDisplay.ShowSuccess("Order deleted successfully.");
+                        loadTable(this.mainWindow.user.GetID());
+                        clearInputs();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
                 }
-
-                MessageDisplay.ShowSuccess("Order deleted successfully.");
-                loadTable(this.mainWindow.user.GetID());
-                clearInputs();
             }
             catch (Exception ex)
             {
