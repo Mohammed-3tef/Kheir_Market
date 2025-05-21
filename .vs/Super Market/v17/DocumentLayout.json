@@ -1,12 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\DELL\\OneDrive\\Documents\\College\\Data Base\\Project\\Super_Market_Management_System\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|c:\\users\\dell\\onedrive\\documents\\college\\data base\\project\\super_market_management_system\\super market\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|solutionrelative:super market\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    }
-  ],
+  "WorkspaceRootPath": "D:\\Assignments\\Intro. to Database Systems\\Super_Market_Management_System\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -14,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -23,18 +18,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainWindow.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\DELL\\OneDrive\\Documents\\College\\Data Base\\Project\\Super_Market_Management_System\\Super Market\\MainWindow.cs",
-              "RelativeDocumentMoniker": "Super Market\\MainWindow.cs",
-              "ToolTip": "C:\\Users\\DELL\\OneDrive\\Documents\\College\\Data Base\\Project\\Super_Market_Management_System\\Super Market\\MainWindow.cs [Design]",
-              "RelativeToolTip": "Super Market\\MainWindow.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T22:18:20.237Z",
-              "EditorCaption": " [Design]"
             }
           ]
         }
