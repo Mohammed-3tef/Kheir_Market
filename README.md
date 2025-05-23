@@ -1,4 +1,11 @@
-# Super Market Database Management System
+<h1>
+  Super Market Database Management System
+  <div > 
+    <a href="https://deepwiki.com/Mohammed-3tef/Super_Market_Management_System"> 
+      <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"> 
+    </a> 
+  </div>
+</h1> 
 
 ## Overview
 
