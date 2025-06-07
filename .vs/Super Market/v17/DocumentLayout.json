@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|d:\\assignments\\intro. to database systems\\super_market_management_system\\super market\\pages\\otpverifypage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|solutionrelative:super market\\pages\\otpverifypage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|d:\\assignments\\intro. to database systems\\super_market_management_system\\super market\\packages\\print\\dgvprinter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|solutionrelative:super market\\packages\\print\\dgvprinter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DGVPrinter.cs",
+              "DocumentMoniker": "D:\\Assignments\\Intro. to Database Systems\\Super_Market_Management_System\\Super Market\\packages\\print\\DGVPrinter.cs",
+              "RelativeDocumentMoniker": "Super Market\\packages\\print\\DGVPrinter.cs",
+              "ToolTip": "D:\\Assignments\\Intro. to Database Systems\\Super_Market_Management_System\\Super Market\\packages\\print\\DGVPrinter.cs",
+              "RelativeToolTip": "Super Market\\packages\\print\\DGVPrinter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-07T13:51:33.156Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
