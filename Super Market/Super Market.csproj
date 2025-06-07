@@ -61,6 +61,7 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="packages\display\MessageDisplay.cs" />
+    <Compile Include="packages\print\DGVPrinter.cs" />
     <Compile Include="packages\User\RepositoryOfUsers.cs" />
     <Compile Include="packages\User\User.cs" />
     <Compile Include="packages\validation\UniquenessValidator.cs" />

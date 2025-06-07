@@ -44,6 +44,7 @@
             // 
             // resendBtn
             // 
+            this.resendBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.resendBtn.AutoSize = true;
             this.resendBtn.Enabled = false;
             this.resendBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -58,6 +59,7 @@
             // 
             // verifyBtn
             // 
+            this.verifyBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.verifyBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.verifyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.verifyBtn.Location = new System.Drawing.Point(752, 523);
@@ -70,6 +72,7 @@
             // 
             // logInLable
             // 
+            this.logInLable.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.logInLable.AutoSize = true;
             this.logInLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logInLable.Location = new System.Drawing.Point(561, 609);
@@ -80,6 +83,7 @@
             // 
             // logInPageLink
             // 
+            this.logInPageLink.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.logInPageLink.AutoSize = true;
             this.logInPageLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logInPageLink.LinkColor = System.Drawing.Color.Black;
@@ -93,6 +97,7 @@
             // 
             // CancelBtn
             // 
+            this.CancelBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CancelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelBtn.Location = new System.Drawing.Point(530, 523);
@@ -105,6 +110,7 @@
             // 
             // otpInput
             // 
+            this.otpInput.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.otpInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.otpInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.otpInput.Location = new System.Drawing.Point(530, 415);
@@ -114,6 +120,7 @@
             // 
             // OTPLabel
             // 
+            this.OTPLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.OTPLabel.AutoSize = true;
             this.OTPLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OTPLabel.Location = new System.Drawing.Point(524, 380);
@@ -124,6 +131,7 @@
             // 
             // OTPVerificationLabel
             // 
+            this.OTPVerificationLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.OTPVerificationLabel.AutoSize = true;
             this.OTPVerificationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OTPVerificationLabel.Location = new System.Drawing.Point(591, 270);
@@ -134,6 +142,7 @@
             // 
             // appTitle
             // 
+            this.appTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.appTitle.AutoSize = true;
             this.appTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appTitle.Location = new System.Drawing.Point(375, 144);
@@ -145,6 +154,7 @@
             // 
             // welcomeMsg
             // 
+            this.welcomeMsg.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.welcomeMsg.AutoSize = true;
             this.welcomeMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.welcomeMsg.Location = new System.Drawing.Point(656, 112);

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DGVPrinterHelper;
 using Super_Market.packages.display;
 
 namespace Super_Market.pages.admin
@@ -88,17 +89,17 @@ namespace Super_Market.pages.admin
 
         private void UnsoldProductByMonth(object sender, EventArgs e)
         {
-            if (this.monthsComboBox.SelectedItem == null)
-            {
-                MessageDisplay.ShowError("Please select a month.");
-                this.monthsComboBox.Focus();
-                return;
-            }
-
             if (this.yearsComboBox.SelectedItem == null)
             {
                 MessageDisplay.ShowError("Please select a year.");
                 this.yearsComboBox.Focus();
+                return;
+            }
+
+            if (this.monthsComboBox.SelectedItem == null)
+            {
+                MessageDisplay.ShowError("Please select a month.");
+                this.monthsComboBox.Focus();
                 return;
             }
 
@@ -273,6 +274,63 @@ namespace Super_Market.pages.admin
                 adapter.Fill(table);
 
                 this.dataGridView6.DataSource = table;
+            }
+        }
+
+        private void printBtn_Click(object sender, EventArgs e)
+        {
+            DGVPrinter printer = new DGVPrinter();
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            printer.PageNumbers = true;
+            printer.PageNumberInHeader = false;
+            printer.PorportionalColumns = true;
+            printer.HeaderCellAlignment = StringAlignment.Near;
+            printer.Footer = "Super Market Analysis Dashboard - Generated on: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+            printer.FooterSpacing = 15;
+
+            if (this.TabControl.SelectedTab == mostPurchasedProductPage)
+            {
+                printer.Title = "Most Purchased Products";
+                printer.PrintDataGridView(this.dataGridView1);
+            }
+            else if (this.TabControl.SelectedTab == unsoldProductByMonthPage)
+            {
+                if (this.yearsComboBox.SelectedItem == null)
+                {
+                    MessageDisplay.ShowError("Please select a year.");
+                    this.yearsComboBox.Focus();
+                    return;
+                }
+
+                if (this.monthsComboBox.SelectedItem == null)
+                {
+                    MessageDisplay.ShowError("Please select a month.");
+                    this.monthsComboBox.Focus();
+                    return;
+                }
+
+                printer.Title = "Unsold Products by " + this.months[this.monthsComboBox.SelectedIndex] + " " + this.yearsComboBox.Text;
+                printer.PrintDataGridView(this.dataGridView2);
+            }
+            else if (this.TabControl.SelectedTab == interactiveCustomersPage)
+            {
+                printer.Title = "Interactive Customers";
+                printer.PrintDataGridView(this.dataGridView3);
+            }
+            else if (this.TabControl.SelectedTab == topPurchasingCustomerPage)
+            {
+                printer.Title = "Top Purchasing Customers";
+                printer.PrintDataGridView(this.dataGridView4);
+            }
+            else if (this.TabControl.SelectedTab == salesComparisonPage)
+            {
+                printer.Title = "Sales Comparison by Category";
+                printer.PrintDataGridView(this.dataGridView5);
+            }
+            else if (this.TabControl.SelectedTab == productPurchaseSummaryPage)
+            {
+                printer.Title = "Product Purchase Summary";
+                printer.PrintDataGridView(this.dataGridView6);
             }
         }
     }

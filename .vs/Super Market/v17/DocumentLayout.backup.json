@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\Assignments\\Intro. to Database Systems\\Super_Market_Management_System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|d:\\assignments\\intro. to database systems\\super_market_management_system\\super market\\pages\\customer\\ordermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|solutionrelative:super market\\pages\\customer\\ordermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|d:\\assignments\\intro. to database systems\\super_market_management_system\\super market\\pages\\otpverifypage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C7DD3015-16DD-4D21-B15F-C61BD0E741CF}|Super Market\\Super Market.csproj|solutionrelative:super market\\pages\\otpverifypage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,13 +19,13 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "OrderManagement.cs [Design]",
-              "DocumentMoniker": "D:\\Assignments\\Intro. to Database Systems\\Super_Market_Management_System\\Super Market\\pages\\customer\\OrderManagement.cs",
-              "RelativeDocumentMoniker": "Super Market\\pages\\customer\\OrderManagement.cs",
-              "ToolTip": "D:\\Assignments\\Intro. to Database Systems\\Super_Market_Management_System\\Super Market\\pages\\customer\\OrderManagement.cs [Design]*",
-              "RelativeToolTip": "Super Market\\pages\\customer\\OrderManagement.cs [Design]*",
+              "Title": "OTPVerifyPage.cs [Design]",
+              "DocumentMoniker": "D:\\Assignments\\Intro. to Database Systems\\Super_Market_Management_System\\Super Market\\pages\\OTPVerifyPage.cs",
+              "RelativeDocumentMoniker": "Super Market\\pages\\OTPVerifyPage.cs",
+              "ToolTip": "D:\\Assignments\\Intro. to Database Systems\\Super_Market_Management_System\\Super Market\\pages\\OTPVerifyPage.cs [Design]",
+              "RelativeToolTip": "Super Market\\pages\\OTPVerifyPage.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T07:51:55.138Z",
+              "WhenOpened": "2025-06-07T12:36:12.227Z",
               "EditorCaption": " [Design]"
             }
           ]
