@@ -130,5 +130,10 @@ namespace Super_Market.pages
                 this.showConfirmPassword.BackgroundImage = Properties.Resources.show;
             }
         }
+
+        private void githubRepo_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/Mohammed-3tef/Super_Market_Management_System");
+        }
     }
 }

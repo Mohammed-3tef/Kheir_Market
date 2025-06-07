@@ -43,28 +43,29 @@
             // 
             // appTitle
             // 
-            this.appTitle.AutoSize = true;
+            this.appTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.appTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appTitle.Location = new System.Drawing.Point(374, 104);
+            this.appTitle.Location = new System.Drawing.Point(266, 104);
             this.appTitle.Name = "appTitle";
-            this.appTitle.Size = new System.Drawing.Size(729, 51);
+            this.appTitle.Size = new System.Drawing.Size(960, 51);
             this.appTitle.TabIndex = 13;
             this.appTitle.Text = "Super Market Management System";
             this.appTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // welcomeMsg
             // 
-            this.welcomeMsg.AutoSize = true;
+            this.welcomeMsg.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.welcomeMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomeMsg.Location = new System.Drawing.Point(670, 75);
+            this.welcomeMsg.Location = new System.Drawing.Point(266, 75);
             this.welcomeMsg.Name = "welcomeMsg";
-            this.welcomeMsg.Size = new System.Drawing.Size(163, 32);
+            this.welcomeMsg.Size = new System.Drawing.Size(960, 32);
             this.welcomeMsg.TabIndex = 12;
             this.welcomeMsg.Text = "Welcome to";
             this.welcomeMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // userBtn
             // 
+            this.userBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.userBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.userBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userBtn.Location = new System.Drawing.Point(266, 298);
@@ -77,6 +78,7 @@
             // 
             // productBtn
             // 
+            this.productBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.productBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.productBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productBtn.Location = new System.Drawing.Point(749, 298);
@@ -89,6 +91,7 @@
             // 
             // logOutBtn
             // 
+            this.logOutBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.logOutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.logOutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logOutBtn.Location = new System.Drawing.Point(266, 622);
@@ -101,6 +104,7 @@
             // 
             // categoryBtn
             // 
+            this.categoryBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.categoryBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.categoryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryBtn.Location = new System.Drawing.Point(266, 406);
@@ -113,17 +117,18 @@
             // 
             // welcomePersonMsg
             // 
-            this.welcomePersonMsg.AutoSize = true;
+            this.welcomePersonMsg.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.welcomePersonMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomePersonMsg.Location = new System.Drawing.Point(587, 217);
+            this.welcomePersonMsg.Location = new System.Drawing.Point(266, 224);
             this.welcomePersonMsg.Name = "welcomePersonMsg";
-            this.welcomePersonMsg.Size = new System.Drawing.Size(156, 32);
+            this.welcomePersonMsg.Size = new System.Drawing.Size(960, 32);
             this.welcomePersonMsg.TabIndex = 25;
             this.welcomePersonMsg.Text = "Welcome, ";
             this.welcomePersonMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // departmentBtn
             // 
+            this.departmentBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.departmentBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.departmentBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.departmentBtn.Location = new System.Drawing.Point(749, 406);
@@ -136,6 +141,7 @@
             // 
             // companyBtn
             // 
+            this.companyBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.companyBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.companyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.companyBtn.Location = new System.Drawing.Point(266, 514);
@@ -148,6 +154,7 @@
             // 
             // dashboardBtn
             // 
+            this.dashboardBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dashboardBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dashboardBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashboardBtn.Location = new System.Drawing.Point(749, 514);
@@ -179,7 +186,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Super Market Management System";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

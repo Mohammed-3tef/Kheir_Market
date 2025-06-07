@@ -40,10 +40,12 @@
             this.signUpPageLink = new System.Windows.Forms.LinkLabel();
             this.signUpLable = new System.Windows.Forms.Label();
             this.showPassword = new System.Windows.Forms.Button();
+            this.githubRepo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // welcomeMsg
             // 
+            this.welcomeMsg.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.welcomeMsg.AutoSize = true;
             this.welcomeMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.welcomeMsg.Location = new System.Drawing.Point(687, 99);
@@ -55,6 +57,7 @@
             // 
             // appTitle
             // 
+            this.appTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.appTitle.AutoSize = true;
             this.appTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appTitle.Location = new System.Drawing.Point(391, 128);
@@ -66,6 +69,7 @@
             // 
             // logInLabel
             // 
+            this.logInLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.logInLabel.AutoSize = true;
             this.logInLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logInLabel.Location = new System.Drawing.Point(702, 234);
@@ -76,6 +80,7 @@
             // 
             // usernameLabel
             // 
+            this.usernameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameLabel.Location = new System.Drawing.Point(397, 347);
@@ -86,6 +91,7 @@
             // 
             // passwordLabel
             // 
+            this.passwordLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordLabel.Location = new System.Drawing.Point(397, 407);
@@ -96,6 +102,7 @@
             // 
             // usernameInput
             // 
+            this.usernameInput.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.usernameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.usernameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameInput.Location = new System.Drawing.Point(613, 345);
@@ -105,6 +112,7 @@
             // 
             // passwordInput
             // 
+            this.passwordInput.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.passwordInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.passwordInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordInput.Location = new System.Drawing.Point(613, 405);
@@ -114,6 +122,7 @@
             // 
             // logInBtn
             // 
+            this.logInBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.logInBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.logInBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logInBtn.Location = new System.Drawing.Point(630, 515);
@@ -127,6 +136,7 @@
             // signUpPageLink
             // 
             this.signUpPageLink.ActiveLinkColor = System.Drawing.Color.Red;
+            this.signUpPageLink.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.signUpPageLink.AutoSize = true;
             this.signUpPageLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.signUpPageLink.LinkColor = System.Drawing.Color.Black;
@@ -140,6 +150,7 @@
             // 
             // signUpLable
             // 
+            this.signUpLable.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.signUpLable.AutoSize = true;
             this.signUpLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.signUpLable.Location = new System.Drawing.Point(530, 608);
@@ -150,6 +161,7 @@
             // 
             // showPassword
             // 
+            this.showPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.showPassword.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("showPassword.BackgroundImage")));
             this.showPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.showPassword.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -161,11 +173,31 @@
             this.showPassword.UseVisualStyleBackColor = true;
             this.showPassword.Click += new System.EventHandler(this.showPassword_Click);
             // 
+            // githubRepo
+            // 
+            this.githubRepo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.githubRepo.BackColor = System.Drawing.SystemColors.Control;
+            this.githubRepo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("githubRepo.BackgroundImage")));
+            this.githubRepo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.githubRepo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.githubRepo.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.githubRepo.FlatAppearance.BorderSize = 0;
+            this.githubRepo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.githubRepo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.githubRepo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.githubRepo.Location = new System.Drawing.Point(1411, 685);
+            this.githubRepo.Name = "githubRepo";
+            this.githubRepo.Size = new System.Drawing.Size(59, 56);
+            this.githubRepo.TabIndex = 11;
+            this.githubRepo.UseVisualStyleBackColor = false;
+            this.githubRepo.Click += new System.EventHandler(this.githubRepo_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 753);
+            this.Controls.Add(this.githubRepo);
             this.Controls.Add(this.showPassword);
             this.Controls.Add(this.signUpLable);
             this.Controls.Add(this.signUpPageLink);
@@ -200,6 +232,7 @@
         private System.Windows.Forms.LinkLabel signUpPageLink;
         private System.Windows.Forms.Label signUpLable;
         private System.Windows.Forms.Button showPassword;
+        private System.Windows.Forms.Button githubRepo;
     }
 }
 

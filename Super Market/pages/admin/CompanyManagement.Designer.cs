@@ -38,6 +38,8 @@
             this.deletePage = new System.Windows.Forms.TabPage();
             this.updateCompanyCategoryLabel = new System.Windows.Forms.Label();
             this.updateCategorycomboBox = new System.Windows.Forms.ComboBox();
+            this.cATEGORYBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.super_Market_DataSet1 = new Super_Market.Super_Market_DataSet();
             this.updateCompanyIdInput = new System.Windows.Forms.TextBox();
             this.updateCompanyIdLabel = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -54,8 +56,6 @@
             this.addCountryLabel = new System.Windows.Forms.Label();
             this.addCountryComboBox = new System.Windows.Forms.ComboBox();
             this.addCategoryComboBox = new System.Windows.Forms.ComboBox();
-            this.cATEGORYBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.super_Market_DataSet1 = new Super_Market.Super_Market_DataSet();
             this.addBtn = new System.Windows.Forms.Button();
             this.addCompanyNameInput = new System.Windows.Forms.TextBox();
             this.addCompanyIdInput = new System.Windows.Forms.TextBox();
@@ -66,17 +66,19 @@
             this.cATEGORYTableAdapter1 = new Super_Market.Super_Market_DataSetTableAdapters.CATEGORYTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.deletePage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.updatePage.SuspendLayout();
             this.addPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.TabControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuBtn
             // 
+            this.menuBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.menuBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuBtn.Location = new System.Drawing.Point(13, 729);
@@ -89,6 +91,7 @@
             // 
             // deleteBtn
             // 
+            this.deleteBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteBtn.Location = new System.Drawing.Point(53, 336);
@@ -101,6 +104,7 @@
             // 
             // deleteCompanyIdInput
             // 
+            this.deleteCompanyIdInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.deleteCompanyIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.deleteCompanyIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteCompanyIdInput.Location = new System.Drawing.Point(53, 229);
@@ -110,6 +114,7 @@
             // 
             // deleteCompanyIdLabel
             // 
+            this.deleteCompanyIdLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.deleteCompanyIdLabel.AutoSize = true;
             this.deleteCompanyIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteCompanyIdLabel.Location = new System.Drawing.Point(48, 197);
@@ -122,6 +127,9 @@
             // 
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.AllowUserToDeleteRows = false;
+            this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Location = new System.Drawing.Point(566, 3);
             this.dataGridView3.Name = "dataGridView3";
@@ -147,6 +155,7 @@
             // 
             // updateCompanyCategoryLabel
             // 
+            this.updateCompanyCategoryLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateCompanyCategoryLabel.AutoSize = true;
             this.updateCompanyCategoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateCompanyCategoryLabel.Location = new System.Drawing.Point(53, 292);
@@ -157,6 +166,7 @@
             // 
             // updateCategorycomboBox
             // 
+            this.updateCategorycomboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateCategorycomboBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.updateCategorycomboBox.DataSource = this.cATEGORYBindingSource;
             this.updateCategorycomboBox.DisplayMember = "NAME";
@@ -173,8 +183,19 @@
             this.updateCategorycomboBox.TabIndex = 27;
             this.updateCategorycomboBox.ValueMember = "CID";
             // 
+            // cATEGORYBindingSource
+            // 
+            this.cATEGORYBindingSource.DataMember = "CATEGORY";
+            this.cATEGORYBindingSource.DataSource = this.super_Market_DataSet1;
+            // 
+            // super_Market_DataSet1
+            // 
+            this.super_Market_DataSet1.DataSetName = "Super_Market_DataSet";
+            this.super_Market_DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // updateCompanyIdInput
             // 
+            this.updateCompanyIdInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateCompanyIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.updateCompanyIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateCompanyIdInput.Location = new System.Drawing.Point(58, 147);
@@ -184,6 +205,7 @@
             // 
             // updateCompanyIdLabel
             // 
+            this.updateCompanyIdLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateCompanyIdLabel.AutoSize = true;
             this.updateCompanyIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateCompanyIdLabel.Location = new System.Drawing.Point(53, 115);
@@ -196,6 +218,9 @@
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(566, 3);
             this.dataGridView2.Name = "dataGridView2";
@@ -228,6 +253,7 @@
             // 
             // updateCountryLabel
             // 
+            this.updateCountryLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateCountryLabel.AutoSize = true;
             this.updateCountryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateCountryLabel.Location = new System.Drawing.Point(53, 373);
@@ -238,6 +264,7 @@
             // 
             // updateCountryComboBox
             // 
+            this.updateCountryComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateCountryComboBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.updateCountryComboBox.DropDownHeight = 200;
             this.updateCountryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -253,6 +280,7 @@
             // 
             // searchBtn
             // 
+            this.searchBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.searchBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.searchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchBtn.Location = new System.Drawing.Point(369, 142);
@@ -265,6 +293,7 @@
             // 
             // updateCompanyNameInput
             // 
+            this.updateCompanyNameInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateCompanyNameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.updateCompanyNameInput.Enabled = false;
             this.updateCompanyNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -275,6 +304,7 @@
             // 
             // updateCompanyNameLabel
             // 
+            this.updateCompanyNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateCompanyNameLabel.AutoSize = true;
             this.updateCompanyNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateCompanyNameLabel.Location = new System.Drawing.Point(53, 209);
@@ -285,6 +315,7 @@
             // 
             // updateBtn
             // 
+            this.updateBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.updateBtn.Enabled = false;
             this.updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -298,6 +329,7 @@
             // 
             // CompanyManagementTitle
             // 
+            this.CompanyManagementTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CompanyManagementTitle.AutoSize = true;
             this.CompanyManagementTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CompanyManagementTitle.Location = new System.Drawing.Point(478, 19);
@@ -309,6 +341,7 @@
             // 
             // addCompanyCategoryLabel
             // 
+            this.addCompanyCategoryLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addCompanyCategoryLabel.AutoSize = true;
             this.addCompanyCategoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addCompanyCategoryLabel.Location = new System.Drawing.Point(52, 287);
@@ -339,6 +372,7 @@
             // 
             // addCountryLabel
             // 
+            this.addCountryLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addCountryLabel.AutoSize = true;
             this.addCountryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addCountryLabel.Location = new System.Drawing.Point(52, 378);
@@ -349,6 +383,7 @@
             // 
             // addCountryComboBox
             // 
+            this.addCountryComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addCountryComboBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.addCountryComboBox.DropDownHeight = 200;
             this.addCountryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -364,6 +399,7 @@
             // 
             // addCategoryComboBox
             // 
+            this.addCategoryComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addCategoryComboBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.addCategoryComboBox.DataSource = this.cATEGORYBindingSource;
             this.addCategoryComboBox.DisplayMember = "NAME";
@@ -379,18 +415,9 @@
             this.addCategoryComboBox.TabIndex = 25;
             this.addCategoryComboBox.ValueMember = "CID";
             // 
-            // cATEGORYBindingSource
-            // 
-            this.cATEGORYBindingSource.DataMember = "CATEGORY";
-            this.cATEGORYBindingSource.DataSource = this.super_Market_DataSet1;
-            // 
-            // super_Market_DataSet1
-            // 
-            this.super_Market_DataSet1.DataSetName = "Super_Market_DataSet";
-            this.super_Market_DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // addBtn
             // 
+            this.addBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addBtn.Location = new System.Drawing.Point(57, 475);
@@ -403,6 +430,7 @@
             // 
             // addCompanyNameInput
             // 
+            this.addCompanyNameInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addCompanyNameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.addCompanyNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addCompanyNameInput.Location = new System.Drawing.Point(57, 230);
@@ -412,6 +440,7 @@
             // 
             // addCompanyIdInput
             // 
+            this.addCompanyIdInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addCompanyIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.addCompanyIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addCompanyIdInput.Location = new System.Drawing.Point(57, 140);
@@ -421,6 +450,7 @@
             // 
             // addCompanyNameLabel
             // 
+            this.addCompanyNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addCompanyNameLabel.AutoSize = true;
             this.addCompanyNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addCompanyNameLabel.Location = new System.Drawing.Point(52, 198);
@@ -431,6 +461,7 @@
             // 
             // addCompanyIdLabel
             // 
+            this.addCompanyIdLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addCompanyIdLabel.AutoSize = true;
             this.addCompanyIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addCompanyIdLabel.Location = new System.Drawing.Point(52, 108);
@@ -443,6 +474,9 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(566, 3);
             this.dataGridView1.Name = "dataGridView1";
@@ -454,6 +488,9 @@
             // 
             // TabControl
             // 
+            this.TabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TabControl.Controls.Add(this.addPage);
             this.TabControl.Controls.Add(this.updatePage);
             this.TabControl.Controls.Add(this.deletePage);
@@ -484,13 +521,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.deletePage.ResumeLayout(false);
             this.deletePage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.updatePage.ResumeLayout(false);
             this.updatePage.PerformLayout();
             this.addPage.ResumeLayout(false);
             this.addPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.TabControl.ResumeLayout(false);
             this.ResumeLayout(false);

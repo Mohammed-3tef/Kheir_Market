@@ -81,6 +81,7 @@
             // 
             // UserManagementTitle
             // 
+            this.UserManagementTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.UserManagementTitle.AutoSize = true;
             this.UserManagementTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserManagementTitle.Location = new System.Drawing.Point(549, 44);
@@ -92,6 +93,9 @@
             // 
             // TabControl
             // 
+            this.TabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TabControl.Controls.Add(this.tabPage1);
             this.TabControl.Controls.Add(this.tabPage2);
             this.TabControl.Controls.Add(this.tabPage3);
@@ -131,6 +135,7 @@
             // 
             // showPassword
             // 
+            this.showPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.showPassword.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("showPassword.BackgroundImage")));
             this.showPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.showPassword.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -144,6 +149,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(29, 394);
@@ -154,6 +160,7 @@
             // 
             // addPasswordInput
             // 
+            this.addPasswordInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addPasswordInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.addPasswordInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addPasswordInput.Location = new System.Drawing.Point(34, 426);
@@ -163,6 +170,7 @@
             // 
             // addCustomerBtn
             // 
+            this.addCustomerBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addCustomerBtn.AutoSize = true;
             this.addCustomerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addCustomerBtn.Location = new System.Drawing.Point(404, 462);
@@ -175,6 +183,7 @@
             // 
             // addAdminBtn
             // 
+            this.addAdminBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addAdminBtn.AutoSize = true;
             this.addAdminBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addAdminBtn.Location = new System.Drawing.Point(156, 462);
@@ -187,6 +196,7 @@
             // 
             // updateAdminLabel
             // 
+            this.updateAdminLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateAdminLabel.AutoSize = true;
             this.updateAdminLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateAdminLabel.Location = new System.Drawing.Point(29, 462);
@@ -197,6 +207,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(29, 199);
@@ -207,6 +218,7 @@
             // 
             // addPhoneInput
             // 
+            this.addPhoneInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addPhoneInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.addPhoneInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addPhoneInput.Location = new System.Drawing.Point(34, 231);
@@ -216,6 +228,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(29, 329);
@@ -226,6 +239,7 @@
             // 
             // addAddressInput
             // 
+            this.addAddressInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addAddressInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.addAddressInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addAddressInput.Location = new System.Drawing.Point(34, 361);
@@ -235,6 +249,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(29, 264);
@@ -245,6 +260,7 @@
             // 
             // addEmailInput
             // 
+            this.addEmailInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addEmailInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.addEmailInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addEmailInput.Location = new System.Drawing.Point(34, 296);
@@ -254,6 +270,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(29, 134);
@@ -264,6 +281,7 @@
             // 
             // addNameInput
             // 
+            this.addNameInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addNameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.addNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addNameInput.Location = new System.Drawing.Point(34, 166);
@@ -273,6 +291,7 @@
             // 
             // addBtn
             // 
+            this.addBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addBtn.Location = new System.Drawing.Point(34, 518);
@@ -285,6 +304,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(29, 69);
@@ -295,6 +315,7 @@
             // 
             // addIdInput
             // 
+            this.addIdInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.addIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addIdInput.Location = new System.Drawing.Point(34, 101);
@@ -306,8 +327,11 @@
             // 
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.AllowUserToDeleteRows = false;
+            this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(591, 5);
+            this.dataGridView3.Location = new System.Drawing.Point(616, 4);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.RowHeadersWidth = 51;
@@ -340,6 +364,7 @@
             // 
             // updatePhoneLabel
             // 
+            this.updatePhoneLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updatePhoneLabel.AutoSize = true;
             this.updatePhoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updatePhoneLabel.Location = new System.Drawing.Point(29, 199);
@@ -350,6 +375,7 @@
             // 
             // updatePhoneInput
             // 
+            this.updatePhoneInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updatePhoneInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.updatePhoneInput.Enabled = false;
             this.updatePhoneInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -360,6 +386,7 @@
             // 
             // updateAddressLabel
             // 
+            this.updateAddressLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateAddressLabel.AutoSize = true;
             this.updateAddressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateAddressLabel.Location = new System.Drawing.Point(29, 329);
@@ -370,6 +397,7 @@
             // 
             // updateAddressInput
             // 
+            this.updateAddressInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateAddressInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.updateAddressInput.Enabled = false;
             this.updateAddressInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -380,6 +408,7 @@
             // 
             // updateEmailLabel
             // 
+            this.updateEmailLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateEmailLabel.AutoSize = true;
             this.updateEmailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateEmailLabel.Location = new System.Drawing.Point(29, 264);
@@ -390,6 +419,7 @@
             // 
             // updateEmailInput
             // 
+            this.updateEmailInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateEmailInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.updateEmailInput.Enabled = false;
             this.updateEmailInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -400,6 +430,7 @@
             // 
             // updateNameLabel
             // 
+            this.updateNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateNameLabel.AutoSize = true;
             this.updateNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateNameLabel.Location = new System.Drawing.Point(29, 134);
@@ -410,6 +441,7 @@
             // 
             // updateNameInput
             // 
+            this.updateNameInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateNameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.updateNameInput.Enabled = false;
             this.updateNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -420,6 +452,7 @@
             // 
             // searchBtn
             // 
+            this.searchBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.searchBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.searchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchBtn.Location = new System.Drawing.Point(399, 96);
@@ -432,6 +465,7 @@
             // 
             // updateBtn
             // 
+            this.updateBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.updateBtn.Enabled = false;
             this.updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -445,6 +479,7 @@
             // 
             // updateCustomerIdLabel
             // 
+            this.updateCustomerIdLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateCustomerIdLabel.AutoSize = true;
             this.updateCustomerIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateCustomerIdLabel.Location = new System.Drawing.Point(29, 69);
@@ -455,6 +490,7 @@
             // 
             // updateIdInput
             // 
+            this.updateIdInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.updateIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateIdInput.Location = new System.Drawing.Point(34, 101);
@@ -466,8 +502,11 @@
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(591, 5);
+            this.dataGridView2.Location = new System.Drawing.Point(616, 4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
@@ -491,6 +530,7 @@
             // 
             // deleteBtn
             // 
+            this.deleteBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteBtn.Location = new System.Drawing.Point(40, 318);
@@ -505,8 +545,11 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(584, 5);
+            this.dataGridView1.Location = new System.Drawing.Point(616, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
@@ -516,6 +559,7 @@
             // 
             // deleteCustomerIdLabel
             // 
+            this.deleteCustomerIdLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.deleteCustomerIdLabel.AutoSize = true;
             this.deleteCustomerIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteCustomerIdLabel.Location = new System.Drawing.Point(35, 175);
@@ -526,6 +570,7 @@
             // 
             // deleteIdInput
             // 
+            this.deleteIdInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.deleteIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.deleteIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteIdInput.Location = new System.Drawing.Point(40, 207);
@@ -535,6 +580,8 @@
             // 
             // menuBtn
             // 
+            this.menuBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.menuBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuBtn.Location = new System.Drawing.Point(16, 737);

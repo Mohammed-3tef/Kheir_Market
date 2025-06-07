@@ -39,6 +39,7 @@
             this.OTPVerificationLabel = new System.Windows.Forms.Label();
             this.appTitle = new System.Windows.Forms.Label();
             this.welcomeMsg = new System.Windows.Forms.Label();
+            this.githubRepo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // resendBtn
@@ -153,11 +154,31 @@
             this.welcomeMsg.Text = "Welcome to";
             this.welcomeMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // githubRepo
+            // 
+            this.githubRepo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.githubRepo.BackColor = System.Drawing.SystemColors.Control;
+            this.githubRepo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("githubRepo.BackgroundImage")));
+            this.githubRepo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.githubRepo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.githubRepo.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.githubRepo.FlatAppearance.BorderSize = 0;
+            this.githubRepo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.githubRepo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.githubRepo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.githubRepo.Location = new System.Drawing.Point(1411, 685);
+            this.githubRepo.Name = "githubRepo";
+            this.githubRepo.Size = new System.Drawing.Size(59, 56);
+            this.githubRepo.TabIndex = 57;
+            this.githubRepo.UseVisualStyleBackColor = false;
+            this.githubRepo.Click += new System.EventHandler(this.githubRepo_Click);
+            // 
             // OTPVerifyPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 753);
+            this.Controls.Add(this.githubRepo);
             this.Controls.Add(this.resendBtn);
             this.Controls.Add(this.verifyBtn);
             this.Controls.Add(this.logInLable);
@@ -190,5 +211,6 @@
         private System.Windows.Forms.Label OTPVerificationLabel;
         private System.Windows.Forms.Label appTitle;
         private System.Windows.Forms.Label welcomeMsg;
+        private System.Windows.Forms.Button githubRepo;
     }
 }

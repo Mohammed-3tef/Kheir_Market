@@ -38,11 +38,12 @@
             // 
             // logOutBtn
             // 
+            this.logOutBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.logOutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.logOutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logOutBtn.Location = new System.Drawing.Point(479, 489);
+            this.logOutBtn.Location = new System.Drawing.Point(492, 513);
             this.logOutBtn.Name = "logOutBtn";
-            this.logOutBtn.Size = new System.Drawing.Size(477, 116);
+            this.logOutBtn.Size = new System.Drawing.Size(542, 116);
             this.logOutBtn.TabIndex = 21;
             this.logOutBtn.Text = "Log Out";
             this.logOutBtn.UseVisualStyleBackColor = true;
@@ -50,11 +51,12 @@
             // 
             // orderBtn
             // 
+            this.orderBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.orderBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.orderBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.orderBtn.Location = new System.Drawing.Point(479, 355);
+            this.orderBtn.Location = new System.Drawing.Point(492, 377);
             this.orderBtn.Name = "orderBtn";
-            this.orderBtn.Size = new System.Drawing.Size(477, 116);
+            this.orderBtn.Size = new System.Drawing.Size(542, 116);
             this.orderBtn.TabIndex = 19;
             this.orderBtn.Text = "Order Management";
             this.orderBtn.UseVisualStyleBackColor = true;
@@ -62,9 +64,10 @@
             // 
             // appTitle
             // 
+            this.appTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.appTitle.AutoSize = true;
             this.appTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appTitle.Location = new System.Drawing.Point(325, 122);
+            this.appTitle.Location = new System.Drawing.Point(385, 141);
             this.appTitle.Name = "appTitle";
             this.appTitle.Size = new System.Drawing.Size(729, 51);
             this.appTitle.TabIndex = 18;
@@ -73,9 +76,10 @@
             // 
             // welcomeMsg
             // 
+            this.welcomeMsg.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.welcomeMsg.AutoSize = true;
             this.welcomeMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomeMsg.Location = new System.Drawing.Point(621, 93);
+            this.welcomeMsg.Location = new System.Drawing.Point(681, 112);
             this.welcomeMsg.Name = "welcomeMsg";
             this.welcomeMsg.Size = new System.Drawing.Size(163, 32);
             this.welcomeMsg.TabIndex = 17;
@@ -84,11 +88,11 @@
             // 
             // welcomePersonMsg
             // 
-            this.welcomePersonMsg.AutoSize = true;
+            this.welcomePersonMsg.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.welcomePersonMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomePersonMsg.Location = new System.Drawing.Point(621, 245);
+            this.welcomePersonMsg.Location = new System.Drawing.Point(394, 264);
             this.welcomePersonMsg.Name = "welcomePersonMsg";
-            this.welcomePersonMsg.Size = new System.Drawing.Size(156, 32);
+            this.welcomePersonMsg.Size = new System.Drawing.Size(720, 32);
             this.welcomePersonMsg.TabIndex = 25;
             this.welcomePersonMsg.Text = "Welcome, ";
             this.welcomePersonMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

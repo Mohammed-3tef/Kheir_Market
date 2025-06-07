@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryManagement));
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cATEGORYBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.super_Market_DataSet1 = new Super_Market.Super_Market_DataSet();
             this.deletePage = new System.Windows.Forms.TabPage();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.deleteCategoryIdInput = new System.Windows.Forms.TextBox();
@@ -44,7 +48,11 @@
             this.updateCategoryIdInput = new System.Windows.Forms.TextBox();
             this.updateCategoryIdLabel = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addPage = new System.Windows.Forms.TabPage();
             this.addBtn = new System.Windows.Forms.Button();
             this.addCategoryNameInput = new System.Windows.Forms.TextBox();
@@ -53,30 +61,25 @@
             this.addCategoryIdLabel = new System.Windows.Forms.Label();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.menuBtn = new System.Windows.Forms.Button();
-            this.super_Market_DataSet1 = new Super_Market.Super_Market_DataSet();
-            this.cATEGORYBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cATEGORYTableAdapter1 = new Super_Market.Super_Market_DataSetTableAdapters.CATEGORYTableAdapter();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).BeginInit();
             this.deletePage.SuspendLayout();
             this.updatePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.addPage.SuspendLayout();
             this.TabControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView3
             // 
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.AllowUserToDeleteRows = false;
+            this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView3.AutoGenerateColumns = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -90,6 +93,34 @@
             this.dataGridView3.RowTemplate.Height = 24;
             this.dataGridView3.Size = new System.Drawing.Size(876, 612);
             this.dataGridView3.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "CID";
+            this.dataGridViewTextBoxColumn5.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "NAME";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 125;
+            // 
+            // cATEGORYBindingSource
+            // 
+            this.cATEGORYBindingSource.DataMember = "CATEGORY";
+            this.cATEGORYBindingSource.DataSource = this.super_Market_DataSet1;
+            // 
+            // super_Market_DataSet1
+            // 
+            this.super_Market_DataSet1.DataSetName = "Super_Market_DataSet";
+            this.super_Market_DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // deletePage
             // 
@@ -107,6 +138,7 @@
             // 
             // deleteBtn
             // 
+            this.deleteBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteBtn.Location = new System.Drawing.Point(55, 332);
@@ -119,6 +151,7 @@
             // 
             // deleteCategoryIdInput
             // 
+            this.deleteCategoryIdInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.deleteCategoryIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.deleteCategoryIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteCategoryIdInput.Location = new System.Drawing.Point(53, 227);
@@ -128,6 +161,7 @@
             // 
             // deleteCategoryIdLabel
             // 
+            this.deleteCategoryIdLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.deleteCategoryIdLabel.AutoSize = true;
             this.deleteCategoryIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteCategoryIdLabel.Location = new System.Drawing.Point(48, 195);
@@ -138,6 +172,7 @@
             // 
             // CategoryManagementTitle
             // 
+            this.CategoryManagementTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CategoryManagementTitle.AutoSize = true;
             this.CategoryManagementTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CategoryManagementTitle.Location = new System.Drawing.Point(478, 27);
@@ -166,6 +201,7 @@
             // 
             // searchBtn
             // 
+            this.searchBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.searchBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.searchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchBtn.Location = new System.Drawing.Point(369, 142);
@@ -178,6 +214,7 @@
             // 
             // updateCategoryNameInput
             // 
+            this.updateCategoryNameInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateCategoryNameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.updateCategoryNameInput.Enabled = false;
             this.updateCategoryNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -188,6 +225,7 @@
             // 
             // updateCategoryNameLabel
             // 
+            this.updateCategoryNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateCategoryNameLabel.AutoSize = true;
             this.updateCategoryNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateCategoryNameLabel.Location = new System.Drawing.Point(53, 244);
@@ -198,6 +236,7 @@
             // 
             // updateBtn
             // 
+            this.updateBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.updateBtn.Enabled = false;
             this.updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -211,6 +250,7 @@
             // 
             // updateCategoryIdInput
             // 
+            this.updateCategoryIdInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateCategoryIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.updateCategoryIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateCategoryIdInput.Location = new System.Drawing.Point(58, 147);
@@ -220,6 +260,7 @@
             // 
             // updateCategoryIdLabel
             // 
+            this.updateCategoryIdLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateCategoryIdLabel.AutoSize = true;
             this.updateCategoryIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateCategoryIdLabel.Location = new System.Drawing.Point(53, 115);
@@ -232,6 +273,9 @@
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -245,145 +289,6 @@
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(876, 612);
             this.dataGridView2.TabIndex = 0;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2});
-            this.dataGridView1.DataSource = this.cATEGORYBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(566, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(876, 612);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // addPage
-            // 
-            this.addPage.Controls.Add(this.addBtn);
-            this.addPage.Controls.Add(this.addCategoryNameInput);
-            this.addPage.Controls.Add(this.addCategoryIdInput);
-            this.addPage.Controls.Add(this.addCategoryNameLabel);
-            this.addPage.Controls.Add(this.addCategoryIdLabel);
-            this.addPage.Controls.Add(this.dataGridView1);
-            this.addPage.Location = new System.Drawing.Point(4, 25);
-            this.addPage.Name = "addPage";
-            this.addPage.Padding = new System.Windows.Forms.Padding(3);
-            this.addPage.Size = new System.Drawing.Size(1448, 621);
-            this.addPage.TabIndex = 0;
-            this.addPage.Text = "Add Category";
-            this.addPage.UseVisualStyleBackColor = true;
-            // 
-            // addBtn
-            // 
-            this.addBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addBtn.Location = new System.Drawing.Point(57, 382);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(442, 61);
-            this.addBtn.TabIndex = 6;
-            this.addBtn.Text = "Add Category";
-            this.addBtn.UseVisualStyleBackColor = true;
-            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
-            // 
-            // addCategoryNameInput
-            // 
-            this.addCategoryNameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.addCategoryNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addCategoryNameInput.Location = new System.Drawing.Point(57, 262);
-            this.addCategoryNameInput.Name = "addCategoryNameInput";
-            this.addCategoryNameInput.Size = new System.Drawing.Size(442, 30);
-            this.addCategoryNameInput.TabIndex = 4;
-            // 
-            // addCategoryIdInput
-            // 
-            this.addCategoryIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.addCategoryIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addCategoryIdInput.Location = new System.Drawing.Point(57, 140);
-            this.addCategoryIdInput.Name = "addCategoryIdInput";
-            this.addCategoryIdInput.Size = new System.Drawing.Size(442, 30);
-            this.addCategoryIdInput.TabIndex = 3;
-            // 
-            // addCategoryNameLabel
-            // 
-            this.addCategoryNameLabel.AutoSize = true;
-            this.addCategoryNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addCategoryNameLabel.Location = new System.Drawing.Point(52, 230);
-            this.addCategoryNameLabel.Name = "addCategoryNameLabel";
-            this.addCategoryNameLabel.Size = new System.Drawing.Size(201, 29);
-            this.addCategoryNameLabel.TabIndex = 2;
-            this.addCategoryNameLabel.Text = "Category Name:";
-            // 
-            // addCategoryIdLabel
-            // 
-            this.addCategoryIdLabel.AutoSize = true;
-            this.addCategoryIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addCategoryIdLabel.Location = new System.Drawing.Point(52, 108);
-            this.addCategoryIdLabel.Name = "addCategoryIdLabel";
-            this.addCategoryIdLabel.Size = new System.Drawing.Size(157, 29);
-            this.addCategoryIdLabel.TabIndex = 1;
-            this.addCategoryIdLabel.Text = "Category ID:";
-            // 
-            // TabControl
-            // 
-            this.TabControl.Controls.Add(this.addPage);
-            this.TabControl.Controls.Add(this.updatePage);
-            this.TabControl.Controls.Add(this.deletePage);
-            this.TabControl.Location = new System.Drawing.Point(13, 81);
-            this.TabControl.Name = "TabControl";
-            this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(1456, 650);
-            this.TabControl.TabIndex = 21;
-            // 
-            // menuBtn
-            // 
-            this.menuBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.menuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuBtn.Location = new System.Drawing.Point(13, 737);
-            this.menuBtn.Name = "menuBtn";
-            this.menuBtn.Size = new System.Drawing.Size(1452, 54);
-            this.menuBtn.TabIndex = 22;
-            this.menuBtn.Text = "Back to menu";
-            this.menuBtn.UseVisualStyleBackColor = true;
-            this.menuBtn.Click += new System.EventHandler(this.menuBtn_Click);
-            // 
-            // super_Market_DataSet1
-            // 
-            this.super_Market_DataSet1.DataSetName = "Super_Market_DataSet";
-            this.super_Market_DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // cATEGORYBindingSource
-            // 
-            this.cATEGORYBindingSource.DataMember = "CATEGORY";
-            this.cATEGORYBindingSource.DataSource = this.super_Market_DataSet1;
-            // 
-            // cATEGORYTableAdapter1
-            // 
-            this.cATEGORYTableAdapter1.ClearBeforeFill = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "CID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "NAME";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 125;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -403,23 +308,147 @@
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 125;
             // 
-            // dataGridViewTextBoxColumn5
+            // dataGridView1
             // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "CID";
-            this.dataGridViewTextBoxColumn5.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 125;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.dataGridView1.DataSource = this.cATEGORYBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(566, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(876, 612);
+            this.dataGridView1.TabIndex = 0;
             // 
-            // dataGridViewTextBoxColumn6
+            // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "NAME";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 125;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "CID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "NAME";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // addPage
+            // 
+            this.addPage.Controls.Add(this.addBtn);
+            this.addPage.Controls.Add(this.addCategoryNameInput);
+            this.addPage.Controls.Add(this.addCategoryIdInput);
+            this.addPage.Controls.Add(this.addCategoryNameLabel);
+            this.addPage.Controls.Add(this.addCategoryIdLabel);
+            this.addPage.Controls.Add(this.dataGridView1);
+            this.addPage.Location = new System.Drawing.Point(4, 25);
+            this.addPage.Name = "addPage";
+            this.addPage.Padding = new System.Windows.Forms.Padding(3);
+            this.addPage.Size = new System.Drawing.Size(1448, 621);
+            this.addPage.TabIndex = 0;
+            this.addPage.Text = "Add Category";
+            this.addPage.UseVisualStyleBackColor = true;
+            // 
+            // addBtn
+            // 
+            this.addBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.addBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addBtn.Location = new System.Drawing.Point(57, 382);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(442, 61);
+            this.addBtn.TabIndex = 6;
+            this.addBtn.Text = "Add Category";
+            this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            // 
+            // addCategoryNameInput
+            // 
+            this.addCategoryNameInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.addCategoryNameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.addCategoryNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addCategoryNameInput.Location = new System.Drawing.Point(57, 262);
+            this.addCategoryNameInput.Name = "addCategoryNameInput";
+            this.addCategoryNameInput.Size = new System.Drawing.Size(442, 30);
+            this.addCategoryNameInput.TabIndex = 4;
+            // 
+            // addCategoryIdInput
+            // 
+            this.addCategoryIdInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.addCategoryIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.addCategoryIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addCategoryIdInput.Location = new System.Drawing.Point(57, 140);
+            this.addCategoryIdInput.Name = "addCategoryIdInput";
+            this.addCategoryIdInput.Size = new System.Drawing.Size(442, 30);
+            this.addCategoryIdInput.TabIndex = 3;
+            // 
+            // addCategoryNameLabel
+            // 
+            this.addCategoryNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.addCategoryNameLabel.AutoSize = true;
+            this.addCategoryNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addCategoryNameLabel.Location = new System.Drawing.Point(52, 230);
+            this.addCategoryNameLabel.Name = "addCategoryNameLabel";
+            this.addCategoryNameLabel.Size = new System.Drawing.Size(201, 29);
+            this.addCategoryNameLabel.TabIndex = 2;
+            this.addCategoryNameLabel.Text = "Category Name:";
+            // 
+            // addCategoryIdLabel
+            // 
+            this.addCategoryIdLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.addCategoryIdLabel.AutoSize = true;
+            this.addCategoryIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addCategoryIdLabel.Location = new System.Drawing.Point(52, 108);
+            this.addCategoryIdLabel.Name = "addCategoryIdLabel";
+            this.addCategoryIdLabel.Size = new System.Drawing.Size(157, 29);
+            this.addCategoryIdLabel.TabIndex = 1;
+            this.addCategoryIdLabel.Text = "Category ID:";
+            // 
+            // TabControl
+            // 
+            this.TabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TabControl.Controls.Add(this.addPage);
+            this.TabControl.Controls.Add(this.updatePage);
+            this.TabControl.Controls.Add(this.deletePage);
+            this.TabControl.Location = new System.Drawing.Point(13, 81);
+            this.TabControl.Name = "TabControl";
+            this.TabControl.SelectedIndex = 0;
+            this.TabControl.Size = new System.Drawing.Size(1456, 650);
+            this.TabControl.TabIndex = 21;
+            // 
+            // menuBtn
+            // 
+            this.menuBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.menuBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.menuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuBtn.Location = new System.Drawing.Point(13, 737);
+            this.menuBtn.Name = "menuBtn";
+            this.menuBtn.Size = new System.Drawing.Size(1452, 54);
+            this.menuBtn.TabIndex = 22;
+            this.menuBtn.Text = "Back to menu";
+            this.menuBtn.UseVisualStyleBackColor = true;
+            this.menuBtn.Click += new System.EventHandler(this.menuBtn_Click);
+            // 
+            // cATEGORYTableAdapter1
+            // 
+            this.cATEGORYTableAdapter1.ClearBeforeFill = true;
             // 
             // CategoryManagement
             // 
@@ -436,6 +465,8 @@
             this.Text = "Super Market Management System";
             this.Load += new System.EventHandler(this.CategoryManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).EndInit();
             this.deletePage.ResumeLayout(false);
             this.deletePage.PerformLayout();
             this.updatePage.ResumeLayout(false);
@@ -445,8 +476,6 @@
             this.addPage.ResumeLayout(false);
             this.addPage.PerformLayout();
             this.TabControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.super_Market_DataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

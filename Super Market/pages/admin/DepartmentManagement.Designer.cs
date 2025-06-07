@@ -73,6 +73,7 @@
             // 
             // searchBtn
             // 
+            this.searchBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.searchBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.searchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchBtn.Location = new System.Drawing.Point(369, 142);
@@ -85,6 +86,7 @@
             // 
             // updateDepartmentNameInput
             // 
+            this.updateDepartmentNameInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateDepartmentNameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.updateDepartmentNameInput.Enabled = false;
             this.updateDepartmentNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -95,6 +97,7 @@
             // 
             // updateDepartmentNameLabel
             // 
+            this.updateDepartmentNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateDepartmentNameLabel.AutoSize = true;
             this.updateDepartmentNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateDepartmentNameLabel.Location = new System.Drawing.Point(53, 209);
@@ -105,6 +108,7 @@
             // 
             // updateBtn
             // 
+            this.updateBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.updateBtn.Enabled = false;
             this.updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -120,6 +124,9 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(566, 3);
             this.dataGridView1.Name = "dataGridView1";
@@ -131,6 +138,7 @@
             // 
             // addBtn
             // 
+            this.addBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addBtn.Location = new System.Drawing.Point(57, 426);
@@ -143,6 +151,7 @@
             // 
             // addDepartmentNameInput
             // 
+            this.addDepartmentNameInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addDepartmentNameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.addDepartmentNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addDepartmentNameInput.Location = new System.Drawing.Point(57, 230);
@@ -152,6 +161,7 @@
             // 
             // addDepartmentIdInput
             // 
+            this.addDepartmentIdInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addDepartmentIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.addDepartmentIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addDepartmentIdInput.Location = new System.Drawing.Point(57, 140);
@@ -161,6 +171,7 @@
             // 
             // addDepartmentNameLabel
             // 
+            this.addDepartmentNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addDepartmentNameLabel.AutoSize = true;
             this.addDepartmentNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addDepartmentNameLabel.Location = new System.Drawing.Point(52, 198);
@@ -171,6 +182,7 @@
             // 
             // addDepartmentIdLabel
             // 
+            this.addDepartmentIdLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addDepartmentIdLabel.AutoSize = true;
             this.addDepartmentIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addDepartmentIdLabel.Location = new System.Drawing.Point(52, 108);
@@ -181,6 +193,9 @@
             // 
             // TabControl
             // 
+            this.TabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TabControl.Controls.Add(this.addPage);
             this.TabControl.Controls.Add(this.updatePage);
             this.TabControl.Controls.Add(this.deletePage);
@@ -210,6 +225,7 @@
             // 
             // addProductCategoryLabel
             // 
+            this.addProductCategoryLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addProductCategoryLabel.AutoSize = true;
             this.addProductCategoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addProductCategoryLabel.Location = new System.Drawing.Point(52, 287);
@@ -220,6 +236,7 @@
             // 
             // addCategoryComboBox
             // 
+            this.addCategoryComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addCategoryComboBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.addCategoryComboBox.DataSource = this.cATEGORYBindingSource;
             this.addCategoryComboBox.DisplayMember = "NAME";
@@ -264,6 +281,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(53, 292);
@@ -274,6 +292,7 @@
             // 
             // updateCategorycomboBox
             // 
+            this.updateCategorycomboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateCategorycomboBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.updateCategorycomboBox.DataSource = this.cATEGORYBindingSource;
             this.updateCategorycomboBox.DisplayMember = "NAME";
@@ -290,6 +309,7 @@
             // 
             // updateDepartmentIdInput
             // 
+            this.updateDepartmentIdInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateDepartmentIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.updateDepartmentIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateDepartmentIdInput.Location = new System.Drawing.Point(58, 147);
@@ -299,6 +319,7 @@
             // 
             // updateDepartmentIdLabel
             // 
+            this.updateDepartmentIdLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateDepartmentIdLabel.AutoSize = true;
             this.updateDepartmentIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateDepartmentIdLabel.Location = new System.Drawing.Point(53, 115);
@@ -311,6 +332,9 @@
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(566, 3);
             this.dataGridView2.Name = "dataGridView2";
@@ -336,6 +360,7 @@
             // 
             // deleteBtn
             // 
+            this.deleteBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteBtn.Location = new System.Drawing.Point(55, 336);
@@ -348,6 +373,7 @@
             // 
             // deleteDepartmentIdInput
             // 
+            this.deleteDepartmentIdInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.deleteDepartmentIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.deleteDepartmentIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteDepartmentIdInput.Location = new System.Drawing.Point(53, 223);
@@ -357,6 +383,7 @@
             // 
             // deleteDepartmentIdLabel
             // 
+            this.deleteDepartmentIdLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.deleteDepartmentIdLabel.AutoSize = true;
             this.deleteDepartmentIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteDepartmentIdLabel.Location = new System.Drawing.Point(48, 191);
@@ -369,6 +396,9 @@
             // 
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.AllowUserToDeleteRows = false;
+            this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Location = new System.Drawing.Point(566, 3);
             this.dataGridView3.Name = "dataGridView3";
@@ -380,6 +410,8 @@
             // 
             // menuBtn
             // 
+            this.menuBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.menuBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuBtn.Location = new System.Drawing.Point(13, 729);
@@ -392,6 +424,7 @@
             // 
             // DepartmentManagementTitle
             // 
+            this.DepartmentManagementTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.DepartmentManagementTitle.AutoSize = true;
             this.DepartmentManagementTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DepartmentManagementTitle.Location = new System.Drawing.Point(478, 19);

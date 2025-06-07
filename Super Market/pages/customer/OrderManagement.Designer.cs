@@ -82,6 +82,9 @@
             // 
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.AllowUserToDeleteRows = false;
+            this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Location = new System.Drawing.Point(617, 3);
             this.dataGridView3.Name = "dataGridView3";
@@ -107,6 +110,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(76, 190);
@@ -117,6 +121,7 @@
             // 
             // deleteOrderIdInput
             // 
+            this.deleteOrderIdInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.deleteOrderIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.deleteOrderIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteOrderIdInput.Location = new System.Drawing.Point(81, 222);
@@ -126,6 +131,7 @@
             // 
             // deleteBtn
             // 
+            this.deleteBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteBtn.Location = new System.Drawing.Point(81, 323);
@@ -138,9 +144,10 @@
             // 
             // OrderManagementTitle
             // 
+            this.OrderManagementTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.OrderManagementTitle.AutoSize = true;
             this.OrderManagementTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OrderManagementTitle.Location = new System.Drawing.Point(509, 27);
+            this.OrderManagementTitle.Location = new System.Drawing.Point(540, 27);
             this.OrderManagementTitle.Name = "OrderManagementTitle";
             this.OrderManagementTitle.Size = new System.Drawing.Size(410, 51);
             this.OrderManagementTitle.TabIndex = 20;
@@ -166,6 +173,7 @@
             // 
             // updateQuantityInput
             // 
+            this.updateQuantityInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateQuantityInput.Enabled = false;
             this.updateQuantityInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateQuantityInput.Location = new System.Drawing.Point(77, 294);
@@ -177,6 +185,9 @@
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(617, 3);
             this.dataGridView2.Name = "dataGridView2";
@@ -188,6 +199,7 @@
             // 
             // updateQuantityLabel
             // 
+            this.updateQuantityLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateQuantityLabel.AutoSize = true;
             this.updateQuantityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateQuantityLabel.Location = new System.Drawing.Point(72, 262);
@@ -198,6 +210,7 @@
             // 
             // updateOrderIdLabel
             // 
+            this.updateOrderIdLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateOrderIdLabel.AutoSize = true;
             this.updateOrderIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateOrderIdLabel.Location = new System.Drawing.Point(72, 182);
@@ -208,6 +221,7 @@
             // 
             // updateOrderIdInput
             // 
+            this.updateOrderIdInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateOrderIdInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.updateOrderIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateOrderIdInput.Location = new System.Drawing.Point(77, 214);
@@ -217,6 +231,7 @@
             // 
             // updateBtn
             // 
+            this.updateBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.updateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.updateBtn.Enabled = false;
             this.updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -230,6 +245,7 @@
             // 
             // searchBtn
             // 
+            this.searchBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.searchBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.searchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchBtn.Location = new System.Drawing.Point(386, 209);
@@ -244,6 +260,9 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(617, 3);
             this.dataGridView1.Name = "dataGridView1";
@@ -278,6 +297,7 @@
             // 
             // toInput
             // 
+            this.toInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.toInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toInput.Location = new System.Drawing.Point(359, 216);
             this.toInput.Name = "toInput";
@@ -287,6 +307,7 @@
             // 
             // fromInput
             // 
+            this.fromInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.fromInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fromInput.Location = new System.Drawing.Point(137, 214);
             this.fromInput.Name = "fromInput";
@@ -296,6 +317,7 @@
             // 
             // fromLabel
             // 
+            this.fromLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.fromLabel.AutoSize = true;
             this.fromLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fromLabel.Location = new System.Drawing.Point(50, 211);
@@ -306,6 +328,7 @@
             // 
             // toLabel
             // 
+            this.toLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.toLabel.AutoSize = true;
             this.toLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toLabel.Location = new System.Drawing.Point(301, 215);
@@ -316,6 +339,7 @@
             // 
             // priceLabel
             // 
+            this.priceLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.priceLabel.AutoSize = true;
             this.priceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.priceLabel.Location = new System.Drawing.Point(50, 182);
@@ -326,6 +350,7 @@
             // 
             // addProductDepartmentLabel
             // 
+            this.addProductDepartmentLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addProductDepartmentLabel.AutoSize = true;
             this.addProductDepartmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addProductDepartmentLabel.Location = new System.Drawing.Point(50, 85);
@@ -336,6 +361,7 @@
             // 
             // addDepartmentComboBox
             // 
+            this.addDepartmentComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addDepartmentComboBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.addDepartmentComboBox.DataSource = this.dEPARTMENTBindingSource;
             this.addDepartmentComboBox.DisplayMember = "NAME";
@@ -364,6 +390,7 @@
             // 
             // addQuantityInput
             // 
+            this.addQuantityInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addQuantityInput.Enabled = false;
             this.addQuantityInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addQuantityInput.Location = new System.Drawing.Point(55, 394);
@@ -373,6 +400,7 @@
             // 
             // addProductQuantityLabel
             // 
+            this.addProductQuantityLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addProductQuantityLabel.AutoSize = true;
             this.addProductQuantityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addProductQuantityLabel.Location = new System.Drawing.Point(50, 362);
@@ -383,6 +411,7 @@
             // 
             // addProductComboBox
             // 
+            this.addProductComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addProductComboBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.addProductComboBox.DisplayMember = "NAME";
             this.addProductComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -398,6 +427,7 @@
             // 
             // addProductNameLabel
             // 
+            this.addProductNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addProductNameLabel.AutoSize = true;
             this.addProductNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addProductNameLabel.Location = new System.Drawing.Point(50, 270);
@@ -408,6 +438,7 @@
             // 
             // addBtn
             // 
+            this.addBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.addBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addBtn.Location = new System.Drawing.Point(55, 464);
@@ -420,6 +451,9 @@
             // 
             // TabControl
             // 
+            this.TabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TabControl.Controls.Add(this.addPage);
             this.TabControl.Controls.Add(this.updatePage);
             this.TabControl.Controls.Add(this.deletePage);
@@ -431,6 +465,8 @@
             // 
             // menuBtn
             // 
+            this.menuBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.menuBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuBtn.Location = new System.Drawing.Point(17, 737);

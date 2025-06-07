@@ -42,13 +42,15 @@
             this.addressLabel = new System.Windows.Forms.Label();
             this.showPassword = new System.Windows.Forms.Button();
             this.showConfirmPassword = new System.Windows.Forms.Button();
+            this.githubRepo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // logInLable
             // 
+            this.logInLable.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.logInLable.AutoSize = true;
             this.logInLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logInLable.Location = new System.Drawing.Point(562, 717);
+            this.logInLable.Location = new System.Drawing.Point(597, 701);
             this.logInLable.Name = "logInLable";
             this.logInLable.Size = new System.Drawing.Size(266, 32);
             this.logInLable.TabIndex = 19;
@@ -56,10 +58,11 @@
             // 
             // logInPageLink
             // 
+            this.logInPageLink.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.logInPageLink.AutoSize = true;
             this.logInPageLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logInPageLink.LinkColor = System.Drawing.Color.Black;
-            this.logInPageLink.Location = new System.Drawing.Point(834, 717);
+            this.logInPageLink.Location = new System.Drawing.Point(869, 701);
             this.logInPageLink.Name = "logInPageLink";
             this.logInPageLink.Size = new System.Drawing.Size(79, 29);
             this.logInPageLink.TabIndex = 18;
@@ -69,9 +72,10 @@
             // 
             // signUpBtn
             // 
+            this.signUpBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.signUpBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.signUpBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signUpBtn.Location = new System.Drawing.Point(599, 638);
+            this.signUpBtn.Location = new System.Drawing.Point(634, 622);
             this.signUpBtn.Name = "signUpBtn";
             this.signUpBtn.Size = new System.Drawing.Size(290, 64);
             this.signUpBtn.TabIndex = 17;
@@ -81,27 +85,30 @@
             // 
             // passwordInput
             // 
+            this.passwordInput.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.passwordInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.passwordInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordInput.Location = new System.Drawing.Point(686, 498);
+            this.passwordInput.Location = new System.Drawing.Point(686, 483);
             this.passwordInput.Name = "passwordInput";
             this.passwordInput.Size = new System.Drawing.Size(423, 34);
             this.passwordInput.TabIndex = 16;
             // 
             // usernameInput
             // 
+            this.usernameInput.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.usernameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.usernameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameInput.Location = new System.Drawing.Point(686, 265);
+            this.usernameInput.Location = new System.Drawing.Point(686, 250);
             this.usernameInput.Name = "usernameInput";
             this.usernameInput.Size = new System.Drawing.Size(471, 34);
             this.usernameInput.TabIndex = 15;
             // 
             // passwordLabel
             // 
+            this.passwordLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.Location = new System.Drawing.Point(387, 500);
+            this.passwordLabel.Location = new System.Drawing.Point(387, 485);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(155, 32);
             this.passwordLabel.TabIndex = 14;
@@ -109,9 +116,10 @@
             // 
             // usernameLabel
             // 
+            this.usernameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameLabel.Location = new System.Drawing.Point(387, 264);
+            this.usernameLabel.Location = new System.Drawing.Point(387, 249);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(161, 32);
             this.usernameLabel.TabIndex = 13;
@@ -119,9 +127,10 @@
             // 
             // signUpLabel
             // 
+            this.signUpLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.signUpLabel.AutoSize = true;
             this.signUpLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signUpLabel.Location = new System.Drawing.Point(693, 174);
+            this.signUpLabel.Location = new System.Drawing.Point(693, 165);
             this.signUpLabel.Name = "signUpLabel";
             this.signUpLabel.Size = new System.Drawing.Size(158, 42);
             this.signUpLabel.TabIndex = 29;
@@ -129,9 +138,10 @@
             // 
             // appTitle
             // 
+            this.appTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.appTitle.AutoSize = true;
             this.appTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appTitle.Location = new System.Drawing.Point(397, 89);
+            this.appTitle.Location = new System.Drawing.Point(397, 74);
             this.appTitle.Name = "appTitle";
             this.appTitle.Size = new System.Drawing.Size(729, 51);
             this.appTitle.TabIndex = 11;
@@ -140,9 +150,10 @@
             // 
             // welcomeMsg
             // 
+            this.welcomeMsg.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.welcomeMsg.AutoSize = true;
             this.welcomeMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomeMsg.Location = new System.Drawing.Point(693, 60);
+            this.welcomeMsg.Location = new System.Drawing.Point(693, 45);
             this.welcomeMsg.Name = "welcomeMsg";
             this.welcomeMsg.Size = new System.Drawing.Size(163, 32);
             this.welcomeMsg.TabIndex = 10;
@@ -151,18 +162,20 @@
             // 
             // confirmPasswordInput
             // 
+            this.confirmPasswordInput.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.confirmPasswordInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.confirmPasswordInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmPasswordInput.Location = new System.Drawing.Point(686, 556);
+            this.confirmPasswordInput.Location = new System.Drawing.Point(686, 541);
             this.confirmPasswordInput.Name = "confirmPasswordInput";
             this.confirmPasswordInput.Size = new System.Drawing.Size(423, 34);
             this.confirmPasswordInput.TabIndex = 21;
             // 
             // confirmPasswordLabel
             // 
+            this.confirmPasswordLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.confirmPasswordLabel.AutoSize = true;
             this.confirmPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmPasswordLabel.Location = new System.Drawing.Point(387, 558);
+            this.confirmPasswordLabel.Location = new System.Drawing.Point(387, 543);
             this.confirmPasswordLabel.Name = "confirmPasswordLabel";
             this.confirmPasswordLabel.Size = new System.Drawing.Size(269, 32);
             this.confirmPasswordLabel.TabIndex = 20;
@@ -170,18 +183,20 @@
             // 
             // emailInput
             // 
+            this.emailInput.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.emailInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.emailInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailInput.Location = new System.Drawing.Point(686, 323);
+            this.emailInput.Location = new System.Drawing.Point(686, 308);
             this.emailInput.Name = "emailInput";
             this.emailInput.Size = new System.Drawing.Size(471, 34);
             this.emailInput.TabIndex = 23;
             // 
             // emailLabel
             // 
+            this.emailLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.emailLabel.AutoSize = true;
             this.emailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailLabel.Location = new System.Drawing.Point(387, 322);
+            this.emailLabel.Location = new System.Drawing.Point(387, 307);
             this.emailLabel.Name = "emailLabel";
             this.emailLabel.Size = new System.Drawing.Size(100, 32);
             this.emailLabel.TabIndex = 22;
@@ -189,18 +204,20 @@
             // 
             // phoneInput
             // 
+            this.phoneInput.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.phoneInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.phoneInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneInput.Location = new System.Drawing.Point(686, 378);
+            this.phoneInput.Location = new System.Drawing.Point(686, 363);
             this.phoneInput.Name = "phoneInput";
             this.phoneInput.Size = new System.Drawing.Size(471, 34);
             this.phoneInput.TabIndex = 28;
             // 
             // phoneLabel
             // 
+            this.phoneLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.phoneLabel.AutoSize = true;
             this.phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneLabel.Location = new System.Drawing.Point(387, 377);
+            this.phoneLabel.Location = new System.Drawing.Point(387, 362);
             this.phoneLabel.Name = "phoneLabel";
             this.phoneLabel.Size = new System.Drawing.Size(225, 32);
             this.phoneLabel.TabIndex = 27;
@@ -208,18 +225,20 @@
             // 
             // addressInput
             // 
+            this.addressInput.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addressInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.addressInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addressInput.Location = new System.Drawing.Point(686, 438);
+            this.addressInput.Location = new System.Drawing.Point(686, 423);
             this.addressInput.Name = "addressInput";
             this.addressInput.Size = new System.Drawing.Size(471, 34);
             this.addressInput.TabIndex = 30;
             // 
             // addressLabel
             // 
+            this.addressLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addressLabel.AutoSize = true;
             this.addressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addressLabel.Location = new System.Drawing.Point(387, 440);
+            this.addressLabel.Location = new System.Drawing.Point(387, 425);
             this.addressLabel.Name = "addressLabel";
             this.addressLabel.Size = new System.Drawing.Size(134, 32);
             this.addressLabel.TabIndex = 29;
@@ -227,11 +246,12 @@
             // 
             // showPassword
             // 
+            this.showPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.showPassword.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("showPassword.BackgroundImage")));
             this.showPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.showPassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.showPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showPassword.Location = new System.Drawing.Point(1115, 498);
+            this.showPassword.Location = new System.Drawing.Point(1115, 483);
             this.showPassword.Name = "showPassword";
             this.showPassword.Size = new System.Drawing.Size(42, 34);
             this.showPassword.TabIndex = 31;
@@ -240,23 +260,44 @@
             // 
             // showConfirmPassword
             // 
+            this.showConfirmPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.showConfirmPassword.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("showConfirmPassword.BackgroundImage")));
             this.showConfirmPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.showConfirmPassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.showConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showConfirmPassword.Location = new System.Drawing.Point(1115, 556);
+            this.showConfirmPassword.Location = new System.Drawing.Point(1115, 541);
             this.showConfirmPassword.Name = "showConfirmPassword";
             this.showConfirmPassword.Size = new System.Drawing.Size(42, 34);
             this.showConfirmPassword.TabIndex = 32;
             this.showConfirmPassword.UseVisualStyleBackColor = true;
             this.showConfirmPassword.Click += new System.EventHandler(this.showConfirmPassword_Click);
             // 
+            // githubRepo
+            // 
+            this.githubRepo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.githubRepo.BackColor = System.Drawing.SystemColors.Control;
+            this.githubRepo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("githubRepo.BackgroundImage")));
+            this.githubRepo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.githubRepo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.githubRepo.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.githubRepo.FlatAppearance.BorderSize = 0;
+            this.githubRepo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.githubRepo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.githubRepo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.githubRepo.Location = new System.Drawing.Point(1411, 735);
+            this.githubRepo.Name = "githubRepo";
+            this.githubRepo.Size = new System.Drawing.Size(59, 56);
+            this.githubRepo.TabIndex = 33;
+            this.githubRepo.UseVisualStyleBackColor = false;
+            this.githubRepo.Click += new System.EventHandler(this.githubRepo_Click);
+            // 
             // SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1482, 864);
+            this.ClientSize = new System.Drawing.Size(1482, 803);
+            this.Controls.Add(this.githubRepo);
             this.Controls.Add(this.showConfirmPassword);
             this.Controls.Add(this.showPassword);
             this.Controls.Add(this.addressInput);
@@ -279,7 +320,7 @@
             this.Controls.Add(this.welcomeMsg);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(15, 15);
-            this.MinimumSize = new System.Drawing.Size(1500, 800);
+            this.MinimumSize = new System.Drawing.Size(1500, 850);
             this.Name = "SignUp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Super Market Management System";
@@ -310,5 +351,6 @@
         private System.Windows.Forms.Label phoneLabel;
         private System.Windows.Forms.Button showPassword;
         private System.Windows.Forms.Button showConfirmPassword;
+        private System.Windows.Forms.Button githubRepo;
     }
 }

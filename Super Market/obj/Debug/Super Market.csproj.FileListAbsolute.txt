@@ -103,3 +103,4 @@ C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Manageme
 C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super Market.csproj.CoreCompileInputs.cache
 C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super Market.exe
 C:\Users\DELL\OneDrive\Documents\College\Data Base\Project\Super_Market_Management_System\Super Market\obj\Debug\Super Market.pdb
+D:\Assignments\Intro. to Database Systems\Super_Market_Management_System\Super Market\obj\Debug\Super Market.exe.config
