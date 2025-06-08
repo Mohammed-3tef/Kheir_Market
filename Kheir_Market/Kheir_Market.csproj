@@ -82,11 +82,11 @@
     <Compile Include="packages\validation\UniquenessValidator.cs" />
     <Compile Include="packages\validation\Validator.cs" />
     <Compile Include="packages\otp\OTPService.cs" />
-    <Compile Include="pages\admin\AnalysisDashboard.cs">
+    <Compile Include="pages\AboutPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pages\admin\AnalysisDashboard.Designer.cs">
-      <DependentUpon>AnalysisDashboard.cs</DependentUpon>
+    <Compile Include="pages\AboutPage.Designer.cs">
+      <DependentUpon>AboutPage.cs</DependentUpon>
     </Compile>
     <Compile Include="pages\admin\CategoryManagement.cs">
       <SubType>Form</SubType>
@@ -158,8 +158,8 @@
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\admin\AnalysisDashboard.resx">
-      <DependentUpon>AnalysisDashboard.cs</DependentUpon>
+    <EmbeddedResource Include="pages\AboutPage.resx">
+      <DependentUpon>AboutPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\admin\CategoryManagement.resx">
       <DependentUpon>CategoryManagement.cs</DependentUpon>

@@ -82,5 +82,21 @@ namespace Kheir_Market.pages
         {
             System.Diagnostics.Process.Start("https://github.com/Mohammed-3tef/Kheir_Market");
         }
+
+        private void aboutBtn_Click(object sender, EventArgs e)
+        {
+            // check if the AboutPage is already open
+            foreach (Form form in System.Windows.Forms.Application.OpenForms)
+            {
+                if (form is AboutPage)
+                {
+                    form.BringToFront();
+                    return;
+                }
+            }
+
+            AboutPage aboutPage = new AboutPage();
+            aboutPage.Show();
+        }
     }
 }

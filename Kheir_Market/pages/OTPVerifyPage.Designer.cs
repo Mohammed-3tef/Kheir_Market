@@ -40,6 +40,7 @@
             this.appTitle = new System.Windows.Forms.Label();
             this.welcomeMsg = new System.Windows.Forms.Label();
             this.githubRepo = new System.Windows.Forms.Button();
+            this.aboutBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // resendBtn
@@ -181,11 +182,31 @@
             this.githubRepo.UseVisualStyleBackColor = false;
             this.githubRepo.Click += new System.EventHandler(this.githubRepo_Click);
             // 
+            // aboutBtn
+            // 
+            this.aboutBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.aboutBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("aboutBtn.BackgroundImage")));
+            this.aboutBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.aboutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.aboutBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.aboutBtn.FlatAppearance.BorderSize = 0;
+            this.aboutBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.aboutBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.aboutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.aboutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aboutBtn.Location = new System.Drawing.Point(12, 691);
+            this.aboutBtn.Name = "aboutBtn";
+            this.aboutBtn.Size = new System.Drawing.Size(50, 50);
+            this.aboutBtn.TabIndex = 58;
+            this.aboutBtn.UseVisualStyleBackColor = true;
+            this.aboutBtn.Click += new System.EventHandler(this.aboutBtn_Click);
+            // 
             // OTPVerifyPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 753);
+            this.Controls.Add(this.aboutBtn);
             this.Controls.Add(this.githubRepo);
             this.Controls.Add(this.resendBtn);
             this.Controls.Add(this.verifyBtn);
@@ -221,5 +242,6 @@
         private System.Windows.Forms.Label appTitle;
         private System.Windows.Forms.Label welcomeMsg;
         private System.Windows.Forms.Button githubRepo;
+        private System.Windows.Forms.Button aboutBtn;
     }
 }
