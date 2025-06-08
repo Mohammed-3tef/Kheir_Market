@@ -280,12 +280,13 @@ namespace Kheir_Market.pages.admin
         private void printBtn_Click(object sender, EventArgs e)
         {
             DGVPrinter printer = new DGVPrinter();
+            printer.SubTitle = "\n";
             printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
             printer.PageNumbers = true;
             printer.PageNumberInHeader = false;
             printer.PorportionalColumns = true;
             printer.HeaderCellAlignment = StringAlignment.Near;
-            printer.Footer = "Super Market Analysis Dashboard - Generated on: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+            printer.Footer = "Kheir Market\nGenerated on: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm");
             printer.FooterSpacing = 15;
 
             if (this.TabControl.SelectedTab == mostPurchasedProductPage)
