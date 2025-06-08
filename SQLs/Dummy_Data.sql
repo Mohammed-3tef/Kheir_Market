@@ -1,6 +1,4 @@
-
-
-USE Super_Market;
+USE Kheir_Market;
 GO
 
 -- Clean existing data
