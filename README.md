@@ -1,11 +1,13 @@
-<h1>
-  Kheir Market
-  <div > 
-    <a href="https://deepwiki.com/Mohammed-3tef/Super_Market_Management_System"> 
-      <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"> 
-    </a> 
-  </div>
-</h1> 
+# Kheir Market
+  
+<div > 
+  <a href="https://deepwiki.com/Mohammed-3tef/Super_Market_Management_System"> 
+    <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"> 
+  </a> 
+  
+  ![GitHub repo size](https://img.shields.io/github/repo-size/Mohammed-3tef/Kheir_Market) ![GitHub Release](https://img.shields.io/github/v/release/Mohammed-3tef/Kheir_Market) ![GitHub License](https://img.shields.io/github/license/Mohammed-3tef/Kheir_Market)
+</div>
+
 
 ## Overview
 
