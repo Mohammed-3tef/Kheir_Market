@@ -27,6 +27,8 @@ namespace Kheir_Market.pages
             InitializeComponent();
             this._mainWindow = mainWindow;
             this.addPasswordInput.PasswordChar = '*';
+
+            this.FormClosing += this._mainWindow.formClosing;
         }
 
         private void CustomerManagement_Load(object sender, EventArgs e)
@@ -39,6 +41,7 @@ namespace Kheir_Market.pages
             this._mainWindow.users.refreshUsers();
             AdminMenuPage adminMenuPage= new AdminMenuPage(this._mainWindow);
             adminMenuPage.Show();
+            this.FormClosing -= this._mainWindow.formClosing;
             this.Close();
         }
 

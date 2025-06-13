@@ -20,12 +20,15 @@ namespace Kheir_Market.pages
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+
+            this.FormClosing += this.mainWindow.formClosing;
         }
 
         private void menuBtn_Click(object sender, EventArgs e)
         {
             AdminMenuPage adminMenuPage = new AdminMenuPage(this.mainWindow);
             adminMenuPage.Show();
+            this.FormClosing -= this.mainWindow.formClosing;
             this.Close();
         }
 

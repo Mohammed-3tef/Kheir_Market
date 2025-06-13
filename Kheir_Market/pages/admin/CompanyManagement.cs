@@ -71,6 +71,8 @@ namespace Kheir_Market.pages.admin
 
             this.addCountryComboBox.SelectedIndex = -1;
             this.updateCountryComboBox.SelectedIndex = -1;
+
+            this.FormClosing += this.mainWindow.formClosing;
         }
 
         private void cleanInputs()
@@ -130,6 +132,7 @@ namespace Kheir_Market.pages.admin
         {
             AdminMenuPage adminMenuPage = new AdminMenuPage(this.mainWindow);
             adminMenuPage.Show();
+            this.FormClosing -= this.mainWindow.formClosing;
             this.Close();
         }
 

@@ -37,12 +37,15 @@ namespace Kheir_Market.pages
             {
                 this.years.Add(i.ToString());
             }
+
+            this.FormClosing += this.mainWindow.formClosing;
         }
 
         private void productBtn_Click(object sender, EventArgs e)
         {
             ProductManagement productManagement = new ProductManagement(this.mainWindow);
             productManagement.Show();
+            this.FormClosing -= this.mainWindow.formClosing;
             this.Close();
         }
 
@@ -50,6 +53,7 @@ namespace Kheir_Market.pages
         {
             UserManagement customerManagement = new UserManagement(this.mainWindow);
             customerManagement.Show();
+            this.FormClosing -= this.mainWindow.formClosing;
             this.Close();
         }
 
@@ -65,6 +69,7 @@ namespace Kheir_Market.pages
             if (result == DialogResult.No) return;
 
             this.mainWindow.Show();
+            this.FormClosing -= this.mainWindow.formClosing;
             this.Close();
         }
 
@@ -72,6 +77,7 @@ namespace Kheir_Market.pages
         {
             CategoryManagement categoryManagement = new CategoryManagement(this.mainWindow);
             categoryManagement.Show();
+            this.FormClosing -= this.mainWindow.formClosing;
             this.Close();
         }
 
@@ -79,6 +85,7 @@ namespace Kheir_Market.pages
         {
             DepartmentManagement departmentManagment = new DepartmentManagement(this.mainWindow);
             departmentManagment.Show();
+            this.FormClosing -= this.mainWindow.formClosing;
             this.Close();
         }
 
@@ -86,6 +93,7 @@ namespace Kheir_Market.pages
         {
             CompanyManagement companyManagement = new CompanyManagement(this.mainWindow);
             companyManagement.Show();
+            this.FormClosing -= this.mainWindow.formClosing;
             this.Close();
         }
 

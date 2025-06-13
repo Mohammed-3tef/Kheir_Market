@@ -19,6 +19,8 @@ namespace Kheir_Market.pages.customer
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+
+            this.FormClosing += this.mainWindow.formClosing;
         }
 
 
@@ -133,6 +135,7 @@ namespace Kheir_Market.pages.customer
         {
             CustomerMenuPage customerMenuPage = new CustomerMenuPage(this.mainWindow);
             customerMenuPage.Show();
+            this.FormClosing -= this.mainWindow.formClosing;
             this.Close();
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kheir_Market.pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,6 +17,12 @@ namespace Kheir_Market
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Show the loading page first
+            LoadingPage loadingPage = new LoadingPage();
+            loadingPage.ShowDialog(); // Show the loading page modally to ensure it completes before proceeding
+
+            // Start the main window after the loading page is closed
             Application.Run(new MainWindow());
         }
     }

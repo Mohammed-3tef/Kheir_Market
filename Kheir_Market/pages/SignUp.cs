@@ -29,11 +29,14 @@ namespace Kheir_Market.pages
 
             this.passwordInput.PasswordChar = '*';
             this.confirmPasswordInput.PasswordChar = '*';
+
+            this.FormClosing += this.mainWindow.formClosing;
         }
 
         private void logInPageLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (mainWindow == null) this.mainWindow = new MainWindow();
+            this.FormClosing -= this.mainWindow.formClosing;
             this.Close();
             mainWindow.Show();
         }
@@ -100,6 +103,7 @@ namespace Kheir_Market.pages
 
             OTPVerifyPage oTPVerifyPage = new OTPVerifyPage(this.mainWindow);
             oTPVerifyPage.Show();
+            this.FormClosing -= this.mainWindow.formClosing;
             this.Close();
         }
 

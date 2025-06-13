@@ -24,6 +24,7 @@ namespace Kheir_Market.pages
             InitializeComponent();
             this.mainWindow = mainWindow;
             this.welcomePersonMsg.Text = "Welcome, \n" + this.mainWindow.user.GetUsername();
+            this.FormClosing += this.mainWindow.formClosing;
         }
 
         private void LoadProductData()
@@ -55,7 +56,8 @@ namespace Kheir_Market.pages
                         dataGridView1.DataSource = dt;
                     }
                 }
-                else {
+                else
+                {
                     query = @"
                         SELECT 
                         P.PID AS ID, P.NAME AS Name,
@@ -103,6 +105,7 @@ namespace Kheir_Market.pages
 
             if (result == DialogResult.No) return;
             this.mainWindow.Show();
+            this.FormClosing -= this.mainWindow.formClosing;
             this.Close();
         }
 
@@ -110,6 +113,7 @@ namespace Kheir_Market.pages
         {
             OrderManagement orderManagement = new OrderManagement(this.mainWindow);
             orderManagement.Show();
+            this.FormClosing -= this.mainWindow.formClosing;
             this.Close();
         }
 

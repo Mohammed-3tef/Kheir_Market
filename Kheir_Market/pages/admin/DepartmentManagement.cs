@@ -25,6 +25,8 @@ namespace Kheir_Market.pages.admin
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+
+            this.FormClosing += this.mainWindow.formClosing;
         }
 
         private void LoadDepartmentTable()
@@ -61,6 +63,7 @@ namespace Kheir_Market.pages.admin
         {
             AdminMenuPage adminMenuPage = new AdminMenuPage(this.mainWindow);
             adminMenuPage.Show();
+            this.FormClosing -= this.mainWindow.formClosing;
             this.Close();
         }
 

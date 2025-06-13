@@ -14,7 +14,6 @@ using Kheir_Market.packages.display;
 using Kheir_Market.packages.User;
 using System.Security.Policy;
 
-
 namespace Kheir_Market
 {
     public partial class MainWindow : Form
@@ -27,6 +26,25 @@ namespace Kheir_Market
         {
             InitializeComponent();
             this.passwordInput.PasswordChar = '*';
+
+            this.FormClosing += formClosing;
+        }
+
+        public void formClosing(object sender, FormClosingEventArgs e)
+        {
+            // Check if the form is being closed by the user
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                // Ask for confirmation before closing
+                DialogResult result = System.Windows.Forms.MessageBox.Show(
+                    "Are you sure you want to exit?", "Confirm Exit",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.No) e.Cancel = true; // Cancel the close event
+                else System.Windows.Forms.Application.Exit(); // Kill the entire application
+            }
         }
 
         private void signUpPageLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

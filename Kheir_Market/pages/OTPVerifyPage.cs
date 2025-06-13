@@ -26,6 +26,8 @@ namespace Kheir_Market.pages
             this.mainWindow = mainWindow;
             this.otpService.SendOTP(this.mainWindow.user.GetUsername(),this.mainWindow.user.GetEmail());
             StartEnableTimer();
+
+            this.FormClosing += this.mainWindow.formClosing;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -47,6 +49,7 @@ namespace Kheir_Market.pages
         {
             this.mainWindow = new MainWindow();
             this.mainWindow.Show();
+            this.FormClosing -= this.mainWindow.formClosing;
             this.Close();
         }
 
@@ -57,6 +60,7 @@ namespace Kheir_Market.pages
                 this.mainWindow.users.addUser(this.mainWindow.user);
                 CustomerMenuPage customerMenuPage = new CustomerMenuPage(this.mainWindow);
                 customerMenuPage.Show();
+                this.FormClosing -= this.mainWindow.formClosing;
                 this.Close();
             }
             else
@@ -75,6 +79,7 @@ namespace Kheir_Market.pages
         private void logInPageLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.mainWindow.Show();
+            this.FormClosing -= this.mainWindow.formClosing;
             this.Close();
         }
 
