@@ -137,5 +137,21 @@ namespace Kheir_Market.pages
             AboutPage aboutPage = new AboutPage();
             aboutPage.Show();
         }
+
+        private void customerServiceBtn_Click(object sender, EventArgs e)
+        {
+            // check if the AboutPage is already open
+            foreach (Form form in System.Windows.Forms.Application.OpenForms)
+            {
+                if (form is ModalPopup)
+                {
+                    form.BringToFront();
+                    return;
+                }
+            }
+
+            ModalPopup modalPopup = new ModalPopup(this.mainWindow, this);
+            modalPopup.Show();
+        }
     }
 }

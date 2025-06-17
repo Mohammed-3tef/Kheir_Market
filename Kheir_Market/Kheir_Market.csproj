@@ -133,6 +133,18 @@
     <Compile Include="pages\admin\ProductManagement.Designer.cs">
       <DependentUpon>ProductManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\customer\CustomerService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\customer\CustomerService.Designer.cs">
+      <DependentUpon>CustomerService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\customer\ModalPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\customer\ModalPopup.Designer.cs">
+      <DependentUpon>ModalPopup.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\customer\OrderManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +202,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="pages\admin\ProductManagement.resx">
       <DependentUpon>ProductManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\customer\CustomerService.resx">
+      <DependentUpon>CustomerService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\customer\ModalPopup.resx">
+      <DependentUpon>ModalPopup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\customer\OrderManagement.resx">
       <DependentUpon>OrderManagement.cs</DependentUpon>

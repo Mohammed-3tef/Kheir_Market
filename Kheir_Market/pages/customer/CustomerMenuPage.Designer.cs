@@ -42,6 +42,7 @@
             this.cATEGORYTableAdapter = new Kheir_Market.Kheir_Market_DataSetTableAdapters.CATEGORYTableAdapter();
             this.aboutBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.customerServiceBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cATEGORYBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kheir_Market_DataSet)).BeginInit();
@@ -192,6 +193,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.customerServiceBtn);
             this.panel1.Controls.Add(this.appTitle);
             this.panel1.Controls.Add(this.aboutBtn);
             this.panel1.Controls.Add(this.orderBtn);
@@ -201,6 +203,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(463, 729);
             this.panel1.TabIndex = 32;
+            // 
+            // customerServiceBtn
+            // 
+            this.customerServiceBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.customerServiceBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.customerServiceBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.customerServiceBtn.FlatAppearance.BorderSize = 0;
+            this.customerServiceBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customerServiceBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customerServiceBtn.Location = new System.Drawing.Point(0, 367);
+            this.customerServiceBtn.Name = "customerServiceBtn";
+            this.customerServiceBtn.Size = new System.Drawing.Size(463, 91);
+            this.customerServiceBtn.TabIndex = 32;
+            this.customerServiceBtn.Text = "Customer Service";
+            this.customerServiceBtn.UseVisualStyleBackColor = true;
+            this.customerServiceBtn.Click += new System.EventHandler(this.customerServiceBtn_Click);
             // 
             // CustomerMenuPage
             // 
@@ -241,5 +259,6 @@
         private Kheir_Market_DataSetTableAdapters.CATEGORYTableAdapter cATEGORYTableAdapter;
         private System.Windows.Forms.Button aboutBtn;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button customerServiceBtn;
     }
 }

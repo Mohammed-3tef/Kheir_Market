@@ -24,7 +24,7 @@ namespace Kheir_Market.packages.otp
             string fromPassword = "qxugcqlkzhypfxdy";
 
             MailMessage message = new MailMessage();
-            message.From = new MailAddress(from, "Super Market Application");
+            message.From = new MailAddress(from, "Kheir Market Application");
             message.Subject = "Confirmation Email";
             
             message.Body = $@"
@@ -86,7 +86,7 @@ namespace Kheir_Market.packages.otp
                               <body>
                                 <div class='container'>
                                   <h1>Thank you, <strong>{username}</strong>!</h1>
-                                  <p id = 'sentence1' >We appreciate your interest in our <strong>Super Market</strong> Application.</p>
+                                  <p id = 'sentence1' >We appreciate your interest in our <strong>Kheir Market</strong> Application.</p>
                                   <h2>Your One-Time Password (OTP)</h2>
                                   <div class='otp'>{otp}</div>
                                   <p>Please use this code to complete your verification process.</p>
@@ -100,7 +100,7 @@ namespace Kheir_Market.packages.otp
                                       <a href='https://www.linkedin.com/in/john-ayman-aa30842b7/' target='_blank'>John Ayman</a> |
                                       <a href='https://www.linkedin.com/in/marawan-mohamed-7244692a4/' target='_blank'>Marwan Mohammed</a>
                                     </p>
-                                    <p>© 2025 Super Market. All rights reserved.</p>
+                                    <p>© 2025 Kheir Market. All rights reserved.</p>
                                   </div>
                                 </div>
                               </body>

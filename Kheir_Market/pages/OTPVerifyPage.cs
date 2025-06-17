@@ -57,6 +57,8 @@ namespace Kheir_Market.pages
         {
             if (this.otpInput.Text == this.otpService.GetOTP() && Validator.IsValidInteger(this.otpInput.Text))
             {
+                MessageDisplay.ShowSuccess("OTP code verified successfully!");
+
                 this.mainWindow.users.addUser(this.mainWindow.user);
                 CustomerMenuPage customerMenuPage = new CustomerMenuPage(this.mainWindow);
                 customerMenuPage.Show();
