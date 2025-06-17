@@ -56,6 +56,7 @@
             this.productPurchaseSummaryPage = new System.Windows.Forms.TabPage();
             this.dataGridView6 = new System.Windows.Forms.DataGridView();
             this.aboutBtn = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.TabControl.SuspendLayout();
             this.mostPurchasedProductPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -69,52 +70,70 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             this.productPurchaseSummaryPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // appTitle
             // 
+            this.appTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.appTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appTitle.Location = new System.Drawing.Point(17, 55);
+            this.appTitle.Location = new System.Drawing.Point(3, 31);
             this.appTitle.Name = "appTitle";
-            this.appTitle.Size = new System.Drawing.Size(477, 72);
+            this.appTitle.Size = new System.Drawing.Size(406, 72);
             this.appTitle.TabIndex = 13;
             this.appTitle.Text = "Kheir Market";
             this.appTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // userBtn
             // 
-            this.userBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.userBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.userBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.userBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.userBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.userBtn.FlatAppearance.BorderSize = 0;
+            this.userBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.userBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userBtn.Location = new System.Drawing.Point(68, 239);
+            this.userBtn.Location = new System.Drawing.Point(0, 233);
             this.userBtn.Name = "userBtn";
-            this.userBtn.Size = new System.Drawing.Size(426, 67);
+            this.userBtn.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.userBtn.Size = new System.Drawing.Size(409, 67);
             this.userBtn.TabIndex = 14;
             this.userBtn.Text = "User Management";
+            this.userBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.userBtn.UseVisualStyleBackColor = true;
             this.userBtn.Click += new System.EventHandler(this.userBtn_Click);
             // 
             // productBtn
             // 
-            this.productBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.productBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.productBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.productBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.productBtn.FlatAppearance.BorderSize = 0;
+            this.productBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.productBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productBtn.Location = new System.Drawing.Point(68, 531);
+            this.productBtn.Location = new System.Drawing.Point(0, 525);
             this.productBtn.Name = "productBtn";
-            this.productBtn.Size = new System.Drawing.Size(426, 67);
+            this.productBtn.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.productBtn.Size = new System.Drawing.Size(409, 67);
             this.productBtn.TabIndex = 15;
             this.productBtn.Text = "Product Management";
+            this.productBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.productBtn.UseVisualStyleBackColor = true;
             this.productBtn.Click += new System.EventHandler(this.productBtn_Click);
             // 
             // logOutBtn
             // 
-            this.logOutBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.logOutBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.logOutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.logOutBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.logOutBtn.FlatAppearance.BorderSize = 0;
+            this.logOutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logOutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logOutBtn.Location = new System.Drawing.Point(68, 604);
+            this.logOutBtn.Location = new System.Drawing.Point(0, 695);
             this.logOutBtn.Name = "logOutBtn";
-            this.logOutBtn.Size = new System.Drawing.Size(426, 67);
+            this.logOutBtn.Size = new System.Drawing.Size(409, 57);
             this.logOutBtn.TabIndex = 16;
             this.logOutBtn.Text = "Log Out";
             this.logOutBtn.UseVisualStyleBackColor = true;
@@ -122,49 +141,68 @@
             // 
             // categoryBtn
             // 
-            this.categoryBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.categoryBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.categoryBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.categoryBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.categoryBtn.FlatAppearance.BorderSize = 0;
+            this.categoryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.categoryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoryBtn.Location = new System.Drawing.Point(68, 312);
+            this.categoryBtn.Location = new System.Drawing.Point(0, 306);
             this.categoryBtn.Name = "categoryBtn";
-            this.categoryBtn.Size = new System.Drawing.Size(426, 67);
+            this.categoryBtn.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.categoryBtn.Size = new System.Drawing.Size(409, 67);
             this.categoryBtn.TabIndex = 17;
             this.categoryBtn.Text = "Category Management";
+            this.categoryBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.categoryBtn.UseVisualStyleBackColor = true;
             this.categoryBtn.Click += new System.EventHandler(this.categoryBtn_Click);
             // 
             // welcomePersonMsg
             // 
+            this.welcomePersonMsg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.welcomePersonMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomePersonMsg.Location = new System.Drawing.Point(62, 156);
+            this.welcomePersonMsg.Location = new System.Drawing.Point(3, 119);
+            this.welcomePersonMsg.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.welcomePersonMsg.Name = "welcomePersonMsg";
-            this.welcomePersonMsg.Size = new System.Drawing.Size(432, 67);
+            this.welcomePersonMsg.Size = new System.Drawing.Size(406, 67);
             this.welcomePersonMsg.TabIndex = 25;
             this.welcomePersonMsg.Text = "Welcome, ";
+            this.welcomePersonMsg.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // departmentBtn
             // 
-            this.departmentBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.departmentBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.departmentBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.departmentBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.departmentBtn.FlatAppearance.BorderSize = 0;
+            this.departmentBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.departmentBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.departmentBtn.Location = new System.Drawing.Point(68, 385);
+            this.departmentBtn.Location = new System.Drawing.Point(0, 379);
             this.departmentBtn.Name = "departmentBtn";
-            this.departmentBtn.Size = new System.Drawing.Size(426, 67);
+            this.departmentBtn.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.departmentBtn.Size = new System.Drawing.Size(409, 67);
             this.departmentBtn.TabIndex = 26;
             this.departmentBtn.Text = "Department Management";
+            this.departmentBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.departmentBtn.UseVisualStyleBackColor = true;
             this.departmentBtn.Click += new System.EventHandler(this.departmentBtn_Click);
             // 
             // companyBtn
             // 
-            this.companyBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.companyBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.companyBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.companyBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.companyBtn.FlatAppearance.BorderSize = 0;
+            this.companyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.companyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.companyBtn.Location = new System.Drawing.Point(68, 458);
+            this.companyBtn.Location = new System.Drawing.Point(0, 452);
             this.companyBtn.Name = "companyBtn";
-            this.companyBtn.Size = new System.Drawing.Size(426, 67);
+            this.companyBtn.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.companyBtn.Size = new System.Drawing.Size(409, 67);
             this.companyBtn.TabIndex = 27;
             this.companyBtn.Text = "Company Management";
+            this.companyBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.companyBtn.UseVisualStyleBackColor = true;
             this.companyBtn.Click += new System.EventHandler(this.companyBtn_Click);
             // 
@@ -197,10 +235,10 @@
             this.TabControl.Controls.Add(this.topPurchasingCustomerPage);
             this.TabControl.Controls.Add(this.salesComparisonPage);
             this.TabControl.Controls.Add(this.productPurchaseSummaryPage);
-            this.TabControl.Location = new System.Drawing.Point(549, 68);
+            this.TabControl.Location = new System.Drawing.Point(452, 68);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(921, 723);
+            this.TabControl.Size = new System.Drawing.Size(1018, 723);
             this.TabControl.TabIndex = 28;
             // 
             // mostPurchasedProductPage
@@ -209,7 +247,7 @@
             this.mostPurchasedProductPage.Location = new System.Drawing.Point(4, 25);
             this.mostPurchasedProductPage.Name = "mostPurchasedProductPage";
             this.mostPurchasedProductPage.Padding = new System.Windows.Forms.Padding(3);
-            this.mostPurchasedProductPage.Size = new System.Drawing.Size(913, 694);
+            this.mostPurchasedProductPage.Size = new System.Drawing.Size(1010, 694);
             this.mostPurchasedProductPage.TabIndex = 0;
             this.mostPurchasedProductPage.Text = "Most Purchased Product";
             this.mostPurchasedProductPage.UseVisualStyleBackColor = true;
@@ -221,13 +259,14 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(907, 688);
+            this.dataGridView1.Size = new System.Drawing.Size(1004, 688);
             this.dataGridView1.TabIndex = 0;
             // 
             // unsoldProductByMonthPage
@@ -240,7 +279,7 @@
             this.unsoldProductByMonthPage.Location = new System.Drawing.Point(4, 25);
             this.unsoldProductByMonthPage.Name = "unsoldProductByMonthPage";
             this.unsoldProductByMonthPage.Padding = new System.Windows.Forms.Padding(3);
-            this.unsoldProductByMonthPage.Size = new System.Drawing.Size(913, 694);
+            this.unsoldProductByMonthPage.Size = new System.Drawing.Size(1010, 694);
             this.unsoldProductByMonthPage.TabIndex = 1;
             this.unsoldProductByMonthPage.Text = "Unsold Products by Month";
             this.unsoldProductByMonthPage.UseVisualStyleBackColor = true;
@@ -303,13 +342,14 @@
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(3, 87);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(907, 604);
+            this.dataGridView2.Size = new System.Drawing.Size(1004, 604);
             this.dataGridView2.TabIndex = 1;
             // 
             // interactiveCustomersPage
@@ -318,7 +358,7 @@
             this.interactiveCustomersPage.Location = new System.Drawing.Point(4, 25);
             this.interactiveCustomersPage.Name = "interactiveCustomersPage";
             this.interactiveCustomersPage.Padding = new System.Windows.Forms.Padding(3);
-            this.interactiveCustomersPage.Size = new System.Drawing.Size(913, 694);
+            this.interactiveCustomersPage.Size = new System.Drawing.Size(1010, 694);
             this.interactiveCustomersPage.TabIndex = 2;
             this.interactiveCustomersPage.Text = "Inactive Customers";
             this.interactiveCustomersPage.UseVisualStyleBackColor = true;
@@ -330,13 +370,14 @@
             this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Location = new System.Drawing.Point(3, 3);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(907, 688);
+            this.dataGridView3.Size = new System.Drawing.Size(1004, 688);
             this.dataGridView3.TabIndex = 1;
             // 
             // topPurchasingCustomerPage
@@ -345,7 +386,7 @@
             this.topPurchasingCustomerPage.Location = new System.Drawing.Point(4, 25);
             this.topPurchasingCustomerPage.Name = "topPurchasingCustomerPage";
             this.topPurchasingCustomerPage.Padding = new System.Windows.Forms.Padding(3);
-            this.topPurchasingCustomerPage.Size = new System.Drawing.Size(913, 694);
+            this.topPurchasingCustomerPage.Size = new System.Drawing.Size(1010, 694);
             this.topPurchasingCustomerPage.TabIndex = 3;
             this.topPurchasingCustomerPage.Text = "Top Purchasing ";
             this.topPurchasingCustomerPage.UseVisualStyleBackColor = true;
@@ -357,13 +398,14 @@
             this.dataGridView4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Location = new System.Drawing.Point(3, 3);
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.ReadOnly = true;
             this.dataGridView4.RowHeadersWidth = 51;
             this.dataGridView4.RowTemplate.Height = 24;
-            this.dataGridView4.Size = new System.Drawing.Size(907, 688);
+            this.dataGridView4.Size = new System.Drawing.Size(1004, 688);
             this.dataGridView4.TabIndex = 1;
             // 
             // salesComparisonPage
@@ -372,7 +414,7 @@
             this.salesComparisonPage.Location = new System.Drawing.Point(4, 25);
             this.salesComparisonPage.Name = "salesComparisonPage";
             this.salesComparisonPage.Padding = new System.Windows.Forms.Padding(3);
-            this.salesComparisonPage.Size = new System.Drawing.Size(913, 694);
+            this.salesComparisonPage.Size = new System.Drawing.Size(1010, 694);
             this.salesComparisonPage.TabIndex = 4;
             this.salesComparisonPage.Text = "Sales Comparison ";
             this.salesComparisonPage.UseVisualStyleBackColor = true;
@@ -384,13 +426,14 @@
             this.dataGridView5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView5.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView5.Location = new System.Drawing.Point(3, 3);
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.ReadOnly = true;
             this.dataGridView5.RowHeadersWidth = 51;
             this.dataGridView5.RowTemplate.Height = 24;
-            this.dataGridView5.Size = new System.Drawing.Size(907, 688);
+            this.dataGridView5.Size = new System.Drawing.Size(1004, 688);
             this.dataGridView5.TabIndex = 1;
             // 
             // productPurchaseSummaryPage
@@ -399,7 +442,7 @@
             this.productPurchaseSummaryPage.Location = new System.Drawing.Point(4, 25);
             this.productPurchaseSummaryPage.Name = "productPurchaseSummaryPage";
             this.productPurchaseSummaryPage.Padding = new System.Windows.Forms.Padding(3);
-            this.productPurchaseSummaryPage.Size = new System.Drawing.Size(913, 694);
+            this.productPurchaseSummaryPage.Size = new System.Drawing.Size(1010, 694);
             this.productPurchaseSummaryPage.TabIndex = 5;
             this.productPurchaseSummaryPage.Text = "Product Purchase ";
             this.productPurchaseSummaryPage.UseVisualStyleBackColor = true;
@@ -411,13 +454,14 @@
             this.dataGridView6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView6.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView6.Location = new System.Drawing.Point(3, 3);
             this.dataGridView6.Name = "dataGridView6";
             this.dataGridView6.ReadOnly = true;
             this.dataGridView6.RowHeadersWidth = 51;
             this.dataGridView6.RowTemplate.Height = 24;
-            this.dataGridView6.Size = new System.Drawing.Size(907, 688);
+            this.dataGridView6.Size = new System.Drawing.Size(1004, 688);
             this.dataGridView6.TabIndex = 1;
             // 
             // aboutBtn
@@ -432,29 +476,40 @@
             this.aboutBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.aboutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.aboutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aboutBtn.Location = new System.Drawing.Point(12, 741);
+            this.aboutBtn.Location = new System.Drawing.Point(0, 649);
             this.aboutBtn.Name = "aboutBtn";
-            this.aboutBtn.Size = new System.Drawing.Size(50, 50);
+            this.aboutBtn.Size = new System.Drawing.Size(35, 35);
             this.aboutBtn.TabIndex = 30;
             this.aboutBtn.UseVisualStyleBackColor = true;
             this.aboutBtn.Click += new System.EventHandler(this.aboutBtn_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.appTitle);
+            this.panel1.Controls.Add(this.aboutBtn);
+            this.panel1.Controls.Add(this.userBtn);
+            this.panel1.Controls.Add(this.productBtn);
+            this.panel1.Controls.Add(this.logOutBtn);
+            this.panel1.Controls.Add(this.companyBtn);
+            this.panel1.Controls.Add(this.categoryBtn);
+            this.panel1.Controls.Add(this.departmentBtn);
+            this.panel1.Controls.Add(this.welcomePersonMsg);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(409, 779);
+            this.panel1.TabIndex = 0;
             // 
             // AdminMenuPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 803);
-            this.Controls.Add(this.aboutBtn);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.printBtn);
             this.Controls.Add(this.TabControl);
-            this.Controls.Add(this.companyBtn);
-            this.Controls.Add(this.departmentBtn);
-            this.Controls.Add(this.welcomePersonMsg);
-            this.Controls.Add(this.categoryBtn);
-            this.Controls.Add(this.logOutBtn);
-            this.Controls.Add(this.productBtn);
-            this.Controls.Add(this.userBtn);
-            this.Controls.Add(this.appTitle);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1500, 850);
             this.Name = "AdminMenuPage";
@@ -476,6 +531,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             this.productPurchaseSummaryPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -509,5 +565,6 @@
         private System.Windows.Forms.TabPage productPurchaseSummaryPage;
         private System.Windows.Forms.DataGridView dataGridView6;
         private System.Windows.Forms.Button aboutBtn;
+        private System.Windows.Forms.Panel panel1;
     }
 }
